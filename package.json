@@ -35,6 +35,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "svg-sprite-loader": "^3.7.3",
+    "svg-transform-loader": "^2.0.13",
     "svgo": "^1.0.5",
     "svgo-loader": "^2.1.0",
     "uglifyjs-webpack-plugin": "^1.2.4",
@@ -45,7 +46,15 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "imask": "^6.3.0",
+    "isotope-layout": "^3.0.6",
+    "isotope-packery": "^2.0.1",
     "jquery": "^3.3.1",
-    "normalize.css": "^8.0.0"
+    "jquery-bridget": "^3.0.1",
+    "magnific-popup": "^1.1.0",
+    "normalize.css": "^8.0.0",
+    "rupture": "^0.7.1",
+    "select2": "^4.1.0-rc.0",
+    "select2-multi-checkboxes": "github:wasikuss/select2-multi-checkboxes"
   }
 }

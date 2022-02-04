@@ -1,0 +1,102 @@
+.header
+  position: relative
+
+  &-menu
+    border-bottom: 1px solid rgba(255, 255, 255, .35)
+    display grid
+    align-items center
+    grid-template-columns 1fr auto 1fr
+
+    &__icon
+      color: #fff
+      display flex
+      align-items center
+
+      span
+        line-height: 1
+        padding-left: 10px
+
+      svg
+        fill: #fff
+        height: 14px
+        width: 12px
+
+    .currency-menu
+      li
+        padding-right: 23px
+
+    .user-menu
+      justify-content flex-end
+
+      li
+        padding-left: 42px
+
+    .currency-menu,
+    .user-menu
+      display flex
+
+  .nav
+    padding: 0 10px
+    margin-bottom: -1px
+
+    .nav-link
+      padding-left: 20px
+      padding-right: 20px
+
+      &::before
+        content: ''
+        position: absolute
+        bottom: 0
+        right: 0
+        left: 0
+        height: 2px
+        transition background .3s
+
+    li
+      padding: 0 5px
+
+      &.active
+        .nav-link::before
+          background: #E41D1D
+
+.logo-holder
+  padding: 30px 0 10px
+  text-align: center
+
+  .logo
+    color: #fff
+    cursor: pointer
+    font-family: 'PT Serif'
+    font-style: normal
+    font-weight: bold
+    font-size: 42px
+    line-height: 56px
+
+    &:hover
+      color: #E41D1D
+
+.burger
+  burger()
+  cursor: pointer
+  position: absolute
+  top: 40px
+  right: 20px
+  z-index: 3
+  min-width: 30px
+  margin-right: 2px
+  margin-left: -8px
+  width: 30px
+
+  span
+    margin-left: 8px
+
+  .open_menu &
+    burger_open()
+
+    span
+      &:nth-of-type(1),
+      &:nth-of-type(3)
+        margin-left: 12px
+
+  +above($tab)
+    display none

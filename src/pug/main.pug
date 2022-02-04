@@ -1,0 +1,226 @@
+extends /includes/layout
+
+block variables
+  - var page_title = 'home';
+
+block content
+  .aside-holder.__top
+    .hero-aside
+      .hero-aside__caption Новости часа
+      a.btn.btn-red.btn-aside.__s-45(href='#')
+        +icon('reload').btn-icon
+        span Показать 11 новых новостей
+
+      ul.hero-aside__list
+        +loop_while(7)
+          li
+            +card('Легендарный инвестор предупредил мир о финансовой катастрофе', 'tass', '01:11', '', '')
+          li
+            +card('В разных частях зала: почему Иван Ургант с отцом сидели отдельно друг от друга на похоронах Нины Ургант', 'zr', '01:11', '', '')
+          li
+            +card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', '01:11', '', '')
+          li
+            +card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', '01:11', '', '')
+
+    .section-holder
+      .section
+        .hero
+          .hero-title
+            span Названа причина
+            span поражения Байдена
+            span на переговорах
+            span с&nbsp;Путиным
+
+            a.btn.btn-red.btn-hero.__s-45(href='#')
+              span Читать далее
+              +icon('arrow_nw').btn-icon
+
+          .hero-preview
+            +img('news/news_1.jpg')
+
+          .hero-scroller
+            .card-holder
+              +card('Будущий канцлер Германии высказался о войсках у границ Украины', 'lenta', '08.12.21 10:35', 'news/kancler.jpg', '')
+              +card('"Это уже агония". Украину ждет новый раскол', 'lenta', '08.12.21 10:35', 'news/raskol.jpg', '')
+              +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/hakasii.jpg', '')
+              +card('Назван главный просчет США на Украине', 'lenta', '08.12.21 10:35', 'news/prolet.jpg', '')
+
+      .section.__white.__content
+        .section-title Последнее в СМИ
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          li.grid-item.__w-2.__h-2
+           +card('Не храните это дома! ТОП-10 вещей, притягивающих несчастья и нищету', 'lenta', '08.12.21 10:35', 'news/latatest.jpg', '', 'Самые привычные и безобидные на первый взгляд предметы, которые мы спокойно храним дома, способны навлечь на нас беду и отсутствие финансового благополучия. Cоставили список вещей, которые нужно поскорее отнести на мусорку.')
+          li.grid-item
+           +card('Будущий канцлер Германии высказался о войсках у границ Украины', 'lenta', '08.12.21 10:35', 'news/kancler.jpg', '')
+          li.grid-item
+           +card('"Это уже агония". Украину ждет новый раскол', 'lenta', '08.12.21 10:35', 'news/raskol.jpg', '')
+          li.grid-item
+           +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/hakasii.jpg', '')
+          li.grid-item
+           +card('Назван главный просчет США на Украине', 'lenta', '08.12.21 10:35', 'news/prolet.jpg', '')
+
+        .section-title Политика
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          li.grid-item.__w-2
+           +card('Названа причина поражения Байдена на переговорах с Путиным', 'lenta', '08.12.21 10:35', 'news/politics_2.jpg', '')
+          li.grid-item
+           +card('Будущий канцлер Германии высказался о войсках у границ Украины', 'lenta', '08.12.21 10:35', 'news/politics_1.jpg', '')
+          li.grid-item
+           +card('"Это уже агония". Украину ждет новый раскол', 'lenta', '08.12.21 10:35', 'news/politics_1.jpg', '')
+          li.grid-item
+           +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/politics_1.jpg', '')
+          li.grid-item
+           +card('Назван главный просчет США на Украине', 'lenta', '08.12.21 10:35', 'news/politics_1.jpg', '')
+          li.grid-item
+           +card('Коммунальщики попросили повысить тарифы в Новосибирске — заявка на тепло', 'lenta', '08.12.21 10:35', 'news/politics_1.jpg', '')
+          li.grid-item
+           +card('Коммунальщики попросили повысить тарифы в Новосибирске — заявка на тепло', 'lenta', '08.12.21 10:35', 'news/politics_1.jpg', '')
+
+          +text_news()
+
+        .section-title Общество
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          li.grid-item.__w-2
+           +card('Избавьтесь от этих привычек, чтобы держать уровень холестерина под контролем', 'lenta', '08.12.21 10:35', 'news/society_2.jpg', '')
+          li.grid-item
+           +card('Будущий канцлер Германии высказался о войсках у границ Украины', 'lenta', '08.12.21 10:35', 'news/society_1.jpg', '')
+          li.grid-item
+           +card('"Это уже агония". Украину ждет новый раскол', 'lenta', '08.12.21 10:35', 'news/society_1.jpg', '')
+          li.grid-item
+           +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/society_1.jpg', '')
+          li.grid-item
+           +card('Назван главный просчет США на Украине', 'lenta', '08.12.21 10:35', 'news/society_1.jpg', '')
+          li.grid-item
+           +card('Коммунальщики попросили повысить тарифы в Новосибирске — заявка на тепло', 'lenta', '08.12.21 10:35', 'news/society_1.jpg', '')
+          li.grid-item
+           +card('Коммунальщики попросили повысить тарифы в Новосибирске — заявка на тепло', 'lenta', '08.12.21 10:35', 'news/society_1.jpg', '')
+
+          +text_news()
+
+  .section.__black.__content
+    .section-title Партнерская секция
+
+  .aside-holder
+    .hero-aside
+      ul.hero-aside__list
+        +loop_while(7)
+          li
+            +card('Легендарный инвестор предупредил мир о финансовой катастрофе', 'tass', '01:11', '', '')
+          li
+            +card('В разных частях зала: почему Иван Ургант с отцом сидели отдельно друг от друга на похоронах Нины Ургант', 'zr', '01:11', '', '')
+          li
+            +card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', '01:11', '', '')
+          li
+            +card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', '01:11', '', '')
+
+    .section-holder
+      .section.__white.__content
+        .section-title Шоу-бизнес
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          li.grid-item.__w-2
+            +card('Киркоров перестал скрывать мать своих детей', 'lenta', '08.12.21 10:35', 'news/show_biz_2.jpg', '')
+          li.grid-item
+            +card('Будущий канцлер Германии высказался о войсках у границ Украины', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '')
+          li.grid-item
+            +card('"Это уже агония". Украину ждет новый раскол', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '')
+          li.grid-item
+            +card('Назван главный просчет США на Украине', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '')
+          li.grid-item
+            +card('Назван главный просчет США на Украине', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '')
+
+          +text_news()
+
+        .section-title
+          span Спорт
+          a.section-title__link(href='#')
+            span Читать дальше
+            +icon('arrow_nw').btn-icon
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          li.grid-item
+            +card('«Челси» и «Зенит» сыграли вничью в заключительном матче Лиги чемпионов', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '')
+          li.grid-item
+            +card('«Барселона» впервые за 16 лет не сыграет в плей-офф ЛЧ', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '')
+
+        .section-title
+          span Коронавирус
+          a.section-title__link(href='#')
+            span Читать дальше
+            +icon('arrow_nw').btn-icon
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          li.grid-item
+            +card('В Роспотребнадзоре назвали симптомы заболевания «Омикроном»', 'lenta', '08.12.21 10:35', 'news/covid.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/covid.jpg', '')
+          li.grid-item
+            +card('«Барселона» впервые за 16 лет не сыграет в плей-офф ЛЧ', 'lenta', '08.12.21 10:35', 'news/covid.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/covid.jpg', '')
+
+        .section-title
+          span Бизнес
+          a.section-title__link(href='#')
+            span Читать дальше
+            +icon('arrow_nw').btn-icon
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          li.grid-item
+            +card('В Роспотребнадзоре назвали симптомы заболевания «Омикроном»', 'lenta', '08.12.21 10:35', 'news/biz.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/biz.jpg', '')
+          li.grid-item
+            +card('«Барселона» впервые за 16 лет не сыграет в плей-офф ЛЧ', 'lenta', '08.12.21 10:35', 'news/biz.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/biz.jpg', '')
+
+        .section-title
+          span Наука
+          a.section-title__link(href='#')
+            span Читать дальше
+            +icon('arrow_nw').btn-icon
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          li.grid-item
+            +card('В Роспотребнадзоре назвали симптомы заболевания «Омикроном»', 'lenta', '08.12.21 10:35', 'news/science.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/science.jpg', '')
+          li.grid-item
+            +card('«Барселона» впервые за 16 лет не сыграет в плей-офф ЛЧ', 'lenta', '08.12.21 10:35', 'news/science.jpg', '')
+          li.grid-item
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/science.jpg', '')
+
+        .section-title Популярное за декабрь
+        ul.card-holder.__grid.js-grid
+          li.grid-sizer
+          +loop_while(4)
+            li.grid-item
+              +card('В Роспотребнадзоре назвали симптомы заболевания «Омикроном»', 'lenta', '08.12.21 10:35', 'news/pop.jpg', '')
+            li.grid-item
+              +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/pop.jpg', '')
+            li.grid-item
+              +card('«Барселона» впервые за 16 лет не сыграет в плей-офф ЛЧ', 'lenta', '08.12.21 10:35', 'news/pop.jpg', '')
+            li.grid-item
+              +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/pop.jpg', '')
+
+        .pagination
+          a.btn.btn-page.__s-40.btn-white.__disable(href='#')
+            +icon('arrow_l').btn-icon
+          a.btn.btn-page.__s-40.btn-white.__active(href='#') 1
+          a.btn.btn-page.__s-40.btn-white(href='#') 2
+          a.btn.btn-page.__s-40.btn-white(href='#') 3
+          a.btn.btn-page.__s-40.btn-white(href='#') 4
+          a.btn.btn-page.__s-40.btn-white(href='#')
+            +icon('arrow_r').btn-icon

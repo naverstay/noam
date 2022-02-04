@@ -1,0 +1,131 @@
+.aside-holder
+  +above($wide)
+    display grid
+    grid-template-columns auto 392px
+    grid-template-areas "section aside"
+
+    .section-holder
+      grid-area: section
+
+    .hero-aside
+      grid-area: aside
+
+    &.__top
+      padding-top: 40px
+
+      .hero
+        padding-top: 0
+
+//.section-holder
+//  background: #f9f9f9
+
+.hero
+  position: relative
+  padding: 20px 0
+
+  +above($tab)
+    padding: 40px 0
+    display grid
+    grid-template-columns: 36fr 40fr
+    grid-column-gap 14px
+    grid-template-areas "title preview" "scroller scroller"
+
+  +above($wide)
+    margin-right: -30px
+    padding-right: 60px
+
+  &-title
+    grid-area: title
+    display flex
+    padding-bottom: 10px
+    flex-flow: column
+    justify-content: flex-end
+    align-items: flex-start
+
+    > span
+      font-weight: bold
+      font-size: 24px
+      line-height: 30px
+      letter-spacing: 0.01em
+      padding: 10px
+      background: #000000
+      color: #fff
+
+      +above($tab)
+        font-size: 42px
+        line-height: 48px
+
+    +above($tab)
+      padding-bottom: 0
+
+  &-preview
+    grid-area: preview
+    display none
+    position: relative
+    overflow: hidden
+    min-height 355px
+
+    img
+      img_center()
+
+    +above($tab)
+      display block
+
+  &-scroller
+    grid-area: scroller
+    overflow-x: auto
+    padding-top: 40px
+    padding-bottom: 24px
+    custom_scroll(rgba(255, 255, 255, .25))
+
+    .card-holder
+      .card
+        width: 228px
+        flex: 1 0 auto
+
+        +above($wide)
+          width: 294px
+
+    +above($tab)
+      padding-top: 52px
+      margin-right: -25px
+
+    +above($wide)
+      margin-right: -60px
+
+    .card
+      color: #fff
+
+    .card-title
+      font: 700 18px / 24px 'PT Serif'
+
+    .card-preview
+      height: 124px
+
+  &-aside
+    //z-index: 1
+    //position: absolute
+    //top: 40px
+    //left: 100%
+    background: #ffffff
+    padding: 36px 28px
+    width: 362px
+    display none
+
+    +above($wide)
+      display block
+
+    &__list
+      li
+        padding-bottom: 17px
+
+        &:not(:first-child) .card-info
+          border-top: 1px solid #E8E8E8
+
+    &__caption
+      font: bold 23px / 1 'PT Serif'
+      color: #000000
+      margin-bottom: 24px
+
+    .card-title
+      font: 400 14px / 21px Inter, sans-serif

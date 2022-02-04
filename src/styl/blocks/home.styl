@@ -1,0 +1,138 @@
+.grid-sizer
+  position: absolute
+  top: 0
+  left: 0
+  opacity 0
+  pointer-events none
+
+.card
+  display block
+  color: #000
+
+  &-holder
+    position: relative
+    display flex
+    grid-gap 20px
+
+    &.__grid
+      display block
+      margin-bottom: 20px
+      grid-column-gap 0
+
+      +above($tab)
+        margin-right: -20px
+
+      +above($wide)
+        margin-bottom: 44px
+        margin-right: -30px
+
+      li
+        +below($tab - 1px)
+          height auto !important
+
+        +above($tab)
+          overflow: hidden
+          position: absolute
+          width: 25%
+          padding-bottom: 20px
+          padding-right: 20px
+
+          &::before
+            content: ''
+            display block
+            padding-bottom: calc(60% + 65px + 40px)
+
+          .card
+            position: absolute
+            top: 0
+            left: 0
+            right: 20px
+            bottom: 20px
+            overflow: hidden
+
+          .card-preview
+            height: 55%
+
+          &.__w-2
+            width: 50%
+
+            .card-title
+              font-size: 21px
+              line-height: 28px
+
+        &.__h-2
+          +above($tab)
+            &::before
+              padding-bottom: calc(100% + 20px)
+
+            .card-preview
+              height: 63%
+
+        +above($wide)
+          padding-bottom: 30px
+          padding-right: 30px
+
+          .card
+            right: 30px
+            bottom: 30px
+
+          &.__w-2 .card-title
+            font-size: 24px
+            line-height: 32px
+
+          &.__h-2
+            &::before
+              padding-bottom: calc(100% + 30px)
+
+    +above($tab)
+      grid-gap 30px
+
+  &-preview
+    overflow: hidden
+    position: relative
+    height: 152px
+
+    img
+      img_center()
+
+  &-logo
+    display flex
+    align-items center
+
+    span
+      font-weight: 500
+      font-size: 12px
+      line-height: 15px
+      padding-left: 8px
+
+    img
+      display block
+
+  &-title
+    transition color .3s
+    font: bold 16px/21px 'PT Serif'
+
+  &-description
+    margin-top: 8px
+    font-size: 14px
+    line-height: 21px
+    color: #000000
+
+  &-info
+    padding: 16px 0 8px
+    display flex
+    align-items center
+    justify-content space-between
+
+    .__no-img &
+      border-top: 1px solid #E8E8E8
+
+  &-date
+    color: #888
+    font-weight: 500
+    font-size: 12px
+    line-height: 15px
+
+  &:hover
+    .card-title
+      color: #E41D1D

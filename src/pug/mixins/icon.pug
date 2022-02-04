@@ -1,3 +1,57 @@
+- var portalMap = {lenta: 'lenta.ru', sports: 'sports.ru', zr: 'zr.ru', tass: 'tass.ru' };
+
+
 mixin icon(name)
   svg&attributes(attributes)
-    use(xlink:href=`#${name}`)
+    use(xlink:href=`/assets/sprite/icon.svg#icon_${name}`)
+
+mixin nav()
+  - var list = ['Главное', 'Коронавирус', 'Политика', 'Спорт', 'Наука', 'Бизнес', 'Технологии'];
+  ul.nav
+    each item, index in list
+      li(class= index ? '' : 'active'): a.nav-link(href='#')= item
+
+mixin logo()
+  .logo-holder
+    a.logo(href='#') NOAM.RU
+
+mixin card(title, portal, date, img, cls, description)
+  a.card(href='#' class= (cls || ''))
+    if (img)
+      .card-preview
+        +img(img)
+    .card-info
+      span.card-logo
+        +img('logo/' + portal + '.png')
+        span.card-portal= portal + '.ru'
+      span.card-date= date
+
+    .card-title= title
+
+    if (description)
+      .card-description= description
+
+mixin currency()
+  ul.currency-menu
+    li: span.header-menu__icon
+      +icon('dollar')
+      span 73,59
+
+    li: span.header-menu__icon
+      +icon('euro')
+      span 83,43
+
+    li: span.header-menu__icon
+      +icon('energy')
+      span 76.49
+
+mixin user()
+  ul.user-menu
+    li: span.header-menu__icon
+      +icon('nav')
+      span Краков
+
+    li: span.header-menu__icon
+      +icon('user')
+      span Войти
+

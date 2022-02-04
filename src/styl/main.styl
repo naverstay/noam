@@ -1,6 +1,25 @@
+@import '../../node_modules/rupture/rupture/index.styl'
+
+$mob = 370px
+$tab = 768px
+$dt = 980px
+$wide = 1170px
+
+rupture.scale = 0 $mob $tab $dt $wide
+rupture.scale-names = 'xs' 's' 'm' 'l' 'xl'
+rupture.mobile-cutoff = $tab
+rupture.desktop-cutoff = $wide - 1
+
+
 @require '~normalize.css'
 
-@require 'other/media'
+@require 'other/mixins'
 @require 'other/font'
+@require 'blocks/global'
+@require 'blocks/header'
+@require 'blocks/home'
+@require 'blocks/hero'
+@require 'blocks/buttons'
+@require 'blocks/other'
+@require 'blocks/footer'
 
-@require 'blocks/r'

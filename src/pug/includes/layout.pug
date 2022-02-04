@@ -4,10 +4,22 @@ include /includes/require
 include /mixins/img
 include /mixins/icon
 
+- const stamp = Math.round(new Date().getTime() / 1000)
+
 block variables
 
 doctype html
 html(lang='')
   include /includes/head
+
   body
-    block content
+    .page
+      include ../blocks/header
+
+      .content
+        block content
+
+      include ../blocks/footer
+
+    script(src=`js/app.js?stamp=${stamp}`)
+    script(src=`js/assets.js?stamp=${stamp}`)

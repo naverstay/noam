@@ -8,6 +8,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const IfPlugin = require('if-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
@@ -86,10 +87,30 @@ module.exports = env => ({
           }
         }]
       },
+      //{
+      //  test: /\.svg$/,
+      //  include: ico,
+      //  use: ['svg-sprite-loader', 'svgo-loader']
+      //},
       {
         test: /\.svg$/,
         include: ico,
-        use: ['svg-sprite-loader', 'svgo-loader']
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true,
+              symbolId: filePath => 'icon_' + path.basename(filePath).slice(0, -4),
+              spriteFilename: 'assets/sprite/icon.svg'
+            }
+          },
+          {
+            loader: 'svg-transform-loader'
+          },
+          {
+            loader: 'svgo-loader'
+          }
+        ]
       },
       {
         test: /\.pug$/,
@@ -150,16 +171,22 @@ module.exports = env => ({
       jQuery: 'jquery',
       'window.jQuery': 'jquery'
     }),
+    new CleanWebpackPlugin(dist),
     new CopyWebpackPlugin([{
       from: staticPath,
       to: dist
     }]),
-    new CleanWebpackPlugin(dist),
+    new SpriteLoaderPlugin({
+      plainSprite: true,
+      spriteAttrs: {
+        style: 'width:0; height:0; visibility:hidden;'
+      }
+    }),
     new IfPlugin(
       env === 'server',
       new BrowserSyncPlugin({
         host: 'localhost',
-        port: 3000,
+        port: 3008,
         ghostMode: false,
         server: {
           baseDir: [dist]

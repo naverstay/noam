@@ -1,0 +1,127 @@
+*
+  box-sizing: border-box
+
+  &::before,
+  &::after
+    box-sizing: border-box
+
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+
+a
+  text-decoration: none
+  transition color .3s
+
+html
+  custom_scroll(rgba(0, 0, 0, .25))
+
+body
+  width: 100vw
+  overflow-x hidden
+  position: relative
+  font 14px Inter, sans-serif
+
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    height: 100vh
+    z-index: -1
+    pointer-events none
+    background: #222
+
+  &::before
+    display: none
+    content: 'mobile'
+
+  +above($tab)
+    &::before
+      content: 'desktop'
+
+.page
+  min-height: 100vh
+  display flex
+  flex-flow column nowrap
+
+.content
+  flex 1 0 auto
+  overflow: hidden
+
+.section
+  padding: 0 20px
+
+  &.__content
+    padding-top: 40px
+    padding-bottom: 40px
+
+    +above($wide)
+      padding-top: 48px
+      padding-bottom: 48px
+
+  &.__black
+    position: relative
+    z-index: 1
+    background: #222
+
+    .section-title
+      color: #fff
+
+
+  &.__white
+    //background: #E5E5E5
+    background: #f9f9f9
+
+  &.__aside-space
+    +above($wide)
+      margin-right: 392px
+
+  +above($tab)
+    padding: 0 30px
+
+  &-title
+    margin-bottom: 12px
+    font: bold 24px/32px 'PT Serif'
+    color: #000
+    display flex
+    align-items flex-end
+    justify-content space-between
+
+    &__link
+      margin-bottom: 10px
+      font-size: 16px
+      line-height: 21px
+
+      svg
+        width: 10px
+        height: 10px
+        margin-left: 10px
+
+      &:hover
+        color: #E41D1D
+
+    +above($tab)
+      font-size: 28px
+      line-height: 37px
+      margin-bottom: 16px
+
+    +above($wide)
+      font-size: 36px
+      line-height: 48px
+      margin-bottom: 24px
+
+
+.nav
+  display flex
+
+  .nav-link
+    color: #fff
+    padding: 10px 0
+    position: relative
+    display block
+
+    &:hover
+      color: #E41D1D

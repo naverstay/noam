@@ -3,3 +3,17 @@ mixin img(fileName)
   - const url2x = url.replace(/(\.\w+$)/, '@2x$1')
 
   img(src=url srcset=`${url2x} 2x`)&attributes(attributes)
+
+mixin loop_while(counter)
+  -i = 0;
+  while i < counter
+    -i++;
+    block
+
+mixin text_news()
+  +loop_while(4)
+    li.grid-item.__no-img
+      +card('Верховный суд разъяснил свое решение о штрафах за нарушение масочного режима', 'tass', '08.12.21 10:35', '', '')
+
+    li.grid-item.__no-img
+      +card('В "Молдовагазе" заявили, что ежедневно платят "Газпрому"', 'zr', '08.12.21 10:35', '', '')

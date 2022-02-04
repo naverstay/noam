@@ -1,0 +1,47 @@
+.footer
+  background: #222
+  display flex
+  flex-flow column nowrap
+  align-items center
+  color: #fff
+  text-align: center
+  padding: 20px 0 40px
+
+  &-copyright
+    opacity: 0.65
+    font-size: 14px
+    line-height: 20px
+    padding-top: 20px
+
+    a
+      color: #fff
+
+      &:hover
+        color: #E41D1D
+
+  &-socials
+    .social-list
+      text-align: center
+
+      li
+        padding: 0 9px 8px
+        display inline-block
+
+    .social-link
+      cursor: pointer
+      display block
+
+      svg
+        width: 16px
+        height: 16px
+        fill: #fff
+        transition fill .3s
+
+      &:hover svg
+        fill: #E41D1D
+
+  .nav
+    align-items center
+
+    li
+      padding: 0 15px

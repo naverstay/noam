@@ -1,0 +1,18 @@
+- var socials = ['gl', 'tw', 'gl', 'tw'];
+
+.footer
+  .section
+    +logo()
+
+    .footer-menu
+      +nav()
+    .footer-socials
+      ul.social-list
+        each soc in socials
+          li: a.social-link(href='#')
+            +icon(soc)
+
+    .footer-copyright
+      a(href='#') noam.ru
+      span
+        |  — Последние новости России и мира © 2022
