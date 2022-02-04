@@ -51,6 +51,9 @@
       background: #000000
       color: #fff
 
+      &:last-of-type
+        margin-bottom: 24px
+
       +above($tab)
         font-size: 32px
         line-height: 40px
@@ -66,6 +69,7 @@
 
     +above($wide)
       padding-bottom: 0
+      padding-top: 10px
 
   &-preview
     grid-area: preview
