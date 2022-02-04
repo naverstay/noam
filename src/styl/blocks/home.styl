@@ -16,11 +16,16 @@
 
     &.__grid
       display block
-      margin-bottom: 20px
+      margin-bottom: 40px
       grid-column-gap 0
+
+      +below($tab - 1px)
+        &:last-child
+          margin-bottom: 0
 
       +above($tab)
         margin-right: -20px
+        margin-bottom: 20px
 
       +above($wide)
         margin-bottom: 10px
@@ -29,6 +34,53 @@
       li
         +below($tab - 1px)
           height auto !important
+
+          &:not(.grid-sizer) + li
+            border-top: 1px solid #E8E8E8
+            margin-top: 16px
+            padding-top: 16px
+
+          .card-info
+            padding-top: 12px
+
+          &:not(.__w-2)
+            .card
+              position: relative
+
+              &.__text
+                .card-title
+                  font: bold 16px/21px 'PTSerif'
+
+                .card-info
+                  padding-top: 0
+                  border: 0
+
+              &:not(.__text)
+                padding-right: 140px
+                padding-bottom: 20px
+                min-height 110px
+
+                .card-info
+                  padding-top: 0
+
+                .card-date
+                  position: absolute
+                  bottom: 0
+                  left: 0
+
+                .card-preview
+                  position: absolute
+                  top: 0
+                  right: 0
+                  width: 133px
+
+        &.__w-2
+          .card-title
+            font-size: 21px
+            line-height: 28px
+
+          .card-preview
+            height: 120px
 
         +above($tab)
           overflow: hidden
@@ -55,10 +107,6 @@
 
           &.__w-2
             width: 50%
-
-            .card-title
-              font-size: 21px
-              line-height: 28px
 
         &.__h-2
           +above($tab)
@@ -129,6 +177,9 @@
     font-size: 14px
     line-height: 21px
     color: #000000
+
+    +below($tab - 1px)
+      display none
 
   &-info
     padding: 16px 0 8px

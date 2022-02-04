@@ -94,20 +94,22 @@
 
 .check
   position: relative
-  min-height 20px
   display inline-block
 
   &-icon
     z-index: 1
     position: absolute
-    top: 6px
-    left: 4px
+    top: 4px
+    left: 2px
     display none
     fill: #ffff
-    width: 12px
-    height: 9px
+    width: 18px
+    height: 12px
+    pointer-events none
 
   &-text
+    min-height 20px
+    cursor: pointer
     position: relative
     padding-left: 32px
     display block

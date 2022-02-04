@@ -2,7 +2,8 @@ mixin img(fileName)
   - const url = `upload/${fileName}`
   - const url2x = url.replace(/(\.\w+$)/, '@2x$1')
 
-  img(src=url srcset=`${url2x} 2x`)&attributes(attributes)
+  //-img(src=url srcset=`${url2x} 2x`)&attributes(attributes)
+  img(src=url )&attributes(attributes)
 
 mixin loop_while(counter)
   -i = 0;

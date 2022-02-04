@@ -100,7 +100,11 @@ const initIsotop = () => {
       return enableGrid();
     } else {
       $('.js-grid').each((i, elem) => {
-        $(elem).isotope('destroy');
+        try {
+          $(elem).isotope('destroy');
+        } catch (e) {
+
+        }
       });
 
       return false;

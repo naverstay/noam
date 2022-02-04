@@ -99,9 +99,12 @@ body
     justify-content space-between
 
     &__link
-      margin-bottom: 10px
+      margin-bottom: 5px
       font-size: 16px
       line-height: 21px
+
+      +above($tab)
+        margin-bottom: 10px
 
       svg
         width: 10px
@@ -121,7 +124,6 @@ body
       line-height: 48px
       margin-bottom: 24px
 
-
 .nav
   display flex
 
@@ -133,3 +135,6 @@ body
 
     &:hover
       color: #E41D1D
+
+  +below($tab - 1px)
+    flex-flow column

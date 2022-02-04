@@ -7,6 +7,42 @@
       display block
 
   &-holder
+
+    +below($tab - 1px)
+      .partner-group
+        .card
+          margin-top: 32px
+          position: relative
+          padding-right: 140px
+          display flex
+          flex-flow column
+          justify-content center
+          align-items flex-start
+          min-height 110px
+
+          &::before
+            content: ''
+            position: absolute
+            right: 0
+            left: 0
+            top: -16px
+            height: 1px
+            background: #454545
+
+          .card-info
+            padding-top: 8px
+            order: 1
+
+          .card-preview
+            position: absolute
+            top: 0
+            right: 0
+            width: 133px
+
+      .partners-main
+        .card-preview
+          height: 120px
+
     +above($tab)
       display grid
       grid-gap 20px

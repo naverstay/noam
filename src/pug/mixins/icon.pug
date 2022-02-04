@@ -22,7 +22,7 @@ mixin logo()
     a.logo(href='#') NOAM.RU
 
 mixin card(title, portal, date, img, cls, description)
-  a.card(href='#' class= (cls || ''))
+  a.card(href='#' class= (img ? '' : ' __text ') + (cls || ''))
     if (img)
       .card-preview
         +img(img)
