@@ -1,0 +1,91 @@
+.hide
+  #modal_auth.popup
+    .popup-title Авторизация
+
+    form(action='#')
+      .form-cell
+        label.form-label(for='auth_email') Email:
+        .form-input
+          input#auth_email.input.input-white.__s-40(placeholder='Введите Email')
+
+      .form-cell.__mb-34
+        label.form-label(for='auth_password') Пароль:
+        a.popup-link.js-popup(data-popup='#modal_restore' href='#') Забыли пароль?
+        .form-input
+          a.js-toggle-type.form-password__eye(data-toggle='#auth_password')
+            +icon('eye').btn-icon
+          input#auth_password.input.input-white.__s-40(placeholder='Введите пароль' type='password')
+
+      .form-cell
+        button.btn.btn-red.__s-40.btn-auth Войти
+
+      .form-cell
+        button.btn.btn-white.__s-40.btn-auth
+          +icon('google').btn-icon
+          span Войти через Google
+
+    .popup-footer
+      span Нет аккаунта?&nbsp;
+      a.popup-link.js-popup(data-popup='#modal_reg' href='#') Зарегистрироваться
+
+  #modal_reg.popup
+    .popup-title Регистрация
+
+    form(action='#')
+      .form-cell
+        label.form-label(for='reg_email') Email:
+        .form-input
+          input#reg_email.input.input-white.__s-40(placeholder='Введите Email')
+
+      .form-cell.__mb-34
+        label.form-label(for='reg_password') Пароль:
+        .form-input
+          a.js-toggle-type.form-password__eye(data-toggle='#reg_password')
+            +icon('eye').btn-icon
+          input#reg_password.input.input-white.__s-40(placeholder='Введите пароль' type='password')
+
+      .form-cell.__mb-34
+        label.form-label(for='reg_password_confirm') Повторите пароль:
+        .form-input
+          a.js-toggle-type.form-password__eye(data-toggle='#reg_password_confirm')
+            +icon('eye').btn-icon
+          input#reg_password_confirm.input.input-white.__s-40(placeholder='Введите пароль' type='password')
+
+      .form-cell
+        button.btn.btn-red.__s-40.btn-auth Зарегистрироваться
+
+    .popup-footer
+      span Уже есть аккаунт?&nbsp;
+      a.popup-link.js-popup(data-popup='#modal_auth' href='#') Войти
+
+  #modal_restore.popup
+    .popup-title Восстановление
+
+    form(action='#')
+      .form-cell
+        label.form-label(for='restore_email') Email:
+        .form-input
+          input#restore_email.input.input-white.__s-40(placeholder='Введите Email')
+
+      .form-cell
+        button.btn.btn-red.__s-40.btn-auth Восстановить
+
+    .popup-footer
+      span Вспомнили пароль?&nbsp;
+      a.popup-link.js-popup(data-popup='#modal_auth' href='#') Войти
+
+  #modal_location.popup
+    .popup-title Выбор локации
+
+    form(action='#')
+      .form-cell.__mb-34
+        label.form-label(for='location_region') Ваш регион:
+        .form-input.select.select-white.__s-40
+          select#location_region.js-select-icon(name="brand" data-placeholder='Выберите регион' tabindex="1")
+            option(value="")
+            option(value="m1" data-icon="img/flag/ru.png") Россия
+            option(value="m2" data-icon="img/flag/ru.png") Украина
+            option(value="m3" data-icon="img/flag/ru.png") Казахстан
+
+      .form-cell
+        +check('Определять местоположение автоматически', true)

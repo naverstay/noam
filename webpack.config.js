@@ -15,8 +15,11 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 const src = path.resolve(__dirname, 'src/');
 const dist = path.resolve(__dirname, 'dist/');
+const img = path.resolve(src, 'img/');
+const distImg = path.resolve(__dirname, 'dist/img');
 
 const ico = path.resolve(src, 'ico/');
+const favicon = path.resolve(src, 'favicon/');
 const staticPath = path.resolve(src, 'static/');
 
 const pug = path.resolve(src, 'pug/');
@@ -175,6 +178,14 @@ module.exports = env => ({
     new CopyWebpackPlugin([{
       from: staticPath,
       to: dist
+    }]),
+    new CopyWebpackPlugin([{
+      from: favicon,
+      to: dist
+    }]),
+    new CopyWebpackPlugin([{
+      from: img,
+      to: distImg
     }]),
     new SpriteLoaderPlugin({
       plainSprite: true,

@@ -1,6 +1,12 @@
 - var portalMap = {lenta: 'lenta.ru', sports: 'sports.ru', zr: 'zr.ru', tass: 'tass.ru' };
 
 
+mixin check(text, checked)
+  label.check
+    input.hide(type='checkbox', checked= checked)
+    +icon('check').check-icon
+    span.check-text= text
+
 mixin icon(name)
   svg&attributes(attributes)
     use(xlink:href=`/assets/sprite/icon.svg#icon_${name}`)
@@ -49,11 +55,11 @@ mixin currency()
 
 mixin user()
   ul.user-menu
-    li: span.header-menu__icon
+    li: span.header-menu__icon.js-popup(data-popup='#modal_location')
       +icon('nav')
       span Краков
 
-    li: span.header-menu__icon
+    li: span.header-menu__icon.js-popup(data-popup='#modal_auth')
       +icon('user')
       span Войти
 

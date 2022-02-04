@@ -1,0 +1,37 @@
+.popup
+  padding: 36px 26px
+  background: #fff
+  width: 100%
+  max-width 422px
+  margin: 0 auto
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.1)
+  position: relative
+
+  &-link
+    color: #666666
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none
+
+  &-footer
+    text-align: center
+    font-size: 14px
+    line-height: 17px
+    color: #666
+    padding-top: 12px
+
+  &-title
+    text-align: center
+    margin-bottom: 32px
+    font: bold 28px / 37px 'PTSerif'
+
+  .mfp-close
+    transition opacity .3s
+    font-size: 34px
+    top: 35px
+    right: 20px
+
+
+  +above($tab)
+    padding: 36px 30px
