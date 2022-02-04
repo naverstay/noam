@@ -79,8 +79,13 @@
             font-size: 21px
             line-height: 28px
 
-          .card-preview
-            height: 120px
+            +above($tab)
+              font-size: 24px
+              line-height: 32px
+
+          +below($tab - 1px)
+            .card-preview
+              height: 120px
 
         +above($tab)
           overflow: hidden
@@ -92,7 +97,7 @@
           &::before
             content: ''
             display block
-            padding-bottom: calc(60% + 65px + 40px)
+            padding-bottom: calc(60% + 110px + 40px)
 
           .card
             position: absolute
@@ -103,7 +108,7 @@
             overflow: hidden
 
           .card-preview
-            height: 59%
+            height: 48%
 
           &.__w-2
             width: 50%
@@ -120,9 +125,15 @@
           padding-bottom: 20px
           padding-right: 30px
 
+          &::before
+            padding-bottom: calc(60% + 65px + 40px)
+
           .card
             right: 30px
             bottom: 30px
+
+          .card-preview
+            height: 59%
 
           &.__no-img .card
             top: 15px
@@ -135,7 +146,7 @@
             &::before
               padding-bottom: calc(100% + 30px)
 
-    +above($tab)
+    +above($wide)
       grid-gap 30px
 
   &-preview

@@ -48,6 +48,12 @@
       grid-gap 20px
       grid-template-areas "group_1 group_2" "main main" "text text"
 
+      .partner-group
+        display grid
+        grid-gap 20px
+        padding-bottom: 12px
+        grid-template-columns 1fr 1fr
+
       .__group-1
         grid-area group_1
 
@@ -60,6 +66,9 @@
 
       .partners-text
         grid-area text
+
+        +below($wide)
+          padding-top: 12px
 
         .card-holder
           display grid
@@ -76,6 +85,9 @@
         height: 320px
 
       .partner-group
+        display block
+        padding-bottom: 0
+
         .card + .card
           margin-top: 26px
 

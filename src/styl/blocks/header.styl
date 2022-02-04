@@ -5,7 +5,7 @@
     position: relative
     z-index: 3
 
-    +below($tab - 1px)
+    +below($wide - 1px)
       padding-top: 24px
 
   &-menu
@@ -92,8 +92,6 @@
           padding-right: 23px
 
       +above($tab)
-        position: absolute
-        bottom: 100%
         left: 0
 
     .user-menu
@@ -102,22 +100,26 @@
       .header-menu__icon
         cursor: pointer
 
-      +above($tab)
-        position: absolute
-        bottom: 100%
-        right: 0
-
-      li
-        padding-left: 42px
-
       +below($tab - 1px)
         li
           padding: 30px 0 0
+
+      +above($tab)
+        right: 0
+
+      li
+        padding-left: 20px
+
+        +above($wide)
+          padding-left: 42px
 
     .currency-menu,
     .user-menu
       +above($tab)
         display flex
+        position: absolute
+        bottom: 100%
+        margin-bottom: 18px
 
       +above($wide)
         position: relative
@@ -127,8 +129,10 @@
 
   .nav
     +above($tab)
-      padding: 0 10px
       margin-bottom: -1px
+
+    +above($wide)
+      padding: 0 10px
 
     .nav-link
       padding-right: 60px

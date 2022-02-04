@@ -52,12 +52,20 @@
       color: #fff
 
       +above($tab)
+        font-size: 32px
+        line-height: 40px
+
+      +above($wide)
         font-size: 42px
         line-height: 48px
 
     +above($tab)
+      padding-bottom: 10px
+      padding-top: 20px
+      justify-content: space-between
+
+    +above($wide)
       padding-bottom: 0
-      padding-top: 0
 
   &-preview
     grid-area: preview
@@ -88,10 +96,11 @@
           width: 294px
 
     +above($tab)
-      padding-top: 52px
+      padding-top: 42px
       margin-right: -25px
 
     +above($wide)
+      padding-top: 52px
       margin-right: -60px
 
     .card
