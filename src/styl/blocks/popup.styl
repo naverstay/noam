@@ -32,6 +32,12 @@
     top: 35px
     right: 20px
 
-
   +above($tab)
     padding: 36px 30px
+
+  +below($tab - 1px)
+    position: fixed
+    bottom: 0
+    right: 0
+    left: 0
+    z-index: 5

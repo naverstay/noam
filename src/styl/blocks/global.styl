@@ -36,7 +36,9 @@ body
     background: #222
 
   &::before
-    display: none
+    position: absolute
+    top: 0
+    opacity: 0
     content: 'mobile'
 
   +above($tab)
@@ -47,6 +49,9 @@ body
   min-height: 100vh
   display flex
   flex-flow column nowrap
+
+  +below($tab - 1px)
+    padding-top: 90px
 
 .content
   flex 1 0 auto

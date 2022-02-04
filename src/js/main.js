@@ -8,6 +8,19 @@ require('isotope-packery');
 
 jQueryBridget('isotope', Isotope, $);
 
+let isotopInstances = [];
+const isotopOptions = {
+  layoutMode: 'packery',
+  percentPosition: true,
+  stagger: 0,
+  transitionDuration: 100,
+  itemSelector: '.grid-item'
+  //packery: {
+  //  columnWidth: '.grid-sizer',
+  //  rowHeight: '.grid-sizer'
+  //}
+};
+
 const isMobile = function () {
   return getComputedStyle(document.body, ':before').getPropertyValue('content') === '\"mobile\"';
 }
@@ -79,43 +92,37 @@ const initIsotop = () => {
   const breakpoint = window.matchMedia('(min-width:768px)');
 
   const enableGrid = function () {
-    $('.js-grid').each((i, elem) => {
-      $(elem).isotope({
-        layoutMode: 'packery',
-        percentPosition: true,
-        stagger: 0,
-        transitionDuration: 100,
-        itemSelector: '.grid-item'
-        //packery: {
-        //  columnWidth: '.grid-sizer',
-        //  rowHeight: '.grid-sizer'
-        //}
+    if (isotopInstances.length) {
+      isotopInstances.forEach((iso, i) => {
+        iso.isotope(isotopOptions);
       });
-    });
-  };
-
-  const breakpointChecker = function () {
-    console.log('isMobile', isMobile());
-    if (!isMobile()) {
-      return enableGrid();
     } else {
       $('.js-grid').each((i, elem) => {
-        try {
-          $(elem).isotope('destroy');
-        } catch (e) {
-
-        }
+        let iso = $(elem).isotope(isotopOptions);
+        isotopInstances.push(iso);
       });
-
-      return false;
     }
   };
 
-  breakpoint.addListener(breakpointChecker);
+  const breakpointChecker = function (mobile) {
+    if (mobile) {
+      if (isotopInstances.length) {
+        isotopInstances.forEach((iso, i) => {
+          iso.isotope('destroy');
+        });
+      }
+      return false;
+    } else {
+      return enableGrid();
+    }
+  };
 
-  breakpointChecker();
+  breakpoint.addEventListener("change", (e) => {
+    breakpointChecker(!e.matches);
+  });
+
+  breakpointChecker(isMobile());
 }
-
 
 $(window).resize(function () {
   fitIsotopHeight();
@@ -144,6 +151,7 @@ $(function ($) {
 
     if (target) {
       $.magnificPopup.open({
+        fixedContentPos: true,
         items: {
           src: target,
           type: 'inline'
