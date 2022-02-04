@@ -23,7 +23,7 @@
         margin-right: -20px
 
       +above($wide)
-        margin-bottom: 44px
+        margin-bottom: 10px
         margin-right: -30px
 
       li
@@ -34,7 +34,7 @@
           overflow: hidden
           position: absolute
           width: 25%
-          padding-bottom: 20px
+          padding-bottom: 10px
           padding-right: 20px
 
           &::before
@@ -51,7 +51,7 @@
             overflow: hidden
 
           .card-preview
-            height: 55%
+            height: 59%
 
           &.__w-2
             width: 50%
@@ -65,16 +65,19 @@
             &::before
               padding-bottom: calc(100% + 20px)
 
-            .card-preview
-              height: 63%
+            //.card-preview
+            //  height: 63%
 
         +above($wide)
-          padding-bottom: 30px
+          padding-bottom: 20px
           padding-right: 30px
 
           .card
             right: 30px
             bottom: 30px
+
+          &.__no-img .card
+            top: 15px
 
           &.__w-2 .card-title
             font-size: 24px
@@ -90,7 +93,13 @@
   &-preview
     overflow: hidden
     position: relative
-    height: 152px
+    height: 110px
+
+    +above($tab)
+      height: 120px
+
+    +above($wide)
+      height: 152px
 
     img
       img_center()
@@ -110,7 +119,10 @@
 
   &-title
     transition color .3s
-    font: bold 16px/21px 'PT Serif'
+    font: bold 16px/21px 'PTSerif'
+
+    .__no-img &
+      font: 400 14px / 21px Inter, sans-serif
 
   &-description
     margin-top: 8px
@@ -136,3 +148,10 @@
   &:hover
     .card-title
       color: #E41D1D
+
+  .section.__black &
+    .card-info
+      border-top-color: #454545
+
+    &:not(:hover)
+      color: #ffffff

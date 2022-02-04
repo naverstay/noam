@@ -20,11 +20,13 @@ mixin card(title, portal, date, img, cls, description)
     if (img)
       .card-preview
         +img(img)
-    .card-info
-      span.card-logo
-        +img('logo/' + portal + '.png')
-        span.card-portal= portal + '.ru'
-      span.card-date= date
+    if (portal || date)
+      .card-info
+        if (portal)
+          span.card-logo
+            +img('logo/' + portal + '.png')
+            span.card-portal= portal + '.ru'
+        span.card-date= date
 
     .card-title= title
 

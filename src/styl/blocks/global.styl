@@ -70,6 +70,13 @@ body
     .section-title
       color: #fff
 
+    + .aside-holder
+      +above($wide)
+        .hero-aside
+          padding-top: 20px
+
+        .section-holder
+          padding-top: 15px
 
   &.__white
     //background: #E5E5E5
@@ -84,7 +91,7 @@ body
 
   &-title
     margin-bottom: 12px
-    font: bold 24px/32px 'PT Serif'
+    font: bold 24px/32px 'PTSerif'
     color: #000
     display flex
     align-items flex-end

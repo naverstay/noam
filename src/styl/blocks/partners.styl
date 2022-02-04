@@ -1,0 +1,52 @@
+.partners
+
+  &-text
+    display none
+
+    +above($tab)
+      display block
+
+  &-holder
+    +above($tab)
+      display grid
+      grid-gap 20px
+      grid-template-areas "group_1 group_2" "main main" "text text"
+
+      .__group-1
+        grid-area group_1
+
+      .__group-2
+        grid-area group_2
+
+      .partners-main
+        .card-preview
+          height: 180px
+
+      .partners-text
+        grid-area text
+
+        .card-holder
+          display grid
+          grid-column-gap 25px
+          grid-template-columns 1fr 1fr 1fr 1fr
+
+    +above($wide)
+      padding-top: 12px
+      grid-column-gap 30px
+      grid-template-columns 263px auto 263px
+      grid-template-areas "group_1 main group_2" "group_1 text group_2"
+
+      .partners-main .card-preview
+        height: 320px
+
+      .partner-group
+        .card + .card
+          margin-top: 26px
+
+.partners-main
+  grid-area main
+
+  .card-title
+    margin-top: 12px
+    font-size: 24px
+    line-height: 32px

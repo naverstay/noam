@@ -17,7 +17,7 @@ const fitIsotopHeight = () => {
 
     $(grid).find('.grid-item').each((i, elem) => {
       let item = $(elem);
-      item.css('height', (item.hasClass('__h-2') ? sizeW * 2 : item.hasClass('__no-img') ? 135 : sizeW) + 'px')
+      item.css('height', (item.hasClass('__h-2') ? sizeW * 2 : item.hasClass('__no-img') ? 150 : sizeW) + 'px')
     });
   });
 }
