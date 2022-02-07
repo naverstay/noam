@@ -23,6 +23,17 @@
   position: relative
   padding: 20px 0 25px
 
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: -30px
+    right: -392px
+    bottom: 0
+    z-index: -1
+    pointer-events none
+    background: #222
+
   +above($tab)
     padding: 40px 0
     display grid
