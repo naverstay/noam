@@ -10,14 +10,15 @@
   color: #000
 
   &-holder
-    position: relative
+    position relative
     display flex
     grid-gap 20px
 
     &.__grid
       display block
-      margin-bottom: 40px
+      margin-bottom 40px
       grid-column-gap 0
+      overflow hidden
 
       +below($tab - 1px)
         &:last-child
@@ -89,24 +90,25 @@
               height: 120px
 
         +above($tab)
-          overflow: hidden
-          position: absolute
+          float: left
+          //overflow: hidden
+          //position: absolute
           width: 25%
           padding-bottom: 10px
           padding-right: 20px
 
           &::before
-            content: ''
+            //content: ''
             display block
             padding-bottom: calc(60% + 110px + 40px)
 
-          .card
-            position: absolute
-            top: 0
-            left: 0
-            right: 20px
-            bottom: 20px
-            overflow: hidden
+          //.card
+          //  position: absolute
+          //  top: 0
+          //  left: 0
+          //  right: 20px
+          //  bottom: 20px
+          //  overflow: hidden
 
           //.card-preview
           //  height: 48%
@@ -129,9 +131,9 @@
           &::before
             padding-bottom: calc(60% + 65px + 40px)
 
-          .card
-            right: 30px
-            bottom: 30px
+          //.card
+          //  right: 30px
+          //  bottom: 30px
 
           //.card-preview
           //  height: 59%
@@ -165,7 +167,9 @@
       height: 152px
 
     img
-      img_center()
+      //img_center()
+      max-width 100%
+      display block
 
   &-logo
     display flex

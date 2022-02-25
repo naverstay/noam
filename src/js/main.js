@@ -10,6 +10,7 @@ require('isotope-packery');
 
 jQueryBridget('isotope', Isotope, $);
 
+let watchCardHeight = false;
 let isotopInstances = [];
 const isotopOptions = {
   layoutMode: 'packery',
@@ -29,14 +30,47 @@ const isMobile = function () {
   return getComputedStyle(document.body, ':before').getPropertyValue('content') === '\"mobile\"';
 }
 
+const applyGroupHeight = (group, height) => {
+  group.forEach((item) => item.css('height', height + 'px'));
+}
+
 const fitIsotopHeight = () => {
+  $('.js-grid .grid-item').css('height', '');
+
   $('.js-grid').each((i, grid) => {
     let sizer = $(grid).find('.grid-sizer');
     let sizeW = Math.ceil(sizer[0].getBoundingClientRect().height);
+    let maxColHeight = 0;
+    let prevTop = 0;
+    let rowGroup = [];
 
     $(grid).find('.grid-item').each((i, elem) => {
       let item = $(elem);
-      item.css('height', (item.hasClass('__h-2') ? sizeW * 2 : item.hasClass('__no-img') ? 150 : sizeW) + 'px')
+
+      if (item.hasClass('__h-2')) {
+        // todo skip
+      } else {
+        let h = Math.ceil(item[0].getBoundingClientRect().height)
+        let top = Math.ceil(item[0].getBoundingClientRect().top)
+
+        if (prevTop === 0) {
+          prevTop = top
+        }
+
+        maxColHeight = Math.max(maxColHeight, h);
+
+        if (top === prevTop) {
+          rowGroup.push(item);
+        } else {
+          applyGroupHeight(rowGroup, maxColHeight);
+          maxColHeight = 0;
+          prevTop = 0;
+          rowGroup = [];
+        }
+      }
+
+
+      //item.css('height', (item.hasClass('__h-2') ? sizeW * 2 : item.hasClass('__no-img') ? 150 : sizeW) + 'px')
     });
   });
 }
@@ -95,31 +129,36 @@ const initSelect = () => {
 const initIsotop = () => {
   const breakpoint = window.matchMedia('(min-width:768px)');
 
-  const enableGrid = function () {
-    if (isotopInstances.length) {
-      isotopInstances.forEach((iso, i) => {
-        iso.isotope(isotopOptions);
-      });
-    } else {
-      $('.js-grid').each((i, elem) => {
-        let iso = $(elem).isotope(isotopOptions);
-        isotopInstances.push(iso);
-      });
-    }
+  const breakpointChecker = function (mobile) {
+    watchCardHeight = !mobile;
+    return false;
   };
 
-  const breakpointChecker = function (mobile) {
-    if (mobile) {
-      if (isotopInstances.length) {
-        isotopInstances.forEach((iso, i) => {
-          iso.isotope('destroy');
-        });
-      }
-      return false;
-    } else {
-      return enableGrid();
-    }
-  };
+  //const enableGrid = function () {
+  //  if (isotopInstances.length) {
+  //    isotopInstances.forEach((iso, i) => {
+  //      iso.isotope(isotopOptions);
+  //    });
+  //  } else {
+  //    $('.js-grid').each((i, elem) => {
+  //      let iso = $(elem).isotope(isotopOptions);
+  //      isotopInstances.push(iso);
+  //    });
+  //  }
+  //};
+  //
+  //const breakpointChecker = function (mobile) {
+  //  if (mobile) {
+  //    if (isotopInstances.length) {
+  //      isotopInstances.forEach((iso, i) => {
+  //        iso.isotope('destroy');
+  //      });
+  //    }
+  //    return false;
+  //  } else {
+  //    return enableGrid();
+  //  }
+  //};
 
   breakpoint.addEventListener("change", (e) => {
     breakpointChecker(!e.matches);
@@ -133,6 +172,8 @@ $(window).resize(function () {
 });
 
 $(function ($) {
+  initIsotop();
+
   fitIsotopHeight();
 
   $('.js-burger').on('click', function () {
@@ -165,8 +206,6 @@ $(function ($) {
 
     return false;
   });
-
-  initIsotop();
 
   initSelect();
 });
