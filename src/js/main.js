@@ -39,39 +39,48 @@ const fitIsotopHeight = () => {
 
   $('.js-grid').each((i, grid) => {
     let sizer = $(grid).find('.grid-sizer');
-    let sizeW = Math.ceil(sizer[0].getBoundingClientRect().height);
+    //let sizeW = Math.ceil(sizer[0].getBoundingClientRect().height);
     let maxColHeight = 0;
     let prevTop = 0;
     let rowGroup = [];
 
-    $(grid).find('.grid-item').each((i, elem) => {
-      let item = $(elem);
+    if (watchCardHeight) {
+      const items = $(grid).find('.grid-item');
 
-      if (item.hasClass('__h-2')) {
-        // todo skip
-      } else {
-        let h = Math.ceil(item[0].getBoundingClientRect().height)
-        let top = Math.ceil(item[0].getBoundingClientRect().top)
+      items.each((i, elem) => {
+        let item = $(elem);
 
-        if (prevTop === 0) {
-          prevTop = top
-        }
-
-        maxColHeight = Math.max(maxColHeight, h);
-
-        if (top === prevTop) {
-          rowGroup.push(item);
+        if (item.hasClass('__h-2')) {
+          // todo skip
         } else {
-          applyGroupHeight(rowGroup, maxColHeight);
-          maxColHeight = 0;
-          prevTop = 0;
-          rowGroup = [];
+          let h = Math.ceil(item[0].getBoundingClientRect().height)
+          let top = Math.ceil(item[0].getBoundingClientRect().top)
+
+          if (prevTop === 0) {
+            prevTop = top
+          }
+
+          maxColHeight = Math.max(maxColHeight, h);
+
+          if (top === prevTop) {
+            rowGroup.push(item);
+          } else {
+            applyGroupHeight(rowGroup, maxColHeight);
+            maxColHeight = h;
+            prevTop = top;
+            rowGroup = [item];
+          }
+
+          //if (i === items.length - 1) {
+          //  applyGroupHeight(rowGroup, maxColHeight);
+          //}
         }
-      }
 
+        //item.css('height', (item.hasClass('__h-2') ? sizeW * 2 : item.hasClass('__no-img') ? 150 : sizeW) + 'px')
+      });
+    }
 
-      //item.css('height', (item.hasClass('__h-2') ? sizeW * 2 : item.hasClass('__no-img') ? 150 : sizeW) + 'px')
-    });
+    $(grid).addClass('__loaded');
   });
 }
 
@@ -130,6 +139,7 @@ const initIsotop = () => {
   const breakpoint = window.matchMedia('(min-width:768px)');
 
   const breakpointChecker = function (mobile) {
+    console.log('breakpointChecker');
     watchCardHeight = !mobile;
     return false;
   };

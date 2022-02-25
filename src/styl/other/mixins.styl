@@ -15,6 +15,15 @@ custom_scroll($track)
     background-color: rgba(255, 255, 255, .65)
     border-radius: 2px
 
+clearfix()
+  &::before,
+  &::after
+    content: " "
+    display: table
+
+  &::after
+    clear: both
+
 img_center()
   position: absolute
   transform translate(-50%, -50%)
