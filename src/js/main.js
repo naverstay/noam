@@ -2,13 +2,13 @@ import 'babel-polyfill';
 import 'magnific-popup';
 import 'select2';
 
-let Isotope = require('isotope-layout');
+//let Isotope = require('isotope-layout');
 let jQueryBridget = require('jquery-bridget');
-require('isotope-packery');
+//require('isotope-packery');
 //require('isotope-fit-columns');
 //require('isotope-cells-by-row');
 
-jQueryBridget('isotope', Isotope, $);
+//jQueryBridget('isotope', Isotope, $);
 
 let resizeTimer
 let watchCardHeight = false;
@@ -140,7 +140,6 @@ const initIsotop = () => {
   const breakpoint = window.matchMedia('(min-width:768px)');
 
   const breakpointChecker = function (mobile) {
-    console.log('breakpointChecker');
     watchCardHeight = !mobile;
     return false;
   };
@@ -184,7 +183,7 @@ $(window).resize(function () {
 
   resizeTimer = setTimeout(() => {
     fitIsotopHeight();
-  }, 50);
+  }, 5);
 });
 
 $(function ($) {
