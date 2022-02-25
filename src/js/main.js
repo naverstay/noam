@@ -10,6 +10,7 @@ require('isotope-packery');
 
 jQueryBridget('isotope', Isotope, $);
 
+let resizeTimer
 let watchCardHeight = false;
 let isotopInstances = [];
 const isotopOptions = {
@@ -177,8 +178,13 @@ const initIsotop = () => {
   breakpointChecker(isMobile());
 }
 
+
 $(window).resize(function () {
-  fitIsotopHeight();
+  clearTimeout(resizeTimer);
+
+  resizeTimer = setTimeout(() => {
+    fitIsotopHeight();
+  }, 50);
 });
 
 $(function ($) {
