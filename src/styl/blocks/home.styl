@@ -108,8 +108,8 @@
             bottom: 20px
             overflow: hidden
 
-          .card-preview
-            height: 48%
+          //.card-preview
+          //  height: 48%
 
           &.__w-2
             width: 50%
@@ -133,8 +133,8 @@
             right: 30px
             bottom: 30px
 
-          .card-preview
-            height: 59%
+          //.card-preview
+          //  height: 59%
 
           &.__no-img .card
             top: 15px
@@ -146,6 +146,9 @@
           &.__h-2
             &::before
               padding-bottom: calc(100% + 30px)
+
+            .card-preview
+              height: 320px
 
     +above($wide)
       grid-gap 30px

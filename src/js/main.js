@@ -5,13 +5,17 @@ import 'select2';
 let Isotope = require('isotope-layout');
 let jQueryBridget = require('jquery-bridget');
 require('isotope-packery');
+//require('isotope-fit-columns');
+//require('isotope-cells-by-row');
 
 jQueryBridget('isotope', Isotope, $);
 
 let isotopInstances = [];
 const isotopOptions = {
   layoutMode: 'packery',
-  percentPosition: true,
+  //layoutMode: 'fitColumns',
+  //layoutMode: 'cellsByRow',
+  //percentPosition: true,
   stagger: 0,
   transitionDuration: 100,
   itemSelector: '.grid-item'

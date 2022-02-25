@@ -3849,7 +3849,21 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.npmjs.org/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isotope-layout@^3.0.5, isotope-layout@^3.0.6:
+isotope-cells-by-row@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/isotope-cells-by-row/-/isotope-cells-by-row-1.1.4.tgz#645d712c4dc991b179db705b0a37e8c8a04e5339"
+  integrity sha512-wfcZ6Tkw6QR4KMCFIATsxo2W9zFT5qEN0XkTohelyQC13feDaHAG0fz9hQsRHHuMuuexYE9rkPuSUUpY2OFjag==
+  dependencies:
+    isotope-layout ">=2.1 <4.0"
+
+isotope-fit-columns@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/isotope-fit-columns/-/isotope-fit-columns-1.1.4.tgz#71074ad86a3ddc7a5800310866be5c42791bae30"
+  integrity sha512-l/XiSqjBt1T1ALrZHTOCT0i3Sb6EyABczezKJkuBi3mUXU0b+W26+CCG6BwtpmzilnQrZ2qDDuP7fNOKcSbNHg==
+  dependencies:
+    isotope-layout ">=2.1 <4.0"
+
+"isotope-layout@>=2.1 <4.0", isotope-layout@^3.0.5, isotope-layout@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/isotope-layout/-/isotope-layout-3.0.6.tgz#d5636ec74d68e7e88fa5166fe6396858db00f432"
   integrity sha512-z2ZKablhocXhoNyWwzJPFd7u7FWbYbVJA51Nvsqsod8jH2ExGc1SwDsSWKE54e3PhXzqf2yZPhFSq/c2MR1arw==
