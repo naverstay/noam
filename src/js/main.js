@@ -178,7 +178,7 @@ const initIsotop = () => {
 }
 
 
-$(window).resize(function () {
+$(window).on('resize load', function () {
   clearTimeout(resizeTimer);
 
   resizeTimer = setTimeout(() => {
@@ -188,8 +188,6 @@ $(window).resize(function () {
 
 $(function ($) {
   initIsotop();
-
-  fitIsotopHeight();
 
   $('.js-burger').on('click', function () {
     $('body').toggleClass('open_menu');
