@@ -13,14 +13,15 @@
         a.popup-link.js-popup(data-popup='#modal_restore' href='#') Забыли пароль?
         .form-input
           a.js-toggle-type.form-password__eye(data-toggle='#auth_password')
-            +icon('eye').btn-icon
+            +icon('eye').btn-icon.__open
+            +icon('eye_hide').btn-icon.__hide
           input#auth_password.input.input-white.__s-40(placeholder='Введите пароль' type='password')
 
       .form-cell
         button.btn.btn-red.__s-40.btn-auth Войти
 
       .form-cell
-        button.btn.btn-white.__s-40.btn-auth
+        button.btn.btn-white.__s-40.btn-auth.js-popup(data-popup='#modal_new_password')
           +icon('google').btn-icon
           span Войти через Google
 
@@ -41,14 +42,16 @@
         label.form-label(for='reg_password') Пароль:
         .form-input
           a.js-toggle-type.form-password__eye(data-toggle='#reg_password')
-            +icon('eye').btn-icon
+            +icon('eye').btn-icon.__open
+            +icon('eye_hide').btn-icon.__hide
           input#reg_password.input.input-white.__s-40(placeholder='Введите пароль' type='password')
 
       .form-cell.__mb-34
         label.form-label(for='reg_password_confirm') Повторите пароль:
         .form-input
           a.js-toggle-type.form-password__eye(data-toggle='#reg_password_confirm')
-            +icon('eye').btn-icon
+            +icon('eye').btn-icon.__open
+            +icon('eye_hide').btn-icon.__hide
           input#reg_password_confirm.input.input-white.__s-40(placeholder='Введите пароль' type='password')
 
       .form-cell
@@ -58,17 +61,49 @@
       span Уже есть аккаунт?&nbsp;
       a.popup-link.js-popup(data-popup='#modal_auth' href='#') Войти
 
+  #modal_new_password.popup
+    .popup-title Создание пароля
+
+    form(action='#')
+      .form-cell.__mb-34
+        label.form-label(for='new_password') Новый пароль:
+        .form-input
+          a.js-toggle-type.form-password__eye(data-toggle='#new_password')
+            +icon('eye').btn-icon.__open
+            +icon('eye_hide').btn-icon.__hide
+          input#new_password.input.input-white.__s-40(placeholder='Введите пароль' type='password')
+
+      .form-cell.__mb-34
+        label.form-label(for='new_password_confirm') Повторите пароль:
+        .form-input
+          a.js-toggle-type.form-password__eye(data-toggle='#new_password_confirm')
+            +icon('eye').btn-icon.__open
+            +icon('eye_hide').btn-icon.__hide
+          input#new_password_confirm.input.input-white.__s-40(placeholder='Введите пароль' type='password')
+
+      .form-cell
+        button.btn.btn-red.__s-40.btn-auth Обновить
+
+  #modal_info.popup
+    .popup-title Письмо отправлено
+
+    form(action='#')
+      p На указанный вами адрес электронной почты было отправлено письмо с ссылкой на восстановление пароля.
+
+      .form-cell
+        button.btn.btn-white.__s-40.btn-auth.js-popup-close Закрыть
+
   #modal_restore.popup
-    .popup-title Восстановление
+    .popup-title Забыли пароль?
 
     form(action='#')
       .form-cell
         label.form-label(for='restore_email') Email:
         .form-input
-          input#restore_email.input.input-white.__s-40(placeholder='Введите Email')
+          input#restore_email.input.input-white.__s-40(placeholder='Введите Email, указанный при регистрации')
 
       .form-cell
-        button.btn.btn-red.__s-40.btn-auth Восстановить
+        button.btn.btn-red.__s-40.btn-auth.js-popup(data-popup='#modal_info') Восстановить
 
     .popup-footer
       span Вспомнили пароль?&nbsp;
@@ -85,6 +120,7 @@
             option(value="")
             option(value="m1" data-icon="img/flag/ru.png") Россия
             option(value="m2" data-icon="img/flag/bl.png") Беларусь
+            option(value="m3" data-icon="img/flag/ua.png") Украина
             option(value="m3" data-icon="img/flag/kz.png") Казахстан
 
       .form-cell

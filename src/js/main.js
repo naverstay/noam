@@ -109,20 +109,22 @@ const formatBrandResult = state => {
 };
 
 const formatBrandSelection = state => {
+  let chevronSvg = '<span class="select2-selection__chevron"><svg class="btn-icon"><use xlink:href="/assets/sprite/icon.svg#icon_arrow_d"></use></svg></span>';
+
   if (!state.id) {
-    return state.text;
+    return $(`<span>${state.text}</span>` + chevronSvg);
   }
 
   const icon = state.hasOwnProperty('element') ? state.element.getAttribute('data-icon') : '';
 
   if (!icon) {
-    return state.text;
+    return $(`<span>${state.text}</span>` + chevronSvg);
   }
 
   return $(`<span class="select2-selection__value">
         <span class="select2-selection__value-icon"><img src="${icon}" alt=""></span>
         <span>${state.text}</span>
-      </span>`
+      </span>` + chevronSvg
   );
 };
 
@@ -266,10 +268,13 @@ $(function ($) {
   });
 
   $('.js-toggle-type').on('click', function () {
-    let target = $($(this).attr('data-toggle'));
+    let btn = $(this)
+    let target = $(btn.attr('data-toggle'));
 
     if (target.length) {
-      target.attr('type', target.attr('type') === 'password' ? 'text' : 'password');
+      let hide = target.attr('type') === 'password';
+      target.attr('type', hide ? 'text' : 'password');
+      btn.toggleClass('__open', hide);
     }
 
     return false;
@@ -285,6 +290,11 @@ $(function ($) {
           src: target,
           type: 'inline'
         }
+      });
+
+      $('.js-popup-close').on('click', function () {
+        $.magnificPopup.close();
+        return false;
       });
     }
 

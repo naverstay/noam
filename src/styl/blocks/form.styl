@@ -8,16 +8,14 @@
   &.__s-45
     height: 45px
 
-
   &-white
-    background: #FFFFFF
+    background: #FFF
     border: 1px solid #E8E8E8
 
 .select
-
   .select2-results__option-icon,
   .select2-selection__value-icon
-    padding-right: 5px
+    padding-right: 15px
 
     img
       display block
@@ -28,7 +26,15 @@
     align-items center
 
   .select2-results__option
-    padding: 5px 20px
+    padding: 11px 20px
+    background: #EFEFEF
+    border-radius: 3px
+
+    + .select2-results__option
+      border-top: 1px solid #E8E8E8
+
+    &.select2-results__option--selected
+      font-weight: bold
 
   .select2-dropdown
     border-color: #E8E8E8
@@ -39,7 +45,40 @@
       align-items center
 
     .select2-selection__rendered
-      padding: 5px 20px
+      padding: 5px 40px 5px 20px
+      position: relative
+
+      &:hover
+        .select2-selection__chevron
+          color: #000
+
+    .select2-selection__chevron
+      position: absolute
+      top: 0
+      bottom: 0
+      right: 0
+      width: 40px
+      transition color .3s
+      color: #BCBEBE
+
+      .btn-icon
+        transition transform .3s
+        position: absolute
+        top: 50%
+        right: 17px
+        margin-top: -3px
+        width: 10px
+        height: 6px
+
+    .select2-selection__arrow
+      display none
+
+  .select2-container.select2-container--open
+    .select2-selection__rendered .select2-selection__chevron
+      color: #000
+
+      .btn-icon
+        transform rotate(180deg)
 
   &.__s-40 .select2-selection
     height: 40px
@@ -47,12 +86,10 @@
   &.__s-45 .select2-selection
     height: 45px
 
-
   &-white .select2-selection
     border-radius: 0
     background: #FFFFFF
     border: 1px solid #E8E8E8
-
 
 .form
 
@@ -68,11 +105,22 @@
       width: 19px
       height: 13px
 
+      &.__hide
+        display none
+
+    &.__open
+      .btn-icon
+        &.__hide
+          display block
+
+        &.__open
+          display none
+
     &:hover
-      color: #000000
+      color: #000
 
   &-label
-    color: #000000
+    color: #000
     font-weight: 500
     font-size: 14px
     line-height: 17px
@@ -103,7 +151,7 @@
     top: 4px
     left: 2px
     display none
-    fill: #ffff
+    fill: #fff
     width: 18px
     height: 12px
     pointer-events none
