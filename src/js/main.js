@@ -1,15 +1,20 @@
 import 'babel-polyfill';
 import 'magnific-popup';
 import 'select2';
+import {debounce, throttle} from 'throttle-debounce';
+import Sly from 'sly-scrolling/dist/sly.min';
+
+require('jquery.easing');
 
 //let Isotope = require('isotope-layout');
-let jQueryBridget = require('jquery-bridget');
+//let jQueryBridget = require('jquery-bridget');
 //require('isotope-packery');
 //require('isotope-fit-columns');
 //require('isotope-cells-by-row');
 
 //jQueryBridget('isotope', Isotope, $);
 
+let $sly;
 let resizeTimer
 let watchCardHeight = false;
 let isotopInstances = [];
@@ -136,6 +141,51 @@ const initSelect = () => {
   });
 }
 
+const initHero = () => {
+  let $frame = $('.js-hero-slider');
+
+  if ($frame.length) {
+
+    // Call Sly on frame
+    $sly = $frame.sly({
+        scrollTrap: 1,
+        horizontal: 1,
+        itemNav: 'basic',
+        smart: 1,
+        activateOn: 'click',
+        mouseDragging: 1,
+        touchDragging: 1,
+        releaseSwing: 1,
+        startAt: 0,
+        activatePageOn: null,
+        scrollBar: $frame.parent().find('.js-hero-scrollbar'),
+        scrollBy: 1,
+        speed: 1000,
+        elasticBounds: 1,
+        easing: 'easeOutExpo',
+        dragHandle: 1,
+        dynamicHandle: 1,
+        clickBar: 1,
+        minHandleSize: 50
+      },
+      {
+        load: function () {
+          $frame.parent().addClass('__loaded');
+
+
+        },
+        move: [
+          function () {
+
+          },
+          function () {
+
+          }
+        ]
+      });
+  }
+}
+
 const initIsotop = () => {
   const breakpoint = window.matchMedia('(min-width:768px)');
 
@@ -177,16 +227,37 @@ const initIsotop = () => {
   breakpointChecker(isMobile());
 }
 
+function getScrollTop() {
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+}
 
-$(window).on('resize load', function () {
-  clearTimeout(resizeTimer);
+function checkWindowScroll() {
+  document.body.classList.toggle('__scroll', getScrollTop() > 0);
+}
 
-  resizeTimer = setTimeout(() => {
-    fitIsotopHeight();
-  }, 5);
+checkWindowScroll();
+
+const debounceResize = debounce(5, false, () => {
+  fitIsotopHeight();
+
+  if ($sly) {
+    $sly.sly('reload');
+  }
 });
 
+$(window).on('resize load', function () {
+  debounceResize();
+});
+
+window.onscroll = function () {
+  checkWindowScroll();
+};
+
 $(function ($) {
+  $.throttle = throttle;
+  $.debounce = debounce;
+
+  initHero();
   initIsotop();
 
   $('.js-burger').on('click', function () {

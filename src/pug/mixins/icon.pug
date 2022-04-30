@@ -1,4 +1,4 @@
-- var portalMap = {lenta: 'lenta.ru', sports: 'sports.ru', zr: 'zr.ru', tass: 'tass.ru' };
+- let portalMap = {lenta: 'lenta.ru', sports: 'sports.ru', zr: 'zr.ru', tass: 'tass.ru' };
 
 
 mixin check(text, checked)
@@ -12,7 +12,7 @@ mixin icon(name)
     use(xlink:href=`/assets/sprite/icon.svg#icon_${name}`)
 
 mixin nav()
-  - var list = ['Главное', 'Коронавирус', 'Политика', 'Спорт', 'Наука', 'Бизнес', 'Технологии'];
+  - let list = ['Главное', 'Коронавирус', 'Политика', 'Спорт', 'Наука', 'Бизнес', 'Технологии'];
   ul.nav
     each item, index in list
       li(class= index ? '' : 'active'): a.nav-link(href='#')= item
@@ -21,23 +21,33 @@ mixin logo()
   .logo-holder
     a.logo(href='#') NOAM.RU
 
-mixin card(title, portal, date, img, cls, description)
-  a.card(href='#' class= (img ? '' : ' __text ') + (cls || ''))
+mixin card(title, portal, date, img, cls, description, views, partner)
+  a.card(href='index.html' class= (img ? '' : ' __text ') + (cls || ''))
     if (img)
       .card-preview
         +img(img)
-    if (portal || date)
+    if (portal || views || (partner && date))
       .card-info
         if (portal)
           span.card-logo
             +img('logo/' + portal + '.png')
             span.card-portal= portal + '.ru'
-        span.card-date= date
+        if (views)
+          span.card-views
+            +icon('eye')
+            span= views
+        if (partner && date)
+          span.card-date= date
 
     .card-title= title
 
     if (description)
       .card-description= description
+
+    if (date && !partner)
+      .card-footer
+        .card-tag Политика
+        .card-date= date
 
 mixin currency()
   ul.currency-menu

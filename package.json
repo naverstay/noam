@@ -53,10 +53,13 @@
     "isotope-packery": "^2.0.1",
     "jquery": "^3.3.1",
     "jquery-bridget": "^3.0.1",
+    "jquery.easing": "^1.4.1",
     "magnific-popup": "^1.1.0",
     "normalize.css": "^8.0.0",
     "rupture": "^0.7.1",
     "select2": "^4.1.0-rc.0",
-    "select2-multi-checkboxes": "github:wasikuss/select2-multi-checkboxes"
+    "select2-multi-checkboxes": "github:wasikuss/select2-multi-checkboxes",
+    "sly-scrolling": "^1.6.1",
+    "throttle-debounce": "^4.0.1"
   }
 }

@@ -31,10 +31,10 @@
 
       +above($tab)
         margin-right: -20px
-        margin-bottom: 20px
+        margin-bottom: 6px
 
       +above($wide)
-        margin-bottom: 10px
+        margin-bottom: 24px
         margin-right: -30px
 
       li
@@ -56,30 +56,37 @@
 
               &.__text
                 .card-title
-                  font: bold 16px/21px 'PTSerif'
+                  font: bold 16px / 21px 'PTSerif'
+
+                .card-footer
+                  padding-bottom: 0
 
                 .card-info
                   padding-top: 0
                   border: 0
 
               &:not(.__text)
-                padding-right: 140px
-                padding-bottom: 20px
+                padding-right: 145px
                 min-height 110px
 
                 .card-info
                   padding-top: 0
 
-                .card-date
-                  position: absolute
-                  bottom: 0
-                  left: 0
+                //.card-views
+                //  position: absolute
+                //  bottom: 0
+                //  left: 0
 
                 .card-preview
                   position: absolute
                   top: 0
                   right: 0
                   width: 133px
+                  height: 110px
+
+                  img
+                    img_center()
+                    width: auto
 
         &.__w-2
           .card-title
@@ -90,16 +97,16 @@
               font-size: 24px
               line-height: 32px
 
-          //+below($tab - 1px)
-          //  .card-preview
-          //    height: 120px
+        //+below($tab - 1px)
+        //  .card-preview
+        //    height: 120px
 
         +above($tab)
           float: left
           //overflow: hidden
           //position: absolute
           width: 25%
-          padding-bottom: 10px
+          padding-bottom: 22px
           padding-right: 20px
 
           &::before
@@ -126,11 +133,11 @@
             &::before
               padding-bottom: calc(100% + 20px)
 
-            //.card-preview
-            //  height: 63%
+        //.card-preview
+        //  height: 63%
 
         +above($wide)
-          padding-bottom: 20px
+          padding-bottom: 28px
           padding-right: 30px
 
           &::before
@@ -154,8 +161,8 @@
             &::before
               padding-bottom: calc(100% + 30px)
 
-            //.card-preview
-            //  height: 320px
+    //.card-preview
+    //  height: 320px
 
     +above($wide)
       grid-gap 30px
@@ -191,7 +198,7 @@
 
   &-title
     transition color .3s
-    font: bold 16px/21px 'PTSerif'
+    font: bold 16px / 21px 'PTSerif'
 
     .__no-img &
       font: 400 14px / 21px Inter, sans-serif
@@ -206,19 +213,58 @@
       display none
 
   &-info
-    padding: 16px 0 8px
+    padding: 12px 0 8px
     display flex
     align-items center
     justify-content space-between
 
+    .hero-scroller &
+      padding-top: 16px
+
     .__no-img &
       border-top: 1px solid #E8E8E8
+
+  &-footer
+    display flex
+    align-items center
+    padding-bottom: 6px
+
+    +above($tab)
+      padding-bottom: 10px
+
+    .card-date
+      margin-top: 8px
+
+  &-tag
+    color: #888
+    background: #EBEBEB
+    border-radius: 4px
+    margin-right: 8px
+    margin-top: 8px
+    padding: 4px 8px
+    font-weight: 500
+    font-size: 12px
+    line-height: 15px
 
   &-date
     color: #888
     font-weight: 500
     font-size: 12px
     line-height: 15px
+
+  &-views
+    color: #BBBBBB
+    font-weight: 500
+    font-size: 12px
+    line-height: 15px
+    display flex
+    align-items center
+
+    svg
+      width: 14px
+      height: 11px
+      margin-right: 5px
+      fill #BBBBBB
 
   &:hover
     .card-title

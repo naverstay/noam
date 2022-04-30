@@ -47,6 +47,8 @@
 
   &-title
     grid-area: title
+    position: relative
+    z-index: 1
     display flex
     padding: 10px 0
     flex-flow: column
@@ -63,11 +65,15 @@
       color: #fff
 
       &:last-of-type
-        margin-bottom: 24px
+        margin-bottom: 2px
 
       +above($tab)
         font-size: 32px
         line-height: 40px
+        margin-right: -100%
+
+        &:last-of-type
+          margin-bottom: 24px
 
       +above($wide)
         font-size: 42px
@@ -84,7 +90,6 @@
 
   &-preview
     grid-area: preview
-    display none
     position: relative
     overflow: hidden
     min-height 355px
@@ -92,44 +97,104 @@
     img
       img_center()
 
+    +below($tab - 1px)
+      display block
+      position: absolute
+      top: -90px
+      right: -20px
+      left: -20px
+      bottom: 0
+
     +above($tab)
       display block
 
+  &-scrollbar
+    position: absolute
+    bottom: 0
+    right: 20px
+    left: 20px
+    height: 4px
+    background: rgba(255, 255, 255, .25)
+    border-radius: 2px
+
+    +above($wide)
+      right: 30px
+      left: 30px
+
+    .handle
+      border-radius: 2px
+      position: relative
+      width: 100px
+      height: 100%
+      background: rgba(255, 255, 255, .65)
+      cursor: pointer
+
+      &::before
+        content: ''
+        position: absolute
+        top: 50%
+        left: 0
+        right: 0
+        height: 20px
+        margin-top: -10px
+
   &-scroller
+    touch-action: none
+    transition opacity .3s
+    opacity 0
     grid-area: scroller
-    overflow-x: auto
     padding-top: 40px
     padding-bottom: 24px
-    custom_scroll(rgba(255, 255, 255, .25))
+    margin: 0 -20px
+    overflow: hidden
+    position: relative
+    //custom_scroll(rgba(255, 255, 255, .25))
+
+    &.__loaded
+      opacity: 1
 
     .card-holder
+      grid-gap 0
+      padding-left: 20px
+
       .card
+        user-select none
         width: 228px
         flex: 1 0 auto
+        margin-right: 20px
 
         +above($wide)
           width: 294px
+          margin-right: 30px
 
     +above($tab)
       padding-top: 42px
-      margin-right: -25px
+      margin-left: -30px
+      margin-right: -30px
+
+      .card-holder
+        padding-left: 30px
 
     +above($wide)
       padding-top: 52px
-      margin-right: -30px
+      margin-right: -60px
 
     .card
       color: #fff
 
     .card-title
-      font: 700 16px / 21px 'PTSerif'
+      font-family: 'Inter', sans-serif
+      font-weight: 600
 
       +above($tab)
-        font-size: 18px
         line-height: 24px
 
     .card-preview
       height: 124px
+      position: relative
+
+      img
+        img_center()
 
   &-aside
     //z-index: 1

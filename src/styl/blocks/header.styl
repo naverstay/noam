@@ -1,5 +1,6 @@
 .header
   position: relative
+  transition background .3s
 
   +below($tab - 1px)
     position: fixed
@@ -7,7 +8,9 @@
     right: 0
     left: 0
     z-index: 3
-    background: #222
+
+    .__scroll &
+      background: rgba(34, 34, 34, .35)
 
   .logo-holder
     position: relative
@@ -15,6 +18,23 @@
 
     +below($wide - 1px)
       padding-top: 24px
+      transition padding .3s
+
+      .__scroll &
+        padding: 5px 0
+
+      &::before
+        content: ''
+        position: absolute
+        top: 0
+        bottom: 0
+        right: -20px
+        left: -20px
+        z-index: -1
+        transition background .3s
+
+        .open_menu &
+          background: #191919
 
   &-menu
     border-bottom: 1px solid rgba(255, 255, 255, .35)
@@ -163,6 +183,12 @@
       +above($tab)
         padding: 0 5px
 
+        &:first-child
+          padding-left: 0
+
+        &:last-child
+          padding-right: 0
+
       &.active
         .nav-link::before
           background: #E41D1D
@@ -187,6 +213,7 @@
 
 .burger
   burger()
+
   cursor: pointer
   position: fixed
   top: 47px
@@ -209,6 +236,12 @@
   span
     pointer-events none
     margin-left: 8px
+
+  +below($wide - 1px)
+    transition top .3s
+
+    .__scroll &
+      top: 30px
 
   .open_menu &
     burger_open()

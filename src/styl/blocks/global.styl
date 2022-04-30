@@ -51,12 +51,12 @@ body
   display flex
   flex-flow column nowrap
 
-  +below($tab - 1px)
-    padding-top: 90px
-
 .content
   flex 1 0 auto
   overflow: hidden
+
+  +below($tab - 1px)
+    padding-top: 90px
 
 .section
   padding: 0 20px
@@ -108,6 +108,7 @@ body
       margin-bottom: 5px
       font-size: 16px
       line-height: 21px
+      color: #000
 
       +above($tab)
         margin-bottom: 10px
