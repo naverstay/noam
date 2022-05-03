@@ -150,7 +150,7 @@ const initHero = () => {
 
     // Call Sly on frame
     $sly = $frame.sly({
-        scrollTrap: 0,
+        scrollTrap: 1,
         horizontal: 1,
         itemNav: 'basic',
         smart: 1,
