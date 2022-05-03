@@ -154,6 +154,7 @@ const initHero = () => {
         horizontal: 1,
         itemNav: 'basic',
         smart: 1,
+        keyboardNavBy: 'pages',
         activateOn: 'click',
         mouseDragging: 1,
         touchDragging: 1,
