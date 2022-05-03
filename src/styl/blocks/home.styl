@@ -1,13 +1,13 @@
 .grid-sizer
-  position: absolute
-  top: 0
-  left: 0
+  position absolute
+  top 0
+  left 0
   opacity 0
   pointer-events none
 
 .card
   display block
-  color: #000
+  color #000
 
   &-holder
     position relative
@@ -20,163 +20,163 @@
       display block
       margin-bottom 40px
       grid-column-gap 0
-      opacity: 0
+      opacity 0
 
       &.__loaded
-        opacity: 1
+        opacity 1
 
       +below($tab - 1px)
         &:last-child
-          margin-bottom: 0
+          margin-bottom 0
 
       +above($tab)
-        margin-right: -20px
-        margin-bottom: 6px
+        margin-right -20px
+        margin-bottom 6px
 
       +above($wide)
-        margin-bottom: 24px
-        margin-right: -30px
+        margin-bottom 24px
+        margin-right -30px
 
       li
         +below($tab - 1px)
           height auto !important
-          width: 100%
+          width 100%
 
           &:not(.grid-sizer) + li
-            border-top: 1px solid #E8E8E8
-            margin-top: 16px
-            padding-top: 16px
+            border-top 1px solid #E8E8E8
+            margin-top 16px
+            padding-top 16px
 
           .card-info
-            padding-top: 12px
+            padding-top 12px
 
           &:not(.__w-2)
             .card
-              position: relative
+              position relative
 
               &.__text
                 .card-title
-                  font: bold 16px / 21px 'PTSerif'
+                  font bold 16px / 21px PTSerif, serif
 
                 .card-footer
-                  padding-bottom: 0
+                  padding-bottom 0
 
                 .card-info
-                  padding-top: 0
-                  border: 0
+                  padding-top 0
+                  border 0
 
               &:not(.__text)
-                padding-right: 145px
+                padding-right 145px
                 min-height 110px
 
                 .card-info
-                  padding-top: 0
+                  padding-top 0
 
                 //.card-views
-                //  position: absolute
-                //  bottom: 0
-                //  left: 0
+                //  position absolute
+                //  bottom 0
+                //  left 0
 
                 .card-preview
-                  position: absolute
-                  top: 0
-                  right: 0
-                  width: 133px
-                  height: 110px
+                  position absolute
+                  top 0
+                  right 0
+                  width 133px
+                  height 110px
 
                   img
                     img_center()
-                    width: auto
+                    width auto
 
         &.__w-2
           .card-title
-            font-size: 21px
-            line-height: 28px
+            font-size 21px
+            line-height 28px
 
             +above($tab)
-              font-size: 24px
-              line-height: 32px
+              font-size 24px
+              line-height 32px
 
         //+below($tab - 1px)
         //  .card-preview
-        //    height: 120px
+        //    height 120px
 
         +above($tab)
-          float: left
-          //overflow: hidden
-          //position: absolute
-          width: 25%
-          padding-bottom: 22px
-          padding-right: 20px
+          float left
+          //overflow hidden
+          //position absolute
+          width 25%
+          padding-bottom 22px
+          padding-right 20px
 
           &::before
-            //content: ''
+            //content ''
             display block
-            padding-bottom: calc(60% + 110px + 40px)
+            padding-bottom calc(60% + 110px + 40px)
 
           //.card
-          //  position: absolute
-          //  top: 0
-          //  left: 0
-          //  right: 20px
-          //  bottom: 20px
-          //  overflow: hidden
+          //  position absolute
+          //  top 0
+          //  left 0
+          //  right 20px
+          //  bottom 20px
+          //  overflow hidden
 
           //.card-preview
-          //  height: 48%
+          //  height 48%
 
           &.__w-2
-            width: 50%
+            width 50%
 
         &.__h-2
           +above($tab)
             &::before
-              padding-bottom: calc(100% + 20px)
+              padding-bottom calc(100% + 20px)
 
         //.card-preview
-        //  height: 63%
+        //  height 63%
 
         +above($wide)
-          padding-bottom: 28px
-          padding-right: 30px
+          padding-bottom 28px
+          padding-right 30px
 
           &::before
-            padding-bottom: calc(60% + 65px + 40px)
+            padding-bottom calc(60% + 65px + 40px)
 
           //.card
-          //  right: 30px
-          //  bottom: 30px
+          //  right 30px
+          //  bottom 30px
 
           //.card-preview
-          //  height: 59%
+          //  height 59%
 
           &.__no-img .card
-            top: 15px
+            top 15px
 
           &.__w-2 .card-title
-            font-size: 24px
-            line-height: 32px
+            font-size 24px
+            line-height 32px
 
           &.__h-2
             &::before
-              padding-bottom: calc(100% + 30px)
+              padding-bottom calc(100% + 30px)
 
     //.card-preview
-    //  height: 320px
+    //  height 320px
 
     +above($wide)
       grid-gap 30px
 
   &-preview
-    overflow: hidden
-    position: relative
-    //height: 110px
+    overflow hidden
+    position relative
+    //height 110px
 
     //+above($tab)
-    //  height: 120px
+    //  height 120px
     //
     //+above($wide)
-    //  height: 152px
+    //  height 152px
 
     img
       //img_center()
@@ -188,91 +188,94 @@
     align-items center
 
     span
-      font-weight: 500
-      font-size: 12px
-      line-height: 15px
-      padding-left: 8px
+      font-weight 500
+      font-size 12px
+      line-height 15px
+      padding-left 8px
 
     img
       display block
 
   &-title
     transition color .3s
-    font: bold 16px / 21px 'PTSerif'
+    font bold 16px / 21px PTSerif, serif
 
     .__no-img &
-      font: 400 14px / 21px Inter, sans-serif
+      font 400 14px / 21px Inter, sans-serif
 
   &-description
-    margin-top: 8px
-    font-size: 14px
-    line-height: 21px
-    color: #000000
+    margin-top 8px
+    font-size 14px
+    line-height 21px
+    color #000000
 
     +below($tab - 1px)
       display none
 
   &-info
-    padding: 12px 0 8px
+    padding 12px 0 8px
     display flex
     align-items center
     justify-content space-between
 
     .hero-scroller &
-      padding-top: 16px
+      padding-top 16px
 
     .__no-img &
-      border-top: 1px solid #E8E8E8
+      border-top 1px solid #E8E8E8
 
   &-footer
     display flex
     align-items center
-    padding-bottom: 6px
+    padding-bottom 6px
 
     +above($tab)
-      padding-bottom: 10px
+      padding-bottom 10px
 
     .card-date
-      margin-top: 8px
+      margin-top 8px
 
   &-tag
-    color: #888
-    background: #EBEBEB
-    border-radius: 4px
-    margin-right: 8px
-    margin-top: 8px
-    padding: 4px 8px
-    font-weight: 500
-    font-size: 12px
-    line-height: 15px
+    color #888
+    background #EBEBEB
+    border-radius 4px
+    margin-right 8px
+    margin-top 8px
+    padding 4px 8px
+    font-weight 500
+    font-size 12px
+    line-height 15px
+
+    + .card-logo
+      margin-left: 4px
 
   &-date
-    color: #888
-    font-weight: 500
-    font-size: 12px
-    line-height: 15px
+    color #888
+    font-weight 500
+    font-size 12px
+    line-height 15px
 
   &-views
-    color: #BBBBBB
-    font-weight: 500
-    font-size: 12px
-    line-height: 15px
+    color #BBB
+    font-weight 500
+    font-size 12px
+    line-height 15px
     display flex
     align-items center
 
     svg
-      width: 14px
-      height: 11px
-      margin-right: 5px
-      fill #BBBBBB
+      width 14px
+      height 11px
+      margin-right 5px
+      fill #BBB
 
   &:hover
     .card-title
-      color: #E41D1D
+      color #E41D1D
 
   .section.__black &
     .card-info
-      border-top-color: #454545
+      border-top-color #454545
 
     &:not(:hover)
-      color: #ffffff
+      color #ffffff

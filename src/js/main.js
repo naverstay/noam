@@ -146,7 +146,7 @@ const initSelect = () => {
 const appHeight = () => {
   const doc = document.documentElement;
   const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
-  doc.style.setProperty("--app-height", `${Math.max(700, window.innerHeight - sab)}px`);
+  doc.style.setProperty("--app-height", `${Math.max(200, window.innerHeight - sab)}px`);
 };
 
 const initHero = () => {
