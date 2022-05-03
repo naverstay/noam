@@ -1,3 +1,11 @@
+:root {
+  --app-height: 100%;
+  --sat: env(safe-area-inset-top);
+  --sar: env(safe-area-inset-right);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+}
+
 *
   box-sizing border-box
 
@@ -34,7 +42,7 @@ body
     top 0
     left 0
     right 0
-    height 100vh
+    height var(--app-height)
     z-index -1
     pointer-events none
     background #222
@@ -50,7 +58,7 @@ body
       content 'desktop'
 
 .page
-  min-height 100vh
+  min-height var(--app-height)
   display flex
   flex-flow column nowrap
 

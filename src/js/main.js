@@ -143,6 +143,12 @@ const initSelect = () => {
   });
 }
 
+const appHeight = () => {
+  const doc = document.documentElement;
+  const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
+  doc.style.setProperty("--app-height", `${Math.max(700, window.innerHeight - sab)}px`);
+};
+
 const initHero = () => {
   let $frame = $('.js-hero-slider');
 
@@ -256,10 +262,13 @@ window.onscroll = function () {
   checkWindowScroll();
 };
 
+window.addEventListener("resize", appHeight);
+
 $(function ($) {
   $.throttle = throttle;
   $.debounce = debounce;
 
+  appHeight();
   initHero();
   initIsotop();
 

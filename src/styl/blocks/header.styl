@@ -19,7 +19,7 @@
   &-overlay
     position fixed
     top 0
-    height 100vh
+    height var(--app-height)
     left 0
     right 0
     pointer-events none
@@ -41,7 +41,7 @@
     .__scroll &
       padding 5px 0
 
-      +above($wide)
+      +above($wide + $menu_extra)
         margin-top: -47px
 
         .logo
@@ -84,7 +84,7 @@
       z-index 1
       left 100%
       top 0
-      height 100vh
+      height var(--app-height)
       width 350px
       max-width 95vw
       padding 108px 40px 26px
@@ -112,7 +112,7 @@
       .open_menu &
         transform translateX(-100%)
 
-    +above($wide)
+    +above($wide + $menu_extra)
       display grid
       grid-template-columns 1fr auto 1fr
 
@@ -156,13 +156,13 @@
       li
         padding-right 19px
 
-        +above($wide)
+        +above($wide + $menu_extra)
           padding-right 23px
 
       +above($tab)
         left 0
 
-      +above($wide)
+      +above($wide + $menu_extra)
         transition opacity .3s
 
         .__scroll &
@@ -184,7 +184,7 @@
         min-width 205px
         justify-content space-between
 
-      +above($wide)
+      +above($wide + $menu_extra)
         min-width unset
         justify-content flex-end
 
@@ -194,7 +194,7 @@
         +above($tab)
           padding-left 20px
 
-        +above($wide)
+        +above($wide + $menu_extra)
           padding-left 44px
 
     .currency-menu,
@@ -209,7 +209,7 @@
         .__scroll &
           transform translateY(16px)
 
-      +above($wide)
+      +above($wide + $menu_extra)
         position relative
         bottom unset
         right unset
@@ -231,7 +231,7 @@
       .__scroll &
         margin-top -7px
 
-    +above($wide)
+    +above($wide + $menu_extra)
       padding 0 10px
 
       .__scroll &
@@ -295,7 +295,7 @@
     .header &
       transition font-size .3s, line-height .3s, color .3s
 
-      +above($wide)
+      +above($wide + $menu_extra)
         transition color .3s
 
     .__scroll .header &
