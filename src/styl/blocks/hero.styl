@@ -1,17 +1,26 @@
 .aside-holder
-  +above($wide)
+  margin 0 auto
+  max-width $content_max_width
+
+  +desktop()
     display grid
     grid-template-columns auto 392px
     grid-template-areas "section aside"
 
     .section-holder
       grid-area section
+      display flex
+      flex-flow column
+
+      .section
+        flex 1 0 auto
+        margin-right 0
+        max-width 1468px
 
     .hero-aside
       grid-area aside
 
     &.__top
-      padding-top 40px
 
       .hero
         padding-top 0
@@ -27,10 +36,9 @@
     content ''
     position absolute
     top 0
-    left -30px
-    right -392px
+    left -100vw
+    right -100vw
     bottom 0
-    z-index -1
     pointer-events none
     background #222
 
@@ -41,7 +49,7 @@
     grid-column-gap 14px
     grid-template-areas "title preview" "scroller scroller"
 
-  +above($wide)
+  +desktop()
     margin-right -30px
     padding-right 60px
 
@@ -75,7 +83,7 @@
         &:last-of-type
           margin-bottom 24px
 
-      +above($wide)
+      +desktop()
         font-size 42px
         line-height 48px
 
@@ -84,7 +92,7 @@
       padding-top 20px
       justify-content space-between
 
-    +above($wide)
+    +desktop()
       padding-bottom 0
       padding-top 10px
 
@@ -127,7 +135,7 @@
     background rgba(255, 255, 255, .25)
     border-radius 2px
 
-    +above($wide)
+    +desktop()
       right 30px
       left 30px
 
@@ -178,7 +186,7 @@
         +above($tab)
           margin-right 30px
 
-        +above($wide)
+        +desktop()
           width 294px
 
     +above($tab)
@@ -189,7 +197,7 @@
       .js-hero-slider
         padding-left 30px
 
-    +above($wide)
+    +desktop()
       padding-top 52px
       margin-right -60px
 
@@ -215,12 +223,14 @@
     //position absolute
     //top 40px
     //left 100%
-    background #ffffff
+    background #fff
+    position relative
+    z-index 1
     padding 36px 28px
     width 362px
     display none
 
-    +above($wide)
+    +desktop()
       display block
 
     &__list

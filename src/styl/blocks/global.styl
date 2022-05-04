@@ -1,9 +1,9 @@
 :root {
-  --app-height: 100%;
-  --sat: env(safe-area-inset-top);
-  --sar: env(safe-area-inset-right);
-  --sab: env(safe-area-inset-bottom);
-  --sal: env(safe-area-inset-left);
+  --app-height 100%;
+  --sat env(safe-area-inset-top);
+  --sar env(safe-area-inset-right);
+  --sab env(safe-area-inset-bottom);
+  --sal env(safe-area-inset-left);
 }
 
 *
@@ -31,21 +31,21 @@ body
   overflow-x hidden
   position relative
   font 14px Inter, sans-serif
-  background #f9f9f9
+  background #222
 
   &.open_menu
     overflow hidden
 
-  &::after
-    content ''
-    position absolute
-    top 0
-    left 0
-    right 0
-    height var(--app-height)
-    z-index -1
-    pointer-events none
-    background #222
+  //&::after
+  //  content ''
+  //  position absolute
+  //  top 0
+  //  left 0
+  //  right 0
+  //  height 130px
+  //  z-index -1
+  //  pointer-events none
+  //  background #222
 
   &::before
     position absolute
@@ -69,19 +69,39 @@ body
   +below($tab - 1px)
     padding-top 90px
 
+  +desktop()
+    margin-top 40px
+
 .section
+  position relative
   padding 0 20px
+  margin 0 auto
+  max-width $content_max_width
+
+  &::after,
+  &::before
+    content ''
+    position absolute
+    width 100vw
+    top 0
+    bottom 0
+    background inherit
+
+  &::before
+    left 100%
+
+  &::after
+    right 100%
 
   &.__content
     padding-top 40px
     padding-bottom 40px
 
-    +above($wide)
+    +desktop()
       padding-top 48px
       padding-bottom 48px
 
   &.__black
-    position relative
     z-index 1
     background #222
 
@@ -89,19 +109,18 @@ body
       color #fff
 
     + .aside-holder
-      +above($wide)
+      +desktop()
+        margin-top: 15px
+
         .hero-aside
           padding-top 20px
-
-        .section-holder
-          padding-top 15px
 
   &.__white
     //background #E5E5E5
     background #f9f9f9
 
   &.__aside-space
-    +above($wide)
+    +desktop()
       margin-right 392px
 
   +above($tab)
@@ -141,7 +160,7 @@ body
         font-size 36px
         line-height 48px
 
-    +above($wide)
+    +desktop()
       font-size 36px
       line-height 48px
       margin-bottom 24px

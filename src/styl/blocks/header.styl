@@ -3,8 +3,8 @@
   transition background .3s
   position sticky
   top 0
-  right 0
   left 0
+  width: 100vw
   z-index 3
 
   +below($tab - 1px)
@@ -242,6 +242,7 @@
           padding-bottom 20px
 
     .nav-link
+      transition color .3s, padding .3s
       padding-right 60px
 
       +above($tab)

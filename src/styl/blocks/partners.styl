@@ -71,7 +71,7 @@
       .partners-text
         grid-area text
 
-        +below($wide)
+        +below($wide - 1px)
           padding-top: 12px
 
         .card-holder
@@ -79,7 +79,7 @@
           grid-column-gap 25px
           grid-template-columns 1fr 1fr 1fr 1fr
 
-    +above($wide)
+    +desktop()
       padding-top: 12px
       grid-column-gap 30px
       grid-template-columns 263px auto 263px
