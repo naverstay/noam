@@ -117,6 +117,7 @@
       grid-template-columns 1fr auto 1fr
 
     &__icon
+      transition color .3s
       color #fff
       display flex
       align-items center
@@ -127,7 +128,7 @@
         line-height 1
 
       svg
-        fill #fff
+        fill currentColor
         height 14px
         width 12px
 
@@ -174,6 +175,9 @@
 
       .header-menu__icon
         cursor pointer
+
+        &:hover
+          color: $red
 
       +below($tab - 1px)
         li
@@ -274,7 +278,7 @@
             font-weight 500
 
           &::before
-            background #E41D1D
+            background $red
 
 .logo-holder
   transition padding .3s, margin-top .3s
@@ -287,7 +291,7 @@
     pointer-events all
     color #fff
     cursor pointer
-    font-family PTSerif, serif
+    font-family $fontPTSerif
     font-style normal
     font-weight bold
     font-size 42px
@@ -305,7 +309,7 @@
         line-height 50px
 
     &:hover
-      color #E41D1D
+      color $red
 
 .burger
   burger()

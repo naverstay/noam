@@ -30,7 +30,7 @@ body
   width 100vw
   overflow-x hidden
   position relative
-  font 14px Inter, sans-serif
+  font 14px $fontInter
   background #222
 
   &.open_menu
@@ -143,7 +143,7 @@ body
 
   &-title
     margin-bottom 12px
-    font bold 24px / 32px PTSerif, serif
+    font bold 24px / 32px $fontPTSerif
     color #000
     display flex
     align-items flex-end
@@ -164,7 +164,7 @@ body
         margin-left 10px
 
       &:hover
-        color #E41D1D
+        color $red
 
     +above($tab)
       font-size 28px
@@ -191,7 +191,7 @@ body
     display block
 
     &:hover
-      color #E41D1D
+      color $red
 
   +below($tab - 1px)
     flex-flow column

@@ -56,7 +56,7 @@
 
               &.__text
                 .card-title
-                  font bold 16px / 21px PTSerif, serif
+                  font bold 16px / 21px $fontPTSerif
 
                 .card-footer
                   padding-bottom 0
@@ -198,10 +198,10 @@
 
   &-title
     transition color .3s
-    font bold 16px / 21px PTSerif, serif
+    font bold 16px / 21px $fontPTSerif
 
     .__no-img &
-      font 400 14px / 21px Inter, sans-serif
+      font 400 14px / 21px $fontInter
 
   &-description
     margin-top 8px
@@ -271,7 +271,7 @@
 
   &:hover
     .card-title
-      color #E41D1D
+      color $red
 
   .section.__black &
     .card-info
