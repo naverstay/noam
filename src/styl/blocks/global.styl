@@ -1,9 +1,9 @@
 :root {
-  --app-height 100%;
-  --sat env(safe-area-inset-top);
-  --sar env(safe-area-inset-right);
-  --sab env(safe-area-inset-bottom);
-  --sal env(safe-area-inset-left);
+  --app-height 100%
+  --sat env(safe-area-inset-top)
+  --sar env(safe-area-inset-right)
+  --sab env(safe-area-inset-bottom)
+  --sal env(safe-area-inset-left)
 }
 
 *
@@ -69,9 +69,6 @@ body
   +below($tab - 1px)
     padding-top 90px
 
-  +desktop()
-    margin-top 40px
-
 .section
   position relative
   padding 0 20px
@@ -82,16 +79,17 @@ body
   &::before
     content ''
     position absolute
-    width 100vw
+    width 50vw
     top 0
     bottom 0
     background inherit
+    z-index: -1
 
   &::before
-    left 100%
+    left 50%
 
   &::after
-    right 100%
+    right 50%
 
   &.__content
     padding-top 40px
@@ -110,7 +108,6 @@ body
 
     + .aside-holder
       +desktop()
-        margin-top: 15px
 
         .hero-aside
           padding-top 20px
@@ -123,8 +120,26 @@ body
     +desktop()
       margin-right 392px
 
+  &.__article
+    +desktop()
+      max-width 1208px
+
+      .section-title
+        font-size 28px
+        line-height 37px
+        margin-bottom: 15px
+
   +above($tab)
     padding 0 30px
+
+  &-border
+    content: ''
+    position: absolute
+    height: 1px
+    top: 0
+    right: 0
+    left: 0
+    background: #E4E4E4
 
   &-title
     margin-bottom 12px

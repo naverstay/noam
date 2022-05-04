@@ -11,9 +11,9 @@
     +below($tab - 1px)
       .partner-group
         .card
-          margin-top: 32px
-          position: relative
-          padding-right: 145px
+          margin-top 32px
+          position relative
+          padding-right 145px
           display flex
           flex-flow column
           justify-content center
@@ -21,27 +21,27 @@
           min-height 110px
 
           &::before
-            content: ''
-            position: absolute
-            right: 0
-            left: 0
-            top: -16px
-            height: 1px
-            background: #454545
+            content ''
+            position absolute
+            right 0
+            left 0
+            top -16px
+            height 1px
+            background #454545
 
           .card-info
-            padding-top: 8px
-            order: 1
+            padding-top 8px
+            order 1
 
           .card-preview
-            position: absolute
-            top: 0
-            right: 0
-            width: 133px
+            position absolute
+            top 0
+            right 0
+            width 133px
 
       //.partners-main
       //  .card-preview
-      //    height: 120px
+      //    height 120px
 
     +above($tab)
       display grid
@@ -51,7 +51,7 @@
       .partner-group
         display grid
         grid-gap 20px
-        padding-bottom: 12px
+        padding-bottom 12px
         grid-template-columns 1fr 1fr
 
       .__group-1
@@ -62,17 +62,17 @@
 
       //.partners-main
       //  .card-preview
-      //    height: 180px
+      //    height 180px
       //
       //    img
       //      img_center()
-      //      width: auto
+      //      width auto
 
       .partners-text
         grid-area text
 
         +below($wide - 1px)
-          padding-top: 12px
+          padding-top 12px
 
         .card-holder
           display grid
@@ -80,25 +80,26 @@
           grid-template-columns 1fr 1fr 1fr 1fr
 
     +desktop()
-      padding-top: 12px
+      padding-top 12px
+      margin-bottom 15px
       grid-column-gap 30px
       grid-template-columns 263px auto 263px
       grid-template-areas "group_1 main group_2" "group_1 text group_2"
 
       //.partners-main .card-preview
-      //  height: 320px
+      //  height 320px
 
       .partner-group
         display block
-        padding-bottom: 0
+        padding-bottom 0
 
         .card + .card
-          margin-top: 26px
+          margin-top 26px
 
 .partners-main
   grid-area main
 
   .card-title
-    margin-top: 12px
-    font-size: 24px
-    line-height: 32px
+    margin-top 12px
+    font-size 24px
+    line-height 32px
