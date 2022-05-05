@@ -244,8 +244,6 @@ function checkWindowScroll() {
   document.body.classList.toggle('__scroll', getScrollTop() > 0);
 }
 
-checkWindowScroll();
-
 const debounceResize = debounce(5, false, () => {
   fitIsotopHeight();
 
@@ -253,6 +251,37 @@ const debounceResize = debounce(5, false, () => {
     $sly.sly('reload');
   }
 });
+
+function openPopup(target) {
+  if (target) {
+    $.magnificPopup.open({
+      fixedContentPos: true,
+      items: {
+        src: target,
+        type: 'inline'
+      },
+      //closeBtnInside: true,
+      removalDelay: 100,
+      //mainClass: 'mfp-zoom-in',
+      //alignTop: isMobile ? true : false,
+      callbacks: {
+        open() {
+          window.location.hash = target.attr('id');
+        },
+        close() {
+          window.location.hash = '';
+        },
+      }
+    });
+
+    $('.js-popup-close').on('click', function () {
+      $.magnificPopup.close();
+      return false;
+    });
+  }
+}
+
+checkWindowScroll();
 
 $(window).on('resize load', function () {
   debounceResize();
@@ -291,25 +320,21 @@ $(function ($) {
   });
 
   $('.js-popup').on('click', function () {
-    let target = $($(this).attr('data-popup'));
+    let targetId = $(this).attr('data-popup');
+    let target = $(targetId);
 
-    if (target) {
-      $.magnificPopup.open({
-        fixedContentPos: true,
-        items: {
-          src: target,
-          type: 'inline'
-        }
-      });
-
-      $('.js-popup-close').on('click', function () {
-        $.magnificPopup.close();
-        return false;
-      });
-    }
+    openPopup(target);
 
     return false;
   });
+
+  if (window.location.hash) {
+    let popup = $(window.location.hash);
+
+    if (popup.length) {
+      openPopup(popup);
+    }
+  }
 
   initSelect();
 });
