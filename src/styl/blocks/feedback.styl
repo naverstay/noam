@@ -1,0 +1,65 @@
+.feedback
+  max-width 1016px
+  margin 0 auto
+  padding 30px 0 46px
+
+  +above($tab)
+    padding 50px 0 60px
+
+  +above($dt)
+    padding 65px 0
+
+  &-title
+    font 700 24px/32px $fontPTSerif
+    text-align center
+    margin 0 0 22px
+
+    +above($tab)
+      font-size 36px
+      line-height 48px
+      margin-bottom 30px
+
+    +above($dt)
+      margin-bottom 38px
+
+  &-form
+    background #fff
+    padding 32px 32px 40px
+
+    +above($tab)
+      padding-top: 44px
+
+    +above($dt)
+      padding-top: 48px
+
+    &__footer
+      display flex
+      flex-flow column-reverse
+
+      p
+        margin 0
+        font-size 12px
+        line-height 18px
+
+      +above($tab)
+        padding 8px 0
+
+      +above($dt)
+        display grid
+        grid-column-gap 30px
+        grid-template-columns auto 362px
+
+    &__title
+      font 700 21px/28px $fontPTSerif
+      margin-bottom 24px
+
+      +above($tab)
+        font-size 24px
+        line-height 32px
+        margin-bottom 36px
+
+    +below($tab - 1px)
+      padding 36px 20px
+      margin 0 -20px
+
+

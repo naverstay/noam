@@ -1,50 +1,53 @@
 .input
-  width: 100%
-  padding: 12px 20px
+  width 100%
+  padding 12px 20px
 
   &.__s-40
-    height: 40px
+    height 40px
 
   &.__s-45
-    height: 45px
+    height 45px
 
   &.__s-90
-    height: 90px
+    height 90px
 
   &-white
-    background: #FFF
-    border: 1px solid #E8E8E8
+    background #FFF
+    border 1px solid #E8E8E8
 
 textarea.input
   custom_scroll(rgba(0, 0, 0, .25))
   resize none
 
 .select
+  select
+    opacity 0
+
   .select2-results__option-icon,
   .select2-selection__value-icon
-    padding-right: 15px
+    padding-right 15px
 
     img
       display block
-      width: 16px
+      width 16px
 
   .select2-results__option-value
     display flex
     align-items center
 
   .select2-results__option
-    padding: 11px 20px
-    background: #EFEFEF
-    border-radius: 3px
+    padding 11px 20px
+    background #EFEFEF
+    border-radius 3px
 
     + .select2-results__option
-      border-top: 1px solid #E8E8E8
+      border-top 1px solid #E8E8E8
 
     &.select2-results__option--selected
-      font-weight: bold
+      font-weight bold
 
   .select2-dropdown
-    border-color: #E8E8E8
+    border-color #E8E8E8
 
   .select2-selection
     .select2-selection__value
@@ -52,65 +55,65 @@ textarea.input
       align-items center
 
     .select2-selection__rendered
-      padding: 5px 40px 5px 20px
-      position: relative
+      padding 5px 40px 5px 20px
+      position relative
 
       &:hover
         .select2-selection__chevron
-          color: #000
+          color #000
 
     .select2-selection__chevron
-      position: absolute
-      top: 0
-      bottom: 0
-      right: 0
-      width: 40px
+      position absolute
+      top 0
+      bottom 0
+      right 0
+      width 40px
       transition color .3s
-      color: #BCBEBE
+      color #BCBEBE
 
       .btn-icon
         transition transform .3s
-        position: absolute
-        top: 50%
-        right: 17px
-        margin-top: -3px
-        width: 10px
-        height: 6px
+        position absolute
+        top 50%
+        right 17px
+        margin-top -3px
+        width 10px
+        height 6px
 
     .select2-selection__arrow
       display none
 
   .select2-container.select2-container--open
     .select2-selection__rendered .select2-selection__chevron
-      color: #000
+      color #000
 
       .btn-icon
         transform rotate(180deg)
 
   &.__s-40 .select2-selection
-    height: 40px
+    height 40px
 
   &.__s-45 .select2-selection
-    height: 45px
+    height 45px
 
   &-white .select2-selection
-    border-radius: 0
-    background: #fff
-    border: 1px solid #E8E8E8
+    border-radius 0
+    background #fff
+    border 1px solid #E8E8E8
 
 .form
 
   &-password__eye
-    cursor: pointer
-    position: absolute
+    cursor pointer
+    position absolute
     transform translateY(-50%)
-    top: 50%
-    right: 20px
-    color: #BBBBBB
+    top 50%
+    right 20px
+    color #BBBBBB
 
     .btn-icon
-      width: 19px
-      height: 13px
+      width 19px
+      height 13px
 
       &.__hide
         display none
@@ -124,70 +127,83 @@ textarea.input
           display none
 
     &:hover
-      color: #000
+      color #000
 
   &-label
-    color: #000
-    font-weight: 500
-    font-size: 14px
-    line-height: 17px
+    color #000
+    font-weight 500
+    font-size 14px
+    line-height 17px
     display inline-block
 
+  &-row
+    +above($tab)
+      display grid
+      padding-bottom 5px
+      grid-template-columns 1fr 1fr
+      gap 30px
+
   &-cell
-    margin-bottom: 20px
+    margin-bottom 20px
+
+    &__tip
+      padding 5px 0
+      font-size 12px
+      line-height 15px
+      color #B2B2B2
 
     &.__mb-34
-      margin-bottom: 34px
+      margin-bottom 34px
 
     .popup-link
       float right
 
   &-input
     clear both
-    margin-top: 8px
-    position: relative
+    margin-top 8px
+    position relative
 
 
 .check
-  position: relative
+  position relative
   display inline-block
 
   &-icon
-    z-index: 1
-    position: absolute
-    top: 4px
-    left: 2px
+    z-index 1
+    position absolute
+    top 4px
+    left 2px
     display none
-    fill: #fff
-    width: 18px
-    height: 12px
+    fill #fff
+    width 18px
+    height 12px
     pointer-events none
 
   &-text
     min-height 20px
-    cursor: pointer
-    position: relative
-    padding-left: 32px
+    cursor pointer
+    position relative
+    padding-left 32px
     display flex
     align-items center
-    font-size: 14px
-    line-height: 17px
-    color: #3B3C3D
+    font-size 14px
+    line-height 17px
+    color #3B3C3D
 
     &::before
-      content: ''
-      position: absolute
-      top: 0
-      left: 0
-      width: 20px
-      height: 20px
-      border: 1px solid $red
-      box-sizing: border-box
-      border-radius: 4px
+      content ''
+      position absolute
+      top 0
+      left 0
+      width 20px
+      height 20px
+      border 1px solid $red
+      box-sizing border-box
+      border-radius 4px
 
   input:checked
     ~ .check-text::before
-      background: $red
+      background $red
 
     ~ .check-icon
       display block

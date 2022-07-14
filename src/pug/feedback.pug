@@ -1,0 +1,52 @@
+extends /includes/layout
+
+block variables
+  - let page_title = 'article';
+
+block content
+  .section-holder
+    .section.__white
+      .feedback
+        h1.feedback-title Обратная связь
+
+        .feedback-form: form(action='#')
+          .feedback-form__title Заявка в техническую поддержку сайта
+          .form-row
+            .form-cell
+              label.form-label(for='feedback_name') Имя:
+              .form-input
+                input#feedback_name.input.input-white.__s-40(placeholder='Введите свое имя')
+
+            .form-cell
+              label.form-label(for='feedback_email') Email:
+              .form-input
+                input#feedback_email.input.input-white.__s-40(placeholder='Введите свой адрес электронной почты')
+
+          .form-row
+            .form-cell
+              label.form-label(for='feedback_phone') Номер телефона:
+              .form-input
+                input#feedback_phone.input.input-white.__s-40(placeholder='Введите номер телефона')
+
+            .form-cell
+              label.form-label(for='feedback_theme') Тема заявки:
+              .form-input.select.select-white.__s-40
+                select#feedback_theme.js-select-icon(name="claim" data-placeholder='Выберите тему заявки' tabindex="1")
+                  option(value="")
+                  option(value="t1") Тема 1
+                  option(value="t2") Тема 2
+                  option(value="t3") Тема 3
+                  option(value="t4") Тема 4
+
+          .form-cell
+            label.form-label(for='feedback_text') Сообщение:
+            .form-input
+              textarea#feedback_text.input.input-white.__s-90(placeholder='Введите текст сообщения')
+
+            .form-cell__tip При наличии ссылок на посторонние сайты, запрос в техподдержку обработан не будет.
+
+          .feedback-form__footer
+            p Нажимая кнопку «Отправить заявку», я принимаю условия Предоставления услуг, Оферты и даю своё согласие на обработку моих персональных данных, в соответствии с&nbsp;Федеральным законом от 27.07.2006 года №152-ФЗ «О&nbsp;персональных данных», на условиях и для целей, определенных Политикой конфиденциальности.
+            .form-cell
+              button.btn.btn-red.__s-40.btn-auth Отправить заявку
+
