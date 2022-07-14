@@ -33,7 +33,7 @@
 
   &-title
     text-align center
-    margin-bottom 32px
+    margin 0 44px 32px
     font bold 28px / 37px $fontPTSerif
 
   .mfp-close
@@ -51,6 +51,16 @@
     right 0
     left 0
     z-index 5
+
+    &-title
+      .wide &
+        margin-left 0
+        text-align left
+        font-size 21px
+        line-height 28px
+
+  &.wide
+    max-width: 618px
 
 .mfp-bg
   background #000
