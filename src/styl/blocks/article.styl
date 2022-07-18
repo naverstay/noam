@@ -24,18 +24,19 @@
       margin-top 8px
 
   h1
-    margin 25px 0 5px
+    margin 25px 0 0
     font-family $fontPTSerif
     font-weight bold
     font-size 24px
     line-height 32px
 
-    letter-spacing .005em
-    max-width 690px
-
     +above($tab)
-      font-size 40px
-      line-height 46px
+      font-size 36px
+      line-height 48px
+
+    +above($dt)
+      margin-top 40px
+
   p
     font-size 14px
     line-height 22px
@@ -65,3 +66,34 @@
 
     +above($tab)
       margin 0 -30px 33px
+
+    +above($dt)
+      &.__fit
+        margin-left 0
+        margin-right 0
+
+  &-controls
+    padding 5px 0 26px
+
+    &.__info
+      display flex
+      justify-content flex-end
+      align-items center
+
+    &__icon
+      width: 12px
+      height: 11px
+      margin-right 8px
+
+    &__link
+      font-weight 500
+      font-size 12px
+      line-height 15px
+      text-align right
+      text-decoration underline
+      color #BBB
+
+      &:hover
+        color: $red
+
+
