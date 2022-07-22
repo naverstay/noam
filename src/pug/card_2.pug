@@ -18,22 +18,28 @@ block content
           span.card-views
             +icon('eye')
             span 12564
+        .card-content
+          .article-image.__fit
+            +img('article/article_2.jpg')
 
-        .article-image.__fit
-          +img('article/article_2.jpg')
+          p Футболист одного из клубов Английской премьер-лиги (АПЛ) был арестован в северной части Лондона по подозрению в изнасиловании. Об этом сообщает The Telegraph.
+          p Источник умалчивает фамилию игрока, но отмечает, что речь идет о всемирно известном футболисте, который должен выступить на чемпионате мира — 2022 в Катаре.
+          p Также сообщается, что спортсмен проживает в Северном Лондоне. Ему от 26 до 29 лет. Другие подробности не сообщаются.
 
-        p Футболист одного из клубов Английской премьер-лиги (АПЛ) был арестован в северной части Лондона по подозрению в изнасиловании. Об этом сообщает The Telegraph.
-        p Источник умалчивает фамилию игрока, но отмечает, что речь идет о всемирно известном футболисте, который должен выступить на чемпионате мира — 2022 в Катаре.
-        p Также сообщается, что спортсмен проживает в Северном Лондоне. Ему от 26 до 29 лет. Другие подробности не сообщаются.
+          .article-controls
+            a.btn.btn-black.__s-45.btn-auth(href='#')
+              span Продолжить чтение в источнике
+              +icon('arrow_ne').btn-icon
 
-        .article-controls
-          a.btn.btn-black.__s-45.btn-auth(href='#')
-            span Продолжить чтение в источнике
-            +icon('arrow_ne').btn-icon
+          .article-controls.__info
+            .article-buttons
+              ul.article-buttons__list
+                each soc in ['vk', 'fb', 'tw', 'ok']
+                  li: a.social-link(href='#')
+                    +icon(soc)
 
-        .article-controls.__info
-          +icon('info').article-controls__icon
-          a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
+            +icon('info').article-controls__icon
+            a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
 
     .section.__white.__content.__article
       .section-title

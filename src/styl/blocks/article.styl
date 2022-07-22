@@ -10,6 +10,9 @@
   +desktop()
     padding 17px 30px 23px
 
+  .card-content
+    position relative
+
   .card-info
     padding 0 0 20px
 
@@ -72,6 +75,45 @@
         margin-left 0
         margin-right 0
 
+  &-buttons
+    margin-right auto
+    max-width 30vw
+
+    +above($dt)
+      position absolute
+      top 0
+      right 100%
+      margin-right 32px
+
+    &__list
+      display flex
+      flex-flow row wrap
+      gap 16px
+
+      +above($dt)
+        flex-flow column nowrap
+
+
+      .social-link
+        width 32px
+        height 32px
+        border-radius 100%
+        display flex
+        align-items center
+        justify-content center
+        cursor pointer
+        background #EBEBEB
+
+        svg
+          width 16px
+          height 16px
+          fill #000
+          transition fill 0.3s
+
+        &:hover
+          svg
+            fill $red
+
   &-controls
     padding 5px 0 26px
 
@@ -81,8 +123,8 @@
       align-items center
 
     &__icon
-      width: 12px
-      height: 11px
+      width 12px
+      height 11px
       margin-right 8px
 
     &__link
@@ -94,6 +136,6 @@
       color #BBB
 
       &:hover
-        color: $red
+        color $red
 
 
