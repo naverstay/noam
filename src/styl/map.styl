@@ -1,6 +1,6 @@
 @import '../../src/leaflet/leaflet.css'
 @import '../../src/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css'
-@import '../../src/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css'
+//@import '../../src/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css'
 @import '../../src/Leaflet-MiniMap-master/dist/Control.MiniMap.min.css'
 
 .map
@@ -24,3 +24,50 @@
       fill #fff
       max-width: 16px
       max-height: 16px
+
+  .marker-cluster-small
+    svg
+      path
+        stroke #0067B1
+      circle
+        fill #0067B1
+
+  .marker-cluster-medium
+    svg
+      path
+        stroke #FFB800
+      circle
+        fill #FFB800
+
+  .marker-cluster-large
+    svg
+      path
+        stroke #A53A3A
+      circle
+        fill #A53A3A
+
+  .marker-cluster
+    background-clip padding-box
+    border-radius
+
+    div
+      width 80px
+      height 80px
+      display flex
+      align-items: center
+      position: relative
+      font-weight: 600
+      justify-content: center
+      font-size: 14px
+      line-height: 17px
+      color: #ffffff
+
+      span
+        position: relative
+        z-index: 201
+
+      svg
+        position: absolute
+        top: 0
+        left: 0
+
