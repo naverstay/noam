@@ -462,7 +462,11 @@ const initMap = () => {
   new L.Control.Zoom({position: 'bottomleft'}).addTo(map);
 
   let osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib});
-  let miniMap = new L.Control.MiniMap(osm2, {toggleDisplay: true}).addTo(map);
+  let miniMap = new L.Control.MiniMap(osm2, {
+    width: 124,
+    height: 124,
+    toggleDisplay: true
+  }).addTo(map);
 };
 
 $(function ($) {
