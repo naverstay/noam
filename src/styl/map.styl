@@ -1,0 +1,26 @@
+@import '../../src/leaflet/leaflet.css'
+@import '../../src/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css'
+@import '../../src/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css'
+@import '../../src/Leaflet-MiniMap-master/dist/Control.MiniMap.min.css'
+
+.map
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+  &-icon
+    cursor: pointer
+    border-radius: 100%
+    background: #0067B1;
+    width: 32px
+    height: 32px
+    display flex
+    align-items center
+    justify-content center
+
+    svg
+      fill #fff
+      max-width: 16px
+      max-height: 16px

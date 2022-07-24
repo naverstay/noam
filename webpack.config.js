@@ -15,6 +15,8 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 const src = path.resolve(__dirname, 'src/');
 const dist = path.resolve(__dirname, 'dist/');
+const minimap = path.resolve(src, 'Leaflet-MiniMap-master/dist/Control.MiniMap.min.js');
+const distMinimap = path.resolve(__dirname, 'dist/js/minimap.js');
 const img = path.resolve(src, 'img/');
 const distImg = path.resolve(__dirname, 'dist/img');
 
@@ -37,8 +39,10 @@ module.exports = env => ({
     app: './js/main.js',
     map: './js/map.js',
     styles: './styl/main.styl',
+    map_styles: './styl/map.styl',
     assets: './assets.js',
     leaflet: './leaflet/leaflet.js',
+    //minimap: './Leaflet-MiniMap-master/src/Control.MiniMap.js',
     markercluster: './Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js'
   },
   output: {
@@ -170,7 +174,7 @@ module.exports = env => ({
       extensions: ['styl', 'css']
     }),
     new MiniCssExtractPlugin({
-      filename: './css/app.css'
+      filename: './css/[name].css'
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -181,14 +185,15 @@ module.exports = env => ({
     new CopyWebpackPlugin([{
       from: staticPath,
       to: dist
-    }]),
-    new CopyWebpackPlugin([{
+    }, {
       from: favicon,
       to: dist
-    }]),
-    new CopyWebpackPlugin([{
+    }, {
       from: img,
       to: distImg
+    }, {
+      from: minimap,
+      to: distMinimap
     }]),
     new SpriteLoaderPlugin({
       plainSprite: true,

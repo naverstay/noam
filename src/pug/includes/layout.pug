@@ -1,6 +1,6 @@
 include ../includes/data
 include ../includes/require
-
+include head
 include ../mixins/img
 include ../mixins/icon
 
@@ -10,7 +10,7 @@ block variables
 
 doctype html
 html(lang='')
-  include head
+  +head(map)
 
   body
     .page
@@ -25,6 +25,7 @@ html(lang='')
     if (map)
       script(src=`js/leaflet.js?stamp=${stamp}`)
       script(src=`js/markercluster.js?stamp=${stamp}`)
+      script(src=`js/minimap.js?stamp=${stamp}`)
       script(src=`js/map.js?stamp=${stamp}`)
     script(src=`js/app.js?stamp=${stamp}`)
     script(src=`js/assets.js?stamp=${stamp}`)

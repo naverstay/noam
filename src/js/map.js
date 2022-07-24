@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 const initMap = () => {
 //An extract of address points from the LINZ bulk extract: http://www.linz.govt.nz/survey-titles/landonline-data/landonline-bde
 //Should be this data set: http://data.linz.govt.nz/#/layer/779-nz-street-address-electoral/
@@ -398,22 +396,52 @@ const initMap = () => {
   L.Icon.Default.prototype.options.iconRetinaUrl = 'img/images/marker-icon-2x.png';
   L.Icon.Default.prototype.options.shadowUrl = 'img/images/marker-shadow.png';
 
-  let tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+  let osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  let osmAttrib = 'Map data &copy; OpenStreetMap contributors';
+
+  let tiles = L.tileLayer(osmUrl, {
+      maxZoom: 20,
+      attribution: osmAttrib
     }),
-    latlng = L.latLng(-37.82, 175.24);
 
+    mapCenter = L.latLng(-37.82, 175.24);
 
-  let map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
-
+  let iconList = ['map', 'politics', 'seeds', 'tiles', 'tornado', 'virus', 'whatshot'];
+  let iconCounter = 0;
   let markers = L.markerClusterGroup();
 
   addressPoints.forEach(a => {
-    markers.addLayer(L.marker([a[0], a[1]], {title: a[2]}));
+    if (iconCounter >= iconList.length - 1) {
+      iconCounter = 0;
+    }
+
+    markers.addLayer(L.marker([a[0], a[1]], {
+      title: a[2],
+      icon: L.divIcon({
+        className: 'map-icon __blue',
+        html: "<div class='marker-pin'></div><svg><use xlink:href='/assets/sprite/icon.svg#icon_" + iconList[iconCounter] + "'></use></svg>",
+        iconSize: [32, 32],
+        iconAnchor: [16, 32]
+      })
+    }));
+
+    iconCounter++;
   });
 
-  map.addLayer(markers);
+  let map = L.map('map', {
+    zoomControl: false,
+    center: mapCenter,
+    zoom: 13,
+    layers: [
+      tiles,
+      markers
+    ]
+  });
+
+  new L.Control.Zoom({position: 'bottomleft'}).addTo(map);
+
+  let osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib});
+  let miniMap = new L.Control.MiniMap(osm2, {toggleDisplay: true}).addTo(map);
 };
 
 $(function ($) {
