@@ -112,6 +112,16 @@ body
         .hero-aside
           padding-top 20px
 
+  &.__map
+    position: relative
+    height: 641px
+
+    +above($tab)
+      height: 480px
+
+    +desktop()
+      height: 600px
+
   &.__white
     //background #E5E5E5
     background #f9f9f9
@@ -182,7 +192,7 @@ body
 
 .nav
   display flex
-  justify-content space-between
+  justify-content center
 
   .nav-link
     color #fff

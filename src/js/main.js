@@ -4,7 +4,7 @@ import 'select2';
 import {debounce, throttle} from 'throttle-debounce';
 import Sly from 'sly-scrolling/dist/sly.min';
 
-require('jquery.easing');
+//import 'jquery.easing';
 
 //let Isotope = require('isotope-layout');
 //let jQueryBridget = require('jquery-bridget');
@@ -141,7 +141,7 @@ const initSelect = () => {
       templateSelection: formatBrandSelection
     });
   });
-}
+};
 
 const appHeight = () => {
   const doc = document.documentElement;
@@ -180,8 +180,6 @@ const initHero = () => {
       {
         load: function () {
           $frame.parent().addClass('__loaded');
-
-
         },
         move: [
           function () {
@@ -270,7 +268,7 @@ function openPopup(target) {
         },
         close() {
           window.location.hash = '';
-        },
+        }
       }
     });
 
@@ -338,4 +336,3 @@ $(function ($) {
 
   initSelect();
 });
-

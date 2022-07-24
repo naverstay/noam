@@ -35,8 +35,11 @@ module.exports = env => ({
   },
   entry: {
     app: './js/main.js',
+    map: './js/map.js',
     styles: './styl/main.styl',
-    assets: './assets.js'
+    assets: './assets.js',
+    leaflet: './leaflet/leaflet.js',
+    markercluster: './Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js'
   },
   output: {
     filename: './js/[name].js',

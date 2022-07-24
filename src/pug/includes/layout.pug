@@ -1,8 +1,8 @@
-include /includes/data
-include /includes/require
+include ../includes/data
+include ../includes/require
 
-include /mixins/img
-include /mixins/icon
+include ../mixins/img
+include ../mixins/icon
 
 - const stamp = Math.round(new Date().getTime() / 1000)
 
@@ -10,7 +10,7 @@ block variables
 
 doctype html
 html(lang='')
-  include /includes/head
+  include head
 
   body
     .page
@@ -22,5 +22,9 @@ html(lang='')
       include ../blocks/footer
       include ../blocks/popup
 
+    if (map)
+      script(src=`js/leaflet.js?stamp=${stamp}`)
+      script(src=`js/markercluster.js?stamp=${stamp}`)
+      script(src=`js/map.js?stamp=${stamp}`)
     script(src=`js/app.js?stamp=${stamp}`)
     script(src=`js/assets.js?stamp=${stamp}`)
