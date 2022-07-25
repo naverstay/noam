@@ -1,10 +1,11 @@
-.header
+.header(class= header_class)
   .section
     +logo()
 
     .header-menu
       +currency()
-      +nav()
+      if (header_class !== '__short')
+        +nav()
       +user()
 
     .burger.js-burger

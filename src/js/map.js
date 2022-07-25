@@ -1,4 +1,77 @@
-const initMap = () => {
+const initMap = (points) => {
+  let $map = $('#map');
+
+  if ($map.length === 1) {
+    L.Icon.Default.prototype.options.iconUrl = 'img/images/marker-icon.png';
+    L.Icon.Default.prototype.options.iconRetinaUrl = 'img/images/marker-icon-2x.png';
+    L.Icon.Default.prototype.options.shadowUrl = 'img/images/marker-shadow.png';
+
+    let osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    let osmAttrib = 'Map data &copy; OpenStreetMap contributors';
+
+    let tiles = L.tileLayer(osmUrl, {maxZoom: 19, attribution: osmAttrib}),
+      mapCenter = L.latLng(-37.82, 175.24);
+
+    let markers = L.markerClusterGroup({
+      iconCreateFunction: (cluster) => {
+        let childCount = cluster.getChildCount();
+
+        //console.log('cluster', cluster);
+
+        let c = ' marker-cluster-';
+        if (childCount < 10) {
+          c += 'small';
+        } else if (childCount < 100) {
+          c += 'medium';
+        } else {
+          c += 'large';
+        }
+
+        return new L.DivIcon({
+          html: '<div><svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="20" fill="#fff"/><path d="M64.2519 32.1201C66.2562 38.2885 65.8346 44.9888 63.0731 50.8574C60.3116 56.7259 55.4176 61.3217 49.3872 63.7093" stroke="#fff" stroke-width="5"/><path d="M22.9372 21.0498C27.7571 16.7099 34.0496 14.3698 40.534 14.5056C47.0185 14.6414 53.2075 17.243 57.8414 21.7809" stroke="#fff" stroke-width="5"/><path d="M30.4475 63.6432C24.434 61.2135 19.5722 56.5837 16.8517 50.696C14.1312 44.8083 13.7564 38.1052 15.8037 31.9509" stroke="#fff" stroke-width="5"/><path opacity="0.5" d="M69.9583 30.266C72.4341 37.8858 71.9134 46.1626 68.5021 53.412C65.0907 60.6615 59.0452 66.3386 51.5959 69.288" stroke="#fff" stroke-width="5"/><path opacity="0.5" d="M18.9224 16.5909C24.8764 11.2299 32.6495 8.33912 40.6597 8.50691C48.6699 8.6747 56.3151 11.8885 62.0394 17.4941" stroke="#fff" stroke-width="5"/><path opacity="0.5" d="M28.1999 69.2063C20.7714 66.205 14.7656 60.4858 11.405 53.2127C8.04439 45.9397 7.58145 37.6594 10.1104 30.057" stroke="#fff" stroke-width="5"/><path opacity="0.25" d="M75.6646 28.4119C78.612 37.483 77.9921 47.3365 73.931 55.9667C69.8699 64.597 62.6729 71.3554 53.8047 74.8666" stroke="#fff" stroke-width="5"/><path opacity="0.25" d="M14.9076 12.1321C21.9957 5.74989 31.2494 2.30847 40.7853 2.50822C50.3213 2.70797 59.4227 6.53388 66.2374 13.2073" stroke="#fff" stroke-width="5"/><path opacity="0.25" d="M25.9523 74.7694C17.1088 71.1964 9.95908 64.3878 5.95834 55.7294C1.9576 47.0711 1.40649 37.2135 4.41715 28.1632" stroke="#fff" stroke-width="5"/></svg><span>' + childCount + '</span></div>',
+          className: 'marker-cluster' + c,
+          iconSize: new L.Point(80, 80)
+        });
+      }
+    });
+
+    points.forEach(a => {
+      markers.addLayer(L.marker([a[0], a[1]], {
+        title: a[2],
+        icon: a[3]
+      }));
+    });
+
+    let map = L.map('map', {
+      zoomControl: false,
+      center: mapCenter,
+      zoom: 13,
+      layers: [
+        tiles,
+        markers
+      ]
+    });
+
+    new L.Control.Zoom({position: 'bottomleft'}).addTo(map);
+
+    let osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib});
+    let miniMap = new L.Control.MiniMap(osm2, {
+      width: 124,
+      height: 124,
+      toggleDisplay: true
+    }).addTo(map);
+
+    function outputsize() {
+      map.invalidateSize(true);
+    }
+
+    outputsize()
+
+    new ResizeObserver(outputsize).observe($map[0]);
+  }
+}
+
+$(function ($) {
 //An extract of address points from the LINZ bulk extract: http://www.linz.govt.nz/survey-titles/landonline-data/landonline-bde
 //Should be this data set: http://data.linz.govt.nz/#/layer/779-nz-street-address-electoral/
   let addressPoints = [
@@ -392,84 +465,28 @@ const initMap = () => {
     [-37.8194342167, 175.22322975, "9"]
   ];
 
-  L.Icon.Default.prototype.options.iconUrl = 'img/images/marker-icon.png';
-  L.Icon.Default.prototype.options.iconRetinaUrl = 'img/images/marker-icon-2x.png';
-  L.Icon.Default.prototype.options.shadowUrl = 'img/images/marker-shadow.png';
-
-  let osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  let osmAttrib = 'Map data &copy; OpenStreetMap contributors';
-
-  let tiles = L.tileLayer(osmUrl, {
-      maxZoom: 20,
-      attribution: osmAttrib
-    }),
-
-    mapCenter = L.latLng(-37.82, 175.24);
-
   let iconList = ['map', 'politics', 'seeds', 'tiles', 'tornado', 'virus', 'whatshot'];
   let iconCounter = 0;
-  let markers = L.markerClusterGroup({
-    iconCreateFunction: (cluster) => {
-      let childCount = cluster.getChildCount();
 
-      //console.log('cluster', cluster);
-
-      let c = ' marker-cluster-';
-      if (childCount < 10) {
-        c += 'small';
-      } else if (childCount < 100) {
-        c += 'medium';
-      } else {
-        c += 'large';
-      }
-
-      return new L.DivIcon({
-        html: '<div><svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="20" fill="#fff"/><path d="M64.2519 32.1201C66.2562 38.2885 65.8346 44.9888 63.0731 50.8574C60.3116 56.7259 55.4176 61.3217 49.3872 63.7093" stroke="#fff" stroke-width="5"/><path d="M22.9372 21.0498C27.7571 16.7099 34.0496 14.3698 40.534 14.5056C47.0185 14.6414 53.2075 17.243 57.8414 21.7809" stroke="#fff" stroke-width="5"/><path d="M30.4475 63.6432C24.434 61.2135 19.5722 56.5837 16.8517 50.696C14.1312 44.8083 13.7564 38.1052 15.8037 31.9509" stroke="#fff" stroke-width="5"/><path opacity="0.5" d="M69.9583 30.266C72.4341 37.8858 71.9134 46.1626 68.5021 53.412C65.0907 60.6615 59.0452 66.3386 51.5959 69.288" stroke="#fff" stroke-width="5"/><path opacity="0.5" d="M18.9224 16.5909C24.8764 11.2299 32.6495 8.33912 40.6597 8.50691C48.6699 8.6747 56.3151 11.8885 62.0394 17.4941" stroke="#fff" stroke-width="5"/><path opacity="0.5" d="M28.1999 69.2063C20.7714 66.205 14.7656 60.4858 11.405 53.2127C8.04439 45.9397 7.58145 37.6594 10.1104 30.057" stroke="#fff" stroke-width="5"/><path opacity="0.25" d="M75.6646 28.4119C78.612 37.483 77.9921 47.3365 73.931 55.9667C69.8699 64.597 62.6729 71.3554 53.8047 74.8666" stroke="#fff" stroke-width="5"/><path opacity="0.25" d="M14.9076 12.1321C21.9957 5.74989 31.2494 2.30847 40.7853 2.50822C50.3213 2.70797 59.4227 6.53388 66.2374 13.2073" stroke="#fff" stroke-width="5"/><path opacity="0.25" d="M25.9523 74.7694C17.1088 71.1964 9.95908 64.3878 5.95834 55.7294C1.9576 47.0711 1.40649 37.2135 4.41715 28.1632" stroke="#fff" stroke-width="5"/></svg><span>' + childCount + '</span></div>',
-        className: 'marker-cluster' + c,
-        iconSize: new L.Point(80, 80)
-      });
-    }
-  });
+  if (window.MAP_LIMIT) {
+    addressPoints = addressPoints.slice(0, window.MAP_LIMIT);
+  }
 
   addressPoints.forEach(a => {
     if (iconCounter >= iconList.length - 1) {
       iconCounter = 0;
     }
 
-    markers.addLayer(L.marker([a[0], a[1]], {
-      title: a[2],
-      icon: L.divIcon({
-        className: 'map-icon __blue',
-        html: "<div class='marker-pin'></div><svg><use xlink:href='/assets/sprite/icon.svg#icon_" + iconList[iconCounter] + "'></use></svg>",
-        iconSize: [32, 32],
-        iconAnchor: [16, 32]
-      })
+    a.push(L.divIcon({
+      className: 'map-icon __blue',
+      html: "<svg><use xlink:href='/assets/sprite/icon.svg#icon_" + iconList[iconCounter] + "'></use></svg>",
+      iconSize: [32, 32],
+      iconAnchor: [16, 32]
     }));
 
     iconCounter++;
   });
 
-  let map = L.map('map', {
-    zoomControl: false,
-    center: mapCenter,
-    zoom: 13,
-    layers: [
-      tiles,
-      markers
-    ]
-  });
-
-  new L.Control.Zoom({position: 'bottomleft'}).addTo(map);
-
-  let osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib});
-  let miniMap = new L.Control.MiniMap(osm2, {
-    width: 124,
-    height: 124,
-    toggleDisplay: true
-  }).addTo(map);
-};
-
-$(function ($) {
-  initMap();
+  initMap(addressPoints);
 });
 

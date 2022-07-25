@@ -1,6 +1,6 @@
 .header
   will-change transform
-  transition background .3s
+  transition background .3s, padding .3s
   position sticky
   top 0
   left 0
@@ -12,6 +12,10 @@
 
   +above($tab)
     background rgba(34, 34, 34, 0.95)
+
+  +above($wide)
+    .__map-aside &
+      padding-right var(--map-aside-width)
 
   .__scroll &
     background rgba(34, 34, 34, 0.95)
@@ -151,7 +155,6 @@
           padding 0 0 0 14px
 
     .currency-menu
-
       display none
 
       li
@@ -168,6 +171,7 @@
 
         .__scroll &
           opacity 0
+          visibility hidden
           pointer-events none
 
     .user-menu
@@ -303,10 +307,14 @@
       +above($wide + $menu_extra)
         transition color .3s
 
+    .__short.header &
+      font-size: 24px
+      line-height: 32px
+
     .__scroll .header &
       +below($wide - 1px)
         font-size 28px
-        line-height 50px
+        line-height 37px
 
     &:hover
       color $red

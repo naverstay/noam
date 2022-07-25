@@ -1,0 +1,34 @@
+extends ./includes/layout
+
+block variables
+  - let page_title = 'livemap';
+  - let map = true;
+  - show_footer = false;
+  - header_class = '__short'
+  - html_class = '__map-aside __scroll'
+
+block content
+  .map-holder
+    .map-wrapper
+      #map.map
+    .map-holder__aside
+      .hero-aside
+        .hero-aside__head
+          .hero-aside__caption События на карте
+          .hero-aside__update Последнее обновление 07.06.2022 в 00:11:53
+
+          a.btn.btn-red.btn-aside.__s-45(href='#')
+            +icon('reload').btn-icon
+            span Показать 11 новых новостей
+
+        ul.hero-aside__list
+          +loop_while(8)
+            li
+              +card('Легендарный инвестор предупредил мир о финансовой катастрофе', 'tass', '', '', '', '', '12564')
+            li
+              +card('В разных частях зала: почему Иван Ургант с отцом сидели отдельно друг от друга на похоронах Нины Ургант', 'zr', '', '', '', '', '12564')
+            li
+              +card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', '', '', '', '', '12564')
+            li
+              +card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', '', '', '', '', '12564')
+

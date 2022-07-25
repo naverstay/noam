@@ -5,11 +5,14 @@ include ../mixins/img
 include ../mixins/icon
 
 - const stamp = Math.round(new Date().getTime() / 1000)
+- let show_footer = true
+- let html_class = ''
+- let header_class = ''
 
 block variables
 
 doctype html
-html(lang='')
+html(lang='' class= html_class)
   +head(map)
 
   body
@@ -19,8 +22,11 @@ html(lang='')
       .content
         block content
 
-      include ../blocks/footer
+      if (show_footer)
+        include ../blocks/footer
       include ../blocks/popup
+
+    .page-overlay.js-burger
 
     if (map)
       script(src=`js/leaflet.js?stamp=${stamp}`)

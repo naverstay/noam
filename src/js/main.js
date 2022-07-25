@@ -321,6 +321,8 @@ $(function ($) {
     let targetId = $(this).attr('data-popup');
     let target = $(targetId);
 
+    $('body').removeClass('open_menu');
+
     openPopup(target);
 
     return false;

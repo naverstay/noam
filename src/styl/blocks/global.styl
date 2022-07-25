@@ -1,5 +1,6 @@
 :root {
   --app-height 100%
+  --map-aside-width $map_aside_width
   --sat env(safe-area-inset-top)
   --sar env(safe-area-inset-right)
   --sab env(safe-area-inset-bottom)
@@ -61,8 +62,21 @@ body
   min-height var(--app-height)
   display flex
   flex-flow column nowrap
+  position: relative
+
+  &-overlay
+    .__map-aside &
+      +below($wide - 1px)
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        z-index: 1001
+        height: var(--app-height)
+        background: rgba(0, 0, 0, .65)
 
 .content
+  position relative
   flex 1 0 auto
   overflow hidden
 
@@ -113,6 +127,7 @@ body
           padding-top 20px
 
   &.__map
+    z-index: 0
     position: relative
     height: 641px
     max-height 75vh
