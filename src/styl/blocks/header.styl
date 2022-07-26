@@ -5,7 +5,7 @@
   top 0
   left 0
   width: 100vw
-  z-index 3
+  z-index 1001
 
   +below($tab - 1px)
     position fixed
@@ -13,12 +13,94 @@
   +above($tab)
     background rgba(34, 34, 34, 0.95)
 
+    &.__short
+      .nav
+        display none
+
   +above($wide)
     .__map-aside &
-      padding-right var(--map-aside-width)
+      padding-right calc(var(--map-aside-width) - 24px)
+
+  &.__short
+    .header-menu
+      flex 1 0 auto
+      padding-left: 52px
+      padding-right: 24px
+      margin-left: auto
+      display flex
+      justify-content space-between
+      flex-flow row nowrap
+
+      .user-menu,
+      .currency-menu
+        opacity: 1
+        visibility: visible
+        pointer-events: all
+        position: relative
+        bottom: unset
+        right: unset
+        left: unset
+        margin-bottom: 0
+        transform: none !important
+
+      +below($tab - 1px)
+        .currency-menu
+          display none !important
+
+        .user-menu
+          margin-left: auto
+
+    .section
+      display: flex
+      flex-flow: row wrap
+      justify-content: space-between
+
+      +above($tab)
+        padding: 0 24px
 
   .__scroll &
     background rgba(34, 34, 34, 0.95)
+
+  &-map
+    height: 46px
+    position: relative
+    padding: 8px 8px 8px 20px
+    background: #363d3e
+
+    &::after
+      left: 100%
+
+    &::before
+      right: 100%
+
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      width: 100vw
+      top: 0
+      bottom: 0
+      background: inherit
+
+    +above($tab)
+      padding-left: 24px
+
+    &__scroller
+      opacity: 0
+      transition opacity .3
+      padding: 4px 0 0
+      margin-left: -20px
+      position: relative
+      overflow: hidden
+
+      &.__loaded
+        opacity: 1
+
+      +above($tab)
+        margin-left: -24px
+
+    .btn
+      margin-right: 8px
 
   &-overlay
     position fixed
@@ -290,6 +372,9 @@
   text-align center
   pointer-events none
 
+  .__short.header &
+    margin-top: 0
+
   .logo
     transition color .3s
     pointer-events all
@@ -307,14 +392,24 @@
       +above($wide + $menu_extra)
         transition color .3s
 
-    .__short.header &
-      font-size: 24px
-      line-height: 32px
-
     .__scroll .header &
       +below($wide - 1px)
         font-size 28px
         line-height 37px
+        top: 0
+
+    .__short.header &
+      font-size: 24px
+      line-height: 37px
+      top: 0
+
+      //+below($wide - 1px)
+      //line-height: 37px
+      //line-height: 50px
+
+      +below($tab - 1px)
+        font-size 28px
+        line-height 50px
 
     &:hover
       color $red

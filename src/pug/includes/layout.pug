@@ -26,11 +26,13 @@ html(lang='' class= html_class)
         include ../blocks/footer
       include ../blocks/popup
 
-    .page-overlay.js-burger
+    .page-overlay.js-map-aside
 
     if (map)
       script(src=`js/leaflet.js?stamp=${stamp}`)
       script(src=`js/markercluster.js?stamp=${stamp}`)
+      //script(src=`js/easybutton.js?stamp=${stamp}`)
+      //script(src=`js/markertags.js?stamp=${stamp}`)
       script(src=`js/minimap.js?stamp=${stamp}`)
       script(src=`js/map.js?stamp=${stamp}`)
     script(src=`js/app.js?stamp=${stamp}`)

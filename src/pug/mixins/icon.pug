@@ -49,6 +49,45 @@ mixin card(title, portal, date, img, cls, description, views, partner)
         .card-tag Политика
         .card-date= date
 
+mixin map_card(title, portal, tags, img, cls, description, icon_cls, icon)
+  .card(class= (img ? '' : ' __text ') + (cls || ''))
+    if (portal)
+      .card-info
+        .card-tags
+          if (icon)
+            .card-icon(class= icon_cls)
+              +icon(icon).btn-icon
+          if (tags && tags.length)
+            each tag in tags
+              span= tag
+        if (portal)
+          if (portal === 'share')
+            a.card-share(href='card_map.html')
+              span Поделиться новостью
+              +icon('launch').btn-icon
+          else
+            span.card-logo
+              +img('logo/' + portal + '.png')
+              span.card-portal= portal + '.ru'
+
+    .card-title= title
+
+    if (img)
+      .card-preview.__map
+        +img(img)
+
+    if (description)
+      .card-description= description
+
+    .card-footer
+      a.card-share(href='card_map.html')
+        span Поделиться новостью
+        +icon('launch').btn-icon
+
+      a.card-link(href='#')
+        span Читать далее
+        +icon('arrow_nw').btn-icon
+
 mixin currency()
   ul.currency-menu
     li: span.header-menu__icon

@@ -167,9 +167,42 @@
     +desktop()
       grid-gap 30px
 
+  &-share
+    display flex
+    flex-flow row nowrap
+    align-items center
+    font-weight: 500
+    font-size: 12px
+    line-height: 15px
+    color: #B2B2B2
+
+    svg
+      width: 15px
+      height: 15px
+      margin-left: 4px
+
+  &-link
+    display flex
+    flex-flow row nowrap
+    align-items center
+    font-weight: 500
+    font-size: 12px
+    line-height: 15px
+    color: #000
+
+    svg
+      width: 10px
+      height: 10px
+      margin-left: 9px
+
   &-preview
     overflow hidden
     position relative
+
+    &.__map
+      padding-top: 10px
+      padding-bottom: 12px
+
     //height 110px
 
     //+above($tab)
@@ -182,6 +215,47 @@
       //img_center()
       width 100%
       display block
+
+  &-tags
+    display flex
+    flex-flow row nowrap
+    align-items center
+
+    span
+      display block
+      padding-left: 5px
+      position: relative
+      font-weight: 500
+      font-size: 12px
+      line-height: 15px
+      text-align: right
+      color: #666
+
+      + span
+
+        &::before
+          content: '•'
+          padding-left: 2px
+          padding-right: 6px
+
+  &-icon
+    color: #fff
+    width: 20px
+    height: 20px
+    border-radius: 100%
+    display flex
+    align-items center
+    justify-content center
+
+    svg
+      width: 10px
+      height: 10px
+
+    &.__blue
+      background: $blue
+
+    &.__red
+      background: $red
 
   &-logo
     display flex
@@ -228,6 +302,13 @@
     display flex
     align-items center
     padding-bottom 6px
+
+    .map-holder__aside &
+      justify-content space-between
+      margin-bottom: -10px
+
+    .map-holder__aside .card-title + &
+      padding-top: 12px
 
     +above($tab)
       padding-bottom 10px

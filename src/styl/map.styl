@@ -2,7 +2,6 @@
 @require 'other/mixins'
 @import '../../src/leaflet/leaflet.css'
 @import '../../src/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css'
-//@import '../../src/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css'
 @import '../../src/Leaflet-MiniMap-master/dist/Control.MiniMap.min.css'
 
 .map
@@ -52,9 +51,13 @@
         custom_scroll(rgba(0, 0, 0, .25))
         display flex
         flex-flow column nowrap
-        width: 100%
-        padding: 28px 24px
-        height: 100%
+        width: var(--map-aside-width)
+        position: fixed
+        bottom: 0
+        right: 0
+        padding: 18px 22px 28px 24px
+        z-index: 1001
+        height: var(--app-height)
         overflow-y: auto
 
         .hero-aside__caption
@@ -62,13 +65,14 @@
           line-height: 28px
 
         .hero-aside__head
+          z-index: 1
           position: sticky
-          top: -28px
+          top: -18px
 
   &-icon
     cursor: pointer
     border-radius: 100%
-    background: #0067B1
+    background: $blue
     position: relative
     display flex
     align-items center
@@ -115,10 +119,10 @@
   .marker-cluster-small
     svg
       path
-        stroke #0067B1
+        stroke $blue
 
       circle
-        fill #0067B1
+        fill $blue
 
   .marker-cluster-medium
     svg

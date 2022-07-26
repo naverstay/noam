@@ -4,7 +4,7 @@ import 'select2';
 import {debounce, throttle} from 'throttle-debounce';
 import Sly from 'sly-scrolling/dist/sly.min';
 
-//import 'jquery.easing';
+import 'jquery.easing';
 
 //let Isotope = require('isotope-layout');
 //let jQueryBridget = require('jquery-bridget');
@@ -193,6 +193,49 @@ const initHero = () => {
   }
 }
 
+const initMapSlider = () => {
+  let $frame = $('.js-map-slider');
+
+  if ($frame.length) {
+    // Call Sly on frame
+    $sly = $frame.sly({
+        scrollTrap: 1,
+        horizontal: 1,
+        itemNav: 'basic',
+        smart: 1,
+        keyboardNavBy: 'pages',
+        //activateOn: 'click',
+        mouseDragging: 1,
+        touchDragging: 1,
+        releaseSwing: 1,
+        startAt: 0,
+        activatePageOn: null,
+        //scrollBar: $frame.parent().find('.js-hero-scrollbar'),
+        scrollBy: 1,
+        speed: 1000,
+        elasticBounds: 1,
+        easing: 'easeOutExpo',
+        dragHandle: 1,
+        dynamicHandle: 1,
+        clickBar: 1,
+        minHandleSize: 50
+      },
+      {
+        load: function () {
+          $frame.parent().addClass('__loaded');
+        },
+        move: [
+          function () {
+
+          },
+          function () {
+
+          }
+        ]
+      });
+  }
+}
+
 const initIsotop = () => {
   const breakpoint = window.matchMedia('(min-width:768px)');
 
@@ -297,6 +340,7 @@ $(function ($) {
 
   appHeight();
   initHero();
+  initMapSlider();
   initIsotop();
 
   $('.js-burger').on('click', function () {

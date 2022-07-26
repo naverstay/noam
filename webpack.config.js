@@ -17,6 +17,8 @@ const src = path.resolve(__dirname, 'src/');
 const dist = path.resolve(__dirname, 'dist/');
 const minimap = path.resolve(src, 'Leaflet-MiniMap-master/dist/Control.MiniMap.min.js');
 const distMinimap = path.resolve(__dirname, 'dist/js/minimap.js');
+const markercluster = path.resolve(src, 'Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js');
+const distMarkercluster = path.resolve(__dirname, 'dist/js/markercluster.js');
 const img = path.resolve(src, 'img/');
 const distImg = path.resolve(__dirname, 'dist/img');
 
@@ -41,9 +43,7 @@ module.exports = env => ({
     styles: './styl/main.styl',
     map_styles: './styl/map.styl',
     assets: './assets.js',
-    leaflet: './leaflet/leaflet.js',
-    //minimap: './Leaflet-MiniMap-master/src/Control.MiniMap.js',
-    markercluster: './Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js'
+    leaflet: './leaflet/leaflet.js'
   },
   output: {
     filename: './js/[name].js',
@@ -194,7 +194,11 @@ module.exports = env => ({
     }, {
       from: minimap,
       to: distMinimap
-    }]),
+    }, {
+      from: markercluster,
+      to: distMarkercluster
+    }
+    ]),
     new SpriteLoaderPlugin({
       plainSprite: true,
       spriteAttrs: {

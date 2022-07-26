@@ -5,11 +5,45 @@
   transition color .3s, background .3s
   cursor: pointer
 
+  &.__offset-8
+    margin-top: 8px
+    margin-bottom: -4px
+
+  &.__s-28
+    height: 28px
+
   &.__s-40
     height: 40px
 
   &.__s-45
     height: 45px
+
+  &-map
+    position: relative
+    border-radius: 4px
+    padding: 6px 12px
+    display inline-flex
+    align-items center
+    font-size: 13px
+    line-height: 16px
+    color: #ffffff
+
+    .icon-active
+      display none
+
+    &.__active
+      background: $red
+
+      .icon-inactive
+        display none
+
+      .icon-active
+        display block
+
+    .btn-icon
+      width: 16px
+      height: 16px
+      margin-right: 8px
 
   &-hero
     font-weight: 700
@@ -25,7 +59,7 @@
       margin-top: auto
 
   &-aside
-    margin-bottom: 5px
+    margin-bottom: 10px
     width: 100%
 
     .btn-icon

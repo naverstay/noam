@@ -77,7 +77,7 @@
 
   &-buttons
     margin-right auto
-    max-width 30vw
+    max-width 40vw
 
     +above($dt)
       position absolute
@@ -88,11 +88,13 @@
     &__list
       display flex
       flex-flow row wrap
-      gap 16px
+      gap 8px
+
+      +above($tab)
+        gap 16px
 
       +above($dt)
         flex-flow column nowrap
-
 
       .social-link
         width 32px

@@ -1,12 +1,23 @@
+
+- let mapButtons = [{icon: 'politics', name: 'Политика'}, {icon: 'horn', name: 'Заявления'}, {icon: 'virus', name: 'Коронавирус'}, {icon: 'lockdown', name: 'Локдаун'}, {icon: 'seeds', name: 'Посевная'}, {icon: 'whatshot', name: 'Пожары'}, {icon: 'flood', name: 'Наводнения'}, {icon: 'ball', name: 'Футбол'}, {icon: 'tornado', name: 'Ураганы'}];
+
 .header(class= header_class)
   .section
     +logo()
 
     .header-menu
       +currency()
-      if (header_class !== '__short')
-        +nav()
+      +nav()
       +user()
+    if (map && header_class === '__short')
+      .header-map__scroller
+        .js-map-slider
+          .header-map
+            each c, ci in mapButtons
+              a.btn.btn-map.__s-28.btn-black.js-map-filter-btn(href='#' class= ci > 2 ? '' : ' __active' )
+                +icon(c.icon).btn-icon.icon-inactive
+                +icon('info').btn-icon.icon-active
+                span= c.name
 
     .burger.js-burger
       span

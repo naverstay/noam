@@ -15,6 +15,17 @@ custom_scroll($track)
     background-color rgba(255, 255, 255, .65)
     border-radius 2px
 
+hidden_scroll()
+  scrollbar-width thin
+
+  &::-webkit-scrollbar
+    height 0
+    width 0
+
+  &::-webkit-scrollbar-track
+    height 0
+    width 0
+
 clearfix()
   &::before,
   &::after
