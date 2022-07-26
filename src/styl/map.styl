@@ -35,30 +35,40 @@
       position: relative
       width var(--map-aside-width)
       flex: 1 0 auto
-      transition right .3s
+      transition transform .3s
 
       +below($wide - 1px)
         position: fixed
         bottom: 0
-        right: calc(-1 * var(--map-aside-width))
+        right: 0
+        transform translateX(100%)
         z-index: 1002;
         height: var(--app-height)
 
-        .__map-aside &
-          right: 0
+        .__map-aside.__map-aside-open &
+          transform translateX(0)
+
+      +below($tab - 1px)
+        width: 100%
+        height: calc(var(--app-height) - 185px)
 
       .hero-aside
         custom_scroll(rgba(0, 0, 0, .25))
         display flex
         flex-flow column nowrap
-        width: var(--map-aside-width)
         position: fixed
+        z-index: 1001
         bottom: 0
         right: 0
+        transition transform .3s
         padding: 18px 22px 28px 24px
-        z-index: 1001
+        width var(--map-aside-width)
         height: var(--app-height)
         overflow-y: auto
+
+        +below($tab - 1px)
+          width: 100%
+          height: 100%
 
         .hero-aside__caption
           font-size: 21px
@@ -67,7 +77,16 @@
         .hero-aside__head
           z-index: 1
           position: sticky
-          top: -18px
+          top: 0
+
+          &::before
+            content: ''
+            position: absolute
+            bottom: 100%
+            right: 0
+            left: 0
+            background: inherit
+            height: 30px
 
   &-icon
     cursor: pointer

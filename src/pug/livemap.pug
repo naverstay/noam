@@ -12,6 +12,41 @@ block content
     .map-wrapper
       #map.map
     .map-holder__aside
+      .hero-aside.js-map-aside.hero-aside__article
+        .hero-aside__head
+          a.hero-aside__back.js-close-article(href='#')
+            +icon('back').btn-icon
+            span Назад
+
+        .article
+          h1 Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО
+
+          .card-info
+            span.card-tag Политика
+            span.card-logo
+              +img('logo/lenta.png')
+              span.card-portal lenta.ru
+            span.card-date 09.12.21 11:56
+            span.card-views
+              +icon('eye')
+              span 12564
+          .card-content
+            .article-image.__fit
+              +img('article/article_2.jpg')
+
+            p Футболист одного из клубов Английской премьер-лиги (АПЛ) был арестован в северной части Лондона по подозрению в изнасиловании. Об этом сообщает The Telegraph.
+            p Источник умалчивает фамилию игрока, но отмечает, что речь идет о всемирно известном футболисте, который должен выступить на чемпионате мира — 2022 в Катаре.
+            p Также сообщается, что спортсмен проживает в Северном Лондоне. Ему от 26 до 29 лет. Другие подробности не сообщаются.
+
+            .article-controls
+              a.btn.btn-black.__s-45.btn-auth(href='#')
+                span Продолжить чтение в источнике
+                +icon('arrow_ne').btn-icon
+
+            .article-controls.__info
+              +icon('info').article-controls__icon
+              a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
+
       .hero-aside
         .hero-aside__head
           .hero-aside__caption События на карте

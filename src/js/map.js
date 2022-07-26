@@ -76,6 +76,9 @@ const initMap = (points) => {
           tags: [a[4]]
         }).on('click', () => {
           console.log('click', a[4]);
+
+          $('html').toggleClass('__map-aside-open');
+          $('.js-map-aside').toggleClass('__open');
         }));
       });
 
@@ -96,8 +99,12 @@ const initMap = (points) => {
 
     addClusters();
 
-    map.on('mouseover', function() { map.scrollWheelZoom.enable(); });
-    map.on('mouseleave', function() { map.scrollWheelZoom.disable(); });
+    map.on('mouseover', function () {
+      map.scrollWheelZoom.enable();
+    });
+    map.on('mouseleave', function () {
+      map.scrollWheelZoom.disable();
+    });
 
     let osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib});
     let miniMap = new L.Control.MiniMap(osm2, {
@@ -535,14 +542,20 @@ $(function ($) {
 
   initMap(addressPoints);
 
+  $('.js-close-article').on('click', function (e) {
+    $('html').removeClass('__map-aside-open');
+    $('.js-map-aside').removeClass('__open');
+    return false;
+  });
+
   $('.js-map-filter-btn').on('click', function (e) {
     $(this).toggleClass('__active');
     console.log(e.target.innerText);
     return false;
   });
 
-  $('.js-map-aside').on('click', function () {
-    $('html').toggleClass('__map-aside');
+  $('.js-map-overlay').on('click', function () {
+    $('html').toggleClass('__map-aside-open');
     return false;
   });
 });

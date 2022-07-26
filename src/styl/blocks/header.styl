@@ -22,40 +22,42 @@
       padding-right calc(var(--map-aside-width) - 24px)
 
   &.__short
-    .header-menu
-      flex 1 0 auto
-      padding-left: 52px
-      padding-right: 24px
-      margin-left: auto
-      display flex
-      justify-content space-between
-      flex-flow row nowrap
+    +above($wide)
+      .header-menu
+        flex 1 0 auto
+        padding-left: 48px
+        padding-right: 24px
+        margin-left: auto
+        display flex
+        justify-content space-between
+        flex-flow row nowrap
 
-      .user-menu,
-      .currency-menu
-        opacity: 1
-        visibility: visible
-        pointer-events: all
-        position: relative
-        bottom: unset
-        right: unset
-        left: unset
-        margin-bottom: 0
-        transform: none !important
-
-      +below($tab - 1px)
+        .user-menu,
         .currency-menu
-          display none !important
+          opacity: 1
+          visibility: visible
+          pointer-events: all
+          position: relative
+          bottom: unset
+          right: unset
+          left: unset
+          margin-bottom: 0
+          transform: none !important
 
-        .user-menu
-          margin-left: auto
+        +below($tab - 1px)
+          .currency-menu
+            display none !important
 
-    .section
-      display: flex
-      flex-flow: row wrap
-      justify-content: space-between
+          .user-menu
+            margin-left: auto
 
-      +above($tab)
+      .section
+        display: flex
+        flex-flow: row wrap
+        justify-content: space-between
+
+    +above($tab)
+      .section
         padding: 0 24px
 
   .__scroll &
@@ -90,6 +92,8 @@
       transition opacity .3
       padding: 4px 0 0
       margin-left: -20px
+      margin-right: -20px
+      width: calc(100% + 40px)
       position: relative
       overflow: hidden
 
@@ -98,6 +102,12 @@
 
       +above($tab)
         margin-left: -24px
+        margin-right: -24px
+        width: calc(100% + 48px)
+
+      +above($wide)
+        margin-right: 0
+        width: calc(100% + 24px)
 
     .btn
       margin-right: 8px
@@ -374,6 +384,7 @@
 
   .__short.header &
     margin-top: 0
+    padding: 6px 0
 
   .logo
     transition color .3s
