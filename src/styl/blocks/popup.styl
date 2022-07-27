@@ -1,10 +1,25 @@
+.mfp-container
+  overflow-y: auto
+
+  &::before
+    display none
+
+.mfp-content
+  min-height: 100%
+  display flex
+  align-items center
+
+  +below($tab - 1px)
+    align-items: flex-end
+
+
 .popup
   padding 36px 26px
   background #fff
   width 100%
   max-width 422px
-  max-height 96vh
-  overflow-y auto
+  //max-height 96vh
+  //overflow-y auto
   margin 0 auto
   box-shadow 0 20px 34px rgba(0, 0, 0, 0.1)
   position relative
@@ -46,11 +61,11 @@
     padding 36px 30px
 
   +below($tab - 1px)
-    position fixed
-    bottom 0
-    right 0
-    left 0
-    z-index 5
+    //position fixed
+    //bottom 0
+    //right 0
+    //left 0
+    //z-index 5
 
     &-title
       .wide &

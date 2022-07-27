@@ -22,15 +22,24 @@
       padding-right calc(var(--map-aside-width) - 24px)
 
   &.__short
-    +above($wide)
+    background: #222 !important
+
+    +below($wide + 220px)
       .header-menu
+        .currency-menu
+          display none
+
+    +above($tab)
+      .header-menu
+        transition padding .3s
         flex 1 0 auto
         padding-left: 48px
-        padding-right: 24px
         margin-left: auto
         display flex
         justify-content space-between
         flex-flow row nowrap
+        height: 46px
+        overflow: hidden
 
         .user-menu,
         .currency-menu
@@ -55,10 +64,11 @@
         display: flex
         flex-flow: row wrap
         justify-content: space-between
-
-    +above($tab)
-      .section
         padding: 0 24px
+
+    +above($wide)
+      .header-menu
+        padding-right: 24px
 
   .__scroll &
     background rgba(34, 34, 34, 0.95)
@@ -66,7 +76,7 @@
   &-map
     height: 46px
     position: relative
-    padding: 8px 8px 8px 20px
+    padding: 8px 8px 8px 12px
     background: #363d3e
 
     &::after
@@ -86,6 +96,35 @@
 
     +above($tab)
       padding-left: 24px
+
+    &__toggle
+      position: relative
+
+      &-mob
+        clear both
+        padding: 15px 0 8px
+
+        .header-map__toggle
+          display flex
+          justify-content space-between
+
+          .btn
+            flex 1 0 auto
+            text-align: center
+
+      .btn
+        padding: 6px 16px
+
+        &:not(.btn-red)
+          &:not(:first-child)
+            border-top-left-radius: 0
+            border-bottom-left-radius: 0
+            border-left: 0
+
+          &:not(:last-child)
+            border-top-right-radius: 0
+            border-bottom-right-radius: 0
+            border-right: 0
 
     &__scroller
       opacity: 0
@@ -297,6 +336,14 @@
         +above($wide + $menu_extra)
           padding-left 44px
 
+    .user-menu
+      +above($tab)
+        margin-left: auto
+        padding-right: 32px
+
+        li
+          padding-left: 22px
+
     .currency-menu,
     .user-menu
       +above($tab)
@@ -386,6 +433,12 @@
     margin-top: 0
     padding: 6px 0
 
+    +below($tab - 1px)
+      padding: 6px 0
+
+    .logo
+      float: left
+
   .logo
     transition color .3s
     pointer-events all
@@ -420,7 +473,7 @@
 
       +below($tab - 1px)
         font-size 28px
-        line-height 50px
+        line-height 37px
 
     &:hover
       color $red

@@ -1,6 +1,15 @@
 
 - let mapButtons = [{icon: 'politics', name: 'Политика'}, {icon: 'horn', name: 'Заявления'}, {icon: 'virus', name: 'Коронавирус'}, {icon: 'lockdown', name: 'Локдаун'}, {icon: 'seeds', name: 'Посевная'}, {icon: 'whatshot', name: 'Пожары'}, {icon: 'flood', name: 'Наводнения'}, {icon: 'ball', name: 'Футбол'}, {icon: 'tornado', name: 'Ураганы'}];
 
+mixin map_toggle(hide)
+  .header-map__toggle(class= hide ? 'mob-hide' : '')
+    a.btn.btn-map.__s-33.btn-gray(href='main.html')
+      +icon('tiles').btn-icon
+      span(class= !hide && (map && header_class === '__short') ? '' : 'mob-hide') Плитки
+    a.btn.btn-map.__s-33.btn-red(href='livemap.html')
+      +icon('map').btn-icon
+      span(class= !hide && (map && header_class === '__short') ? '' : 'mob-hide') Карта
+
 .header(class= header_class)
   .section
     +logo()
@@ -9,7 +18,12 @@
       +currency()
       +nav()
       +user()
+
+      +map_toggle(true)
+
     if (map && header_class === '__short')
+      .mob-only.header-map__toggle-mob
+        +map_toggle()
       .header-map__scroller
         .js-map-slider
           .header-map

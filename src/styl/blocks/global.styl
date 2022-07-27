@@ -148,7 +148,7 @@ body
 
   &.__white
     //background #E5E5E5
-    background #f9f9f9
+    background #F8F6F3
 
   &.__aside-space
     +desktop()
@@ -229,3 +229,11 @@ body
 
   +below($tab - 1px)
     flex-flow column
+
+.mob-hide
+  +below($tab - 1px)
+    display none !important
+
+.mob-only
+  +above($tab)
+    display none !important
