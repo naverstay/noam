@@ -73,6 +73,9 @@
   .__scroll &
     background rgba(34, 34, 34, 0.95)
 
+    +above($wide)
+      padding-bottom: 3px
+
   &-map
     height: 46px
     position: relative
@@ -99,6 +102,28 @@
 
     &__toggle
       position: relative
+
+      &-all
+        transition top .3s
+        clear both
+        position: absolute
+        left: 30px
+        top: 34px
+
+        .__scroll &
+          top: 18px
+
+        +above($wide)
+          transition bottom .3s
+          bottom: 16px
+          right: 30px
+          top: unset
+          left: unset
+
+          .__scroll &
+            top: unset
+            bottom: 6px
+
 
       &-mob
         clear both
@@ -174,10 +199,10 @@
     z-index 3
 
     .__scroll &
-      padding 5px 0
+      padding 15px 0
 
       +above($wide + $menu_extra)
-        margin-top: -47px
+        margin-top: -56px
 
         .logo
           position relative
@@ -213,7 +238,7 @@
     .__scroll &
       border-bottom-color transparent
 
-    +below($tab - 1px)
+    +below($wide - 1px)
       transition transform .3s
       position fixed
       z-index 1
@@ -247,9 +272,9 @@
       .open_menu &
         transform translateX(-100%)
 
-    +above($wide + $menu_extra)
-      display grid
-      grid-template-columns 1fr auto 1fr
+    //+above($wide + $menu_extra)
+    //  display grid
+    //  grid-template-columns 1fr auto 1fr
 
     &__icon
       transition color .3s
@@ -267,7 +292,7 @@
         height 14px
         width 12px
 
-      +below($tab - 1px)
+      +below($wide - 1px)
         flex-flow row
 
         span
@@ -279,7 +304,7 @@
           width 18px
           height 18px
 
-      +above($tab)
+      +above($wide)
         flex-flow row
 
         span
@@ -294,7 +319,7 @@
         +above($wide + $menu_extra)
           padding-right 23px
 
-      +above($tab)
+      +above($wide)
         left 0
 
       +above($wide + $menu_extra)
@@ -314,11 +339,11 @@
         &:hover
           color: $red
 
-      +below($tab - 1px)
+      +below($wide - 1px)
         li
           padding 30px 0 0
 
-      +above($tab)
+      +above($wide)
         right 0
         min-width 205px
         justify-content space-between
@@ -327,48 +352,57 @@
         min-width unset
         justify-content flex-end
 
+        .__scroll &
+          display none
+
       li
         padding-left 3px
 
-        +above($tab)
+        +above($wide)
           padding-left 20px
 
         +above($wide + $menu_extra)
           padding-left 44px
 
     .user-menu
-      +above($tab)
-        margin-left: auto
-        padding-right: 32px
+      +above($wide)
+        .__map-aside &
+          margin-left: auto
+          padding-right: 32px
+          display flex
 
-        li
-          padding-left: 22px
+          li
+            padding-left: 22px
 
     .currency-menu,
     .user-menu
-      +above($tab)
-        transition transform .3s
+      +above($wide)
+        transition transform .3s, opacity.3s
         display flex
         position absolute
         bottom 100%
-        margin-bottom 32px
+        margin-bottom 42px
 
         .__scroll &
-          transform translateY(16px)
+          opacity 0
+          transform translateY(-50px)
 
       +above($wide + $menu_extra)
-        position relative
-        bottom unset
-        right unset
-        left unset
-        margin-bottom 0
-        transform none !important
+        //position relative
+        //bottom unset
+        //right unset
+        //left unset
+        //margin-bottom 0
+        //transform none !important
 
         .__scroll &
+          position relative
           margin-bottom: -5px
 
   .nav
-    +above($tab)
+    +above($wide)
+      transition margin-right .3s
+      margin-right: 150px
       margin-bottom -1px
 
       .nav-link
@@ -377,6 +411,7 @@
 
       .__scroll &
         margin-top -7px
+        margin-right: 0
 
     +above($wide + $menu_extra)
       padding 0 10px
@@ -392,7 +427,7 @@
       transition color .3s, padding .3s
       padding-right 60px
 
-      +above($tab)
+      +above($wide)
         padding-left 20px
         padding-right 20px
 
@@ -406,7 +441,7 @@
         transition background .3s
 
     li
-      +above($tab)
+      +above($wide)
         padding 0 5px
 
         &:first-child
@@ -417,7 +452,7 @@
 
       &.active
         .nav-link
-          +above($tab)
+          +above($wide)
             font-weight 500
 
           &::before
@@ -461,6 +496,9 @@
         font-size 28px
         line-height 37px
         top: 0
+
+      +above($wide)
+        float: left
 
     .__short.header &
       font-size: 24px
@@ -517,5 +555,5 @@
       &:nth-of-type(3)
         margin-left 12px
 
-  +above($tab)
+  +above($wide)
     display none
