@@ -1,18 +1,31 @@
 - let socials = ['gl', 'tw', 'gl', 'tw'];
+- let tags = ['Решительный', 'Патриотический', 'Организация', 'Открывать', 'Делаться', 'Драгоценный', 'Повторять', 'Китайский', 'Привести', 'Понять', 'Прошлый'];
 
 .footer
   .section
-    +logo()
+    .footer-caption Популярные теги
 
-    .footer-menu
-      +nav()
-    .footer-socials
+    .footer-tags
+      each tag in tags
+        a.tag-link(href='#')= tag
+
+    .footer-nav
+      +logo()
+
+      .footer-menu
+        +nav(true)
+
+    //-.footer-socials
       ul.social-list
         each soc in socials
           li: a.social-link(href='#')
             +icon(soc)
 
-    .footer-copyright
-      a(href='#') noam.ru
-      span
-        |  — Последние новости России и мира © 2022
+    .footer-info
+      .footer-copyright
+        a(href='#') Noam.ru
+        span
+          |  — последние новости России и мира
+
+      .footer-feedback
+        a(href='#') Обратная связь

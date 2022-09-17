@@ -11,11 +11,15 @@ mixin icon(name)
   svg&attributes(attributes)
     use(xlink:href=`/assets/sprite/icon.svg#icon_${name}`)
 
-mixin nav()
+mixin nav(footer)
   - let list = ['Главное', 'Коронавирус', 'Политика', 'Спорт', 'Наука', 'Бизнес', 'Технологии'];
   ul.nav
     each item, index in list
       li(class= index ? '' : 'active'): a.nav-link(href='#')= item
+    if (footer)
+      li: a.nav-link(href='#')
+        +icon('whatshot').btn-icon.icon-red
+        span Новости&nbsp;на&nbsp;карте
 
 mixin logo()
   .logo-holder
