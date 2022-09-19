@@ -92,25 +92,36 @@ mixin map_card(title, portal, tags, img, cls, description, icon_cls, icon)
         span Читать далее
         +icon('arrow_nw').btn-icon
 
+mixin search()
+  form.header-search(action='#')
+    .header-search__input
+      input.input.input-transp.__s-100p(placeholder='Поиск')
+
+    button.btn.btn-search(type='submit')
+      +icon('search').btn-icon
+
 mixin currency()
   ul.currency-menu
     li: span.header-menu__icon
-      +icon('dollar')
-      span 73,59
+      span.currency-name USD:
+      span.currency-value 60,60
+      span.currency-trend.__down 0,13
 
     li: span.header-menu__icon
-      +icon('euro')
-      span 83,43
+      span.currency-name EUR:
+      span.currency-value 60,97
+      span.currency-trend.__up 0,59
 
     li: span.header-menu__icon
-      +icon('energy')
-      span 76.49
+      span.currency-name Brent:
+      span.currency-value 60,60
+      span.currency-trend.__up 1,47
 
 mixin user()
   ul.user-menu
     li: span.header-menu__icon.js-popup(data-popup='#modal_location')
       +icon('nav')
-      span Краков
+      span Санкт-Петербург
 
     li: span.header-menu__icon.js-popup(data-popup='#modal_auth')
       +icon('user')

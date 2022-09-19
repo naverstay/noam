@@ -1,11 +1,23 @@
 :root {
   --app-height 100%
   --map-aside-width $map_aside_width
+  --home-aside-width $home_aside_width
+  --header-search-height 48px
   --sat env(safe-area-inset-top)
   --sar env(safe-area-inset-right)
   --sab env(safe-area-inset-bottom)
   --sal env(safe-area-inset-left)
 }
+
++above($wide + 400px)
+  :root {
+    --home-aside-width $home_aside_width_1600
+  }
+
++above($wide)
+  :root {
+    --header-search-height 40px
+  }
 
 *
   box-sizing border-box
@@ -227,13 +239,29 @@ body
     &:hover
       color $red
 
-  +below($wide - 1px)
+  +below($mob_menu - 1px)
     flex-flow column
 
 .mob-hide
-  +below($tab - 1px)
+  +above($tab)
     display none !important
 
 .mob-only
-  +above($tab)
+  +below($tab - 1px)
+    display none !important
+
+.dt-hide
+  +above($dt)
+    display none !important
+
+.dt-only
+  +below($dt - 1px)
+    display none !important
+
+.wide-hide
+  +above($wide)
+    display none !important
+
+.wide-only
+  +below($wide - 1px)
     display none !important

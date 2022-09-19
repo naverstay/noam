@@ -170,10 +170,10 @@
 
   .__page-aside &
     +above($wide)
-      padding-right: $home_aside_width
+      padding-right: var(--home-aside-width)
 
       .section
         max-width 100%
 
       .footer-nav::before
-        margin-left: Calc($home_aside_width / -2)
+        margin-left: calc(var(--home-aside-width) / -2)
