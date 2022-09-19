@@ -1,12 +1,12 @@
 .header
   will-change transform
-  transition background .3s, padding .3s
+  transition background .3s
   position sticky
   top 0
   left 0
   width: 100vw
   z-index 1001
-  //background: #323232
+  background: #222
 
   +above($tab)
     top: calc(-1 * var(--header-search-height) - 8px)
@@ -14,7 +14,12 @@
   +below($wide - 1px)
     padding-top: 32px
 
+  +below($tab - 1px)
+    padding-top: 36px
+    position: fixed
+
   &-inner
+    z-index: 1
     position: relative
     display grid
     align-items center
@@ -35,70 +40,20 @@
       width: 100vw
       left: 50%
       transform translateX(-50%)
-      background: rgba(255, 255, 255, .35)
+      background: $menu_bdr_clr
+
+    +below($tab - 1px)
+      height: var(--header-mob-height)
+
+      &::after,
+      &::before
+        display none
 
     +above($tab)
       padding-top: calc(8px + var(--header-search-height))
 
     +above($wide)
       grid-template-columns 192px auto 200px
-
-  //  +below($tab - 1px)
-  //    position fixed
-  //
-  //  +above($tab)
-  //    background rgba(34, 34, 34, 0.95)
-  //
-  //    &.__short
-  //      .nav
-  //        display none
-  //
-  //  +above($wide)
-  //    .__map-aside &
-  //      overflow: hidden
-  //      padding-right calc(var(--map-aside-width) - 24px)
-  //
-  //  &.__short
-  //    background: #222 !important
-  //
-  //    +below($wide + 220px)
-  //      .header-menu
-  //        .currency-menu
-  //          display none
-  //
-  //    +above($tab)
-  //      .header-menu
-  //        transition padding .3s
-  //        flex 1 0 auto
-  //        padding-left: 48px
-  //        margin-left: auto
-  //        display flex
-  //        justify-content space-between
-  //        flex-flow row nowrap
-  //        height: 46px
-  //        overflow: hidden
-
-  //.user-menu,
-  //.currency-menu
-  //  opacity: 1
-  //  visibility: visible
-  //  pointer-events: all
-  //  position: relative
-  //  bottom: unset
-  //  right: unset
-  //  left: unset
-  //  margin-bottom: 0
-  //  transform: none !important
-  //
-  //+below($tab - 1px)
-  //  .currency-menu
-  //    display none !important
-  //
-  //  .user-menu
-  //    margin-left: auto
-
-  .__scroll &
-    background rgba(34, 34, 34, 0.95)
 
   &-map
     height: 46px
@@ -169,7 +124,7 @@
 
   &-overlay
     position fixed
-    top 0
+    top: calc(var(--header-mob-height) + var(--header-mob-mapbtn-height) - 1px)
     height var(--app-height)
     left 0
     right 0
@@ -183,45 +138,11 @@
 
     .open_menu &
       pointer-events all
-      opacity .5
-
-  //  .logo-holder
-  //    position relative
-  //    z-index 3
-  //
-  //    .__scroll &
-  //      padding 15px 0
-  //
-  //      +above($wide + $menu_extra)
-  //        margin-top: -56px
-  //
-  //        .logo
-  //          position relative
-  //          top 54px
-  //          left -100%
-  //          margin-left 100%
-  //          transition color .3s
-  //          font-size 28px
-  //          line-height 37px
-  //
-  //    +below($tab - 1px)
-  //      padding-top 24px
-  //      transition padding .3s
-  //
-  //      &::before
-  //        content ''
-  //        position absolute
-  //        top 0
-  //        bottom 0
-  //        right -20px
-  //        left -20px
-  //        z-index -1
-  //        transition background .3s
-  //
-  //        .open_menu &
-  //          background #191919
+      opacity .75
 
   &-search
+    position: relative
+
     +above($dt)
       flex 1 0 auto
 
@@ -260,9 +181,9 @@
         left: -10px
         height: var(--header-search-height)
 
-      +above($dt)
-        right: 0
-        left: 0
+      //+above($dt)
+      //  right: 0
+      //  left: 0
 
     .__scroll &
       border-bottom-color transparent
@@ -272,23 +193,79 @@
       position fixed
       z-index 1
       left 100%
-      top 0
-      height var(--app-height)
-      width 350px
-      max-width 95vw
-      padding 108px 40px 26px
-      background #191919
-      display flex
-      flex-flow column
-      align-items flex-start
-      justify-content space-between
+      top: calc(var(--header-mob-height) + var(--header-mob-mapbtn-height))
+      //height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) + 1px)
+      max-height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height))
+      width 100%
+      max-width 450px
+      background #222
       overflow-y auto
+      border-top: 1px solid $menu_bdr_clr
 
-      .nav
+      .header-menu__wrapper
+        min-height 100%
+        position: relative
+        display flex
+        flex-flow column
         align-items flex-start
+        justify-content space-between
+        padding calc(22px + var(--header-search-height)) 20px calc(34px + var(--header-search-height) * 3)
+
+      .header-menu__top
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 20px
+        right: 20px
+        display grid
+        grid-template-areas "currency" "nav" "search" "user"
+        grid-template-rows var(--header-search-height) auto var(--header-search-height) var(--header-search-height)
+
+      .currency-menu
+        grid-area currency
+        border-bottom: 1px solid $menu_bdr_clr
+        overflow-x: auto
+        flex-wrap nowrap
+        margin: 0 -20px
+        padding: 0 20px
+
+      .header-search
+        grid-area search
+        margin: 0 -20px
+        border: 1px solid $menu_bdr_clr
+        border-width: 1px 0
+        padding-left: 10px
+
+        .btn
+          left: 10px
+
+      .user-menu
+        grid-area user
+        margin: 0 -20px
 
         li
-          margin-bottom 12px
+          width: 50%
+
+          .header-menu__icon
+            padding: 0 20px
+            width: 100%
+            font-size: 13px
+
+          &:first-child
+            border-left: 0
+
+      .nav
+        z-index: 1
+        position: relative
+        align-items flex-start
+        width: 100%
+
+        li
+          width: 100%
+          border-bottom: 1px solid $menu_bdr_clr
+
+          &:last-child
+            border-bottom: 0
 
         .active .nav-link
           font-weight bold
@@ -297,7 +274,10 @@
           font-weight: 400
           font-size 14px
           line-height 21px
-          padding-bottom 14px
+          padding: 10px 16px
+          height: 52px
+          display flex
+          align-items center
 
       .open_menu &
         transform translateX(-100%)
@@ -316,19 +296,20 @@
       svg
         fill #B2B2B2
         height 14px
-        width 12px
+        width 14px
 
       +below($wide - 1px)
         flex-flow row
 
-        //span
-        //  padding 0 0 0 15px
-        //  font-size 16px
-        //  line-height 21px
-
         svg
           width 16px
           height 16px
+
+      +below($tab - 1px)
+
+        svg
+          width 14px
+          height 14px
 
       +above($wide)
         flex-flow row
@@ -337,14 +318,14 @@
 
       +above($tab)
         padding: 0 22px
-        border-left: 1px solid rgba(255, 255, 255, .35)
+        border-left: 1px solid $menu_bdr_clr
 
       +above($wide)
         padding: 0 30px
 
       li
         display flex
-        padding-left 22px
+        padding-left 24px
 
         +above($tab)
           padding-left 17px
@@ -357,14 +338,6 @@
 
         &:first-child
           padding-left: 0
-
-      +above($wide + $menu_extra)
-        transition opacity .3s
-
-        .__scroll &
-          opacity 0
-          visibility hidden
-          pointer-events none
 
     .currency-menu,
     .user-menu
@@ -381,7 +354,7 @@
 
       li
         display flex
-        border-left: 1px solid rgba(255, 255, 255, .35)
+        border-left: 1px solid $menu_bdr_clr
 
       .header-menu__icon
         cursor pointer
@@ -395,20 +368,7 @@
           svg
             fill currentColor
 
-      //+above($wide)
-      //  right 0
-      //  min-width 205px
-      //  justify-content space-between
-
-      //+above($wide + $menu_extra)
-      //  min-width unset
-      //  justify-content flex-end
-      //
-      //  .__scroll &
-      //    display none
-
       li
-        padding 0 20px
 
         +above($tab)
           padding 0 24px
@@ -450,7 +410,6 @@
       padding 0 10px
 
       .__scroll &
-        //margin-top 0
 
         .nav-link
           padding-top 22px
@@ -503,6 +462,9 @@
 
   .header &
     padding-top: 10px
+
+    +below($tab - 1px)
+      padding 16px 0
 
   .__short.header &
     margin-top: 0
@@ -564,8 +526,8 @@
   burger()
   cursor pointer
   position fixed
-  top 47px
-  right 24px
+  top 66px
+  right 20px
   z-index 3
   min-width 30px
   margin-right 2px
@@ -587,9 +549,6 @@
 
   +below($wide - 1px)
     transition top .3s
-
-    .__scroll &
-      top 24px
 
   .open_menu &
     burger_open()
