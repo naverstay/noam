@@ -161,6 +161,92 @@
             &::before
               padding-bottom calc(100% + 30px)
 
+    &.__hero
+      margin-bottom: -36px
+
+      li.__main
+        width: 100%
+        margin-bottom: 12px
+        height: auto !important
+
+        .card
+          +above($tab)
+            display grid
+            grid-column-gap 20px
+            grid-template-areas "img title" "img text" "img link"
+            grid-template-columns 4.3fr 5.6fr
+
+          +above($wide)
+            grid-template-columns 1fr 1fr
+            grid-column-gap 30px
+
+        .card-footer
+          grid-area link
+
+          +above($tab)
+            padding-top: 14px
+
+        .card-title
+          color: #fff
+          font-weight: 700
+          font-size: 24px
+          line-height: 29px
+          padding-top: 6px
+          grid-area title
+
+          +below($tab - 1px)
+            font-size: 21px
+            line-height: 28px
+            margin-top: 10px
+
+          +above($wide)
+            font-size: 32px
+            line-height: 39px
+
+        .card-description
+          font-weight: 300
+          font-size: 14px
+          line-height: 21px
+          color: #B2B2B2
+          grid-area text
+
+          +below($tab - 1px)
+            display none
+
+        .card-preview
+          grid-area img
+
+          img
+            img_center()
+
+          +below($tab - 1px)
+            height: 148px
+
+            img
+              img_center()
+              width auto
+
+        +above($tab)
+          + li + li ~ li
+            display none
+
+        +above($dt)
+          + li + li ~ li
+            display block
+
+      li:not(.__main)
+        .card-preview
+          height: 148px
+
+          img
+            img_center()
+
+        +above($tab)
+          width 50%
+
+        +above($dt)
+          width 33.3333%
+
     //.card-preview
     //  height 320px
 
@@ -281,7 +367,10 @@
     margin-top 8px
     font-size 14px
     line-height 21px
-    color #000000
+    color #000
+
+    .section.__black &
+      color: #fff
 
     +below($tab - 1px)
       display none
@@ -355,8 +444,12 @@
       color $red
 
   .section.__black &
+
     .card-info
       border-top-color #454545
 
     &:not(:hover)
       color #fff
+
+    &:hover
+      color #bbb

@@ -1,5 +1,6 @@
 :root {
   --app-height 100%
+  --app-width max($content_max_width, 100vw)
   --map-aside-width $map_aside_width
   --home-aside-width $home_aside_width
   --header-search-height 48px
@@ -11,14 +12,14 @@
   --sal env(safe-area-inset-left)
 }
 
-+above($wide + 400px)
-  :root {
-    --home-aside-width $home_aside_width_1600
-  }
-
 +above($wide)
   :root {
     --header-search-height 40px
+  }
+
++above($wide_1600)
+  :root {
+    --home-aside-width $home_aside_width_1600
   }
 
 *
@@ -99,10 +100,16 @@ body
 .content
   position relative
   flex 1 0 auto
-  overflow hidden
+  transition padding-right .3s
+
+  //overflow hidden
 
   +below($tab - 1px)
     padding-top calc(var(--header-mob-height) + var(--header-mob-mapbtn-height))
+
+  +above($wide_1600)
+    .__page-aside &
+      padding-right: var(--home-aside-width)
 
 .section
   position relative
@@ -127,8 +134,12 @@ body
     right 50%
 
   &.__content
-    padding-top 40px
-    padding-bottom 40px
+    padding-top 32px
+    padding-bottom 32px
+
+    +above($tab)
+      padding-top 48px
+      padding-bottom 48px
 
     +desktop()
       padding-top 48px

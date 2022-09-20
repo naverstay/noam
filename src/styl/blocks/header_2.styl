@@ -1,6 +1,6 @@
 .header
   will-change transform
-  transition background .3s
+  transition background .3s, padding-right .3s
   position sticky
   top 0
   left 0
@@ -21,6 +21,10 @@
   +above($wide)
     .__map-aside &
       padding-right calc(var(--map-aside-width) - 24px)
+
+  +above($wide_1600)
+    .__page-aside &
+      padding-right: var(--home-aside-width)
 
   &.__short
     padding-top: 0
@@ -66,11 +70,11 @@
     +below($tab - 1px)
       height: var(--header-mob-height)
 
-      &::after,
-      &::before
+      &::after
         display none
 
     +above($tab)
+      padding-bottom: 6px
       padding-top: calc(8px + var(--header-search-height))
 
     +above($wide)
