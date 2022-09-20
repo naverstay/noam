@@ -25,7 +25,7 @@
     display flex
     flex-flow row nowrap
 
-    +above($wide)
+    +above($wide_1600)
       margin-right calc(-1 * var(--map-aside-width))
 
       .__map-aside &
@@ -37,7 +37,7 @@
       flex: 1 0 auto
       transition transform .3s
 
-      +below($wide - 1px)
+      +below($wide_1600 - 1px)
         position: fixed
         bottom: 0
         right: 0

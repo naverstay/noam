@@ -18,11 +18,10 @@
     padding-top: 36px
     position: fixed
 
-  +above($wide)
+  +above($wide_1600)
     .__map-aside &
       padding-right calc(var(--map-aside-width) - 24px)
 
-  +above($wide_1600)
     .__page-aside &
       padding-right: var(--home-aside-width)
 
@@ -424,7 +423,7 @@
         svg
           opacity: 1
 
-    +above($wide)
+    +above($wide_1600)
       .__map-aside &
         margin-left: auto
         padding-right: 32px
