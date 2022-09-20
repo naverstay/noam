@@ -92,13 +92,14 @@ mixin map_card(title, portal, tags, img, cls, description, icon_cls, icon)
         span Читать далее
         +icon('arrow_nw').btn-icon
 
-mixin search()
+mixin search(map)
   form.header-search(action='#')
-    .header-search__input
-      input.input.input-transp.__s-100p(placeholder='Поиск')
+    if (!map)
+      .header-search__input
+        input.input.input-transp.__s-100p(placeholder='Поиск')
 
-    button.btn.btn-search(type='submit')
-      +icon('search').btn-icon
+      button.btn.btn-search(type='submit')
+        +icon('search').btn-icon
 
 mixin currency()
   ul.currency-menu
@@ -117,13 +118,19 @@ mixin currency()
       span.currency-value 60,60
       span.currency-trend.__up 1,47
 
-mixin user()
+mixin user(map)
+  - let cls = map ? 'mob-hide' : ''
   ul.user-menu
-    li: span.header-menu__icon.js-popup(data-popup='#modal_location')
-      +icon('nav')
-      span Санкт-Петербург
+    if (!map)
+      li: span.header-menu__icon.js-popup(data-popup='#modal_location')
+        +icon('nav')
+        span(class= cls) Санкт-Петербург
 
     li: span.header-menu__icon.js-popup(data-popup='#modal_auth')
       +icon('user')
-      span Войти
+      span(class= cls) Войти
 
+    if (map)
+      li: a.header-menu__icon(href='main.html')
+        +icon('list')
+        span(class= cls) Новости списком

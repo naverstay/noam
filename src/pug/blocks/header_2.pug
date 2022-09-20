@@ -1,42 +1,15 @@
 
 - let mapButtons = [{icon: 'politics', name: 'Политика'}, {icon: 'horn', name: 'Заявления'}, {icon: 'virus', name: 'Коронавирус'}, {icon: 'lockdown', name: 'Локдаун'}, {icon: 'seeds', name: 'Посевная'}, {icon: 'whatshot', name: 'Пожары'}, {icon: 'flood', name: 'Наводнения'}, {icon: 'ball', name: 'Футбол'}, {icon: 'tornado', name: 'Ураганы'}];
 
-mixin map_toggle(hide)
-  .header-map__toggle
-    a.btn.btn-map.__s-33.btn-red(href='livemap.html')
-      +icon('whatshot').btn-icon
-      span() Новости на карте
 
-    //-a.btn.btn-map.__s-33.btn-gray(href='main.html')
-      +icon('tiles').btn-icon
-      span(class= !hide ? '' : 'mob-hide') Плитки
-    //-a.btn.btn-map.__s-33.btn-red(href='livemap.html')
-      +icon('map').btn-icon
-      span(class= !hide ? '' : 'mob-hide') Карта
-
-.header-map__toggle-mob.wide-hide
-  a.btn.btn-map.__s-33.btn-red(href='livemap.html')
-    +icon('whatshot').btn-icon
-    span() Новости на карте
-
-.header(class= header_class)
-  .section: .header-inner
-    +logo()
-
-    .header-menu: .header-menu__wrapper
-      +nav()
-
-      .header-menu__top
-        +search()
+if (map && header_class === '__short')
+  .header(class= header_class)
+    .section
+      .header-menu__map
+        +logo()
         +currency()
-        +user()
+        +user(true)
 
-      if (map && header_class === '__short')
-        +map_toggle(true)
-
-    if (map && header_class === '__short')
-      .mob-hide.header-map__toggle-mob
-        +map_toggle(false)
       .header-map__scroller
         .js-map-slider
           .header-map
@@ -45,13 +18,36 @@ mixin map_toggle(hide)
                 +icon(c.icon).btn-icon.icon-inactive
                 +icon('info').btn-icon.icon-active
                 span= c.name
-    else
+
+else
+
+  .header-map__toggle-mob.wide-hide
+    a.btn.btn-map.__s-33.btn-red(href='livemap.html')
+      +icon('whatshot').btn-icon
+      span() Новости на карте
+
+  .header(class= header_class)
+    .section: .header-inner
+      +logo()
+
+      .header-menu: .header-menu__wrapper
+        +nav()
+
+        .header-menu__top
+          +search()
+          +currency()
+          +user()
+
       .header-map__toggle-all.wide-only
-        +map_toggle(false)
+        .header-map__toggle
+          a.btn.btn-map.__s-33.btn-red(href='livemap.html')
+            +icon('whatshot').btn-icon
+            span() Новости на карте
 
-    .burger.js-burger
-      span
-      span
-      span
+      .burger.js-burger
+        span
+        span
+        span
 
-  .header-overlay.js-burger
+    .header-overlay.js-burger
+

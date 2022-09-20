@@ -79,6 +79,9 @@ body
   flex-flow column nowrap
   position: relative
 
+  .__map-aside &
+    overflow: hidden
+
   +below($tab - 1px)
     overflow: hidden
 
@@ -249,11 +252,11 @@ body
     flex-flow column
 
 .mob-hide
-  +above($tab)
+  +below($tab - 1px)
     display none !important
 
 .mob-only
-  +below($tab - 1px)
+  +above($tab)
     display none !important
 
 .dt-hide

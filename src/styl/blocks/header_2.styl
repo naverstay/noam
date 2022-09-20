@@ -18,6 +18,27 @@
     padding-top: 36px
     position: fixed
 
+  +above($wide)
+    .__map-aside &
+      padding-right calc(var(--map-aside-width) - 24px)
+
+  &.__short
+    padding-top: 0
+    top: 0
+
+    .currency-menu
+      +below($wide_1600 - 1px)
+        display none
+
+    .header-inner
+      padding-top: 0
+
+  &:not(.__short)
+    .currency-menu,
+    .user-menu
+      +below($dt - 1px)
+        flex: 1 0 auto
+
   &-inner
     z-index: 1
     position: relative
@@ -86,13 +107,16 @@
       &-mob
         position: fixed
         top: 0
-        right: 0
+        right: -4px
         left: 0
         z-index: 1002
 
         .btn
           border-radius: 0
           width: 100%
+
+        body.open_menu &
+          right: 0
 
     &__scroller
       opacity: 0
@@ -167,6 +191,22 @@
     +above($dt)
       margin: 0
 
+    &__map
+      position: relative
+      display flex
+      margin-right: -20px
+      margin-bottom: -4px
+      height: 60px
+
+      +above($tab)
+        margin-right: -30px
+        align-items stretch
+        justify-content space-between
+        flex-fow row nowrap
+
+      .__short &
+        justify-content flex-end
+
     &__top
       position: relative
       display flex
@@ -178,12 +218,15 @@
         position: absolute
         top: 0
         right: -24px
-        left: -10px
+        left: -7px
         height: var(--header-search-height)
 
-      //+above($dt)
-      //  right: 0
-      //  left: 0
+      .__short &
+        justify-content flex-end
+
+    //+above($dt)
+    //  right: 0
+    //  left: 0
 
     .__scroll &
       border-bottom-color transparent
@@ -294,12 +337,16 @@
       flex-flow column
 
       svg
-        fill #B2B2B2
+        fill rgba(178, 178, 178, 1)
         height 14px
         width 14px
+        flex 1 0 auto
+        opacity: .5
+        transition opacity .3s, fill .3s
 
       +below($wide - 1px)
         flex-flow row
+        justify-content center
 
         svg
           width 16px
@@ -314,80 +361,72 @@
       +above($wide)
         flex-flow row
 
-    .currency-menu
+  .currency-menu
+
+    +above($tab)
+      padding: 0 22px
+      border-left: 1px solid $menu_bdr_clr
+
+    +above($wide)
+      padding: 0 30px
+
+    li
+      display flex
+      padding-left 24px
 
       +above($tab)
-        padding: 0 22px
-        border-left: 1px solid $menu_bdr_clr
+        padding-left 17px
 
       +above($wide)
-        padding: 0 30px
+        padding-left 20px
 
-      li
-        display flex
-        padding-left 24px
+      +above($wide + $menu_extra)
+        padding-right 23px
 
-        +above($tab)
-          padding-left 17px
+      &:first-child
+        padding-left: 0
 
-        +above($wide)
-          padding-left 20px
+  .currency-menu,
+  .user-menu
+    display flex
+    align-items stretch
+    font-size: 12px
+    line-height: 15px
 
-        +above($wide + $menu_extra)
-          padding-right 23px
+  .user-menu
+    justify-content flex-end
 
-        &:first-child
-          padding-left: 0
-
-    .currency-menu,
-    .user-menu
+    li
       display flex
-      align-items stretch
-      font-size: 12px
-      line-height: 15px
+      border-left: 1px solid $menu_bdr_clr
 
-      +below($dt - 1px)
-        flex: 1 0 auto
+    .header-menu__icon
+      cursor pointer
+      padding: 0 23px
+      min-width 60px
 
-    .user-menu
-      justify-content flex-end
+      +above($tab)
+        padding 0 24px
 
-      li
-        display flex
-        border-left: 1px solid $menu_bdr_clr
-
-      .header-menu__icon
-        cursor pointer
-
-        span
-          padding 0 0 0 10px
-
-        &:hover
-          color: $red
-
-          svg
-            fill currentColor
-
-      li
-
-        +above($tab)
-          padding 0 24px
-
-        +above($wide)
-          padding 0 32px
-
-    .user-menu
       +above($wide)
-        .__map-aside &
-          margin-left: auto
-          padding-right: 32px
-          display flex
+        padding 0 32px
 
-          li
-            padding-left: 22px
+      span
+        padding 0 0 0 10px
+
+      &:hover
+        color: #b2b2b2
+
+        svg
+          opacity: 1
+
+    +above($wide)
+      .__map-aside &
+        margin-left: auto
+        padding-right: 32px
+        display flex
 
   .nav
-
     +above($tab)
       .nav-link
         font-size: 13px
@@ -436,29 +475,29 @@
         height 2px
         transition background .3s
 
-    //    li
-    //      +above($wide)
-    //        padding 0 5px
-    //
-    //        &:first-child
-    //          padding-left 0
-    //
-    //        &:last-child
-    //          padding-right 0
-    //
-    //      &.active
-    //        .nav-link
-    //          +above($wide)
-    //            font-weight 500
-    //
-    //          &::before
-    //            background $red
+//    li
+//      +above($wide)
+//        padding 0 5px
+//
+//        &:first-child
+//          padding-left 0
+//
+//        &:last-child
+//          padding-right 0
+//
+//      &.active
+//        .nav-link
+//          +above($wide)
+//            font-weight 500
+//
+//          &::before
+//            background $red
 
 .logo-holder
-  transition padding .3s, margin-top .3s
+  //transition padding .3s, margin-top .3s
   padding 24px 0 10px
   //text-align center
-  pointer-events none
+  //pointer-events none
 
   .header &
     padding-top: 10px
@@ -467,14 +506,8 @@
       padding 16px 0
 
   .__short.header &
-    margin-top: 0
-    padding: 6px 0
-
-    +below($tab - 1px)
-      padding: 6px 0
-
-    .logo
-      float: left
+    flex 1 0 auto
+    padding-top: 12px
 
   .logo
     transition color .3s
@@ -497,27 +530,27 @@
       +above($wide + $menu_extra)
         transition color .3s
 
-    .__scroll .header &
-      +below($wide - 1px)
-        font-size 28px
-        line-height 37px
-        top: 0
-
-      +above($wide)
-        float: left
+    //.__scroll .header &
+    //  +below($wide - 1px)
+    //    font-size 28px
+    //    line-height 37px
+    //    top: 0
+    //
+    //  +above($wide)
+    //    float: left
 
     .__short.header &
-      font-size: 24px
+      //font-size: 28px
       line-height: 37px
-      top: 0
+      //top: 0
 
       //+below($wide - 1px)
       //line-height: 37px
       //line-height: 50px
 
-      +below($tab - 1px)
-        font-size 28px
-        line-height 37px
+      //+below($tab - 1px)
+      //  font-size 28px
+      //  line-height 37px
 
     &:hover
       color $red
@@ -564,7 +597,6 @@
 .currency-name
   color: #B2B2B2
   font-weight: 500
-
 
 .currency-value
   padding-left: 4px

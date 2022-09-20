@@ -32,10 +32,11 @@
     line-height: 16px
     color: #fff
 
-    +below($tab - 1px)
-      &.btn
-        font-size: 14px
-        height: var(--header-mob-mapbtn-height)
+    .header-map__toggle-mob &
+      +below($tab - 1px)
+        &.btn
+          font-size: 14px
+          height: var(--header-mob-mapbtn-height)
 
     span
       padding-left: 8px
@@ -75,7 +76,7 @@
     left: 0
     padding-top: 3px
     height: 100%
-    width: 40px
+    width: 34px
     display flex
     background: none
     border: 0
