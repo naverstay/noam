@@ -307,9 +307,11 @@ function openPopup(target) {
       //alignTop: isMobile ? true : false,
       callbacks: {
         open() {
+          $('html').addClass('__open-popup');
           window.location.hash = target.attr('id');
         },
         close() {
+          $('html').removeClass('__open-popup');
           window.location.hash = '';
         }
       }
