@@ -46,7 +46,7 @@
     z-index: 1
     position: relative
     display grid
-    align-items center
+    align-items stretch
     justify-content space-between
     grid-template-columns 150px auto
 
@@ -75,6 +75,11 @@
     +above($tab)
       padding-bottom: 6px
       padding-top: calc(8px + var(--header-search-height))
+
+      .header-menu__wrapper
+        height: 100%
+        display: flex
+        align-items: stretch
 
     +above($wide)
       grid-template-columns 192px auto 200px
@@ -105,12 +110,16 @@
 
     &__toggle
       position: relative
-      float: right
+
+      &-all
+        display flex
+        align-items center
+        justify-content flex-end
 
       &-mob
         position: fixed
         top: 0
-        right: -4px
+        right: calc(-1 * var(--app-scroll-size))
         left: 0
         z-index: 1002
 
@@ -118,6 +127,7 @@
           border-radius: 0
           width: 100%
 
+        .__open-popup &,
         body.open_menu &
           right: 0
 
@@ -274,6 +284,7 @@
         flex-wrap nowrap
         margin: 0 -20px
         padding: 0 20px
+        hidden_scroll()
 
       .header-search
         grid-area search
@@ -296,6 +307,7 @@
             padding: 0 20px
             width: 100%
             font-size: 13px
+            justify-content flex-start
 
           &:first-child
             border-left: 0
@@ -343,7 +355,7 @@
         fill rgba(178, 178, 178, 1)
         height 14px
         width 14px
-        flex 1 0 auto
+        //flex 1 0 auto
         opacity: .5
         transition opacity .3s, fill .3s
 
@@ -464,37 +476,38 @@
       +above($mob_menu)
         padding-left 17px
         padding-right 16px
+        min-height 100%
+        display: flex
+        align-items: center
+
+        &::before
+          content ''
+          position absolute
+          bottom: -6px
+          right 0
+          left 0
+          height 2px
+          transition background .3s
 
       +above($wide)
         padding-left 18px
         padding-right 18px
 
-      &::before
-        content ''
-        position absolute
-        bottom 0
-        right 0
-        left 0
-        height 2px
-        transition background .3s
+    li
+      //+above($wide)
+      //  padding 0 5px
+      //
+      //  &:first-child
+      //    padding-left 0
+      //
+      //  &:last-child
+      //    padding-right 0
 
-//    li
-//      +above($wide)
-//        padding 0 5px
-//
-//        &:first-child
-//          padding-left 0
-//
-//        &:last-child
-//          padding-right 0
-//
-//      &.active
-//        .nav-link
-//          +above($wide)
-//            font-weight 500
-//
-//          &::before
-//            background $red
+      &.active
+        .nav-link
+          +above($tab)
+            &::before
+              background $red
 
 .logo-holder
   //transition padding .3s, margin-top .3s
