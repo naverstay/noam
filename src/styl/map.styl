@@ -25,6 +25,10 @@
     display flex
     flex-flow row nowrap
 
+    +below($tab - 1px)
+      .__map-aside.__map-aside-open &
+        pointer-events none
+
     +above($wide_1600)
       margin-right calc(-1 * var(--map-aside-width))
 
@@ -37,20 +41,52 @@
       flex: 1 0 auto
       transition transform .3s
 
-      +below($wide_1600 - 1px)
+      +below($tab - 1px)
+        width: 100%
+        height: calc(var(--app-height))
         position: fixed
         bottom: 0
-        right: 0
-        transform translateX(100%)
-        z-index: 1002;
-        height: var(--app-height)
+        left: 0
+        transform none
+        z-index: 1002
+        //height: var(--app-height)
+
+        .hero-aside
+
+          &.hero-aside__context
+            transition none
+            top: calc(var(--header-mob-height) + var(--header-mob-mapbtn-height))
+            transform translateX(0)
+            height: calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height))
+
+            .hero-aside__head::after
+              pointer-events none
+              content: ''
+              position: absolute
+              top: -50px
+              left: -50px
+              right: -50px
+              z-index: 2
+              background: rgba(0, 0, 0, .65)
+
+            .__map-aside.__map-aside-open &
+              pointer-events none
+
+              .hero-aside__head::after
+                height: calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) + 50px)
+
+          &.hero-aside__article
+            pointer-events all
+            z-index: 1002
+            top: calc(var(--header-mob-height) + var(--header-mob-mapbtn-height) + 80px)
+            height: calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) - 80px)
+
+            .__map-aside.__map-aside-open &
+              transform translateX(0)
 
         .__map-aside.__map-aside-open &
           transform translateX(0)
 
-      +below($tab - 1px)
-        width: 100%
-        height: calc(var(--app-height) - 185px)
 
       .hero-aside
         custom_scroll(rgba(0, 0, 0, .25))
@@ -68,7 +104,7 @@
 
         +below($tab - 1px)
           width: 100%
-          height: 100%
+          //height: 100%
 
         .hero-aside__caption
           font-size: 21px

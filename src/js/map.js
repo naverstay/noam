@@ -554,9 +554,11 @@ $(function ($) {
     return false;
   });
 
-  $('.js-map-overlay').on('click', function () {
+  $('.js-map-overlay, .js-map-list .hero-aside__list .card').on('click', function () {
     $('html').toggleClass('__map-aside-open');
+    $('.js-map-aside').toggleClass('__open');
     return false;
   });
+
 });
 

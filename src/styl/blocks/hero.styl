@@ -240,7 +240,7 @@
     padding 36px 28px
     transition transform .3s
     width var(--home-aside-width)
-    //display none
+    display none
     overflow-y: auto
     hidden_scroll()
     transform translateX(100%)
@@ -250,7 +250,7 @@
       right: var(--app-scroll-size)
 
     +above($wide_1600)
-      //display block
+      display block
       transform translateX(0)
 
     &__back
@@ -271,14 +271,46 @@
         margin-right: 8px
 
     &__article
+      z-index: 1002 !important
       transform translateX(100%)
+
+      +above($tab)
+        min-width 427px
+
+      .article
+        padding: 0
+
+        h1
+          font-size: 20px
+          line-height: 26px
+
+          +above($tab)
+            font-size: 21px
+            line-height: 28px
+
+        p
+          font-size: 13px
+          line-height: 20px
+          margin-bottom: 10px
+
+          +above($tab)
+            font-size: 14px
+            line-height: 24px
+
+          +above($dt)
+            font-size: 14px
+            line-height: 21px
+
+        .article-image
+          margin-left: 0
+          margin-right: 0
 
       &.__open
         transform translateX(0)
 
-        + .hero-aside
-          //opacity: 0
-          transform translateX(100%)
+        //+ .hero-aside
+        //  opacity: 0
+        //  transform translateX(100%)
 
     &__head
       background: inherit
@@ -289,6 +321,12 @@
 
       .btn
         width: 100%
+
+    &__context
+      transform: translateX(0)
+
+      .card
+        cursor: pointer
 
     &__list
       li

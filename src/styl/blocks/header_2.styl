@@ -18,10 +18,11 @@
     padding-top: 36px
     position: fixed
 
-  +above($wide_1600)
+  +above($tab)
     .__map-aside &
-      padding-right calc(var(--map-aside-width) - 24px)
+      padding-right calc(var(--map-aside-width))  // - 24px
 
+  +above($wide_1600)
     .__page-aside &
       padding-right: var(--home-aside-width)
 
@@ -29,8 +30,11 @@
     padding-top: 0
     top: 0
 
+    .section
+      overflow: hidden
+
     .currency-menu
-      +below($dt - 1px)
+      +below($wide_1600 - 1px)
         display none
 
     .header-inner
@@ -435,10 +439,10 @@
         svg
           opacity: 1
 
-    +above($wide_1600)
+    +above($tab)
       .__map-aside &
         margin-left: auto
-        padding-right: 32px
+        //padding-right: 10px
         display flex
 
   .nav
