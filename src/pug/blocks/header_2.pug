@@ -21,7 +21,7 @@ if (map && header_class === '__short')
 
 else
 
-  .header-map__toggle-mob.wide-hide
+  .header-map__toggle-mob
     a.btn.btn-map.__s-33.btn-red(href='livemap.html')
       +icon('whatshot').btn-icon
       span() Новости на карте
@@ -38,11 +38,11 @@ else
           +currency()
           +user()
 
-      .header-map__toggle-all.wide-only
-        .header-map__toggle
-          a.btn.btn-map.__s-33.btn-red(href='livemap.html')
-            +icon('whatshot').btn-icon
-            span() Новости на карте
+        .header-map__toggle-all
+          .header-map__toggle
+            a.btn.btn-map.__s-33.btn-red(href='livemap.html')
+              +icon('whatshot').btn-icon
+              span() Новости на карте
 
       .burger.js-burger
         span

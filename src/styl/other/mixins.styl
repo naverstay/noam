@@ -1,3 +1,13 @@
+placeholder_color($color)
+  &::-webkit-input-placeholder
+    color: $color
+
+  &::-moz-placeholder
+    color: $color
+
+  &:-ms-input-placeholder
+    color: $color
+
 custom_scroll($track)
   scrollbar-color $track rgba(255, 255, 255, .65)
   scrollbar-width thin

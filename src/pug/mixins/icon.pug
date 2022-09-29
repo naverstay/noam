@@ -123,14 +123,14 @@ mixin user(map)
   ul.user-menu
     if (!map)
       li: span.header-menu__icon.js-popup(data-popup='#modal_location')
-        +icon('nav')
+        +icon('nav').btn-icon
         span(class= cls) Санкт-Петербург
 
     li: span.header-menu__icon.js-popup(data-popup='#modal_auth')
-      +icon('user')
+      +icon('user').btn-icon
       span(class= cls) Войти
 
     if (map)
       li: a.header-menu__icon(href='main.html')
-        +icon('list')
+        +icon('list').btn-icon
         span(class= cls) Новости списком

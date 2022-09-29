@@ -15,12 +15,13 @@
     padding-top: 32px
 
   +below($tab - 1px)
-    padding-top: 36px
+    padding-top: 0
     position: fixed
 
   +above($tab)
     .__map-aside &
-      padding-right calc(var(--map-aside-width))  // - 24px
+      padding-right calc(var(--map-aside-width))
+  // - 24px
 
   +above($wide_1600)
     .__page-aside &
@@ -80,13 +81,19 @@
       padding-bottom: 6px
       padding-top: calc(8px + var(--header-search-height))
 
+      &::before
+        display none
+
       .header-menu__wrapper
         height: 100%
         display: flex
         align-items: stretch
 
     +above($wide)
-      grid-template-columns 192px auto 200px
+      grid-template-columns 192px auto
+
+      &::before
+        display block
 
   &-map
     height: 46px
@@ -120,12 +127,48 @@
         align-items center
         justify-content flex-end
 
+        +below($tab - 1px)
+          position: absolute
+          left: 0
+          right: 0
+          bottom: 100%
+
+          .header-map__toggle
+            width: 100%
+
+            .btn
+              width: 100%
+              height: var(--header-mob-mapbtn-height)
+              font-size: 14px
+              line-height: 21px
+
+              .btn-icon
+                width: 20px
+                height: 20px
+
+        +above($tab)
+          display none
+
+        +above($wide)
+          display flex
+          position: absolute
+          right: 0
+          bottom: 6px
+          height: 62px
+
       &-mob
         position: fixed
         top: 0
         right: calc(-1 * var(--app-scroll-size))
         left: 0
         z-index: 1002
+        display none
+
+        +above($tab)
+          display block
+
+        +above($wide)
+          display none
 
         .btn
           border-radius: 0
@@ -165,7 +208,7 @@
 
   &-overlay
     position fixed
-    top: calc(var(--header-mob-height) + var(--header-mob-mapbtn-height) - 1px)
+    top: calc(var(--header-mob-height) - 1px)
     height var(--app-height)
     left 0
     right 0
@@ -193,6 +236,7 @@
       height: 100%
 
       input
+        placeholder_color(rgba(255, 255, 255, .5))
         font-size: 12px
         color: #fff
         outline 0 !important
@@ -207,6 +251,9 @@
 
     +above($dt)
       margin: 0
+
+    +above($wide)
+      margin: 0 200px 0 0
 
     &__map
       position: relative
@@ -253,9 +300,9 @@
       position fixed
       z-index 1
       left 100%
-      top: calc(var(--header-mob-height) + var(--header-mob-mapbtn-height) - 2px)
+      top: calc(var(--header-mob-height) - 2px)
       //height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) + 1px)
-      max-height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height))
+      max-height calc(var(--app-height) - var(--header-mob-height))
       width 100%
       max-width 450px
       background #222
@@ -270,6 +317,7 @@
         align-items flex-start
         justify-content space-between
         padding calc(22px + var(--header-search-height)) 20px calc(34px + var(--header-search-height) * 3)
+        margin-top: var(--header-mob-mapbtn-height)
 
       .header-menu__top
         position: absolute
@@ -497,6 +545,9 @@
         padding-left 18px
         padding-right 18px
 
+        &::before
+          bottom: -5px
+
     li
       //+above($wide)
       //  padding 0 5px
@@ -538,7 +589,7 @@
     font-style normal
     font-weight bold
     font-size 28px
-    line-height 37px
+    line-height var(--header-mob-mapbtn-height)
 
     .header &
       //transition font-size .3s, line-height .3s, color .3s
@@ -561,16 +612,17 @@
 
     .__short.header &
       //font-size: 28px
-      line-height: 37px
-      //top: 0
+      line-height: var(--header-mob-mapbtn-height)
 
-      //+below($wide - 1px)
-      //line-height: 37px
-      //line-height: 50px
+    //top: 0
 
-      //+below($tab - 1px)
-      //  font-size 28px
-      //  line-height 37px
+    //+below($wide - 1px)
+    //line-height: 37px
+    //line-height: 50px
+
+    //+below($tab - 1px)
+    //  font-size 28px
+    //  line-height 37px
 
     &:hover
       color $red
@@ -579,7 +631,7 @@
   burger()
   cursor pointer
   position fixed
-  top 66px
+  top 30px
   right 20px
   z-index 3
   min-width 30px
