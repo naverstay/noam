@@ -119,7 +119,7 @@ mixin currency()
       span.currency-trend.__up 1,47
 
 mixin user(map)
-  - let cls = map ? 'dt-only' : ''
+  - let cls = map ? 'mob-hide' : ''
   ul.user-menu
     if (!map)
       li: span.header-menu__icon.js-popup(data-popup='#modal_location')
