@@ -3,11 +3,12 @@
 
 .footer
   .section
-    .footer-caption Популярные теги
+    if (popular_tags)
+      .footer-caption Популярные теги
 
-    .footer-tags
-      each tag in tags
-        a.tag-link(href='#')= tag
+      .footer-tags
+        each tag in tags
+          a.tag-link(href='#')= tag
 
     .footer-nav
       +logo()

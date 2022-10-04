@@ -1,11 +1,8 @@
 .footer
   background: #222
-  display flex
-  flex-flow column nowrap
-  align-items center
   color: #fff
   text-align: center
-  padding: 10px 0 40px
+  padding: 0 0 40px
 
   .nav
     align-items center
@@ -22,13 +19,13 @@
       flex-flow row
       margin: 0 -15px
       padding: 5px 0 20px
+      justify-content space-between
 
     li
       padding: 0 15px
 
   &-nav
     position: relative
-    margin-top: 36px
 
     &::before
       content: ''
@@ -55,13 +52,11 @@
       .nav
         padding: 24px 0 0
 
-    .__page-aside &
-      border-bottom: 1px solid rgba(255, 255, 255, .1)
-
   &-tags
     display flex
     flex-flow row wrap
     gap 8px
+    margin: 10px 0 36px
 
     .tag-link
       font-weight: 400
@@ -76,9 +71,6 @@
     padding: 33px 0 16px
     color: #fff
     font: 700 21px/28px $fontPTSerif
-
-    +above($tab)
-      margin-top: -10px
 
   &-socials
     padding-top: 30px
@@ -169,7 +161,7 @@
       padding-top: 30px
 
   .__page-aside &
-    +above($wide)
+    +above($wide_1600)
       padding-right: var(--home-aside-width)
 
       .section
