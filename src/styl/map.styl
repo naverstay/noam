@@ -5,174 +5,171 @@
 @import '../../src/Leaflet-MiniMap-master/dist/Control.MiniMap.min.css'
 
 .map
-  position: absolute
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
+  position absolute
+  top 0
+  bottom 0
+  left 0
+  right 0
 
   &-wrapper
-    position: relative
-    height: 100%
-    width: 100%
+    position relative
+    height 100%
+    width 100%
 
   &-holder
-    position: absolute
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
     display flex
     flex-flow row nowrap
 
     +below($tab - 1px)
-      top: 106px
-      position: fixed
+      top 106px
+      position fixed
 
       .__map-aside.__map-aside-open &
         pointer-events none
+        z-index 1002
 
     +above($wide_1600)
       margin-right calc(-1 * var(--map-aside-width))
 
       .__map-aside &
-        margin-right: 0
+        margin-right 0
 
     &__aside
-      position: relative
+      position relative
       width var(--map-aside-width)
-      flex: 1 0 auto
+      flex 1 0 auto
       transition transform .3s
 
       +below($tab - 1px)
-        //width: 100%
-        //height: calc(var(--app-height))
-        //position: fixed
-        //bottom: 0
-        //left: 0
+        //width 100%
+        //height calc(var(--app-height))
+        //position fixed
+        //bottom 0
+        //left 0
         transform none
-        //z-index: 1002
-        //height: var(--app-height)
+        //z-index 1002
+        //height var(--app-height)
 
         .hero-aside
 
           &.hero-aside__context
             transition none
-            top: calc(var(--header-mob-height) + var(--header-mob-mapbtn-height))
+            top calc(var(--header-mob-height) + var(--header-mob-mapbtn-height))
             transform translateX(0)
-            height: calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height))
+            height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height))
 
             .hero-aside__head::after
               pointer-events none
-              content: ''
-              position: absolute
-              top: -50px
-              left: -50px
-              right: -50px
-              z-index: 2
-              background: rgba(0, 0, 0, .65)
+              content ''
+              position absolute
+              top -50px
+              left -50px
+              right -50px
+              z-index 2
+              background rgba(0, 0, 0, .65)
 
             .__map-aside.__map-aside-open &
               pointer-events none
 
               .hero-aside__head::after
-                height: calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) + 50px)
+                height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) + 50px)
 
           &.hero-aside__article
             pointer-events all
-            z-index: 1002
-            top: calc(var(--header-mob-height) + var(--header-mob-mapbtn-height) + 80px)
-            height: calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) - 80px)
+            z-index 1002
+            top calc(var(--header-mob-height) + var(--header-mob-mapbtn-height) + 80px)
+            height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) - 80px)
 
             .__map-aside.__map-aside-open &
               transform translateX(0)
-
-        .__map-aside.__map-aside-open &
-          transform translateX(0)
-
 
       .hero-aside
         custom_scroll(rgba(0, 0, 0, .25))
         display flex
         flex-flow column nowrap
-        position: fixed
-        z-index: 1001
-        bottom: 0
-        right: 0
+        position fixed
+        z-index 1001
+        bottom 0
+        right 0
         transition transform .3s, opacity .3s
-        padding: 18px 22px 28px 24px
+        padding 18px 22px 28px 24px
         width var(--map-aside-width)
-        height: var(--app-height)
-        overflow-y: auto
+        height var(--app-height)
+        overflow-y auto
 
         +below($tab - 1px)
-          width: 100%
-          //height: 100%
+          width 100%
+          //height 100%
 
         .hero-aside__caption
-          font-size: 21px
-          line-height: 28px
+          font-size 21px
+          line-height 28px
 
         .hero-aside__head
-          z-index: 1
-          position: sticky
-          top: 0
+          z-index 1
+          position sticky
+          top 0
 
           &::before
-            content: ''
-            position: absolute
-            bottom: 100%
-            right: 0
-            left: 0
-            background: inherit
-            height: 30px
+            content ''
+            position absolute
+            bottom 100%
+            right 0
+            left 0
+            background inherit
+            height 30px
 
   &-icon
-    cursor: pointer
-    border-radius: 100%
-    background: $blue
-    position: relative
+    cursor pointer
+    border-radius 100%
+    background $blue
+    position relative
     display flex
     align-items center
     justify-content center
 
     &:hover svg
-      transform: scale(1.3)
+      transform scale(1.3)
 
     svg
       transition transform .3s
       fill #fff
-      max-width: 16px
-      max-height: 16px
+      max-width 16px
+      max-height 16px
 
   .leaflet-control-zoom.leaflet-bar.leaflet-control
-    filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.15))
-    border-radius: 2px
-    border: 0
+    filter drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.15))
+    border-radius 2px
+    border 0
 
     a
-      border-bottom-color: #EBEBEB
+      border-bottom-color #EBEBEB
 
   .leaflet-bottom .leaflet-control-minimap
-    margin-bottom: 12px
-    filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.15))
-    border: 3px solid #FFFFFF
-    border-radius: 4px
-    box-shadow: none
+    margin-bottom 12px
+    filter drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.15))
+    border 3px solid #FFFFFF
+    border-radius 4px
+    box-shadow none
 
     .leaflet-interactive:first-child
       stroke #C01F1F
       fill #C01F1F
 
   .leaflet-right .leaflet-control
-    margin-right: 24px
+    margin-right 24px
 
   .marker-cluster
     svg path
       transition opacity .3s
 
     &:hover svg path
-      opacity: 1
+      opacity 1
 
   .marker-cluster-small
     svg
@@ -206,20 +203,20 @@
       width 80px
       height 80px
       display flex
-      align-items: center
-      position: relative
-      font-weight: 600
-      justify-content: center
-      font-size: 14px
-      line-height: 17px
-      color: #ffffff
+      align-items center
+      position relative
+      font-weight 600
+      justify-content center
+      font-size 14px
+      line-height 17px
+      color #ffffff
 
       span
-        position: relative
-        z-index: 201
+        position relative
+        z-index 201
 
       svg
-        position: absolute
-        top: 0
-        left: 0
+        position absolute
+        top 0
+        left 0
 
