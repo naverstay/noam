@@ -4,7 +4,7 @@
   --map-aside-width 100%
   --home-aside-width $home_aside_width
   --header-search-height 48px
-  --header-mob-height 60px
+  --header-mob-height 69px
   --header-mob-mapbtn-height 37px
   --map-tags-height 52px
   --map-article-offset 48px
@@ -54,6 +54,9 @@ a
 html
   margin-right 0 !important
   custom_scroll(rgba(0, 0, 0, .25))
+
+  &.__map-aside:root
+    --header-mob-height 60px
 
 body
   width 100vw
