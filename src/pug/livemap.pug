@@ -15,31 +15,33 @@ block content
       .hero-aside.js-map-aside.hero-aside__article
         .hero-aside__head
           a.hero-aside__back.js-close-article(href='#')
-            +icon('back').btn-icon
-            span Назад
+            +icon('back').btn-icon.mob-hide
+            +icon('close').btn-icon.mob-only
+            span.mob-hide Назад
 
         .article
           h1 Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО
 
           .card-info
-            span.card-tag Политика
-            span.card-logo
-              +img('logo/lenta.png')
-              span.card-portal lenta.ru
-            span.card-date 09.12.21 11:56
-            span.card-views
-              +icon('eye')
-              span 12564
+            .card-tags
+              .card-icon.__blue
+                +icon('horn').btn-icon
+              span 20 часов назад
+              span Заявления
+            a.card-logo(href='#')
+              +img(src='upload/logo/tass.png')
+              span.card-portal tass.ru
+
           .card-content
             .article-image.__fit
-              +img('article/article_2.jpg')
+              +img('article/article_3.jpg')
 
-            p Футболист одного из клубов Английской премьер-лиги (АПЛ) был арестован в северной части Лондона по подозрению в изнасиловании. Об этом сообщает The Telegraph.
-            p Источник умалчивает фамилию игрока, но отмечает, что речь идет о всемирно известном футболисте, который должен выступить на чемпионате мира — 2022 в Катаре.
-            p Также сообщается, что спортсмен проживает в Северном Лондоне. Ему от 26 до 29 лет. Другие подробности не сообщаются.
+            p Балтийское море с момента вступления Финляндии и Швеции в НАТО станет внутренним морем Североатлантического альянса. Об этом в понедельник, 4 июля, заявил президент Польши Анджей Дуда в ходе открытия заседания Совета национальной безопасности республики в Варшаве.
+
+            p «По сути Балтийское море сейчас становится внутренним бассейном НАТО. Две очень сильные страны с долгой и сильной военной традицией станут в ближайшее время частью НАТО. Граница России с НАТО вытянется на 1400 км, что без сомнения не хорошая новость для российских властей», — спрогнозировал польский лидер.
 
             .article-controls
-              a.btn.btn-black.__s-45.btn-auth(href='card_2.html')
+              a.btn.btn-black.__s-41.btn-auth(href='card_2.html')
                 span Читать далее
                 +icon('arrow_ne').btn-icon
 

@@ -79,11 +79,11 @@
             transform translateX(0)
 
         .hero-aside
-          top calc(var(--map-tags-height))
-          height calc(var(--app-height) - var(--map-tags-height))
 
           &.hero-aside__context
             //transition none
+            top calc(var(--map-tags-height))
+            height calc(var(--app-height) - var(--map-tags-height))
 
             .hero-aside__head-overlay
               pointer-events none
@@ -103,6 +103,8 @@
 
           &.hero-aside__article
             z-index 1002
+            top calc(var(--map-tags-height) + var(--map-article-offset))
+            height calc(var(--app-height) - var(--map-tags-height) + var(--map-article-offset))
 
             .__map-aside.__map-aside-open &
               transform translateX(0)
@@ -116,7 +118,7 @@
         bottom 0
         right 0
         transition transform .3s, opacity .3s
-        padding 28px 22px 28px 24px
+        padding 22px var(--map-aside-right) 28px var(--map-aside-left)
         width var(--map-aside-width)
         height var(--app-height)
         overflow-y auto
@@ -124,7 +126,9 @@
 
         +above($tab)
           position fixed
-          //height 100%
+
+        +above($wide)
+          padding-top: 28px
 
         .hero-aside__caption
           font-size 21px
@@ -139,8 +143,8 @@
             content ''
             position absolute
             bottom 100%
-            right: -22px
-            left -24px
+            right: calc(-1 * var(--map-aside-right))
+            left calc(-1 * var(--map-aside-left))
             background inherit
             height 28px
 
@@ -149,8 +153,8 @@
             position absolute
             bottom: 0
             top: 0
-            right: -22px
-            left -24px
+            right: calc(-1 * var(--map-aside-right))
+            left calc(-1 * var(--map-aside-left))
             background inherit
             z-index: -1
 

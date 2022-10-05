@@ -7,6 +7,9 @@
   --header-mob-height 60px
   --header-mob-mapbtn-height 37px
   --map-tags-height 52px
+  --map-article-offset 48px
+  --map-aside-left 20px
+  --map-aside-right 20px
   --app-scroll-size 4px
   --sat env(safe-area-inset-top)
   --sar env(safe-area-inset-right)
@@ -16,11 +19,13 @@
 
 +above($tab)
   :root {
+    --map-aside-left 24px
     --map-aside-width 377px
   }
 
 +above($wide)
   :root {
+    //--map-aside-right 22px
     --header-search-height 40px
     --map-aside-width $map_aside_width
   }
@@ -101,12 +106,18 @@ body
     right: 0
     background: rgba(0, 0, 0, .65)
     z-index: 1001
+    opacity: 0
+    transition opacity .3s
+    pointer-events none
 
     +below($tab - 1px)
-      .__map-aside.__map-aside-open &
+
       .__map-aside.__article-aside-open &
+      .__map-aside.__map-aside-open &
         z-index: 1005
-        height: calc(var(--header-mob-height) + var(--map-tags-height))
+        pointer-events all
+        opacity: 1
+        height: calc(var(--header-mob-height) + var(--map-tags-height) + var(--map-article-offset))
 
 .content
   position relative

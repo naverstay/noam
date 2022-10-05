@@ -33,8 +33,12 @@
     background: none
     transition none
 
-    .__map-aside.__map-aside-open &
-      +below($tab - 1px)
+    +below($wide - 1px)
+      .section
+        padding: 0 20px
+
+    +below($tab - 1px)
+      .__map-aside.__map-aside-open &
         z-index: 1003
 
     .currency-menu
@@ -60,9 +64,10 @@
     .user-menu
       .header-menu__icon
 
-        +below($dt - 1px)
-          padding 0 22px
+        +below($wide - 1px)
+          padding 0 32px
           position: relative
+          //font-size: 13px
 
           &.__active
             cursor: default
@@ -75,6 +80,9 @@
               left: 0
               height: 2px
               background: $red
+
+        +below($tab - 1px)
+          padding: 0 22px
 
   &:not(.__short)
     .currency-menu,
@@ -232,12 +240,15 @@
       &.__loaded
         opacity: 1
 
-      +above($tab)
-        margin-left: -24px
-        margin-right: -24px
-        width: calc(100% + 48px)
+      //+above($tab)
+      //  margin-left: -24px
+      //  margin-right: -24px
+      //  width: calc(100% + 48px)
 
       +above($wide)
+        margin-left: -24px
+        //margin-right: -24px
+        width: calc(100% + 48px)
         margin-right: 0
         //width: calc(100% + 24px)
 
@@ -301,10 +312,12 @@
       height: 60px
 
       +above($tab)
-        margin-right: -30px
         align-items stretch
         justify-content space-between
         flex-fow row nowrap
+
+      +above($wide)
+        margin-right: -30px
 
       .__short &
         justify-content flex-end
@@ -443,8 +456,8 @@
 
       svg
         fill $gray
-        height 16px
-        width 16px
+        height 14px
+        width 14px
         //flex 1 0 auto
         opacity: .5
         transition opacity .3s, fill .3s
@@ -484,8 +497,8 @@
       +above($wide + $menu_extra)
         padding-right 23px
 
-      &:first-child
-        padding-left: 0
+      //&:first-child
+      //  padding-left: 0
 
   .currency-menu,
   .user-menu
@@ -606,6 +619,9 @@
 
   .header &
     padding-top: 10px
+
+    + .currency-menu
+      border-left: 0
 
     +below($tab - 1px)
       padding 16px 0

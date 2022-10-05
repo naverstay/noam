@@ -3,7 +3,7 @@
   max-width $content_max_width
 
   +desktop()
-    padding-top: 40px
+    padding-top 40px
     display grid
     grid-template-columns auto 392px
     grid-template-areas "section aside"
@@ -179,7 +179,7 @@
 
     .card-holder
       grid-gap 0
-      padding-right: 20px
+      padding-right 20px
 
       .card
         user-select none
@@ -199,7 +199,7 @@
       margin-right -30px
 
       .card-holder
-        padding-right: 30px
+        padding-right 30px
 
       .js-hero-slider
         padding-left 30px
@@ -230,131 +230,186 @@
     //position absolute
     //top 40px
     //left 100%
-    position: fixed
-    right: 0
-    top: 0
-    height: var(--app-height)
-    //margin-bottom: calc(-1 * var(--app-height))
+    position fixed
+    right 0
+    top 0
+    height var(--app-height)
+    //margin-bottom calc(-1 * var(--app-height))
     background #fff
     z-index 1003
     padding 36px 28px
     transition transform .3s
     width var(--home-aside-width)
     display none
-    overflow-y: auto
+    overflow-y auto
     hidden_scroll()
     transform translateX(100%)
     //custom_scroll(rgba(0, 0, 0, .25))
 
     .__open-popup &
-      right: var(--app-scroll-size)
+      right var(--app-scroll-size)
 
     +above($wide_1600)
       display block
       transform translateX(0)
 
     &__back
-      font-weight: 500
-      font-size: 12px
-      line-height: 15px
-      color: #000
+      font-weight 500
+      font-size 12px
+      line-height 15px
+      color #000
       display flex
       align-items center
       margin-bottom: 10px
+      z-index: 1
 
       &:hover
-        color: $red
+        color $red
 
       .btn-icon
-        width: 16px
-        height: 16px
-        margin-right: 8px
-        margin-bottom: -1px
+        width 16px
+        height 16px
+        margin-right 8px
+        margin-bottom -1px
+
+      +below($tab - 1px)
+        margin-left auto
+        margin-top: 6px
+        margin-right: -4px
+
+        .btn-icon
+          width: 12px
+          height: 12px
+
+      +above($wide)
+        margin-top: -5px
 
     &__article
-      z-index: 1002 !important
+      z-index 1002 !important
       transform translateX(100%)
 
       +above($tab)
         min-width 427px
 
       .article
-        padding: 0
+        padding 0
+        width: 100%
 
         h1
-          font-size: 20px
-          line-height: 26px
+          font-size 20px
+          line-height 26px
+          margin-bottom 8px
+
+          &:first-child
+            margin-top 10px
+
+            +below($tab - 1px)
+              margin-top: -28px
+              margin-right: 36px
+              position: relative
+              z-index: 1
 
           +above($tab)
-            font-size: 21px
-            line-height: 28px
+            font-size 21px
+            line-height 27px
 
         p
-          font-size: 13px
-          line-height: 20px
-          margin-bottom: 10px
+          font-size 13px
+          line-height 20px
+          margin-bottom 10px
+          letter-spacing 0
 
           +above($tab)
-            font-size: 14px
-            line-height: 24px
+            font-size 14px
+            line-height 24px
+            margin-bottom: 14px
 
           +above($dt)
-            font-size: 14px
-            line-height: 21px
+            font-size 14px
+            line-height 21px
+
+        .article-controls
+          padding: 8px 0 18px
+
+          +below($tab - 1px)
+            padding: 4px 0 18px
+
+            .btn.__s-41
+              height: 37px
+
+        .card-info
+          padding-bottom 15px
+
+          +below($tab - 1px)
+            padding-bottom: 18px
 
         .article-image
-          margin-left: 0
-          margin-right: 0
+          margin-left 0
+          margin-right 0
+          margin-bottom 16px
+
+          +below($tab - 1px)
+            max-height 160px
+            margin-left: -8px
+            margin-right: -8px
 
       &.__open
         transform translateX(0)
 
         //+ .hero-aside
-        //  opacity: 0
+        //  opacity 0
         //  transform translateX(100%)
 
     &__head
-      background: inherit
+      background inherit
       display flex
       flex-flow row wrap
       align-items center
       justify-content space-between
 
       .btn
-        width: 100%
+        width 100%
+
+        +below($wide - 1px)
+          &.__s-45
+            height 41px
+            font-size 13px
+            line-height 21px
+            margin-bottom 5px
 
     &__context
       +above($tab)
-        transform: translateX(0)
+        transform translateX(0)
 
-      .card
-        cursor: pointer
+      .card-title
+        cursor pointer
 
     &__list
       li
-        position: relative
+        position relative
         padding-bottom 17px
 
         &.__active
           &::before
-            content: ''
-            position: absolute
-            z-index: -1
-            top: 0
-            bottom: -1px
-            right: -22px
-            left: -24px
-            background: #FAFAFA
+            content ''
+            position absolute
+            z-index -1
+            top 0
+            bottom -1px
+            right calc(-1 * var(--map-aside-right))
+            left calc(-1 * var(--map-aside-left))
+            background #FAFAFA
             border-top 1px solid #E8E8E8
             border-bottom 1px solid #E8E8E8
+
           &::after
-            content: ''
-            position: absolute
-            top: 0
-            bottom: -1px
-            left: -24px
-            width: 4px
-            background: $red
+            content ''
+            position absolute
+            top 0
+            bottom -1px
+            left calc(-1 * var(--map-aside-left))
+            width 4px
+            background $red
 
         &:not(:first-child) .card-info
           border-top 1px solid #E8E8E8
@@ -364,12 +419,16 @@
       color #000000
 
       &:not(:only-child)
-        margin-right: 5px
+        margin-right 5px
 
     &__update
       font 500 12px / 15px $fontInter
-      color: $gray
-      margin-top: 6px
+      color $gray
+      margin-top 6px
+
+      +below($wide - 1px)
+        font-size 11px
+        line-height 13px
 
     .card-title
       font 400 14px / 21px $fontInter
