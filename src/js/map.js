@@ -77,8 +77,10 @@ const initMap = (points) => {
         }).on('click', () => {
           console.log('click', a[4]);
 
+          setActiveArticle(a[0], a[1], (ai % 12) + 1);
+
           $('html').toggleClass('__map-aside-open');
-          $('.js-map-aside').toggleClass('__open');
+          $('.js-map-aside').toggleClass('__open-mob');
         }));
       });
 
@@ -94,6 +96,22 @@ const initMap = (points) => {
         tiles
       ]
     });
+
+    const setActiveArticle = (ln, lt, scrollTarget) => {
+      map.setView([ln, lt]);
+
+      let scrollTo = $('.js-map-target').removeClass('__active').filter((fi, f) => {
+        return f.dataset.index == scrollTarget;
+      }).addClass('__active');
+
+      if (scrollTo.length) {
+        scrollTo[0].scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'center'
+        });
+      }
+    }
 
     new L.Control.Zoom({position: 'bottomleft'}).addTo(map);
 
@@ -542,21 +560,32 @@ $(function ($) {
 
   initMap(addressPoints);
 
-  $('.js-close-article').on('click', function (e) {
-    $('html').removeClass('__map-aside-open');
-    $('.js-map-aside').removeClass('__open');
-    return false;
-  });
-
   $('.js-map-filter-btn').on('click', function (e) {
     $(this).toggleClass('__active');
     console.log(e.target.innerText);
     return false;
   });
 
-  $('.js-map-overlay, .js-map-list .hero-aside__list .card .card-title').on('click', function () {
-    $('html').toggleClass('__map-aside-open');
-    $('.js-map-aside').toggleClass('__open');
+  $('.js-toggle-mobile-map').on('click', function (e) {
+    const $btn = $(this);
+    if (!$btn.hasClass('__active')) {
+      $('.js-toggle-mobile-map').removeClass('__active');
+      $btn.addClass('__active');
+      $('html').toggleClass('__list-aside-open');
+    }
+
+    return false;
+  });
+
+  $('.js-map-overlay, .js-close-article').on('click', function () {
+    $('html').removeClass('__map-aside-open').removeClass('__article-aside-open');
+    $('.js-map-aside').removeClass('__open').removeClass('__open-mob');
+    return false;
+  });
+
+  $('.js-map-list .hero-aside__list .card .card-title').on('click', function () {
+    $('html').addClass('__article-aside-open');
+    $('.js-map-aside').addClass('__open');
     return false;
   });
 

@@ -9,7 +9,7 @@ block variables
 
 block content
   .map-holder
-    .map-wrapper.mob-hide
+    .map-wrapper
       #map.map
     .map-holder__aside
       .hero-aside.js-map-aside.hero-aside__article
@@ -48,22 +48,42 @@ block content
               a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
 
       .hero-aside.js-map-list.hero-aside__context
+        .hero-aside__head-overlay
         .hero-aside__head
           .hero-aside__caption События на карте
           .hero-aside__update Последнее обновление 07.06.2022 в 00:11:53
 
-          a.btn.btn-red.btn-aside.__s-45(href='#')
+          a.btn.btn-gray-light.btn-aside.__s-45(href='#')
             +icon('reload').btn-icon
             span Показать 11 новых новостей
 
         ul.hero-aside__list
-          +loop_while(8)
-            li
-              +map_card('Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО', 'tass', ['Час назад', 'Заявления'], 'map/news_1.png', '', '', '__blue', 'horn')
-            li
-              +map_card('Врач назвал способ получения суточной дозы витамина D за 15 минут', 'share', ['Час назад', 'Медицина'], '', '', '', '__red', 'info')
-            li
-              +map_card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', ['Час назад', 'События'], '', '', '', '__red', 'info')
-            li
-              +map_card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', ['Час назад', 'Футбол'], 'map/news_1.png', '', '', '__blue', 'ball')
+          li.js-map-target(data-index='1')
+            +map_card('Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО', 'tass', ['Час назад', 'Заявления'], 'map/news_1.png', '', '', '__blue', 'horn')
+          li.js-map-target(data-index='2')
+            +map_card('Врач назвал способ получения суточной дозы витамина D за 15 минут', 'lenta', ['Час назад', 'Медицина'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='3')
+            +map_card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', ['Час назад', 'События'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='4')
+            +map_card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', ['Час назад', 'Футбол'], 'map/news_1.png', '', '', '__blue', 'ball')
+
+
+          li.js-map-target(data-index='5')
+            +map_card('Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО', 'tass', ['Час назад', 'Заявления'], 'map/news_1.png', '', '', '__blue', 'horn')
+          li.js-map-target(data-index='6')
+            +map_card('Врач назвал способ получения суточной дозы витамина D за 15 минут', 'lenta', ['Час назад', 'Медицина'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='7')
+            +map_card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', ['Час назад', 'События'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='8')
+            +map_card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', ['Час назад', 'Футбол'], 'map/news_1.png', '', '', '__blue', 'ball')
+
+
+          li.js-map-target(data-index='9')
+            +map_card('Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО', 'tass', ['Час назад', 'Заявления'], 'map/news_1.png', '', '', '__blue', 'horn')
+          li.js-map-target(data-index='10')
+            +map_card('Врач назвал способ получения суточной дозы витамина D за 15 минут', 'lenta', ['Час назад', 'Медицина'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='11')
+            +map_card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', ['Час назад', 'События'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='12')
+            +map_card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', ['Час назад', 'Футбол'], 'map/news_1.png', '', '', '__blue', 'ball')
 

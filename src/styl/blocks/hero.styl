@@ -269,6 +269,7 @@
         width: 16px
         height: 16px
         margin-right: 8px
+        margin-bottom: -1px
 
     &__article
       z-index: 1002 !important
@@ -323,14 +324,37 @@
         width: 100%
 
     &__context
-      transform: translateX(0)
+      +above($tab)
+        transform: translateX(0)
 
       .card
         cursor: pointer
 
     &__list
       li
+        position: relative
         padding-bottom 17px
+
+        &.__active
+          &::before
+            content: ''
+            position: absolute
+            z-index: -1
+            top: 0
+            bottom: -1px
+            right: -22px
+            left: -24px
+            background: #FAFAFA
+            border-top 1px solid #E8E8E8
+            border-bottom 1px solid #E8E8E8
+          &::after
+            content: ''
+            position: absolute
+            top: 0
+            bottom: -1px
+            left: -24px
+            width: 4px
+            background: $red
 
         &:not(:first-child) .card-info
           border-top 1px solid #E8E8E8
@@ -338,12 +362,14 @@
     &__caption
       font bold 23px / 1 $fontPTSerif
       color #000000
-      margin-bottom 20px
+
+      &:not(:only-child)
+        margin-right: 5px
 
     &__update
       font 500 12px / 15px $fontInter
       color: $gray
-      margin-bottom 16px
+      margin-top: 6px
 
     .card-title
       font 400 14px / 21px $fontInter

@@ -10,13 +10,16 @@ if (map && header_class === '__short')
         +currency()
         +user(true)
 
+    .section.__gray
       .header-map__scroller
         .js-map-slider
           .header-map
             each c, ci in mapButtons
-              a.btn.btn-map.__s-28.btn-black.js-map-filter-btn(href='#' class= ci > 2 ? '' : ' __active' )
-                +icon(c.icon).btn-icon.icon-inactive
-                +icon('info').btn-icon.icon-active
+              a.btn.btn-map.__s-28.js-map-filter-btn(href='#' class= ci > 2 ? 'btn-black' : 'btn-red' )
+                if (ci > 2)
+                  +icon(c.icon).btn-icon
+                else
+                  +icon('info').btn-icon
                 span= c.name
 
 else

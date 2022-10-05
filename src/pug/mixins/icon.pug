@@ -131,6 +131,8 @@ mixin user(map)
       span(class= cls) Войти
 
     if (map)
-      li: a.header-menu__icon(href='main.html')
-        +icon('list').btn-icon
-        span(class= cls) Новости списком
+      li.mob-only: span.header-menu__icon.js-toggle-mobile-map.__active
+        +icon('map').btn-icon
+
+      li.mob-only: span.header-menu__icon.js-toggle-mobile-map
+        +icon('view_agenda').btn-icon

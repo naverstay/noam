@@ -4,8 +4,9 @@
   --map-aside-width 100%
   --home-aside-width $home_aside_width
   --header-search-height 48px
-  --header-mob-height 69px
+  --header-mob-height 60px
   --header-mob-mapbtn-height 37px
+  --map-tags-height 52px
   --app-scroll-size 4px
   --sat env(safe-area-inset-top)
   --sar env(safe-area-inset-right)
@@ -94,15 +95,18 @@ body
     overflow: hidden
 
   &-overlay
-    .__map-aside.__map-aside-open &
-      +below($wide - 1px)
-        position: absolute
-        top: 0
-        left: 0
-        right: 0
-        z-index: 1001
-        height: var(--app-height)
-        background: rgba(0, 0, 0, .65)
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    background: rgba(0, 0, 0, .65)
+    z-index: 1001
+
+    +below($tab - 1px)
+      .__map-aside.__map-aside-open &
+      .__map-aside.__article-aside-open &
+        z-index: 1005
+        height: calc(var(--header-mob-height) + var(--map-tags-height))
 
 .content
   position relative
@@ -128,17 +132,17 @@ body
   &::before
     content ''
     position absolute
-    width 50vw
+    width 100vw
     top 0
     bottom 0
     background inherit
     z-index: -1
 
   &::before
-    left 50%
+    left 100%
 
   &::after
-    right 50%
+    right 100%
 
   &.__content
     padding-top 32px
@@ -184,6 +188,9 @@ body
 
     +desktop()
       height: 600px
+
+  &.__gray
+    background rgba(34, 34, 34, 0.75);
 
   &.__white
     //background #E5E5E5

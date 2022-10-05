@@ -16,9 +16,16 @@
     height 100%
     width 100%
 
+    //+below($tab - 1px)
+    //  .__list-aside-open &
+    //    background: #fff
+    //
+    //    .map
+    //      opacity: 0
+
   &-holder
     position absolute
-    top 0
+    top: calc(-1 * var(--map-tags-height))
     bottom 0
     left 0
     right 0
@@ -26,8 +33,9 @@
     flex-flow row nowrap
 
     +below($tab - 1px)
-      top 106px
+      top var(--header-mob-height)
       position fixed
+      display block
 
       .__map-aside.__map-aside-open &
         pointer-events none
@@ -48,42 +56,53 @@
       +below($tab - 1px)
         //width 100%
         //height calc(var(--app-height))
-        //position fixed
-        //bottom 0
-        //left 0
+        position absolute
+        bottom 0
+        left 0
+        top 0
         transform none
-        //z-index 1002
-        //height var(--app-height)
+        z-index 1002
+        pointer-events none
+
+        &::before
+          content: ''
+          position: absolute
+          top: 0
+          left: 0
+          right: 0
+          height: var(--map-tags-height)
+          background: #fff
+          transition transform .3s
+          transform translateX(100%)
+
+          .__list-aside-open &
+            transform translateX(0)
 
         .hero-aside
+          top calc(var(--map-tags-height))
+          height calc(var(--app-height) - var(--map-tags-height))
 
           &.hero-aside__context
-            transition none
-            top calc(var(--header-mob-height) + var(--header-mob-mapbtn-height))
-            transform translateX(0)
-            height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height))
+            //transition none
 
-            .hero-aside__head::after
+            .hero-aside__head-overlay
               pointer-events none
-              content ''
-              position absolute
-              top -50px
-              left -50px
-              right -50px
-              z-index 2
-              background rgba(0, 0, 0, .65)
+              //position absolute
+              //top -50px
+              //left -50px
+              //right -50px
+              //z-index 2
+              //background rgba(0, 0, 0, .65)
 
-            .__map-aside.__map-aside-open &
-              pointer-events none
+            .__map-aside.__list-aside-open &
+              //pointer-events none
+              transform translateX(0)
 
-              .hero-aside__head::after
-                height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) + 50px)
+              .hero-aside__head-overlay
+                height calc(var(--app-height) - var(--header-mob-height) + 50px)
 
           &.hero-aside__article
-            pointer-events all
             z-index 1002
-            top calc(var(--header-mob-height) + var(--header-mob-mapbtn-height) + 80px)
-            height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) - 80px)
 
             .__map-aside.__map-aside-open &
               transform translateX(0)
@@ -92,18 +111,19 @@
         custom_scroll(rgba(0, 0, 0, .25))
         display flex
         flex-flow column nowrap
-        position fixed
+        position: absolute
         z-index 1001
         bottom 0
         right 0
         transition transform .3s, opacity .3s
-        padding 18px 22px 28px 24px
+        padding 28px 22px 28px 24px
         width var(--map-aside-width)
         height var(--app-height)
         overflow-y auto
+        pointer-events all
 
-        +below($tab - 1px)
-          width 100%
+        +above($tab)
+          position fixed
           //height 100%
 
         .hero-aside__caption
@@ -119,10 +139,20 @@
             content ''
             position absolute
             bottom 100%
-            right 0
-            left 0
+            right: -22px
+            left -24px
             background inherit
-            height 30px
+            height 28px
+
+          &::after
+            content ''
+            position absolute
+            bottom: 0
+            top: 0
+            right: -22px
+            left -24px
+            background inherit
+            z-index: -1
 
   &-icon
     cursor pointer

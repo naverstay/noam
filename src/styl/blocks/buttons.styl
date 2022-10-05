@@ -2,7 +2,7 @@
   display inline-flex
   align-items center
   justify-content center
-  transition color .3s, background .3s
+  transition color .3s, border-color .3s, background .3s
   cursor: pointer
   user-select none
 
@@ -43,8 +43,11 @@
     .icon-active
       display none
 
-    &.__active
+    &.__hot
       background: $red
+
+    &.__active
+      opacity: .5
 
       .icon-inactive
         display none
@@ -90,12 +93,12 @@
       color: $red
 
   &-aside
-    margin-bottom: 10px
+    margin: 20px 0
     width: 100%
 
     .btn-icon
-      width: 13px
-      height: 11px
+      width: 16px
+      height: 16px
       margin-right: 11px
 
   &-page
@@ -159,6 +162,19 @@
 
     &:hover
       background: #000
+
+  &-gray-light
+    background: #F7F7F7
+    border: 1px solid #E8E8E8
+    color: #000
+
+    &:hover
+      background: #F8F8F8
+      border: 1px solid #B7B7B7
+
+    &:active
+      background: #EBEBEB
+      border: 1px solid #A9A9A9
 
 .btn-icon
   fill: currentColor
