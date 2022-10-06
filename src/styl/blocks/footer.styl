@@ -43,24 +43,25 @@
       border-bottom: 1px solid rgba(255, 255, 255, .1)
 
     +above($wide)
-      display flex
-      flex-wrap: wrap
-      justify-content space-between
-      align-items center
-      padding-bottom: 24px
+      html:not(.__page-aside) &
+        display flex
+        flex-wrap: wrap
+        justify-content space-between
+        align-items center
+        padding-bottom: 24px
 
-      .logo-holder
-        padding-bottom: 0
+        .logo-holder
+          padding-bottom: 0
 
-      .nav
-        padding: 28px 0 0
+        .nav
+          padding: 28px 0 0
 
-        li
-          padding-left: 26px
+          li
+            padding-left: 26px
 
-      .logo
-        font-size: 36px
-        line-height: normal
+        .logo
+          font-size: 36px
+          line-height: normal
 
   &-tags
     display flex
