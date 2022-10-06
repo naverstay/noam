@@ -1,185 +1,198 @@
+f_nav()
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+  align-items center
+  padding-bottom 24px
+
+  .logo-holder
+    padding-bottom 0
+
+  .nav
+    padding 28px 0 0
+
+    li
+      padding-left 26px
+
+  .logo
+    font-size 36px
+    line-height normal
+
 .footer
-  background: #222
-  color: #fff
-  text-align: center
-  padding: 0 0 40px
+  background #222
+  color #fff
+  text-align center
+  padding 0 0 40px
 
   .section
-    padding: 0 30px
+    padding 0 30px
 
   .nav
     align-items center
 
     .btn-icon
-      width: 16px
-      height: 16px
-      margin-right: 5px
+      width 16px
+      height 16px
+      margin-right 5px
 
       &.icon-red
-        color: $red
+        color $red
 
     +above($tab)
       flex-flow row
-      margin: 0 -15px
-      padding: 5px 0 20px
+      margin 0 -15px
+      padding 5px 0 20px
       justify-content space-between
 
     li
-      padding: 0 15px
+      padding 0 15px
+
+    +between($wide, $wide + $menu_extra * 2 - 1px)
+      .__page-aside &
+        margin: 0 -12px
+
+        li
+          padding: 0 12px
 
   &-nav
-    position: relative
+    position relative
 
     &::before
-      content: ''
-      position: absolute
-      top: 0
-      left: 50%
-      width: 100vw
+      content ''
+      position absolute
+      top 0
+      left 50%
+      width 100vw
       transform translateX(-50%)
-      border-bottom: 1px solid rgba(255, 255, 255, .1)
+      border-bottom 1px solid rgba(255, 255, 255, .1)
 
     +above($tab)
-      border-bottom: 1px solid rgba(255, 255, 255, .1)
+      border-bottom 1px solid rgba(255, 255, 255, .1)
 
     +above($wide)
       html:not(.__page-aside) &
-        display flex
-        flex-wrap: wrap
-        justify-content space-between
-        align-items center
-        padding-bottom: 24px
+        f_nav()
 
-        .logo-holder
-          padding-bottom: 0
-
-        .nav
-          padding: 28px 0 0
-
-          li
-            padding-left: 26px
-
-        .logo
-          font-size: 36px
-          line-height: normal
+    +above($wide + $menu_extra * 2)
+      f_nav()
 
   &-tags
     display flex
     flex-flow row wrap
     gap 8px
-    margin: 10px 0 36px
+    margin 10px 0 36px
 
     .tag-link
-      font-weight: 400
-      font-size: 14px
-      line-height: 17px
-      color: #fff
-      background: #333
-      padding: 8px 16px
+      font-weight 400
+      font-size 14px
+      line-height 17px
+      color #fff
+      background #333
+      padding 8px 16px
 
   &-caption
-    text-align: left
-    padding: 33px 0 6px
-    color: #fff
-    font: 700 21px/28px $fontPTSerif
+    text-align left
+    padding 33px 0 6px
+    color #fff
+    font 700 21px/28px $fontPTSerif
 
   &-socials
-    padding-top: 30px
+    padding-top 30px
 
   &-feedback
-    padding-top: 15px
-    font-size: 14px
-    line-height: 20px
+    padding-top 15px
+    font-size 14px
+    line-height 20px
 
     a
-      color: rgba(255, 255, 255, .35)
-      text-decoration: underline
+      color rgba(255, 255, 255, .35)
+      text-decoration underline
 
       &:hover
-        color: $red
+        color $red
 
     +above($tab)
-      padding-top: 20px
+      padding-top 20px
 
   &-info
     +above($tab)
-      padding-top: 5px
+      padding-top 5px
       display flex
       gap 10px
       justify-content space-between
 
     +above($wide)
-      padding-top: 0
+      padding-top 0
 
   &-copyright
-    color: rgba(255,255,255, .5)
-    font-size: 14px
-    line-height: 20px
-    padding-top: 20px
+    color rgba(255,255,255, .5)
+    font-size 14px
+    line-height 20px
+    padding-top 20px
 
     a
-      color: inherit
+      color inherit
 
       &:hover
-        color: $red
+        color $red
 
   &-socials
     .social-list
-      text-align: center
+      text-align center
 
       li
-        padding: 0 9px 8px
+        padding 0 9px 8px
         display inline-block
 
     .social-link
-      cursor: pointer
+      cursor pointer
       display block
 
       svg
-        width: 16px
-        height: 16px
-        fill: #fff
+        width 16px
+        height 16px
+        fill #fff
         transition fill .3s
 
       &:hover svg
-        fill: $red
+        fill $red
 
   +below($dt - 1px)
     .logo
-      font-size: 36px
-      line-height: 48px
+      font-size 36px
+      line-height 48px
 
     .logo-holder
-      padding-top: 36px
+      padding-top 36px
 
   +below($tab - 1px)
-    padding-top: 2px
+    padding-top 2px
 
     .nav
-      padding: 0
+      padding 0
 
     .footer-socials
-      padding-top: 22px
+      padding-top 22px
 
     .footer-menu
-      padding-top: 10px
+      padding-top 10px
 
       .nav-link
-        padding: 14px 0
+        padding 14px 0
 
     .logo
-      font-size: 28px
-      line-height: 37px
+      font-size 28px
+      line-height 37px
 
     .logo-holder
-      padding-top: 30px
+      padding-top 30px
 
   .__page-aside &
     +above($wide_1600)
-      padding-right: var(--home-aside-width)
+      padding-right var(--home-aside-width)
 
       .section
         max-width 100%
 
       .footer-nav::before
-        margin-left: calc(var(--home-aside-width) / -2)
+        margin-left calc(var(--home-aside-width) / -2)
