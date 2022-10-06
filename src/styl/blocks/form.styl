@@ -120,11 +120,21 @@ textarea.input
     transform translateY(-50%)
     top 50%
     right 20px
+    height: 20px
+    width: 20px
     color #BBBBBB
 
+    &::before
+      content: ''
+      position: absolute
+      top: -10px
+      bottom: -10px
+      left: -10px
+      right: -10px
+
     .btn-icon
-      width 19px
-      height 13px
+      width 20px
+      height 20px
 
       &.__hide
         display none

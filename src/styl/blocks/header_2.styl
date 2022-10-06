@@ -59,7 +59,7 @@
           line-height 32px
 
     .currency-menu
-      padding 0 10px
+      padding 0 16px 0 0
 
     .user-menu
       .header-menu__icon
@@ -102,7 +102,7 @@
       top var(--header-search-height)
 
     &::before
-      bottom 1px
+      bottom 0
 
     &::after,
     &::before
@@ -354,14 +354,14 @@
       opacity 0
       pointer-events none
       transform translateY(calc(-100% - var(--header-mob-height)))
-      top calc(var(--header-mob-height) - 2px)
+      top calc(var(--header-mob-height))
       //height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) + 1px)
       max-height calc(var(--app-height) - var(--header-mob-height))
       width 100%
       max-width 450px
       background #222
       overflow-y auto
-      border-top 1px solid $menu_bdr_clr
+      //border-top 1px solid $menu_bdr_clr
 
       .header-menu__wrapper
         min-height 100%
