@@ -164,10 +164,16 @@
     &.__hero
       margin-bottom: -36px
 
+      .card-description
+        color: #B2B2B2 !important
+
       li.__main
         width: 100%
-        margin-bottom: 12px
+        margin-bottom: 20px
         height: auto !important
+
+        + li
+          border-top-width: 0 !important
 
         .card
           +above($tab)
@@ -210,11 +216,14 @@
           color: $gray
           grid-area text
 
-          +below($tab - 1px)
-            display none
-
         .card-preview
           grid-area img
+
+          +above($tab)
+            height: 268px
+
+          +above($wide)
+            height: 300px
 
           img
             img_center()
@@ -227,6 +236,8 @@
               width auto
 
         +above($tab)
+          margin-bottom: 12px
+
           + li + li ~ li
             display none
 
@@ -235,6 +246,8 @@
             display block
 
       li:not(.__main)
+        border-top-color #323232 !important
+
         .card-preview
           height: 148px
 

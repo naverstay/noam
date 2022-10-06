@@ -119,16 +119,16 @@ mixin currency()
       span.currency-trend.__up 1,47
 
 mixin user(map)
-  - let cls = map ? 'mob-hide' : ''
+  - let user_cls = map ? 'mob-hide' : ''
   ul.user-menu
     if (!map)
       li: span.header-menu__icon.js-popup(data-popup='#modal_location')
         +icon('nav').btn-icon
-        span(class= cls) Санкт-Петербург
+        span(class= user_cls) Санкт-Петербург
 
-    li.mob-hide: span.header-menu__icon.js-popup(data-popup='#modal_auth')
+    li(class= user_cls): span.header-menu__icon.js-popup(data-popup='#modal_auth')
       +icon('user').btn-icon
-      span(class= cls) Войти
+      span Войти
 
     if (map)
       li.mob-only: span.header-menu__icon.js-toggle-mobile-map.__active
