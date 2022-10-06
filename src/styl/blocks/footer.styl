@@ -4,6 +4,9 @@
   text-align: center
   padding: 0 0 40px
 
+  .section
+    padding: 0 30px
+
   .nav
     align-items center
 
@@ -50,7 +53,14 @@
         padding-bottom: 0
 
       .nav
-        padding: 24px 0 0
+        padding: 28px 0 0
+
+        li
+          padding-left: 26px
+
+      .logo
+        font-size: 36px
+        line-height: normal
 
   &-tags
     display flex
@@ -68,7 +78,7 @@
 
   &-caption
     text-align: left
-    padding: 33px 0 16px
+    padding: 33px 0 6px
     color: #fff
     font: 700 21px/28px $fontPTSerif
 
@@ -96,6 +106,9 @@
       display flex
       gap 10px
       justify-content space-between
+
+    +above($wide)
+      padding-top: 0
 
   &-copyright
     color: rgba(255,255,255, .5)
