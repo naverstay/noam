@@ -42,7 +42,7 @@
         z-index 1003
 
     .currency-menu
-      +below($wide_1600 - 1px)
+      +below($wide - 1px)
         display none
 
     .header-inner
@@ -370,15 +370,8 @@
         flex-flow column
         align-items flex-start
         justify-content space-between
-        padding 22px 20px calc(34px + var(--header-search-height) * 2)
+        padding calc(22px + var(--menu-currency-height)) 20px calc(34px + var(--header-search-height) * 2)
         margin-top var(--header-mob-mapbtn-height)
-
-        &.__currency
-          padding-top calc(22px + var(--header-search-height))
-
-          .header-menu__top
-            grid-template-areas "currency" "nav" "search" "user";
-            grid-template-rows var(--header-search-height) auto var(--header-search-height) var(--header-search-height);
 
       .header-menu__top
         position absolute
@@ -387,8 +380,8 @@
         left 20px
         right 20px
         display grid
-        grid-template-areas "nav" "search" "user"
-        grid-template-rows 20px var(--header-search-height) var(--header-search-height)
+        grid-template-areas "currency" "nav" "search" "user";
+        grid-template-rows var(--menu-currency-height) auto var(--header-search-height) var(--header-search-height);
 
       .currency-menu
         height var(--header-search-height)
@@ -478,8 +471,8 @@
 
       svg
         fill $gray
-        height 14px
-        width 14px
+        height 18px
+        width 18px
         //flex 1 0 auto
         opacity .5
         transition opacity .3s, fill .3s

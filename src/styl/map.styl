@@ -16,12 +16,12 @@
     height 100%
     width 100%
 
-    //+below($tab - 1px)
-    //  .__list-aside-open &
-    //    background: #fff
-    //
-    //    .map
-    //      opacity: 0
+  //+below($tab - 1px)
+  //  .__list-aside-open &
+  //    background: #fff
+  //
+  //    .map
+  //      opacity: 0
 
   &-holder
     position absolute
@@ -87,12 +87,13 @@
 
             .hero-aside__head-overlay
               pointer-events none
-              //position absolute
-              //top -50px
-              //left -50px
-              //right -50px
-              //z-index 2
-              //background rgba(0, 0, 0, .65)
+
+            //position absolute
+            //top -50px
+            //left -50px
+            //right -50px
+            //z-index 2
+            //background rgba(0, 0, 0, .65)
 
             .__map-aside.__list-aside-open &
               //pointer-events none
@@ -104,10 +105,12 @@
           &.hero-aside__article
             z-index 1002
             top calc(var(--map-tags-height) + var(--map-article-offset))
-            height calc(var(--app-height) - var(--map-tags-height) + var(--map-article-offset))
+            height calc(var(--app-height) - var(--header-mob-height) - var(--map-tags-height) - var(--map-article-offset))
+            transform translateY(100%)
 
+            .__map-aside.__article-aside-open &
             .__map-aside.__map-aside-open &
-              transform translateX(0)
+              transform translateY(0)
 
       .hero-aside
         custom_scroll(rgba(0, 0, 0, .25))
@@ -167,6 +170,17 @@
     align-items center
     justify-content center
 
+    &::before
+      content: ''
+      position: absolute
+      top: -6px
+      bottom: -6px
+      left: -6px
+      right: -6px
+      border-radius: 100%
+      border: 6px solid rgba(0, 0, 0, 0.0)
+      transition border-color .3s
+
     &:hover svg
       transform scale(1.3)
 
@@ -175,6 +189,10 @@
       fill #fff
       max-width 16px
       max-height 16px
+
+    &.__active
+      &::before
+        border-color: rgba(0, 0, 0, 0.25)
 
   .leaflet-control-zoom.leaflet-bar.leaflet-control
     filter drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.15))

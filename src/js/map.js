@@ -69,18 +69,31 @@ const initMap = (points) => {
         }
       });
 
+      const setActivePin = (pin) => {
+        map.eachLayer(function (layer) {
+          if (layer.options.hasOwnProperty('icon') && layer.options.icon.options.hasOwnProperty('className') && layer.options.icon.options.className.indexOf('map-icon') > -1) {
+            layer.options.icon.options.className = layer.options.icon.options.className.replace('__active', '').replace(/ +/g, ' ').trim()
+          }
+        });
+
+        pin._icon.classList.add('__active');
+      }
+
       points.forEach((a, ai) => {
         markers.addLayer(L.marker([a[0], a[1]], {
           title: a[2],
           icon: a[3],
           tags: [a[4]]
-        }).on('click', () => {
-          console.log('click', a[4]);
+        }).on('click', (e) => {
+          console.log('click', a[4], e);
 
           setActiveArticle(a[0], a[1], (ai % 12) + 1);
 
+          $('.leaflet-marker-icon.map-icon.__active').removeClass('__active');
           $('html').toggleClass('__map-aside-open');
           $('.js-map-aside').toggleClass('__open-mob');
+
+          setActivePin(e.target);
         }));
       });
 

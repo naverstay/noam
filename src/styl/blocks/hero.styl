@@ -241,9 +241,10 @@
     transition transform .3s
     width var(--home-aside-width)
     display none
+    overflow-x hidden
     overflow-y auto
-    hidden_scroll()
     transform translateX(100%)
+    hidden_scroll()
     //custom_scroll(rgba(0, 0, 0, .25))
 
     .__open-popup &
@@ -276,6 +277,17 @@
         margin-left auto
         margin-top: 6px
         margin-right: -4px
+        position: relative
+
+        &::before
+          content: ''
+          position: absolute
+          bottom: -15px
+          left: -15px
+          background: #fff
+          width: 55px
+          height: 55px
+          z-index: -1
 
         .btn-icon
           width: 12px
@@ -353,8 +365,16 @@
             margin-left: -8px
             margin-right: -8px
 
+      +below($tab - 1px)
+        .hero-aside__head
+          background: none
+
+          &::after
+          &::before
+            display none
+
       &.__open
-        transform translateX(0)
+        transform translateY(0)
 
         //+ .hero-aside
         //  opacity 0

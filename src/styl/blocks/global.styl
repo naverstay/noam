@@ -1,16 +1,17 @@
 :root {
   --app-height 100%
   --app-width max($content_max_width, 100vw)
-  --map-aside-width 100%
   --home-aside-width $home_aside_width
   --header-search-height 48px
   --header-mob-height 69px
   --header-mob-mapbtn-height 37px
+  --map-aside-width 100%
   --map-tags-height 52px
   --map-article-offset 48px
   --map-aside-left 20px
   --map-aside-right 20px
   --app-scroll-size 4px
+  --menu-currency-height 0px
   --sat env(safe-area-inset-top)
   --sar env(safe-area-inset-right)
   --sab env(safe-area-inset-bottom)
@@ -54,6 +55,9 @@ a
 html
   margin-right 0 !important
   custom_scroll(rgba(0, 0, 0, .25))
+
+  &.__page-aside:root
+    --menu-currency-height 48px
 
   &.__map-aside:root
     --header-mob-height 60px
@@ -110,11 +114,11 @@ body
     background: rgba(0, 0, 0, .65)
     z-index: 1001
     opacity: 0
-    transition opacity .3s
+    height: 0
+    transition opacity .3s, height .3s
     pointer-events none
 
     +below($tab - 1px)
-
       .__map-aside.__article-aside-open &
       .__map-aside.__map-aside-open &
         z-index: 1005
