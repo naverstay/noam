@@ -247,6 +247,10 @@
     hidden_scroll()
     //custom_scroll(rgba(0, 0, 0, .25))
 
+    +between($wide, $wide + $menu_extra * 2 - 1px)
+      .__page-aside &
+        padding-right: 20px
+
     .__open-popup &
       right var(--app-scroll-size)
 
@@ -274,19 +278,17 @@
         margin-bottom -1px
 
       +below($tab - 1px)
-        margin-left auto
-        margin-top: 6px
-        margin-right: -4px
+        margin: 0 -4px 0 auto
         position: relative
 
         &::before
           content: ''
           position: absolute
-          bottom: -15px
-          left: -15px
+          bottom: -18px
+          left: -18px
           background: #fff
-          width: 55px
-          height: 55px
+          width: 60px
+          height: 60px
           z-index: -1
 
         .btn-icon
@@ -405,6 +407,10 @@
         cursor pointer
 
     &__list
+      +between($wide, $wide + $menu_extra * 2 - 1px)
+        .__page-aside &
+          margin-top: -13px
+
       li
         position relative
         padding-bottom 17px
@@ -436,7 +442,11 @@
 
     &__caption
       font bold 23px / 1 $fontPTSerif
-      color #000000
+      color #000
+
+      +between($wide, $wide + $menu_extra * 2 - 1px)
+        .__page-aside &
+          font-size: 21px
 
       &:not(:only-child)
         margin-right 5px

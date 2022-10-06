@@ -31,7 +31,7 @@
     --map-aside-width $map_aside_width
   }
 
-+above($wide_1600 + 400px)
++above($content_max_width + $home_aside_width_1600)
   :root {
     --home-aside-width $home_aside_width_1600
   }
@@ -58,6 +58,9 @@ html
 
   &.__page-aside:root
     --menu-currency-height 48px
+
+    +between($wide, $wide + $menu_extra * 2 - 1px)
+      --header-search-height 48px
 
   &.__map-aside:root
     --header-mob-height 60px
@@ -170,9 +173,10 @@ body
       padding-top 48px
       padding-bottom 48px
 
-    +desktop()
-      padding-top 48px
-      padding-bottom 48px
+    +between($wide, $wide + $menu_extra * 2 - 1px)
+      .__page-aside &
+        padding-top 32px
+        padding-bottom 32px
 
   &.__title
     padding-top 20px
@@ -278,6 +282,12 @@ body
       line-height 48px
       margin-bottom 24px
 
+    +between($wide, $wide + $menu_extra * 2 - 1px)
+      .__page-aside &
+        font-size 28px
+        line-height 37px
+        margin-bottom 16px
+
 .nav
   display flex
   justify-content center
@@ -313,6 +323,10 @@ body
 
 .wide-hide
   +above($wide)
+    display none !important
+
+.exwide-hide
+  +above($wide + $menu_extra * 2)
     display none !important
 
 .wide-only

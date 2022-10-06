@@ -8,7 +8,7 @@ if (map && header_class === '__short')
       .header-menu__map
         +logo()
         +currency()
-        +user(true)
+        +user('map')
 
     .section.__gray
       .header-map__scroller
@@ -24,13 +24,14 @@ if (map && header_class === '__short')
 
 else
 
-  .header-map__toggle-mob
-    a.btn.btn-map.__s-33.btn-red(href='livemap.html')
-      +icon('whatshot').btn-icon
-      span() Новости на карте
+  if (html_class === '__page-aside')
+    .header-map__toggle-mob
+      a.btn.btn-map.__s-33.btn-red(href='livemap.html')
+        +icon('whatshot').btn-icon
+        span() Новости на карте
 
   .header(class= header_class)
-    .section: .header-inner
+    .section: .header-inner(class= (html_class === '__page-aside' || html_class === '__map-aside' ? '' : '__center'))
       +logo()
 
       .header-menu: .header-menu__wrapper(class= popular_tags ? '__currency' : '')
@@ -40,7 +41,7 @@ else
           +search()
           if (popular_tags)
             +currency()
-          +user()
+          +user((html_class === '__page-aside' && html_class !== '__map-aside' ? '' : 'inner'))
 
         .header-map__toggle-all
           .header-map__toggle

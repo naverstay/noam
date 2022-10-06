@@ -119,9 +119,9 @@ mixin currency()
       span.currency-trend.__up 1,47
 
 mixin user(map)
-  - let user_cls = map ? 'mob-hide' : ''
+  - let user_cls = map === 'map' ? 'mob-hide' : ''
   ul.user-menu
-    if (!map)
+    if (map !== 'map')
       li: span.header-menu__icon.js-popup(data-popup='#modal_location')
         +icon('nav').btn-icon
         span(class= user_cls) Санкт-Петербург
@@ -130,7 +130,12 @@ mixin user(map)
       +icon('user').btn-icon
       span Войти
 
-    if (map)
+    if (map === 'inner')
+      li.exwide-hide.mob-hide: a.header-menu__icon.btn.btn-red.btn-map(href='livemap.html')
+        +icon('whatshot').btn-icon
+        span Новости на карте
+
+    if (map === 'map')
       li.mob-only: span.header-menu__icon.js-toggle-mobile-map.__active
         +icon('map').btn-icon
 

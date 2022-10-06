@@ -37,6 +37,11 @@
         margin-bottom 24px
         margin-right -30px
 
+      +between($wide, $wide + $menu_extra * 2 - 1px)
+        .__page-aside &
+          margin-right -20px
+          margin-bottom 6px
+
       li
         +below($tab - 1px)
           height auto !important
@@ -137,32 +142,36 @@
         //  height 63%
 
         +desktop()
-          padding-bottom 28px
-          padding-right 30px
+          html:not(.__page-aside) &
+            padding-bottom 28px
+            padding-right 30px
 
-          &::before
-            padding-bottom calc(60% + 65px + 40px)
-
-          //.card
-          //  right 30px
-          //  bottom 30px
-
-          //.card-preview
-          //  height 59%
-
-          &.__no-img .card
-            top 15px
-
-          &.__w-2 .card-title
-            font-size 24px
-            line-height 32px
-
-          &.__h-2
             &::before
-              padding-bottom calc(100% + 30px)
+              padding-bottom calc(60% + 65px + 40px)
+
+            //.card
+            //  right 30px
+            //  bottom 30px
+
+            //.card-preview
+            //  height 59%
+
+            &.__no-img .card
+              top 15px
+
+            &.__w-2 .card-title
+              font-size 24px
+              line-height 32px
+
+            &.__h-2
+              &::before
+                padding-bottom calc(100% + 30px)
 
     &.__hero
       margin-bottom: -36px
+
+      .card-title
+        font-family: $fontInter
 
       .card-description
         color: #B2B2B2 !important
@@ -185,6 +194,11 @@
           +above($wide)
             grid-template-columns 1fr 1fr
             grid-column-gap 30px
+
+          +between($wide, $wide + $menu_extra * 2 - 1px)
+            .__page-aside &
+              grid-column-gap 20px
+              grid-template-columns 1fr 1.22fr
 
         .card-footer
           grid-area link
@@ -209,6 +223,12 @@
             font-size: 32px
             line-height: 39px
 
+          +between($wide, $wide + $menu_extra * 2 - 1px)
+            .__page-aside &
+              font-size: 24px
+              line-height: 29px
+              padding-top: 9px
+
         .card-description
           font-weight: 300
           font-size: 14px
@@ -220,10 +240,11 @@
           grid-area img
 
           +above($tab)
-            height: 268px
+            height: 269px
 
           +above($wide)
-            height: 300px
+            html:not(.__page-aside) &
+              height: 300px
 
           img
             img_center()
@@ -241,7 +262,11 @@
           + li + li ~ li
             display none
 
-        +above($dt)
+        +between($wide, $wide + $menu_extra * 2 - 1px)
+          .__page-aside &
+            margin-bottom: 0
+
+        +above($wide + $menu_extra * 2)
           + li + li ~ li
             display block
 
@@ -257,14 +282,24 @@
         +above($tab)
           width 50%
 
-        +above($dt)
+        +above($wide)
           width 33.3333%
+
+        +between($wide, $wide + $menu_extra * 2 - 1px)
+          .__page-aside &
+            width: 50%
 
     //.card-preview
     //  height 320px
 
     +desktop()
       grid-gap 30px
+
+    +between($wide, $wide + $menu_extra * 2 - 1px)
+      &.__hero.__grid
+        .__page-aside &
+          margin-top: -20px
+          margin-bottom: -50px
 
   &-share
     display flex
