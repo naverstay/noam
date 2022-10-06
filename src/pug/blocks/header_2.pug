@@ -33,12 +33,13 @@ else
     .section: .header-inner
       +logo()
 
-      .header-menu: .header-menu__wrapper
+      .header-menu: .header-menu__wrapper(class= popular_tags ? '__currency' : '')
         +nav()
 
         .header-menu__top
           +search()
-          +currency()
+          if (popular_tags)
+            +currency()
           +user()
 
         .header-map__toggle-all

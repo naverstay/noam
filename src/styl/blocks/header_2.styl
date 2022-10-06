@@ -4,19 +4,19 @@
   position sticky
   top 0
   left 0
-  width: 100vw
+  width 100vw
   z-index 1001
-  background: #222
+  background #222
 
   +above($tab)
-    top: calc(-1 * var(--header-search-height) - 8px)
+    top calc(-1 * var(--header-search-height) - 8px)
 
   +below($wide - 1px)
-    padding-top: 32px
+    padding-top 32px
 
   +below($tab - 1px)
-    padding-top: 0
-    position: fixed
+    padding-top 0
+    position fixed
 
   +above($tab)
     .__map-aside &
@@ -25,112 +25,112 @@
 
   +above($wide_1600)
     .__page-aside &
-      padding-right: var(--home-aside-width)
+      padding-right var(--home-aside-width)
 
   &.__short
-    padding-top: 0
-    top: 0
-    background: none
+    padding-top 0
+    top 0
+    background none
     transition none
 
     +below($wide - 1px)
       .section
-        padding: 0 20px
+        padding 0 20px
 
     +below($tab - 1px)
       .__map-aside.__map-aside-open &
-        z-index: 1003
+        z-index 1003
 
     .currency-menu
       +below($wide_1600 - 1px)
         display none
 
     .header-inner
-      padding-top: 0
+      padding-top 0
 
     .logo-holder
       flex 1 0 auto
-      padding-top: 12px
+      padding-top 12px
 
       +above($tab)
 
         .logo
-          font-size: 24px
-          line-height: 32px
+          font-size 24px
+          line-height 32px
 
     .currency-menu
-      padding: 0 10px
+      padding 0 10px
 
     .user-menu
       .header-menu__icon
 
         +below($wide - 1px)
           padding 0 32px
-          position: relative
-          //font-size: 13px
+          position relative
+          //font-size 13px
 
           &.__active
-            cursor: default
+            cursor default
 
             &::before
-              content: ''
-              position: absolute
-              bottom: 0
-              right: 0
-              left: 0
-              height: 2px
-              background: $red
+              content ''
+              position absolute
+              bottom 0
+              right 0
+              left 0
+              height 2px
+              background $red
 
         +below($tab - 1px)
-          padding: 0 22px
+          padding 0 22px
 
   &:not(.__short)
     .currency-menu,
     .user-menu
       +below($dt - 1px)
-        flex: 1 0 auto
+        flex 1 0 auto
 
   &-inner
-    z-index: 1
-    position: relative
+    z-index 1
+    position relative
     display grid
     align-items stretch
     justify-content space-between
     grid-template-columns 150px auto
 
     &::after
-      top: var(--header-search-height)
+      top var(--header-search-height)
 
     &::before
-      bottom: 0
+      bottom 1px
 
     &::after,
     &::before
-      content: ''
-      position: absolute
-      height: 1px
-      width: 100vw
-      left: 50%
+      content ''
+      position absolute
+      height 1px
+      width 100vw
+      left 50%
       transform translateX(-50%)
-      background: $menu_bdr_clr
+      background $menu_bdr_clr
 
     +below($tab - 1px)
-      height: var(--header-mob-height)
+      height var(--header-mob-height)
 
       &::after
         display none
 
     +above($tab)
-      padding-bottom: 6px
-      padding-top: calc(8px + var(--header-search-height))
+      padding-bottom 6px
+      padding-top calc(8px + var(--header-search-height))
 
       &::before
         display none
 
       .header-menu__wrapper
-        height: 100%
-        display: flex
-        align-items: stretch
+        height 100%
+        display flex
+        align-items stretch
 
     +above($wide)
       grid-template-columns 192px auto
@@ -139,32 +139,32 @@
         display block
 
   &-map
-    height: var(--map-tags-height)
-    position: relative
-    padding: 11px 8px 8px 12px
-    //background: #363d3e
-    //background: rgba(34, 34, 34, 0.75)
+    height var(--map-tags-height)
+    position relative
+    padding 11px 8px 8px 12px
+    //background #363d3e
+    //background rgba(34, 34, 34, 0.75)
 
     &::after
-      left: 100%
+      left 100%
 
     &::before
-      right: 100%
+      right 100%
 
     &::before,
     &::after
-      content: ''
-      position: absolute
-      width: 100vw
-      top: 0
-      bottom: 0
-      background: inherit
+      content ''
+      position absolute
+      width 100vw
+      top 0
+      bottom 0
+      background inherit
 
     +above($tab)
-      padding-left: 24px
+      padding-left 24px
 
     &__toggle
-      position: relative
+      position relative
 
       &-all
         display flex
@@ -172,40 +172,40 @@
         justify-content flex-end
 
         +below($tab - 1px)
-          position: absolute
-          left: 0
-          right: 0
-          bottom: 100%
+          position absolute
+          left 0
+          right 0
+          bottom 100%
 
           .header-map__toggle
-            width: 100%
+            width 100%
 
             .btn
-              width: 100%
-              height: var(--header-mob-mapbtn-height)
-              font-size: 14px
-              line-height: 21px
+              width 100%
+              height var(--header-mob-mapbtn-height)
+              font-size 14px
+              line-height 21px
 
               .btn-icon
-                width: 20px
-                height: 20px
+                width 20px
+                height 20px
 
         +above($tab)
           display none
 
         +above($wide)
           display flex
-          position: absolute
-          right: 0
-          bottom: 6px
-          height: 62px
+          position absolute
+          right 0
+          bottom 6px
+          height 62px
 
       &-mob
-        position: fixed
-        top: 0
-        right: calc(-1 * var(--app-scroll-size))
-        left: 0
-        z-index: 1002
+        position fixed
+        top 0
+        right calc(-1 * var(--app-scroll-size))
+        left 0
+        z-index 1002
         display none
 
         +above($tab)
@@ -215,49 +215,49 @@
           display none
 
         .btn
-          border-radius: 0
-          width: 100%
+          border-radius 0
+          width 100%
 
         .__open-popup &,
         body.open_menu &
-          right: 0
+          right 0
 
     &__scroller
-      opacity: 0
+      opacity 0
       transition opacity .3
-      //padding: 4px 0 0
-      margin-left: -20px
-      margin-right: -20px
-      margin-top: -1px
-      padding-top: 1px
-      width: calc(100% + 40px)
-      position: relative
-      //overflow: hidden
+      //padding 4px 0 0
+      margin-left -20px
+      margin-right -20px
+      margin-top -1px
+      padding-top 1px
+      width calc(100% + 40px)
+      position relative
+      //overflow hidden
 
       .js-map-slider
-        overflow: visible !important
+        overflow visible !important
 
       &.__loaded
-        opacity: 1
+        opacity 1
 
       //+above($tab)
-      //  margin-left: -24px
-      //  margin-right: -24px
-      //  width: calc(100% + 48px)
+      //  margin-left -24px
+      //  margin-right -24px
+      //  width calc(100% + 48px)
 
       +above($wide)
-        margin-left: -24px
-        //margin-right: -24px
-        width: calc(100% + 48px)
-        margin-right: 0
-        //width: calc(100% + 24px)
+        margin-left -24px
+        //margin-right -24px
+        width calc(100% + 48px)
+        margin-right 0
+        //width calc(100% + 24px)
 
     .btn
-      margin-right: 8px
+      margin-right 8px
 
   &-overlay
     position fixed
-    top: calc(var(--header-mob-height) - 1px)
+    top calc(var(--header-mob-height) - 1px)
     height var(--app-height)
     left 0
     right 0
@@ -274,42 +274,42 @@
       opacity .75
 
   &-search
-    position: relative
+    position relative
 
     +above($dt)
       flex 1 0 auto
 
     &__input
-      position: relative
-      padding-left: 15px
-      height: 100%
+      position relative
+      padding-left 15px
+      height 100%
 
       input
         placeholder_color(rgba(255, 255, 255, .5))
-        font-size: 12px
-        color: #fff
+        font-size 12px
+        color #fff
         outline 0 !important
-        border: 0 !important
+        border 0 !important
 
         +below($tab - 1px)
-          font-size: 13px
+          font-size 13px
 
   &-menu
     +above($tab)
-      margin-right: -10px
+      margin-right -10px
 
     +above($dt)
-      margin: 0
+      margin 0
 
     +above($wide)
-      margin: 0 200px 0 0
+      margin 0 200px 0 0
 
     &__map
-      position: relative
+      position relative
       display flex
-      margin-right: -20px
-      //margin-bottom: -4px
-      height: 60px
+      margin-right -20px
+      //margin-bottom -4px
+      height 60px
 
       +above($tab)
         align-items stretch
@@ -317,131 +317,153 @@
         flex-fow row nowrap
 
       +above($wide)
-        margin-right: -30px
+        margin-right -30px
 
       .__short &
         justify-content flex-end
 
     &__top
-      position: relative
+      position relative
       display flex
 
       +above($tab)
         align-items stretch
         justify-content space-between
         flex-fow row nowrap
-        position: absolute
-        top: 0
-        right: -24px
-        left: -7px
-        height: var(--header-search-height)
+        position absolute
+        top 0
+        right -24px
+        left -7px
+        height var(--header-search-height)
 
       .__short &
         justify-content flex-end
 
     //+above($dt)
-    //  right: 0
-    //  left: 0
+    //  right 0
+    //  left 0
 
     .__scroll &
       border-bottom-color transparent
 
     +below($mob_menu - 1px)
-      transition transform .3s
+      transition transform .3s, opacity .15s .1s
       position fixed
       z-index 1
-      left 100%
-      top: calc(var(--header-mob-height) - 2px)
+      right 0
+      opacity 0
+      pointer-events none
+      transform translateY(calc(-100% - var(--header-mob-height)))
+      top calc(var(--header-mob-height) - 2px)
       //height calc(var(--app-height) - var(--header-mob-height) - var(--header-mob-mapbtn-height) + 1px)
       max-height calc(var(--app-height) - var(--header-mob-height))
       width 100%
       max-width 450px
       background #222
       overflow-y auto
-      border-top: 1px solid $menu_bdr_clr
+      border-top 1px solid $menu_bdr_clr
 
       .header-menu__wrapper
         min-height 100%
-        position: relative
+        position relative
         display flex
         flex-flow column
         align-items flex-start
         justify-content space-between
-        padding calc(22px + var(--header-search-height)) 20px calc(34px + var(--header-search-height) * 3)
-        margin-top: var(--header-mob-mapbtn-height)
+        padding 22px 20px calc(34px + var(--header-search-height) * 2)
+        margin-top var(--header-mob-mapbtn-height)
+
+        &.__currency
+          padding-top calc(22px + var(--header-search-height))
+
+          .header-menu__top
+            grid-template-areas "currency" "nav" "search" "user";
+            grid-template-rows var(--header-search-height) auto var(--header-search-height) var(--header-search-height);
 
       .header-menu__top
-        position: absolute
-        top: 0
-        bottom: 0
-        left: 20px
-        right: 20px
+        position absolute
+        top 0
+        bottom 0
+        left 20px
+        right 20px
         display grid
-        grid-template-areas "currency" "nav" "search" "user"
-        grid-template-rows var(--header-search-height) auto var(--header-search-height) var(--header-search-height)
+        grid-template-areas "nav" "search" "user"
+        grid-template-rows 20px var(--header-search-height) var(--header-search-height)
 
       .currency-menu
+        height var(--header-search-height)
         grid-area currency
-        border-bottom: 1px solid $menu_bdr_clr
-        overflow-x: auto
+        border-bottom 1px solid $menu_bdr_clr
+        overflow-x auto
         flex-wrap nowrap
-        margin: 0 -20px
-        padding: 0 20px
+        margin 0 -20px
+        padding 0 20px
         hidden_scroll()
 
       .header-search
         grid-area search
-        margin: 0 -20px
-        border: 1px solid $menu_bdr_clr
-        border-width: 1px 0
-        padding-left: 10px
+        margin 0 -20px
+        border 1px solid $menu_bdr_clr
+        border-width 1px 0
+        padding-left 10px
+        position sticky
+        z-index 1
+        background #222
+        bottom var(--header-search-height)
 
         .btn
-          left: 10px
+          left 10px
 
       .user-menu
         grid-area user
-        margin: 0 -20px
+        position sticky
+        bottom 0
+        margin 0 -20px
+        z-index 1
+        background #222
 
         li
-          width: 50%
+          width 50%
 
           .header-menu__icon
-            padding: 0 20px
-            width: 100%
-            font-size: 13px
+            padding 0 20px
+            width 100%
+            font-size 13px
             justify-content flex-start
 
           &:first-child
-            border-left: 0
+            border-left 0
 
       .nav
-        z-index: 1
-        position: relative
+        z-index 1
+        position relative
         align-items flex-start
-        width: 100%
+        width 100%
 
         li
-          width: 100%
-          border-bottom: 1px solid $menu_bdr_clr
+          width 100%
+          border-bottom 1px solid $menu_bdr_clr
 
           &:last-child
-            border-bottom: 0
+            border-bottom 0
 
         .active .nav-link
           font-weight bold
 
         .nav-link
-          font-weight: 400
+          font-weight 400
           font-size 14px
           line-height 21px
-          padding: 10px 16px
-          height: var(--map-tags-height)
+          padding 10px 16px
+          height var(--map-tags-height)
           display flex
           align-items center
 
       .open_menu &
-        transform translateX(-100%)
+        transition transform .3s, opacity .15s
+        transform translateY(0)
+        opacity 1
+        pointer-events all
 
     //+above($wide + $menu_extra)
     //  display grid
@@ -459,7 +481,7 @@
         height 14px
         width 14px
         //flex 1 0 auto
-        opacity: .5
+        opacity .5
         transition opacity .3s, fill .3s
 
       +below($wide - 1px)
@@ -469,8 +491,8 @@
       +below($tab - 1px)
 
         svg
-          fill: #fff
-          opacity: 1
+          fill #fff
+          opacity 1
 
       +above($wide)
         flex-flow row
@@ -478,11 +500,11 @@
   .currency-menu
 
     +above($tab)
-      padding: 0 22px
-      border-left: 1px solid $menu_bdr_clr
+      padding 0 22px
+      border-left 1px solid $menu_bdr_clr
 
     +above($wide)
-      padding: 0 30px
+      padding 0 30px
 
     li
       display flex
@@ -498,25 +520,25 @@
         padding-right 23px
 
       //&:first-child
-      //  padding-left: 0
+      //  padding-left 0
 
   .currency-menu,
   .user-menu
     display flex
     align-items stretch
-    font-size: 12px
-    line-height: 15px
+    font-size 12px
+    line-height 15px
 
   .user-menu
     justify-content flex-end
 
     li
       display flex
-      border-left: 1px solid $menu_bdr_clr
+      border-left 1px solid $menu_bdr_clr
 
     .header-menu__icon
       cursor pointer
-      padding: 0 23px
+      padding 0 23px
       min-width 60px
 
       +above($tab)
@@ -529,35 +551,35 @@
         padding 0 0 0 10px
 
       &:hover
-        color: $gray
+        color $gray
 
         svg
-          opacity: 1
+          opacity 1
 
     +above($tab)
       .__map-aside &
-        margin-left: auto
-        //padding-right: 10px
+        margin-left auto
+        //padding-right 10px
         display flex
 
   .nav
     +above($tab)
       .nav-link
-        font-size: 13px
+        font-size 13px
 
     +above($wide)
       transition margin-right .3s
-      //margin-right: 150px
+      //margin-right 150px
       margin-bottom -1px
 
       .nav-link
-        font-size: 14px
+        font-size 14px
         //transition padding-bottom .3s, padding-top .3s
         padding-bottom 12px
 
     //.__scroll &
     //  margin-top -7px
-    //  margin-right: 0
+    //  margin-right 0
 
     +above($wide + $menu_extra)
       padding 0 10px
@@ -576,13 +598,13 @@
         padding-left 17px
         padding-right 16px
         min-height 100%
-        display: flex
-        align-items: center
+        display flex
+        align-items center
 
         &::before
           content ''
           position absolute
-          bottom: -6px
+          bottom -6px
           right 0
           left 0
           height 2px
@@ -593,7 +615,7 @@
         padding-right 18px
 
         &::before
-          bottom: -5px
+          bottom -5px
 
     li
       //+above($wide)
@@ -618,10 +640,10 @@
   //pointer-events none
 
   .header &
-    padding-top: 10px
+    padding-top 10px
 
     + .currency-menu
-      border-left: 0
+      border-left 0
 
     +below($tab - 1px)
       padding 16px 0
@@ -651,20 +673,20 @@
     //  +below($wide - 1px)
     //    font-size 28px
     //    line-height 37px
-    //    top: 0
+    //    top 0
     //
     //  +above($wide)
-    //    float: left
+    //    float left
 
     .__short.header &
-      //font-size: 28px
-      line-height: var(--header-mob-mapbtn-height)
+      //font-size 28px
+      line-height var(--header-mob-mapbtn-height)
 
-    //top: 0
+    //top 0
 
     //+below($wide - 1px)
-    //line-height: 37px
-    //line-height: 50px
+    //line-height 37px
+    //line-height 50px
 
     //+below($tab - 1px)
     //  font-size 28px
@@ -713,36 +735,36 @@
     display none
 
 .currency-name
-  color: $gray
-  font-weight: 500
+  color $gray
+  font-weight 500
 
 .currency-value
-  padding-left: 4px
+  padding-left 4px
 
 .currency-trend
-  position: relative
-  padding-left: 18px
+  position relative
+  padding-left 18px
 
   &::before
-    content: ''
-    position: absolute
-    top: 50%
-    left: 8px
+    content ''
+    position absolute
+    top 50%
+    left 8px
     transform translateY(-50%)
-    width: 0
-    height: 0
-    border-left: 3px solid transparent
-    border-right: 3px solid transparent
+    width 0
+    height 0
+    border-left 3px solid transparent
+    border-right 3px solid transparent
 
   &.__up
-    color: $green
+    color $green
 
     &::before
-      border-bottom: 3px solid $green
+      border-bottom 3px solid $green
 
   &.__down
-    color: $red
+    color $red
 
     &::before
-      border-top: 3px solid $red
+      border-top 3px solid $red
 
