@@ -39,7 +39,7 @@ else
 
         .header-menu__top
           +search()
-          if (popular_tags)
+          if (popular_tags && html_class !== '')
             +currency()
           +user((html_class === '__page-aside' && html_class !== '__map-aside' ? '' : 'inner'))
 
