@@ -168,21 +168,21 @@
                 padding-bottom calc(100% + 30px)
 
     &.__hero
-      margin-bottom: -36px
+      margin-bottom -36px
 
       .card-title
-        font-family: $fontInter
+        font-family $fontInter
 
       .card-description
-        color: #B2B2B2 !important
+        color #B2B2B2 !important
 
       li.__main
-        width: 100%
-        margin-bottom: 20px
-        height: auto !important
+        width 100%
+        margin-bottom 20px
+        height auto !important
 
         + li
-          border-top-width: 0 !important
+          border-top-width 0 !important
 
         .card
           +above($tab)
@@ -204,67 +204,68 @@
           grid-area link
 
           +above($tab)
-            padding-top: 14px
+            padding-top 14px
 
         .card-title
-          color: #fff
-          font-weight: 700
-          font-size: 24px
-          line-height: 29px
-          padding-top: 6px
+          display inline-block
+          color #fff
+          font-weight 700
+          font-size 24px
+          line-height 29px
+          padding-top 6px
           grid-area title
 
           +below($tab - 1px)
-            font-size: 21px
-            line-height: 28px
-            margin-top: 10px
+            font-size 21px
+            line-height 28px
+            margin-top 10px
 
           +above($wide)
-            font-size: 32px
-            line-height: 39px
+            font-size 32px
+            line-height 39px
 
           +between($wide, $wide + $menu_extra * 2 - 1px)
             .__page-aside &
-              font-size: 24px
-              line-height: 29px
-              padding-top: 9px
+              font-size 24px
+              line-height 29px
+              padding-top 9px
 
         .card-description
-          font-weight: 300
-          font-size: 14px
-          line-height: 21px
-          color: $gray
+          font-weight 300
+          font-size 14px
+          line-height 21px
+          color $gray
           grid-area text
 
         .card-preview
           grid-area img
 
           +above($tab)
-            height: 269px
+            height 269px
 
           +above($wide)
             html:not(.__page-aside) &
-              height: 300px
+              height 300px
 
           img
             img_center()
 
           +below($tab - 1px)
-            height: 148px
+            height 148px
 
             img
               img_center()
               width auto
 
         +above($tab)
-          margin-bottom: 12px
+          margin-bottom 12px
 
           + li + li ~ li
             display none
 
         +between($wide, $wide + $menu_extra * 2 - 1px)
           .__page-aside &
-            margin-bottom: 0
+            margin-bottom 0
 
         +above($wide + $menu_extra * 2)
           + li + li ~ li
@@ -274,7 +275,7 @@
         border-top-color #323232 !important
 
         .card-preview
-          height: 148px
+          height 148px
 
           img
             img_center()
@@ -287,7 +288,7 @@
 
         +between($wide, $wide + $menu_extra * 2 - 1px)
           .__page-aside &
-            width: 50%
+            width 50%
 
     //.card-preview
     //  height 320px
@@ -298,44 +299,44 @@
     +between($wide, $wide + $menu_extra * 2 - 1px)
       &.__hero.__grid
         .__page-aside &
-          margin-top: -20px
-          margin-bottom: -50px
+          margin-top -20px
+          margin-bottom -50px
 
   &-share
     display flex
     flex-flow row nowrap
     align-items center
-    font-weight: 500
-    font-size: 12px
-    line-height: 15px
-    color: $gray
+    font-weight 500
+    font-size 12px
+    line-height 15px
+    color $gray
 
     svg
-      width: 15px
-      height: 15px
-      margin-left: 4px
+      width 15px
+      height 15px
+      margin-left 4px
 
   &-link
     display flex
     flex-flow row nowrap
     align-items center
-    font-weight: 500
-    font-size: 12px
-    line-height: 15px
-    color: #000
+    font-weight 500
+    font-size 12px
+    line-height 15px
+    color #000
 
     svg
-      width: 15px
-      height: 15px
-      margin-left: 5px
+      width 15px
+      height 15px
+      margin-left 5px
 
   &-preview
     overflow hidden
     position relative
 
     &.__map
-      padding-top: 10px
-      padding-bottom: 12px
+      padding-top 10px
+      padding-bottom 12px
 
     //height 110px
 
@@ -357,39 +358,39 @@
 
     span
       display block
-      padding-left: 5px
-      position: relative
-      font-weight: 500
-      font-size: 12px
-      line-height: 15px
-      text-align: right
-      color: #666
+      padding-left 5px
+      position relative
+      font-weight 500
+      font-size 12px
+      line-height 15px
+      text-align right
+      color #666
 
       + span
 
         &::before
-          content: '•'
-          padding-left: 2px
-          padding-right: 6px
+          content '•'
+          padding-left 2px
+          padding-right 6px
 
   &-icon
-    color: #fff
-    width: 20px
-    height: 20px
-    border-radius: 100%
+    color #fff
+    width 20px
+    height 20px
+    border-radius 100%
     display flex
     align-items center
     justify-content center
 
     svg
-      width: 12px
-      height: 12px
+      width 12px
+      height 12px
 
     &.__blue
-      background: $blue
+      background $blue
 
     &.__red
-      background: $red
+      background $red
 
   &-logo
     display flex
@@ -418,7 +419,7 @@
     color #000
 
     .section.__black &
-      color: #fff
+      color #fff
 
     +below($tab - 1px)
       display none
@@ -442,13 +443,13 @@
 
     .map-holder__aside &
       justify-content space-between
-      margin-bottom: -10px
+      margin-bottom -10px
 
       +below($tab - 1px)
         display none
 
     .map-holder__aside .card-title + &
-      padding-top: 12px
+      padding-top 12px
 
     +above($tab)
       padding-bottom 10px
@@ -468,7 +469,7 @@
     line-height 15px
 
     + .card-logo
-      margin-left: 4px
+      margin-left 4px
 
   &-date
     color #888
@@ -492,7 +493,7 @@
 
   &:hover
     .card-title
-      color $red
+      color $red !important
 
   .section.__black &
 
@@ -506,14 +507,14 @@
       color #bbb
 
 a.card-logo
-  color: #000
+  color #000
   transition color .3s
 
   span
-    text-decoration: underline
+    text-decoration underline
 
   &:hover
-    color: $red
+    color $red
 
     span
-      text-decoration: none
+      text-decoration none
