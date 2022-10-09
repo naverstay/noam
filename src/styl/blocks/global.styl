@@ -1,5 +1,7 @@
 :root {
   --app-height 100%
+  --app-scroll-size 4px
+  --app-page-overlay-offset 100px
   --app-width max($content_max_width, 100vw)
   --home-aside-width $home_aside_width
   --header-search-height 48px
@@ -10,7 +12,6 @@
   --map-article-offset 48px
   --map-aside-left 20px
   --map-aside-right 20px
-  --app-scroll-size 4px
   --menu-currency-height 0px
   --sat env(safe-area-inset-top)
   --sar env(safe-area-inset-right)
@@ -53,6 +54,7 @@ a
   transition color .3s
 
 html
+  overflow-x hidden
   margin-right 0 !important
   custom_scroll(rgba(0, 0, 0, .25))
 
@@ -101,33 +103,33 @@ body
   min-height var(--app-height)
   display flex
   flex-flow column nowrap
-  position: relative
+  position relative
 
   .__map-aside &
-    overflow: hidden
+    overflow hidden
 
   +below($tab - 1px)
-    overflow: hidden
+    overflow hidden
 
   &-overlay
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    background: rgba(0, 0, 0, .65)
-    z-index: 1001
-    opacity: 0
-    height: 0
+    position absolute
+    top calc(-1 * var(--app-page-overlay-offset))
+    left 0
+    right 0
+    background rgba(0, 0, 0, .65)
+    z-index 1001
+    opacity 0
+    height 0
     transition opacity .3s, height .3s
     pointer-events none
 
     +below($tab - 1px)
       .__map-aside.__article-aside-open &
       .__map-aside.__map-aside-open &
-        z-index: 1005
+        z-index 1005
         pointer-events all
-        opacity: 1
-        height: calc(var(--header-mob-height) + var(--map-tags-height) + var(--map-article-offset))
+        opacity 1
+        height calc(var(--header-mob-height) + var(--map-tags-height) + var(--app-page-overlay-offset) + var(--map-article-offset) + var(--sat))
 
 .content
   position relative
@@ -141,7 +143,7 @@ body
 
   +above($wide_1600)
     .__page-aside &
-      padding-right: var(--home-aside-width)
+      padding-right var(--home-aside-width)
 
 .section
   position relative
@@ -157,7 +159,7 @@ body
     top 0
     bottom 0
     background inherit
-    z-index: -1
+    z-index -1
 
   &::before
     left 100%
@@ -200,16 +202,16 @@ body
           padding-top 20px
 
   &.__map
-    z-index: 0
-    position: relative
-    height: 641px
+    z-index 0
+    position relative
+    height 641px
     max-height 75vh
 
     +above($tab)
-      height: 480px
+      height 480px
 
     +desktop()
-      height: 600px
+      height 600px
 
   &.__gray
     background rgba(34, 34, 34, 0.75);
@@ -229,19 +231,19 @@ body
       .section-title
         font-size 28px
         line-height 37px
-        margin-bottom: 15px
+        margin-bottom 15px
 
   +above($tab)
     padding 0 30px
 
   &-border
-    content: ''
-    position: absolute
-    height: 1px
-    top: 0
-    right: 0
-    left: 0
-    background: #E4E4E4
+    content ''
+    position absolute
+    height 1px
+    top 0
+    right 0
+    left 0
+    background #E4E4E4
 
   &-title
     margin-bottom 12px
@@ -303,7 +305,7 @@ body
 
   +below($mob_menu - 1px)
     flex-flow column
-    padding-bottom: 20px
+    padding-bottom 20px
 
 .mob-hide
   +below($tab - 1px)
