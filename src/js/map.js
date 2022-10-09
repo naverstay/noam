@@ -91,7 +91,7 @@ const initMap = (points) => {
 
           $('.leaflet-marker-icon.map-icon.__active').removeClass('__active');
           $('html').toggleClass('__map-aside-open');
-          $('.js-map-aside').toggleClass('__open-mob');
+          $('.js-map-aside').toggleClass('__open-mob').toggleClass('__open');
 
           setActivePin(e.target);
         }));

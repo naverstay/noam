@@ -124,10 +124,12 @@ mixin user(map)
     if (map !== 'map')
       li: span.header-menu__icon.js-popup(data-popup='#modal_location')
         +icon('nav').btn-icon
+        +icon('arrow_r').mob-only.btn-icon.__arrow
         span(class= user_cls) Санкт-Петербург
 
     li(class= user_cls): span.header-menu__icon.js-popup(data-popup='#modal_auth')
       +icon('user').btn-icon
+      +icon('arrow_r').mob-only.btn-icon.__arrow
       span Войти
 
     if (map === 'inner')

@@ -72,7 +72,7 @@ body
   overflow-x hidden
   position relative
   font 14px $fontInter
-  background #222
+  background $menu_bg_clr
 
   &.open_menu
     +below($tab - 1px)
@@ -87,7 +87,7 @@ body
   //  height 130px
   //  z-index -1
   //  pointer-events none
-  //  background #222
+  //  background $menu_bg_clr
 
   &::before
     position absolute
@@ -190,7 +190,7 @@ body
 
   &.__black
     z-index 1
-    background #222
+    background $menu_bg_clr
 
     .section-title
       color #fff
