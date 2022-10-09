@@ -198,6 +198,7 @@
           z-index: 1
           margin: 0 -20px
           width calc(100% + 40px)
+          //padding-top: 10px
           bottom var(--menu-currency-height)
 
           .header-map__toggle
@@ -451,7 +452,7 @@
         right 20px
         display grid
         grid-template-areas "search" "user" "nav" "currency"
-        grid-template-rows var(--menu-currency-height) calc(2 * var(--menu-currency-height)) auto var(--header-search-height)
+        grid-template-rows var(--header-search-height) calc(2 * var(--header-search-height)) auto var(--menu-currency-height)
 
       .currency-menu
         height var(--header-search-height)
