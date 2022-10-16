@@ -1,0 +1,91 @@
+extends ./includes/layout
+
+block variables
+  - page_title = 'livemap';
+  - let map = true;
+  - show_footer = false;
+  - header_class = '__short'
+  - html_class = '__map-aside'
+
+block content
+  .map-holder
+    .map-wrapper
+      #map.map
+    .map-holder__aside
+      .hero-aside.js-map-aside.hero-aside__article
+        .hero-aside__head
+          a.hero-aside__back.js-close-article(href='#')
+            +icon('back').btn-icon.mob-hide
+            +icon('close').btn-icon.mob-only
+            span.mob-hide Назад
+
+        .article
+          h1 Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО
+
+          .card-info
+            .card-tags
+              .card-icon.__blue
+                +icon('horn').btn-icon
+              span 20 часов назад
+              span Заявления
+            a.card-logo(href='#')
+              +img(src='upload/logo/tass.png')
+              span.card-portal tass.ru
+
+          .card-content
+            .article-image.__fit
+              +img('article/article_3.jpg')
+
+            p Балтийское море с момента вступления Финляндии и Швеции в НАТО станет внутренним морем Североатлантического альянса. Об этом в понедельник, 4 июля, заявил президент Польши Анджей Дуда в ходе открытия заседания Совета национальной безопасности республики в Варшаве.
+
+            p «По сути Балтийское море сейчас становится внутренним бассейном НАТО. Две очень сильные страны с долгой и сильной военной традицией станут в ближайшее время частью НАТО. Граница России с НАТО вытянется на 1400 км, что без сомнения не хорошая новость для российских властей», — спрогнозировал польский лидер.
+
+            .article-controls
+              a.btn.btn-black.__s-41.btn-auth(href='card_2.html')
+                span Читать далее
+                +icon('arrow_ne').btn-icon
+
+            .article-controls.__info
+              +icon('info').article-controls__icon
+              a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
+
+      .hero-aside.js-map-list.hero-aside__context
+        .hero-aside__head-overlay
+        .hero-aside__head
+          .hero-aside__caption События на карте
+          .hero-aside__update Обновлено 7 июня в 00:11:53
+
+          a.btn.btn-gray-light.btn-aside.__s-45(href='#')
+            +icon('reload').btn-icon
+            span Показать 11 новых новостей
+
+        ul.hero-aside__list
+          li.js-map-target(data-index='1')
+            +map_card('Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО', 'tass', ['Час назад', 'Заявления'], 'map/news_1.png', '', '', '__blue', 'horn')
+          li.js-map-target(data-index='2')
+            +map_card('Врач назвал способ получения суточной дозы витамина D за 15 минут', 'lenta', ['Час назад', 'Медицина'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='3')
+            +map_card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', ['Час назад', 'События'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='4')
+            +map_card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', ['Час назад', 'Футбол'], 'map/news_1.png', '', '', '__blue', 'ball')
+
+
+          li.js-map-target(data-index='5')
+            +map_card('Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО', 'tass', ['Час назад', 'Заявления'], 'map/news_1.png', '', '', '__blue', 'horn')
+          li.js-map-target(data-index='6')
+            +map_card('Врач назвал способ получения суточной дозы витамина D за 15 минут', 'lenta', ['Час назад', 'Медицина'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='7')
+            +map_card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', ['Час назад', 'События'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='8')
+            +map_card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', ['Час назад', 'Футбол'], 'map/news_1.png', '', '', '__blue', 'ball')
+
+
+          li.js-map-target(data-index='9')
+            +map_card('Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО', 'tass', ['Час назад', 'Заявления'], 'map/news_1.png', '', '', '__blue', 'horn')
+          li.js-map-target(data-index='10')
+            +map_card('Врач назвал способ получения суточной дозы витамина D за 15 минут', 'lenta', ['Час назад', 'Медицина'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='11')
+            +map_card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', ['Час назад', 'События'], '', '', '', '__red', 'info')
+          li.js-map-target(data-index='12')
+            +map_card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', ['Час назад', 'Футбол'], 'map/news_1.png', '', '', '__blue', 'ball')
+
