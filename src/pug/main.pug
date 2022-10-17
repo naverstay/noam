@@ -2,8 +2,7 @@ extends ./includes/layout
 
 block variables
   - page_title = 'home';
-  - html_class = '__page-aside';
-  - footer_class = ''
+  - footer_class = '';
 
 block content
   //-.aside-holder.__top
@@ -33,23 +32,7 @@ block content
                   +card('Назван главный просчет США на Украине', 'lenta', '', 'news/prolet.jpg', '', '', '12564')
             .js-hero-scrollbar.hero-scrollbar: .handle
 
-  .hero-aside
-    .hero-aside__head
-      .hero-aside__caption Новости часа
-      a.btn.btn-gray-light.btn-aside.__s-45(href='#')
-        +icon('reload').btn-icon
-        span Показать 11 новых новостей
-
-    ul.hero-aside__list
-      +loop_while(8)
-        li
-          +card('Легендарный инвестор предупредил мир о финансовой катастрофе', 'tass', '', '', '', '', '12564')
-        li
-          +card('В разных частях зала: почему Иван Ургант с отцом сидели отдельно друг от друга на похоронах Нины Ургант', 'zr', '', '', '', '', '12564')
-        li
-          +card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', '', '', '', '', '12564')
-        li
-          +card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', '', '', '', '', '12564')
+  +aside()
 
   .section.__black.__content
     ul.card-holder.__hero.__grid.js-grid
