@@ -247,9 +247,37 @@
     hidden_scroll()
     //custom_scroll(rgba(0, 0, 0, .25))
 
-    +between($wide, $wide + $menu_extra * 2 - 1px)
-      .__page-aside &
-        padding-right: 20px
+    .__page-aside &
+      +between($wide, $wide + $menu_extra * 2 - 1px)
+        padding-right 20px
+
+      +below($wide - 1px)
+        z-index unset
+        top unset
+        bottom unset
+        left unset
+        right unset
+        position relative
+        display block
+        width 100%
+        transform none !important
+        height auto
+        overflow hidden
+        padding-bottom: 100px
+        max-height calc(var(--app-height) - var(--header-search-height) - var(--header-mob-mapbtn-height) - var(--header-mob-height) - 30px)
+
+        &::before
+          content: ''
+          position: absolute
+          bottom: 0
+          right: 0
+          left: 0
+          background: inherit
+          z-index: 1
+          height: 100px
+
+      +below($tab - 1px)
+        max-height calc(var(--app-height) - var(--header-mob-height) - 30px)
 
     .__open-popup &
       right var(--app-scroll-size)
@@ -265,8 +293,8 @@
       color #000
       display flex
       align-items center
-      margin-bottom: 10px
-      z-index: 1
+      margin-bottom 10px
+      z-index 1
 
       &:hover
         color $red
@@ -278,25 +306,25 @@
         margin-bottom -1px
 
       +below($tab - 1px)
-        margin: 0 -4px 0 auto
-        position: relative
+        margin 0 -4px 0 auto
+        position relative
 
         &::before
-          content: ''
-          position: absolute
-          bottom: -18px
-          left: -18px
-          background: #fff
-          width: 60px
-          height: 60px
-          z-index: -1
+          content ''
+          position absolute
+          bottom -18px
+          left -18px
+          background #fff
+          width 60px
+          height 60px
+          z-index -1
 
         .btn-icon
-          width: 20px
-          height: 20px
+          width 20px
+          height 20px
 
       +above($wide)
-        margin-top: -5px
+        margin-top -5px
 
     &__article
       z-index 1002 !important
@@ -307,7 +335,7 @@
 
       .article
         padding 0
-        width: 100%
+        width 100%
 
         h1
           font-size 20px
@@ -318,10 +346,10 @@
             margin-top 10px
 
             +below($tab - 1px)
-              margin-top: -28px
-              margin-right: 36px
-              position: relative
-              z-index: 1
+              margin-top -28px
+              margin-right 36px
+              position relative
+              z-index 1
 
           +above($tab)
             font-size 21px
@@ -336,26 +364,26 @@
           +above($tab)
             font-size 14px
             line-height 24px
-            margin-bottom: 14px
+            margin-bottom 14px
 
           +above($dt)
             font-size 14px
             line-height 21px
 
         .article-controls
-          padding: 8px 0 18px
+          padding 8px 0 18px
 
           +below($tab - 1px)
-            padding: 4px 0 18px
+            padding 4px 0 18px
 
             .btn.__s-41
-              height: 37px
+              height 37px
 
         .card-info
           padding-bottom 15px
 
           +below($tab - 1px)
-            padding-bottom: 18px
+            padding-bottom 18px
 
         .article-image
           margin-left 0
@@ -364,12 +392,12 @@
 
           +below($tab - 1px)
             max-height 160px
-            margin-left: -8px
-            margin-right: -8px
+            margin-left -8px
+            margin-right -8px
 
       +below($tab - 1px)
         .hero-aside__head
-          background: none
+          background none
 
           &::after
           &::before
@@ -381,6 +409,13 @@
         //+ .hero-aside
         //  opacity 0
         //  transform translateX(100%)
+
+    &__footer
+      position: absolute
+      bottom: 12px
+      right: 20px
+      left: 20px
+      z-index: 1
 
     &__head
       background inherit
@@ -409,7 +444,7 @@
     &__list
       +between($wide, $wide + $menu_extra * 2 - 1px)
         .__page-aside &
-          margin-top: -13px
+          margin-top -13px
 
       li
         position relative
@@ -446,7 +481,7 @@
 
       +between($wide, $wide + $menu_extra * 2 - 1px)
         .__page-aside &
-          font-size: 21px
+          font-size 21px
 
       &:not(:only-child)
         margin-right 5px
@@ -464,6 +499,6 @@
       font 600 14px / 18px $fontInter
 
     .card-description
-      margin-top: 4px
-      color: rgba(0, 0, 0, .65)
+      margin-top 4px
+      color rgba(0, 0, 0, .65)
       font 400 13px / 20px $fontInter

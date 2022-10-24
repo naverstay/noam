@@ -3,6 +3,8 @@ extends ./includes/layout
 block content
   | <style>ul.list a {color: #fff;}</style>
 
+  +aside(true)
+
   ul.list(style="padding: 15px;")
     li(style="padding: 5px;"): a(href="password_recovery.html") password_recovery
     li(style="padding: 5px;"): a(href="livemap.html") livemap
@@ -15,7 +17,8 @@ block content
     li(style="padding: 5px;"): a(href="main.html#modal_restore") main#modal_restore
     li(style="padding: 5px;"): a(href="main.html#modal_location") main#modal_location
     li(style="padding: 5px;"): a(href="main.html#modal_complain") main#modal_complain
-    li(style="padding: 5px;"): a(href="card.html") card
+    //li(style="padding: 5px;"): a(href="card.html") card
     li(style="padding: 5px;"): a(href="card_2.html") card_2
     li(style="padding: 5px;"): a(href="card_map.html") card_map
+    li(style="padding: 5px;"): a(href="card_extended.html") card_extended
     li(style="padding: 5px;"): a(href="feedback.html") feedback

@@ -179,13 +179,12 @@
 
       li.__main
         width 100%
-        height auto !important
 
         .card
           +above($tab)
             display grid
             grid-column-gap 20px
-            grid-template-areas "img title" "img text" "img link"
+            grid-template-areas "img info" "img title" "img text" "img link"
             grid-template-columns 4.3fr 5.6fr
 
           +above($wide)
@@ -196,6 +195,15 @@
             .__page-aside &
               grid-column-gap 20px
               grid-template-columns 1fr 1.22fr
+
+        .card-info
+          grid-area info
+
+          +above($tab)
+            padding-top 0
+
+          +below($tab - 1px)
+            padding-bottom 0
 
         .card-footer
           grid-area link
@@ -281,6 +289,14 @@
           img
             img_center()
 
+        +below($tab - 1px)
+          .card
+            padding: 0 0 0 160px !important
+
+            .card-preview
+              left 0
+              right auto
+
         +above($tab)
           width 50%
 
@@ -300,7 +316,7 @@
     +between($wide, $wide + $menu_extra * 2 - 1px)
       &.__hero.__grid
         .__page-aside &
-          margin-top -20px
+          //margin-top -20px
           margin-bottom -5px
 
   &-share

@@ -5,7 +5,7 @@
   padding 1px 0 23px
 
   +above($tab)
-    padding 10px 28px 23px
+    padding 10px 0 23px
 
   +desktop()
     padding 17px 30px 23px
@@ -44,12 +44,12 @@
     font-size 14px
     line-height 22px
     letter-spacing -0.02em
-    margin 0 0 22px
+    margin 0 0 12px
 
     +above($tab)
       font-size 16px
       line-height 26px
-      margin-bottom 26px
+      margin-bottom 22px
 
   &-image
     position relative
@@ -65,10 +65,10 @@
 
     img
       display block
-      max-width 100%
+      width 100%
 
     +above($tab)
-      margin 0 -30px 33px
+      margin 0 0 33px
 
     +above($dt)
       &.__fit
@@ -119,6 +119,9 @@
   &-controls
     padding 5px 0 26px
 
+    +below($tab - 1px)
+      margin: 0 -12px
+
     &.__info
       display flex
       justify-content flex-end
@@ -141,4 +144,131 @@
       &:hover
         color $red
 
+  &-details
+    padding-top: 14px
 
+    .btn-aside
+      margin-bottom: 0
+
+      +above($wide)
+        margin-bottom: 10px
+
+    +above($tab)
+      padding-top: 14px
+
+    &__list
+      li
+        position: relative
+        margin-bottom: 6px
+
+        + li
+          &::before
+            content: ''
+            position: absolute
+            left: 0
+            right: 0
+            top: 5px
+            height: 1px
+            background: rgba(232, 232, 232, .5)
+
+      .card-title
+        font: 600 14px / 18px $fontInter
+
+      .card-description
+        margin-top: 5px
+        display block
+        font-size: 13px
+        line-height: 20px
+
+      .card-info
+        padding-top: 10px
+        padding-bottom: 7px
+
+        +below($tab - 1px)
+          padding-bottom: 12px
+
+    &__title
+      margin-bottom: 10px
+      letter-spacing: -0.02em
+      font: 700 21px / 1 $fontInter
+
+  &-collapse
+    padding 24px 0 6px
+
+    +above($tab)
+      padding 6px 0
+
+    &__footer
+      padding: 18px 0 20px
+      display flex
+      justify-content flex-end
+
+      +below($tab - 1px)
+        margin: 0 -12px
+
+      +above($tab)
+        justify-content flex-start
+
+
+    &__list
+      padding: 0
+      margin: 0
+
+      li
+        position: relative
+        color: #000
+        font-weight: 400
+        letter-spacing: -0.02em
+        font-size: 14px
+        line-height: 22px
+        padding-left: 10px
+        padding-bottom: 4px
+
+        &::before
+          content: ''
+          position: absolute
+          top: 12px
+          left: -4px
+          width: 4px
+          height: 4px
+          border-radius: 100%
+          background: #000
+
+        +above($tab)
+          font-size: 16px
+          line-height: 26px
+          padding-left: 24px
+
+          &::before
+            left: 10px
+            width: 6px
+            height: 6px
+
+    &:not(.__expanded) .article-collapse__list
+      li:nth-child(n + 4)
+        display none
+
+    &__icon
+      width 15px
+      height 15px
+      margin-right 6px
+      fill #BBB
+
+    &__link
+      display flex
+      font-weight 500
+      font-size: 14px
+      line-height: 17px
+      color #000
+
+      .btn-icon
+        height: 20px
+        width: 20px
+        margin-left: 7px
+        transition transform .3s
+
+        .__expanded.article-collapse &
+          transform rotate(180deg)
+
+      &:hover
+        color $red

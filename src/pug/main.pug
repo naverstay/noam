@@ -35,11 +35,19 @@ block content
   +aside()
 
   .section.__black.__content
-    ul.card-holder.__hero.__grid.js-grid
+    .section-title.wide-hide Популярные материалы
+    ul.card-holder.__hero.__grid.__loaded
       li.grid-item.__main.__w-2
         .card
           .card-preview
             img(src='upload/news/latatest.jpg')
+          .card-info
+            span.card-logo
+              img(src='upload/logo/zr.png')
+              span.card-portal zr.ru
+            span.card-views
+              +icon('eye')
+              span 12 564
           a.card-title(href='card.html') Макрон призвал Путина прекратить военную операцию в Украине
           .card-description Елисейский дворец анонсировал еще один разговор президента Франции Макрона с российским лидером «в ближайшие дни», а также сообщил о дальнейших контактах с Киевом и МАГАТЭ, чтобы было достигнуто соглашение по безопасности ЗАЭС.
 

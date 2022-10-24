@@ -345,6 +345,11 @@ $(function ($) {
   initMapSlider();
   initIsotop();
 
+  $('.js-collapse-btn').on('click', function () {
+    $(this).closest('.js-collapse-block').toggleClass('__expanded');
+    return false;
+  });
+
   $('.js-burger').on('click', function () {
     $('body').toggleClass('open_menu');
     return false;
