@@ -33,6 +33,12 @@
     .__map-aside &
       padding-right calc(var(--map-aside-width))
 
+  .__map-aside &
+    +between($tab, $wide + $menu_extra * 2 - 1px)
+      .user-menu
+        li .header-menu__icon
+          padding 0 25px
+
   .__page-aside &
     +between($wide, $wide + $menu_extra * 2 - 1px)
       .user-menu
@@ -74,7 +80,8 @@
           line-height 32px
 
     .currency-menu
-      padding 0 16px 0 0
+      +above($tab)
+        padding 0 16px 0 0
 
     .user-menu
 
@@ -157,11 +164,10 @@
         background $menu_bg_clr
 
     +above($tab)
-      padding-bottom 6px
       padding-top calc(8px + var(--header-search-height))
 
-      //&::before
-      //  display none
+      &:not(.__map-2)
+        padding-bottom: 6px
 
       .header-menu__wrapper
         height 100%
@@ -180,6 +186,9 @@
 
         .header-menu
           margin 0
+
+    &.__map-2::after
+      display none
 
   &-map
     height var(--map-tags-height)
@@ -235,7 +244,7 @@
                 width 20px
                 height 20px
 
-        +between($tab, $wide)
+        +between($tab, $wide - 1px)
           position absolute
           top 0
           right -30px
@@ -247,7 +256,7 @@
           .__page-aside &
             display none
 
-        +between($wide, $wide + $menu_extra * 2)
+        +between($wide, $wide + $menu_extra * 2 - 1px)
           .__page-aside &
             display none
 
@@ -416,6 +425,9 @@
       //margin-bottom -4px
       height 60px
 
+      .header-inner.__map-2 &
+        margin-right: -10px
+
       +above($tab)
         align-items stretch
         justify-content space-between
@@ -466,7 +478,11 @@
       max-width 450px
       background $menu_bg_clr
       overflow-y auto
+      //custom_scroll(rgba(0, 0, 0, .25))
       //border-top 1px solid $menu_bdr_clr
+
+      .__map-aside &
+        right: 0
 
       .header-menu__wrapper
         min-height 100%
@@ -478,6 +494,9 @@
         padding calc(25px + var(--header-search-height) * 3) 20px var(--menu-currency-height)
         //margin-bottom var(--header-mob-mapbtn-height)
 
+        .__no-search &
+          padding calc(25px + var(--header-search-height) * 2) 20px var(--menu-currency-height)
+
       .header-menu__top
         position absolute
         top 0
@@ -487,6 +506,30 @@
         display grid
         grid-template-areas "search" "user" "nav" "currency"
         grid-template-rows var(--header-search-height) calc(2 * var(--header-search-height)) auto var(--menu-currency-height)
+
+        .__no-search &
+          grid-template-areas "user" "nav" "currency"
+          grid-template-rows calc(2 * var(--header-search-height)) auto var(--menu-currency-height)
+
+      .header-menu__map
+        position absolute
+        margin 0 !important
+        top 0
+        bottom 0
+        justify-content unset
+        left 20px
+        right 20px
+        display grid
+        height auto
+        grid-template-areas "search" "user" "nav" "currency"
+        grid-template-rows var(--header-search-height) calc(2 * var(--header-search-height)) auto var(--menu-currency-height)
+
+        .__no-search &
+          grid-template-areas "user" "nav" "currency"
+          grid-template-rows calc(2 * var(--header-search-height)) auto var(--menu-currency-height)
+
+        .currency-menu
+          display flex
 
       .currency-menu
         height var(--header-search-height)
@@ -615,6 +658,14 @@
     +above($wide)
       padding 0 30px
 
+    .__map-aside &
+      +between($wide, $wide + $menu_extra - 1px)
+        display none
+
+      +between($wide, $wide + $menu_extra * 2 - 1px)
+        li
+          padding-right: 5px
+
     li
       display flex
       padding-left 24px
@@ -647,7 +698,7 @@
   .user-menu
     justify-content flex-end
 
-    +between($tab, $wide)
+    +between($tab, $wide - 1px)
       padding-right var(--header-tab-mapbtn-width)
 
       .__map-aside &,
@@ -791,6 +842,9 @@
   span
     pointer-events none
     margin-left 8px
+
+  .__map-aside &
+    top: 25px
 
   +below($wide - 1px)
     transition top .3s

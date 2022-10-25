@@ -1,6 +1,18 @@
 
 - let mapButtons = [{icon: 'politics', name: 'Политика'}, {icon: 'horn', name: 'Заявления'}, {icon: 'virus', name: 'Коронавирус'}, {icon: 'lockdown', name: 'Локдаун'}, {icon: 'seeds', name: 'Посевная'}, {icon: 'whatshot', name: 'Пожары'}, {icon: 'flood', name: 'Наводнения'}, {icon: 'ball', name: 'Футбол'}, {icon: 'tornado', name: 'Ураганы'}];
 
+mixin mapBtns()
+  .section.__gray
+    .header-map__scroller
+      .js-map-slider
+        .header-map
+          each c, ci in mapButtons
+            a.btn.btn-map.__s-28.js-map-filter-btn(href='#' class= ci > 2 ? 'btn-black' : 'btn-red' )
+              if (ci > 2)
+                +icon(c.icon).btn-icon
+              else
+                +icon('info').btn-icon
+              span= c.name
 
 if (map && header_class === '__short')
   .header(class= header_class)
@@ -10,28 +22,38 @@ if (map && header_class === '__short')
         +currency()
         +user('map')
 
-    .section.__gray
-      .header-map__scroller
-        .js-map-slider
-          .header-map
-            each c, ci in mapButtons
-              a.btn.btn-map.__s-28.js-map-filter-btn(href='#' class= ci > 2 ? 'btn-black' : 'btn-red' )
-                if (ci > 2)
-                  +icon(c.icon).btn-icon
-                else
-                  +icon('info').btn-icon
-                span= c.name
+    +mapBtns()
+
+else if (map_2 && header_class === '__short')
+  .header(class= header_class)
+    .section: .header-inner.__map-2(class= ((html_class.indexOf('__page-aside') > -1) || html_class === '__map-aside' ? '' : '__center'))
+      +logo()
+
+      .header-menu: .header-menu__wrapper(class= popular_tags ? '__currency' : '')
+        +nav()
+
+        .header-menu__map
+          +currency()
+          +user(((html_class.indexOf('__page-aside') > -1) && html_class !== '__map-aside' ? '' : 'inner'))
+
+      .burger.js-burger
+        span
+        span
+        span
+
+    +mapBtns()
+
+    .header-overlay.js-burger
 
 else
-
-  if (html_class === '__page-aside')
+  if (html_class.indexOf('__page-aside') > -1)
     .header-map__toggle-mob
       a.btn.btn-map.__s-33.btn-red(href='livemap.html')
         +icon('whatshot').btn-icon
         span() Новости на карте
 
   .header(class= header_class)
-    .section: .header-inner(class= (html_class === '__page-aside' || html_class === '__map-aside' ? '' : '__center'))
+    .section: .header-inner(class= ((html_class.indexOf('__page-aside') > -1) || html_class === '__map-aside' ? '' : '__center'))
       +logo()
 
       .header-menu: .header-menu__wrapper(class= popular_tags ? '__currency' : '')
@@ -41,7 +63,7 @@ else
           +search()
           if (popular_tags && html_class !== '')
             +currency()
-          +user((html_class === '__page-aside' && html_class !== '__map-aside' ? '' : 'inner'))
+          +user(((html_class.indexOf('__page-aside') > -1) && html_class !== '__map-aside' ? '' : 'inner'))
 
         .header-map__toggle-all
           .header-map__toggle
@@ -55,4 +77,3 @@ else
         span
 
     .header-overlay.js-burger
-

@@ -13,7 +13,7 @@ mixin icon(name)
 
 mixin nav(footer)
   - let list = ['Главное', 'Коронавирус', 'Политика', 'Спорт', 'Наука', 'Бизнес', 'Технологии'];
-  ul.nav
+  ul.nav(class= map_2 ? 'mob-only' : '')
     each item, index in list
       li(class= index ? '' : 'active'): a.nav-link(href='#')= item
     if (footer)

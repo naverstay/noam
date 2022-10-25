@@ -2,6 +2,7 @@ extends ./includes/layout
 
 block variables
   - page_title = 'article extended';
+  - html_class = '__page-aside __no-currency';
   - popular_tags = false;
 
 block content
@@ -29,18 +30,6 @@ block content
           p Источник умалчивает фамилию игрока, но отмечает, что речь идет о всемирно известном футболисте, который должен выступить на чемпионате мира — 2022 в Катаре.
           p Также сообщается, что спортсмен проживает в Северном Лондоне. Ему от 26 до 29 лет. Другие подробности не сообщаются.
 
-          .article-collapse.js-collapse-block
-            ul.article-collapse__list
-              +loop_while(2)
-                li «Ноттингем Форест» на домашнем поле обыграл «Ливерпуль» в матче 13-го тура чемпионата Англии.  #[span.clr-gray Sports.ru]
-                li Встреча закончилась со счетом 1:0. Автором единственного забитого гола стал нападающий хозяев Тайво Авонийи, отличившийся на 55-й минуте.  #[span.clr-gray Спорт-Экспресс]
-                li «Ливерпуль» набрал 16 очков и занимает 7-е место в турнирной таблице АПЛ.  #[span.clr-gray РТ на русском]
-
-            .article-collapse__footer
-              a.article-collapse__link.js-collapse-btn(href='#')
-                span Показать все
-                +icon('arrow_d').btn-icon
-
           .article-controls
             a.btn.btn-black.__s-45.btn-auth(href='#')
               span Продолжить чтение в источнике
@@ -55,6 +44,18 @@ block content
 
             +icon('info').article-controls__icon
             a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
+
+          .article-collapse.js-collapse-block
+            ul.article-collapse__list
+              +loop_while(2)
+                li «Ноттингем Форест» на домашнем поле обыграл «Ливерпуль» в матче 13-го тура чемпионата Англии.  #[span.clr-gray Sports.ru]
+                li Встреча закончилась со счетом 1:0. Автором единственного забитого гола стал нападающий хозяев Тайво Авонийи, отличившийся на 55-й минуте.  #[span.clr-gray Спорт-Экспресс]
+                li «Ливерпуль» набрал 16 очков и занимает 7-е место в турнирной таблице АПЛ.  #[span.clr-gray РТ на русском]
+
+            .article-collapse__footer
+              a.article-collapse__link.js-collapse-btn(href='#')
+                span Показать все
+                +icon('arrow_d').btn-icon
 
           .article-details
             .article-details__title Подробнее о событии

@@ -5,6 +5,8 @@ include ../mixins/img
 include ../mixins/icon
 
 - const stamp = Math.round(new Date().getTime() / 1000)
+- let map_1 = false
+- let map_2 = false
 - let show_footer = true
 - let popular_tags = true
 - let page_title = ''
@@ -15,8 +17,8 @@ include ../mixins/icon
 block variables
 
 doctype html
-html(lang='' class= html_class + (html_class === '__map-aside' ? ' __scroll' : ''))
-  +head(map)
+html(lang='' class= html_class + (html_class === '__map-aside' ? ' __scroll' : '') + (map_2 ? ' __no-search' : ''))
+  +head(map_1 || map_2)
 
   body
     .page
@@ -31,12 +33,10 @@ html(lang='' class= html_class + (html_class === '__map-aside' ? ' __scroll' : '
 
     .page-overlay.js-map-overlay
 
-    if (map)
+    //script(src=`js/assets.js?stamp=${stamp}`)
+    if (map_1 || map_2)
       script(src=`js/leaflet.js?stamp=${stamp}`)
       script(src=`js/markercluster.js?stamp=${stamp}`)
-      //script(src=`js/easybutton.js?stamp=${stamp}`)
-      //script(src=`js/markertags.js?stamp=${stamp}`)
       script(src=`js/minimap.js?stamp=${stamp}`)
       script(src=`js/map.js?stamp=${stamp}`)
     script(src=`js/app.js?stamp=${stamp}`)
-    script(src=`js/assets.js?stamp=${stamp}`)
