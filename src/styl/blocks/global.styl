@@ -232,7 +232,7 @@ body
       min-height 65px
 
   &.__gray
-    background rgba(34, 34, 34, 0.75);
+    background rgba(34, 34, 34, 0.75)
 
   &.__white
     //background #E5E5E5
@@ -270,6 +270,13 @@ body
     display flex
     align-items flex-end
     justify-content space-between
+
+    &__hero
+      .__page-aside &
+        +below($tab)
+          margin-top: -5px
+          font-size 24px
+          line-height 32px
 
     &__link
       margin-bottom 5px
@@ -326,10 +333,10 @@ body
     padding-bottom 20px
 
 .fw-600
-  font-weight: 600
+  font-weight 600
 
 .clr-gray
-  color: $gray
+  color $gray
 
 .mob-hide
   +below($tab - 1px)

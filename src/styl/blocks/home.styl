@@ -265,8 +265,9 @@
         +above($tab)
           margin-bottom 12px
 
-        +below($wide + $menu_extra - 1px)
-          .__page-aside &
+        .__page-aside &
+          +below($wide + $menu_extra - 1px)
+
             margin-bottom 0
             padding-bottom 2px
 
@@ -275,14 +276,35 @@
 
               .card-preview
                 height 200px
-                margin-top: 5px
-                margin-bottom: 20px
+                margin-top 5px
+                margin-bottom 20px
 
               .card-title
-                padding-top: 5px
+                padding-top 5px
 
               .card-footer
                 display none
+
+          +below($tab - 1px)
+            padding-bottom 0
+
+            .card
+
+              .card-preview
+                height 100px
+                margin-top 5px
+                margin-bottom 2px
+
+              .card-title
+                padding-top 0
+                font-size 18px
+                line-height 21px
+
+              .card-description
+                font-weight 300
+                font-size 12px
+                line-height 18px
+                letter-spacing -0.02em
 
       li:not(.__main)
         border-top-color #323232 !important
@@ -325,75 +347,58 @@
                 font-size 18px
                 line-height 24px
 
-              .card-preview
-                position absolute
-                left 0
-                right auto
-                width 278px
-                height: 140px
-
           +between($tab, $wide + $menu_extra - 1px)
-            .card
-              .card-portal
-                font-size: 13px
-                line-height: 16px
-
-              .card-description
-                font-size 14px
-                line-height 21px
-                margin-top: 6px
-
-          +below($wide - 1px)
-            margin-top 16px
-            padding-top 16px
-            padding-bottom 3px
 
             .card
-              padding 0 0 0 148px !important
-              min-height 136px
-
-              .card-info
-                padding-top 5px
-
-              .card-title
-                font-size 14px
-                line-height 18px
-
-              .card-description
-                margin-top 6px
-                font-size 12px
-                line-height 18px
-
-              .card-preview
-                position absolute
-                left 0
-                right auto
-                width 278px
-
-          +below($tab - 1px)
-
-            .card
-              padding 0 0 0 298px !important
-              min-height 140px
-
               .card-portal
                 font-size 13px
                 line-height 16px
 
-              .card-title
-                font-size 18px
-                line-height 24px
-
               .card-description
-
                 font-size 14px
                 line-height 21px
+                margin-top 6px
 
               .card-preview
                 position absolute
                 left 0
                 right auto
                 width 278px
+                height 140px
+
+          +below($tab - 1px)
+            padding-bottom: 0
+
+            .card
+              padding 0 !important
+              min-height 78px
+              display grid
+              grid-column-gap 12px
+              grid-template-columns 136px auto
+              grid-template-rows auto 1fr auto
+              grid-template-areas "preview info" "preview title" "description description"
+
+              .card-title
+                font-size 14px
+                line-height 18px
+                grid-area title
+
+              .card-description
+                grid-area description
+                font-size 12px
+                line-height 18px
+                letter-spacing -0.02em
+                margin-top 12px
+
+              .card-info
+                grid-area info
+                padding-top 0
+
+              .card-preview
+                position relative
+                height 78px
+                width 136px
+                grid-area preview
 
     //.card-preview
     //  height 320px
