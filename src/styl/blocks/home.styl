@@ -265,19 +265,30 @@
         +above($tab)
           margin-bottom 12px
 
-          + li + li ~ li
-            display none
-
-        +between($wide, $wide + $menu_extra * 2 - 1px)
+        +below($wide + $menu_extra - 1px)
           .__page-aside &
             margin-bottom 0
+            padding-bottom 2px
 
-        +above($wide + $menu_extra * 2)
-          + li + li ~ li
-            display block
+            .card
+              display block
+
+              .card-preview
+                height 200px
+                margin-top: 5px
+                margin-bottom: 20px
+
+              .card-title
+                padding-top: 5px
+
+              .card-footer
+                display none
 
       li:not(.__main)
         border-top-color #323232 !important
+
+        .card
+          position relative
 
         .card-description
           font-size 13px
@@ -289,23 +300,100 @@
           img
             img_center()
 
-        +below($tab - 1px)
-          .card
-            padding: 0 0 0 160px !important
-
-            .card-preview
-              left 0
-              right auto
-
         +above($tab)
           width 50%
 
         +above($wide)
           width 33.3333%
 
-        +between($wide, $wide + $menu_extra * 2 - 1px)
-          .__page-aside &
-            width 50%
+        .__page-aside &
+          +below($wide + $menu_extra - 1px)
+            margin-top 16px
+            padding-top 16px
+            padding-bottom 8px
+            width 100%
+            border-top 1px solid #e8e8e8
+
+            .card
+              padding 0 0 0 298px !important
+              min-height 140px
+
+              .card-info
+                padding-top 5px
+
+              .card-title
+                font-size 18px
+                line-height 24px
+
+              .card-preview
+                position absolute
+                left 0
+                right auto
+                width 278px
+                height: 140px
+
+          +between($tab, $wide + $menu_extra - 1px)
+            .card
+              .card-portal
+                font-size: 13px
+                line-height: 16px
+
+              .card-description
+                font-size 14px
+                line-height 21px
+                margin-top: 6px
+
+          +below($wide - 1px)
+            margin-top 16px
+            padding-top 16px
+            padding-bottom 3px
+
+            .card
+              padding 0 0 0 148px !important
+              min-height 136px
+
+              .card-info
+                padding-top 5px
+
+              .card-title
+                font-size 14px
+                line-height 18px
+
+              .card-description
+                margin-top 6px
+                font-size 12px
+                line-height 18px
+
+              .card-preview
+                position absolute
+                left 0
+                right auto
+                width 278px
+
+          +below($tab - 1px)
+
+            .card
+              padding 0 0 0 298px !important
+              min-height 140px
+
+              .card-portal
+                font-size 13px
+                line-height 16px
+
+              .card-title
+                font-size 18px
+                line-height 24px
+
+              .card-description
+
+                font-size 14px
+                line-height 21px
+
+              .card-preview
+                position absolute
+                left 0
+                right auto
+                width 278px
 
     //.card-preview
     //  height 320px
@@ -317,7 +405,7 @@
       &.__hero.__grid
         .__page-aside &
           //margin-top -20px
-          margin-bottom -5px
+          margin-bottom 16px
 
   &-share
     display flex
@@ -415,17 +503,17 @@
 
     &.__link
       color #B2B2B2
-      cursor: pointer
-      position: relative
+      cursor pointer
+      position relative
       display none
 
       &::before
-        content: ''
-        position: absolute
-        top: -6px
-        bottom: -6px
-        left: -6px
-        right: -6px
+        content ''
+        position absolute
+        top -6px
+        bottom -6px
+        left -6px
+        right -6px
 
       &:hover
         color $red
@@ -437,8 +525,8 @@
           display none
 
     .btn-icon
-      width: 16px
-      height: 16px
+      width 16px
+      height 16px
 
     span
       font-weight 500
