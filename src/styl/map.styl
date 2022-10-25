@@ -47,6 +47,12 @@
       .__map-aside &
         margin-right 0
 
+    &__back
+      position: absolute
+      top: calc(var(--map-tags-height) + 20px)
+      left: 20px
+      z-index: 401
+
     &__aside
       position relative
       width var(--map-aside-width)
@@ -83,7 +89,7 @@
           &.hero-aside__context
             //transition none
             top calc(var(--map-tags-height))
-            height calc(var(--app-height) - var(--map-tags-height))
+            height calc(var(--app-height) - var(--map-tags-height) - var(--header-mob-height))
 
             .hero-aside__head-overlay
               pointer-events none
@@ -99,6 +105,10 @@
               //pointer-events none
               transform translateX(0)
 
+            .__map-aside.__show-map-2 &
+              //pointer-events none
+              transform translateX(100%)
+
               .hero-aside__head-overlay
                 height calc(var(--app-height) - var(--header-mob-height) + 50px)
 
@@ -107,6 +117,10 @@
             top calc(var(--map-tags-height) + var(--map-article-offset))
             height calc(var(--app-height) - var(--header-mob-height) - var(--map-tags-height) - var(--map-article-offset))
             transform translateY(100%)
+
+            .__map-aside.__mode-map-2 &
+              top var(--map-tags-height)
+              height calc(var(--app-height) - var(--header-mob-height) - var(--map-tags-height))
 
             .__map-aside.__article-aside-open &
             .__map-aside.__map-aside-open &

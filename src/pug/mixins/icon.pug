@@ -64,6 +64,9 @@ mixin map_card(title, portal, tags, img, cls, description, icon_cls, icon)
           if (tags && tags.length)
             each tag in tags
               span= tag
+        if (map_2)
+          span.card-logo.__link.js-toggle-mobile-map-2
+            +icon('map').btn-icon
         if (portal)
           if (portal === 'share')
             a.card-share(href='card_map.html')
@@ -150,7 +153,7 @@ mixin aside(no_content)
 mixin user(map)
   - let user_cls = map === 'map' ? 'mob-hide' : ''
   ul.user-menu
-    if (map !== 'map')
+    if (map !== 'map' && !map_2)
       li: span.header-menu__icon.js-popup(data-popup='#modal_location')
         +icon('nav').btn-icon
         +icon('arrow_r').mob-only.btn-icon.__arrow

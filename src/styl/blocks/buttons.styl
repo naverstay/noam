@@ -3,54 +3,71 @@
   align-items center
   justify-content center
   transition color .3s, border-color .3s, background .3s
-  cursor: pointer
+  cursor pointer
   user-select none
 
   &.__offset-8
-    margin-top: 8px
-    margin-bottom: -4px
+    margin-top 8px
+    margin-bottom -4px
 
   &.__s-28
-    height: 28px
+    height 28px
 
   &.__s-33
-    height: 33px
+    height 33px
+
+  &.__s-36
+    height 36px
 
   &.__s-40
-    height: 40px
+    height 40px
 
   &.__s-41
-    height: 41px
+    height 41px
 
   &.__s-45
-    height: 45px
+    height 45px
+
+  &-back
+    position relative
+    padding 0 8px
+    min-width 36px
+
+    span
+      padding 0 4px
+      font-size 14px
+      line-height 17px
+
+    .btn-icon
+      width 24px
+      height 24px
 
   &-map
-    position: relative
-    padding: 6px 12px
+    position relative
+    padding 6px 12px
     display inline-flex
     align-items center
-    font-size: 13px
-    line-height: 16px
-    color: #fff
+    font-size 13px
+    line-height 16px
+    color #fff
 
     .header-map__toggle-mob &
       +below($tab - 1px)
         &.btn
-          font-size: 14px
-          height: var(--header-mob-mapbtn-height)
+          font-size 14px
+          height var(--header-mob-mapbtn-height)
 
     span
-      padding-left: 8px
+      padding-left 8px
 
     .icon-active
       display none
 
     &.__hot
-      background: $red
+      background $red
 
     &.__active
-      opacity: .5
+      opacity .5
 
       .icon-inactive
         display none
@@ -59,136 +76,136 @@
         display block
 
     .btn-icon
-      width: 16px
-      height: 16px
+      width 16px
+      height 16px
 
   &-hero
-    font-weight: 700
-    padding: 5px 28px
-    margin-top: 16px
+    font-weight 700
+    padding 5px 28px
+    margin-top 16px
 
     .btn-icon
-      width: 14px
-      height: 14px
-      margin-left: 11px
+      width 14px
+      height 14px
+      margin-left 11px
 
     +above($tab)
-      margin-top: auto
+      margin-top auto
 
   &-search
-    position: absolute
-    top: 0
-    left: 0
-    padding-top: 3px
-    height: 100%
-    width: 34px
+    position absolute
+    top 0
+    left 0
+    padding-top 3px
+    height 100%
+    width 34px
     display flex
-    background: none
-    border: 0
-    cursor: pointer
-    color: rgba(178, 178, 178, .5)
+    background none
+    border 0
+    cursor pointer
+    color rgba(178, 178, 178, .5)
 
     .btn-icon
-      width: 16px
-      height: 16px
+      width 16px
+      height 16px
 
     &:hover
-      color: $red
+      color $red
 
   &-aside
-    margin: 20px 0
-    width: 100%
+    margin 20px 0
+    width 100%
 
     .btn-icon
-      width: 16px
-      height: 16px
+      width 16px
+      height 16px
 
       &:first-child
-        margin-right: 11px
+        margin-right 11px
 
       &:last-child
-        margin-left: 11px
+        margin-left 11px
 
   &-page
-    width: 40px
-    border-radius: 3px
+    width 40px
+    border-radius 3px
 
     .btn-icon
-      width: 18px
-      height: 18px
+      width 18px
+      height 18px
 
   &-auth
-    width: 100%
-    border: 0
+    width 100%
+    border 0
 
     .btn-icon
-      width: 16px
-      height: 16px
+      width 16px
+      height 16px
 
       .popup &
-        width: 20px
-        height: 20px
+        width 20px
+        height 20px
 
       &:first-child
-        margin-right: 9px
+        margin-right 9px
 
       &:last-child
-        margin-left: 9px
+        margin-left 9px
 
   &-white
-    background: #fff
-    color: #000
-    border: 1px solid #EBEBEB
-    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.02)
+    background #fff
+    color #000
+    border 1px solid #EBEBEB
+    box-shadow 0 4px 3px rgba(0, 0, 0, 0.02)
 
     &.__disable
       pointer-events none
-      color: rgba(0, 0, 0, .25)
+      color rgba(0, 0, 0, .25)
 
     &.__active
-      cursor: default
+      cursor default
 
     &.__active,
     &:hover
-      background: #000
-      color: #fff
+      background #000
+      color #fff
 
   &-red
-    background: $red
-    color: #fff
+    background $red
+    color #fff
 
     &:hover
-      background: #ba0505
+      background #ba0505
 
   &-black
-    background: #000
-    color: #fff
+    background #000
+    color #fff
 
     &:hover
-      background: #242424
+      background #242424
 
   &-gray
-    border: 1px solid #535353
-    background: #232323
-    color: #fff
+    border 1px solid #535353
+    background #232323
+    color #fff
 
     &:hover
-      background: #000
+      background #000
 
   &-gray-light
-    background: #F7F7F7
-    border: 1px solid #E8E8E8
-    color: #000
+    background #F7F7F7
+    border 1px solid #E8E8E8
+    color #000
 
     &:hover
-      background: #F8F8F8
-      border: 1px solid #B7B7B7
+      background #F8F8F8
+      border 1px solid #B7B7B7
 
     &:active
-      background: #EBEBEB
-      border: 1px solid #A9A9A9
+      background #EBEBEB
+      border 1px solid #A9A9A9
 
 .btn-icon
-  fill: currentColor
-  flex: 0 0 auto
+  fill currentColor
+  flex 0 0 auto
 

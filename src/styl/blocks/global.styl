@@ -131,10 +131,14 @@ body
     +below($tab - 1px)
       .__map-aside.__article-aside-open &
       .__map-aside.__map-aside-open &
+      .__map-aside.__show-map-2 &
         z-index 1005
         pointer-events all
         opacity 1
         height calc(var(--header-mob-height) + var(--map-tags-height) + var(--app-page-overlay-offset) + var(--map-article-offset) + var(--sat))
+
+      .__map-aside.__mode-map-2 &
+        max-height calc(var(--header-mob-height) + var(--map-tags-height) + var(--app-page-overlay-offset) + var(--sat))
 
 .content
   position relative

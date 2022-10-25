@@ -590,6 +590,12 @@ $(function ($) {
     return false;
   });
 
+  $('.js-toggle-mobile-map-2').on('click', function (e) {
+    $('.js-toggle-mobile-map').removeClass('__active');
+    $('html').toggleClass('__show-map-2');
+    return false;
+  });
+
   $('.js-map-overlay, .js-close-article').on('click', function () {
     $('html').removeClass('__map-aside-open').removeClass('__article-aside-open');
     $('.js-map-aside').removeClass('__open').removeClass('__open-mob');

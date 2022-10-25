@@ -418,6 +418,9 @@
     +above($wide + $menu_extra * 2)
       margin 0 200px 0 0
 
+      .header-inner.__map-2 &
+        margin 0 -20px 0 0
+
     &__map
       position relative
       display flex
@@ -495,7 +498,7 @@
         //margin-bottom var(--header-mob-mapbtn-height)
 
         .__no-search &
-          padding calc(25px + var(--header-search-height) * 2) 20px var(--menu-currency-height)
+          padding calc(25px + var(--header-search-height)) 20px var(--menu-currency-height)
 
       .header-menu__top
         position absolute
@@ -526,7 +529,7 @@
 
         .__no-search &
           grid-template-areas "user" "nav" "currency"
-          grid-template-rows calc(2 * var(--header-search-height)) auto var(--menu-currency-height)
+          grid-template-rows var(--header-search-height) auto var(--menu-currency-height)
 
         .currency-menu
           display flex
