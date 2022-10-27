@@ -46,7 +46,7 @@
           padding 0 25px
 
     +above($wide_1600)
-      padding-right var(--home-aside-width)
+      padding-right calc(var(--home-aside-width) + var(--app-scroll-size))
 
   &.__short
     padding-top 0
@@ -284,7 +284,8 @@
         +between($wide, $wide + $menu_extra * 2 - 1px)
           .__page-aside &
             display block
-            padding-right calc(var(--home-aside-width) - var(--app-scroll-size))
+            //padding-right calc(var(--home-aside-width) - var(--app-scroll-size))
+            padding-right calc(var(--home-aside-width))
 
           .btn.__s-33
             height 31px
@@ -455,6 +456,9 @@
         right -26px
         left -7px
         height var(--header-search-height)
+
+      +above($wide)
+        right: -30px
 
       .__short &
         justify-content flex-end

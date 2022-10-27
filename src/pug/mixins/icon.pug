@@ -99,7 +99,7 @@ mixin search(map)
   form.header-search(action='#')
     if (!map)
       .header-search__input
-        input.input.input-transp.__s-100p(placeholder='Поиск')
+        input#js-autocomplete.input.input-transp.__s-100p(placeholder='Поиск')
 
       button.btn.btn-search(type='submit')
         +icon('search').btn-icon

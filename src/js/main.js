@@ -1,5 +1,6 @@
 import 'babel-polyfill';
 import 'magnific-popup';
+import autocomplete from 'autocompleter';
 import 'select2';
 import {debounce, throttle} from 'throttle-debounce';
 import Sly from 'sly-scrolling/dist/sly.min';
@@ -147,6 +148,31 @@ const appHeight = () => {
   const doc = document.documentElement;
   const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
   doc.style.setProperty("--app-height", `${Math.max(200, window.innerHeight - sab)}px`);
+};
+
+const initAutocomplete = () => {
+  let input = document.getElementById("js-autocomplete");
+
+  let countries = [
+    { label: 'United Kingdom', value: 'UK' },
+    { label: 'United States', value: 'US' }
+  ];
+
+  if (input) {
+    autocomplete({
+      input: input,
+      fetch: function(text, update) {
+        text = text.toLowerCase();
+        // you can also use AJAX requests instead of preloaded data
+        let suggestions = countries.filter(n => n.label.toLowerCase().startsWith(text))
+        update(suggestions);
+      },
+      onSelect: function(item) {
+        input.value = item.label;
+      }
+    });
+  }
+
 };
 
 const initHero = () => {
@@ -343,7 +369,8 @@ $(function ($) {
   appHeight();
   initHero();
   initMapSlider();
-  initIsotop();
+  //initIsotop();
+  initAutocomplete();
 
   $('.js-collapse-btn').on('click', function () {
     $(this).closest('.js-collapse-block').toggleClass('__expanded');
