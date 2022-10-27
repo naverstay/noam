@@ -1,8 +1,8 @@
 import 'babel-polyfill';
 import 'magnific-popup';
 
-import {subscribe} from 'on-screen-keyboard-detector';
-import Emitter from 'emittery';
+//import {subscribe} from 'on-screen-keyboard-detector';
+//import Emitter from 'emittery';
 
 import './jquery.autocomplete.min';
 import 'select2';
@@ -10,9 +10,9 @@ import {debounce, throttle} from 'throttle-debounce';
 import Sly from 'sly-scrolling/dist/sly.min';
 import 'jquery.easing';
 
-const emitter = new Emitter();
-
-subscribe(visibility => emitter.emit(visibility));
+//const emitter = new Emitter();
+//
+//subscribe(visibility => emitter.emit(visibility));
 
 (function () {
   let src = '//cdn.jsdelivr.net/npm/eruda';
@@ -433,15 +433,15 @@ window.onscroll = function () {
 
 window.addEventListener("resize", appHeight);
 
-emitter.on('hidden', function () {
-  console.log('hidden', window.innerHeight);
-  appHeight();
-});
-
-emitter.on('visible', function () {
-  console.log('visible', window.innerHeight);
-  appHeight();
-});
+//emitter.on('hidden', function () {
+//  console.log('hidden', window.innerHeight);
+//  appHeight();
+//});
+//
+//emitter.on('visible', function () {
+//  console.log('visible', window.innerHeight);
+//  appHeight();
+//});
 
 $(function ($) {
   $.throttle = throttle;
