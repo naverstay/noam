@@ -1,11 +1,25 @@
 import 'babel-polyfill';
 import 'magnific-popup';
-import autocomplete from 'autocompleter';
+
+import {subscribe} from 'on-screen-keyboard-detector';
+import Emitter from 'emittery';
+
+import './jquery.autocomplete.min';
 import 'select2';
 import {debounce, throttle} from 'throttle-debounce';
 import Sly from 'sly-scrolling/dist/sly.min';
-
 import 'jquery.easing';
+
+const emitter = new Emitter();
+
+subscribe(visibility => emitter.emit(visibility));
+
+(function () {
+  let src = '//cdn.jsdelivr.net/npm/eruda';
+  if (!/eruda=1/.test(window.location.search) && localStorage.getItem('active-eruda') != 'true') return;
+  document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+  document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+})();
 
 //let Isotope = require('isotope-layout');
 //let jQueryBridget = require('jquery-bridget');
@@ -151,28 +165,85 @@ const appHeight = () => {
 };
 
 const initAutocomplete = () => {
+  let autocompleteInstance;
   let input = document.getElementById("js-autocomplete");
+  let result = document.getElementById("js-autocomplete-result");
 
-  let countries = [
-    { label: 'United Kingdom', value: 'UK' },
-    { label: 'United States', value: 'US' }
-  ];
+  let source = [];
+
+  $('#js-autocomplete-source .card').each((si, s) => {
+    source.push($(s))
+  });
+
+  $('.js-search-clear').on('click', function () {
+    input.value = '';
+    return false;
+  });
+
+  let countries = source.map(m => {
+    return {
+      value: m.find('.card-title').text(),
+      data: {
+        description: m.find('.card-title').text(),
+        portal: m.find('.card-portal').text(),
+        logo: m.find('.card-logo img').attr('src'),
+        time: '09.12.21 11:56'
+      }
+    }
+  });
 
   if (input) {
-    autocomplete({
-      input: input,
-      fetch: function(text, update) {
-        text = text.toLowerCase();
-        // you can also use AJAX requests instead of preloaded data
-        let suggestions = countries.filter(n => n.label.toLowerCase().startsWith(text))
-        update(suggestions);
+    autocompleteInstance = $(input).autocomplete({
+      lookup: countries,
+      minChars: 3,
+      appendTo: result,
+      preserveInput: true,
+      showNoSuggestionNotice: true,
+      noSuggestionNotice: 'Ничего не найдено',
+      onSelect: function (suggestion) {
+        console.log('You selected: ' + suggestion.value);
       },
-      onSelect: function(item) {
-        input.value = item.label;
+      onSearchStart: function (params) {
+        console.log('onSearchStart', params);
+      },
+      onSearchComplete: function (query, suggestions) {
+        console.log('onSearchComplete', query, suggestions);
+
+        $('html').addClass('open_autocomplete');
+      },
+      onHide: function (container) {
+        console.log('onHide', container);
+        $('html').removeClass('open_autocomplete');
+        $(input).autocomplete('clear');
+      },
+      beforeRender: function (container, suggestions) {
+        if (suggestions.length) {
+          container.empty();
+
+          suggestions.forEach((item, index) => {
+            const itemElement = document.createElement("div");
+            itemElement.className = 'autocomplete-item autocomplete-suggestion';
+            itemElement.dataset.index = index;
+            itemElement.innerHTML = `<div class="card">
+                    <div class="card-info">
+                      <span class="card-logo">
+                        <img src="${item.data.logo}">
+                        <span class="card-portal mob-only">${item.data.portal}</span>
+                      </span>
+                      <span class="card-views">${item.data.time}</span>
+                    </div>
+                    <div class="card-title"><span class="clr-red">${input.value}</span> ${item.value}</div>
+                    <div class="card-description">description ${item.data.description}</div>
+                  </div>`;
+
+            container.append(itemElement);
+          });
+        }
+
+        return container.attr('style', '');
       }
     });
   }
-
 };
 
 const initHero = () => {
@@ -361,6 +432,16 @@ window.onscroll = function () {
 };
 
 window.addEventListener("resize", appHeight);
+
+emitter.on('hidden', function () {
+  console.log('hidden', window.innerHeight);
+  appHeight();
+});
+
+emitter.on('visible', function () {
+  console.log('visible', window.innerHeight);
+  appHeight();
+});
 
 $(function ($) {
   $.throttle = throttle;

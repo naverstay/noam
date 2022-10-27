@@ -4,7 +4,7 @@ block variables
   - page_title = 'livemap 2';
   - map_2 = true;
   - show_footer = false;
-  - header_class = '__short'
+  - header_class = ''
   - html_class = '__map-aside'
 
 block content
@@ -63,7 +63,7 @@ block content
             +icon('reload').btn-icon
             span Показать 11 новых новостей
 
-        ul.hero-aside__list
+        ul.hero-aside__list#js-autocomplete-source
           li.js-map-target(data-index='1')
             +map_card('Дуда спрогнозировал присвоение Балтийскому морю статуса внутреннего моря НАТО', 'tass', ['Час назад', 'Заявления'], 'map/news_1.png', '', '', '__blue', 'horn')
           li.js-map-target(data-index='2')

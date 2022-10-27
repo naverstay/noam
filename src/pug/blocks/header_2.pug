@@ -2,47 +2,49 @@
 - let mapButtons = [{icon: 'politics', name: 'Политика'}, {icon: 'horn', name: 'Заявления'}, {icon: 'virus', name: 'Коронавирус'}, {icon: 'lockdown', name: 'Локдаун'}, {icon: 'seeds', name: 'Посевная'}, {icon: 'whatshot', name: 'Пожары'}, {icon: 'flood', name: 'Наводнения'}, {icon: 'ball', name: 'Футбол'}, {icon: 'tornado', name: 'Ураганы'}];
 
 mixin mapBtns()
-  .section.__gray
-    .header-map__scroller
-      .js-map-slider
-        .header-map
-          each c, ci in mapButtons
-            a.btn.btn-map.__s-28.js-map-filter-btn(href='#' class= ci > 2 ? 'btn-black' : 'btn-red' )
-              if (ci > 2)
-                +icon(c.icon).btn-icon
-              else
-                +icon('info').btn-icon
-              span= c.name
+  //-.section.__gray
+  .header-map__scroller
+    .js-map-slider
+      .header-map
+        each c, ci in mapButtons
+          a.btn.btn-map.__s-28.js-map-filter-btn(href='#' class= ci > 2 ? 'btn-black' : 'btn-red' )
+            if (ci > 2)
+              +icon(c.icon).btn-icon
+            else
+              +icon('info').btn-icon
+            span= c.name
 
 if (map_1 && header_class === '__short')
   .header(class= header_class)
     .section
       .header-menu__map
+        #js-autocomplete-result.header-search__autocomplete
         +logo()
         +currency()
         +user('map')
 
     +mapBtns()
 
-else if (map_2 && header_class === '__short')
+else if (map_2)
   .header(class= header_class)
     .section: .header-inner.__map-2(class= ((html_class.indexOf('__page-aside') > -1) || html_class === '__map-aside' ? '' : '__center'))
       +logo()
 
-      .header-menu: .header-menu__wrapper(class= popular_tags ? '__currency' : '')
+      +mapBtns()
+
+      .header-menu: .header-menu__wrapper(class= (popular_tags ? '__currency' : ''))
         +nav()
 
         .header-menu__map
+          #js-autocomplete-result.header-search__autocomplete
+
           +search()
-          +currency()
           +user(((html_class.indexOf('__page-aside') > -1) && html_class !== '__map-aside' ? '' : 'inner'))
 
       .burger.js-burger
         span
         span
         span
-
-    +mapBtns()
 
     .header-overlay.js-burger
 
@@ -57,10 +59,11 @@ else
     .section: .header-inner(class= ((html_class.indexOf('__page-aside') > -1) || html_class === '__map-aside' ? '' : '__center'))
       +logo()
 
-      .header-menu: .header-menu__wrapper(class= popular_tags ? '__currency' : '')
+      .header-menu: .header-menu__wrapper(class= (popular_tags ? '__currency' : ''))
         +nav()
 
         .header-menu__top
+          #js-autocomplete-result.header-search__autocomplete
           +search()
           if (popular_tags && html_class !== '')
             +currency()

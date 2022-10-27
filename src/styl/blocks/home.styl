@@ -9,6 +9,16 @@
   display block
   color #000
 
+  .autocomplete-item &
+    position relative
+    min-height 32px
+    cursor pointer
+    transition background .3s
+    margin-bottom: -1px
+
+  .autocomplete-item.autocomplete-selected &
+    background #e8e8e8
+
   &-holder
     position relative
     display flex
@@ -367,7 +377,7 @@
                 height 140px
 
           +below($tab - 1px)
-            padding-bottom: 0
+            padding-bottom 0
 
             .card
               padding 0 !important
@@ -505,6 +515,7 @@
   &-logo
     display flex
     align-items center
+    pointer-events all
 
     &.__link
       color #B2B2B2
@@ -549,6 +560,13 @@
     .__no-img &
       font 400 14px / 21px $fontInter
 
+    .autocomplete-item &
+      font: 600 14px / 18px $fontInter
+
+      +above($tab)
+        padding-left 32px
+        padding-right 90px
+
   &-description
     margin-top 8px
     font-size 14px
@@ -558,6 +576,20 @@
     .section.__black &
       color #fff
 
+    .autocomplete-item &
+      display block
+      margin-top: 5px
+      font-weight: 400
+      font-size: 13px
+      line-height: 18px
+      opacity: .65
+
+      +above($tab)
+        padding-left 32px
+
+      +above($wide)
+        padding-right 90px
+
     +below($tab - 1px)
       display none
 
@@ -566,6 +598,15 @@
     display flex
     align-items center
     justify-content space-between
+
+    .autocomplete-item &
+
+      +above($tab)
+        position absolute
+        top 7px
+        right 30px
+        left 30px
+        pointer-events none
 
     .hero-scroller &
       padding-top 16px
@@ -621,6 +662,7 @@
     line-height 15px
     display flex
     align-items center
+    pointer-events all
 
     svg
       width 15px

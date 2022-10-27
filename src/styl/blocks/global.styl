@@ -121,17 +121,24 @@ body
     top calc(-1 * var(--app-page-overlay-offset))
     left 0
     right 0
-    background rgba(0, 0, 0, .65)
+    background rgba(0, 0, 0, .75)
     z-index 1001
     opacity 0
     height 0
     transition opacity .3s, height .3s
     pointer-events none
 
+    .open_autocomplete &
+      z-index 1000
+      pointer-events all
+      opacity 1
+      max-height unset !important
+      height calc(var(--app-height) + var(--app-page-overlay-offset) + var(--sat))
+
     +below($tab - 1px)
       .__map-aside.__article-aside-open &
       .__map-aside.__map-aside-open &
-      .__map-aside.__show-map-2 &
+      //.__map-aside.__show-map-2 &
         z-index 1005
         pointer-events all
         opacity 1
@@ -337,6 +344,9 @@ body
 
 .clr-gray
   color $gray
+
+.clr-red
+  color $red
 
 .mob-hide
   +below($tab - 1px)

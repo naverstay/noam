@@ -100,7 +100,8 @@ mixin search(map)
     if (!map)
       .header-search__input
         input#js-autocomplete.input.input-transp.__s-100p(placeholder='Поиск')
-
+        .header-search__clear.js-search-clear
+          +icon('close').btn-icon
       button.btn.btn-search(type='submit')
         +icon('search').btn-icon
 
@@ -134,7 +135,7 @@ mixin aside(no_content)
           +icon('reload').btn-icon
           span Показать 11 новых новостей
 
-      ul.hero-aside__list
+      ul.hero-aside__list#js-autocomplete-source
         +loop_while(8)
           li
             +card('Легендарный инвестор предупредил мир о финансовой катастрофе', 'tass', '', '', '', 'ХХ съезд Коммунистической партии Китая, вероятно, ознаменуется решением о третьем сроке Си Цзиньпина.', '12564')
@@ -153,7 +154,7 @@ mixin aside(no_content)
 mixin user(map)
   - let user_cls = map === 'map' ? 'mob-hide' : ''
   ul.user-menu
-    if (map !== 'map' && !map_2)
+    if (map !== 'map' || map_2)
       li: span.header-menu__icon.js-popup(data-popup='#modal_location')
         +icon('nav').btn-icon
         +icon('arrow_r').mob-only.btn-icon.__arrow

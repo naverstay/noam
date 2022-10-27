@@ -1,6 +1,6 @@
 .header
   will-change transform
-  transition background .3s, padding-right .3s
+  transition background .3s
   position sticky
   top 0
   left 0
@@ -155,7 +155,7 @@
       &::after
         z-index 1
         top 0
-        bottom: 2px
+        bottom 2px
         right -20px
         left -20px
         width unset
@@ -167,7 +167,7 @@
       padding-top calc(8px + var(--header-search-height))
 
       &:not(.__map-2)
-        padding-bottom: 6px
+        padding-bottom 6px
 
       .header-menu__wrapper
         height 100%
@@ -187,15 +187,18 @@
         .header-menu
           margin 0
 
-    &.__map-2::after
-      display none
-
   &-map
     height var(--map-tags-height)
     position relative
+    display flex
+    flex-flow row nowrap
     padding 11px 8px 8px 12px
     //background #363d3e
     //background rgba(34, 34, 34, 0.75)
+
+    +below($tab - 1px)
+      padding-left: 20px
+      padding-right: 20px
 
     &::after
       left 100%
@@ -300,18 +303,26 @@
 
     &__scroller
       opacity 0
-      transition opacity .3
+      transition opacity .3s
+      overflow hidden
       //padding 4px 0 0
-      margin-left -20px
+      //margin-left -20px
       margin-right -20px
-      margin-top -1px
-      padding-top 1px
-      width calc(100% + 40px)
+      //margin-top -1px
+      //padding-top 1px
+      //width calc(100% + 40px)
       position relative
       //overflow hidden
 
-      .js-map-slider
-        overflow visible !important
+      +below($tab - 1px)
+        position absolute
+        top 100%
+        left -20px
+        right -20px
+        margin 0
+
+      //.js-map-slider
+      //  overflow visible !important
 
       &.__loaded
         opacity 1
@@ -321,12 +332,8 @@
       //  margin-right -24px
       //  width calc(100% + 48px)
 
-      +above($wide)
-        margin-left -24px
-        //margin-right -24px
-        width calc(100% + 48px)
-        margin-right 0
-        //width calc(100% + 24px)
+      +above($tab)
+        margin-right -30px
 
     .btn
       margin-right 8px
@@ -347,13 +354,94 @@
 
     .open_menu &
       pointer-events all
-      opacity .75
+      //opacity .75
 
   &-search
     position relative
 
     +above($dt)
       flex 1 0 auto
+
+    &__clear
+      position absolute
+      right 8px
+      top 50%
+      display flex
+      align-items center
+      justify-content center
+      width 36px
+      height 36px
+      margin-top -18px
+      color #fff
+      cursor pointer
+      transition color .3s
+
+      input:placeholder-shown + &
+        display none
+
+      &:hover
+        color $red
+
+      .btn-icon
+        width 12px
+        height 12px
+
+    &__autocomplete
+      position absolute
+      top 100%
+      left -30px
+      right 0
+      background #FFF
+      border-width 0 1px 1px 0
+      border-style solid
+      border-color #E8E8E8
+      overflow-y auto
+      max-height calc(var(--app-height) - var(--header-search-height))
+      custom_scroll(rgba(0, 0, 0, .25))
+
+      .autocomplete-suggestions
+        padding 15px 0
+        //display block !important
+
+        +below($tab - 1px)
+          padding: 7px 0
+
+        .autocomplete-no-suggestion
+          font-size 14px
+          line-height 21px
+          padding 16px 32px
+          color #000
+
+        .autocomplete-item
+          position relative
+
+          .card
+            padding 16px 32px
+
+            +below($tab - 1px)
+              padding 4px 20px 16px
+
+          + .autocomplete-item
+            &::before
+              content ''
+              position absolute
+              left 30px
+              right 30px
+              top 0
+              height 1px
+              background #E8E8E8
+
+              +below($tab - 1px)
+                left 20px
+                right 20px
+
+      +below($tab - 1px)
+        left -20px
+        right -20px
+        z-index 2
+        border 0
+        max-height calc(100% - var(--header-search-height))
+        top var(--header-search-height)
 
     &__input
       position relative
@@ -366,6 +454,7 @@
         color #fff
         outline 0 !important
         border 0 !important
+        padding-right 50px
 
         +below($tab - 1px)
           font-size 13px
@@ -429,16 +518,17 @@
       //margin-bottom -4px
       height 60px
 
-      .header-inner.__map-2 &
-        margin-right: -10px
-
       +above($tab)
         align-items stretch
         justify-content space-between
         flex-fow row nowrap
 
-      +above($wide)
-        margin-right -30px
+        .header-inner.__map-2 &
+          height var(--header-search-height)
+          position absolute
+          top 0
+          left 0
+          right -10px
 
       .__short &
         justify-content flex-end
@@ -458,7 +548,7 @@
         height var(--header-search-height)
 
       +above($wide)
-        right: -30px
+        right -30px
 
       .__short &
         justify-content flex-end
@@ -489,7 +579,7 @@
       //border-top 1px solid $menu_bdr_clr
 
       .__map-aside &
-        right: 0
+        right 0
 
       .header-menu__wrapper
         min-height 100%
@@ -534,6 +624,8 @@
         .__no-search &
           grid-template-areas "user" "nav" "currency"
           grid-template-rows var(--header-search-height) auto var(--menu-currency-height)
+          right 0
+          height auto
 
         .currency-menu
           display flex
@@ -671,7 +763,7 @@
 
       +between($wide, $wide + $menu_extra * 2 - 1px)
         li
-          padding-right: 5px
+          padding-right 5px
 
     li
       display flex
@@ -790,18 +882,26 @@
   //transition padding .3s, margin-top .3s
   padding 24px 0 10px
   position relative
-  z-index 2
   //text-align center
   //pointer-events none
 
+  +below($tab - 1px)
+    z-index 2
+
   .header &
     padding-top 10px
+
+  .header .header-inner.__map-2  &
+    padding-top 7px
+
+    +above($wide + $menu_extra * 2)
+      padding-top 2px
 
     + .currency-menu
       border-left 0
 
     +below($tab - 1px)
-      padding 16px 0
+      padding 10px 0
 
   .logo
     transition color .3s
@@ -851,7 +951,7 @@
     margin-left 8px
 
   .__map-aside &
-    top: 25px
+    top 25px
 
   +below($wide - 1px)
     transition top .3s
