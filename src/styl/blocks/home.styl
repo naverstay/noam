@@ -341,11 +341,11 @@
         +above($tab)
           width 50%
 
-        +above($wide + $menu_extra)
+        +above($wide + $menu_extra * 2)
           width 33.3333%
 
         .__page-aside &
-          +below($wide + $menu_extra - 1px)
+          +below($wide + $menu_extra * 2 - 1px)
             margin-top 16px
             padding-top 16px
             padding-bottom 8px
@@ -362,7 +362,7 @@
               .card-title
                 font-size 18px
 
-          +between($tab, $wide + $menu_extra - 1px)
+          +between($tab, $wide + $menu_extra * 2 - 1px)
 
             .card
               .card-portal

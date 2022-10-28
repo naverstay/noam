@@ -25,7 +25,8 @@ import 'jquery.easing';
 //jQueryBridget('isotope', Isotope, $);
 
 let $sly;
-let resizeTimer
+let resizeTimer;
+let prevScrollPos = 0;
 let watchCardHeight = false;
 let isotopInstances = [];
 const isotopOptions = {
@@ -154,7 +155,6 @@ const initSelect = () => {
 };
 
 const appHeight = (r) => {
-  console.log('appHeight', r);
   const doc = document.documentElement;
   const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
   doc.style.setProperty("--app-height", `${Math.max(200, window.innerHeight - sab)}px`);
@@ -375,7 +375,8 @@ function getScrollTop() {
 }
 
 function checkWindowScroll() {
-  document.body.classList.toggle('__scroll', getScrollTop() > 0);
+  prevScrollPos = getScrollTop();
+  document.body.classList.toggle('__scroll', prevScrollPos > 0);
 }
 
 const debounceResize = debounce(5, false, () => {
@@ -384,6 +385,10 @@ const debounceResize = debounce(5, false, () => {
   if ($sly) {
     $sly.sly('reload');
   }
+});
+
+const debounceFitHeight = debounce(5, false, () => {
+  appHeight("resize");
 });
 
 function openPopup(target) {
@@ -423,12 +428,25 @@ $(window).on('load', function () {
   debounceResize();
 });
 
-window.onscroll = function () {
-  checkWindowScroll();
+window.onscroll = function (e) {
+  if ($('html').hasClass('open_autocomplete')) {
+    try {
+      window.pageYOffset = document.documentElement.scrollTop = document.body.scrollTop = prevScrollPos;
+    } catch (e) {
+      console.log('onscroll', e);
+    } finally {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+  } else {
+    checkWindowScroll();
+  }
 };
 
 window.addEventListener("resize", () => {
-  appHeight("resize");
+  debounceFitHeight();
+
 });
 
 if (isSupported()) {

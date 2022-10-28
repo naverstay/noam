@@ -39,7 +39,7 @@
 
       .__map-aside.__map-aside-open &
         pointer-events none
-        z-index 1002
+        //z-index 1002
 
     +above($wide_1600)
       margin-right calc(-1 * var(--map-aside-width))
@@ -80,9 +80,18 @@
           left: 0
           right: 0
           height: var(--map-tags-height)
-          background: #fff
-          transition transform .3s
+          background: #222
+          transition transform .3s, opacity .3s
           transform translateX(100%)
+
+          .__show-map-2 &
+            background: rgba(0, 0, 0, .75)
+
+          .__map-aside .open_menu &
+            background: rgba(0, 0, 0, .35)
+
+          .__map-aside:not(.__show-map-2) .open_menu &
+            background: #fff
 
           .__list-aside-open &
             transform translateX(0)

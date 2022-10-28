@@ -177,10 +177,14 @@
     +above($wide)
       grid-template-columns 192px auto
 
+      &.__map-2
+        grid-template-columns 192px 1fr
+
       &::before
         display block
 
     +above($wide + $menu_extra * 2)
+
       &.__center
         grid-template-columns 192px auto 192px
 
@@ -332,6 +336,11 @@
       //  margin-right -24px
       //  width calc(100% + 48px)
 
+      +below($tab - 1px)
+        .__map-aside .open_menu &
+          opacity: .5
+          pointer-events none
+
       +above($tab)
         margin-right -30px
 
@@ -345,7 +354,7 @@
     left 0
     right 0
     pointer-events none
-    background #000
+    background rgba(0, 0, 0, .75)
     opacity 0
     transition opacity .3s
 
@@ -354,7 +363,7 @@
 
     .open_menu &
       pointer-events all
-      //opacity .75
+      opacity 1
 
   &-search
     position relative
@@ -592,6 +601,18 @@
         padding calc(25px + var(--header-search-height) * 3) 20px var(--menu-currency-height)
         //margin-bottom var(--header-mob-mapbtn-height)
 
+        +below($tab - 1px)
+          .open_autocomplete &
+            &::before
+              content: ''
+              z-index: 2
+              position: absolute
+              top: 0
+              bottom: 0
+              left: 0
+              right: 0
+              background: rgba(0,0,0,.65)
+
         .__no-search &
           padding calc(25px + var(--header-search-height)) 20px var(--menu-currency-height)
 
@@ -652,7 +673,7 @@
         border-bottom 1px solid $menu_bdr_clr
         padding-left 10px
         position sticky
-        z-index 1
+        z-index 2
         background $menu_bg_clr
         bottom var(--header-search-height)
 
@@ -754,6 +775,9 @@
     +above($tab)
       padding 0 22px 0 5px
       border-left 1px solid $menu_bdr_clr
+
+      .__map-aside &
+        display none
 
     +above($wide)
       padding 0 30px

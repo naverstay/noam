@@ -128,12 +128,13 @@ body
     transition opacity .3s, height .3s
     pointer-events none
 
-    .open_autocomplete &
-      z-index 1000
-      pointer-events all
-      opacity 1
-      max-height unset !important
-      height calc(var(--app-height) + var(--app-page-overlay-offset) + var(--sat))
+    +above($tab)
+      .open_autocomplete &
+        z-index 1000
+        pointer-events all
+        opacity 1
+        max-height unset !important
+        height calc(var(--app-height) + var(--app-page-overlay-offset) + var(--sat))
 
     +below($tab - 1px)
       .__map-aside.__article-aside-open &
@@ -222,6 +223,7 @@ body
     position relative
     height 641px
     max-height 75vh
+    max-width unset
 
     +above($tab)
       height 480px
