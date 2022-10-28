@@ -6,6 +6,7 @@
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
     "start": "webpack --watch --mode development --env server",
+    "deploy": "yarn build && shx cp dist/index.html dist/200.html && surge --project ./dist --domain annoyed-business.surge.sh",
     "lint": "eslint ./src"
   },
   "author": "Evgenii Kuznetsov <harsel1234@gmail.com> (https://github.com/evgen3)",
@@ -46,7 +47,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "emittery": "^1.0.0",
+    "idempotent-babel-polyfill": "^7.4.4",
     "imask": "^6.3.0",
     "isotope-cells-by-row": "^1.1.4",
     "isotope-fit-columns": "^1.1.4",
@@ -61,6 +62,7 @@
     "rupture": "^0.7.1",
     "select2": "^4.1.0-rc.0",
     "select2-multi-checkboxes": "github:wasikuss/select2-multi-checkboxes",
+    "shx": "^0.3.4",
     "sly-scrolling": "^1.6.1",
     "throttle-debounce": "^4.0.1"
   }
