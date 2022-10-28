@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import 'magnific-popup';
 
-import { subscribe, isSupported } from 'on-screen-keyboard-detector';
+import {subscribe, isSupported} from 'on-screen-keyboard-detector';
 
 import './jquery.autocomplete.min';
 import 'select2';
@@ -153,7 +153,8 @@ const initSelect = () => {
   });
 };
 
-const appHeight = () => {
+const appHeight = (r) => {
+  console.log('appHeight', r);
   const doc = document.documentElement;
   const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
   doc.style.setProperty("--app-height", `${Math.max(200, window.innerHeight - sab)}px`);
@@ -418,7 +419,7 @@ function openPopup(target) {
 
 checkWindowScroll();
 
-$(window).on('resize load', function () {
+$(window).on('load', function () {
   debounceResize();
 });
 
@@ -426,11 +427,13 @@ window.onscroll = function () {
   checkWindowScroll();
 };
 
-//window.addEventListener("resize", appHeight);
+window.addEventListener("resize", () => {
+  appHeight("resize");
+});
 
 if (isSupported()) {
   const unsubscribe = subscribe(visibility => {
-    appHeight();
+    appHeight('subscribe');
   });
 
   // After calling unsubscribe() the callback will no longer be invoked.
@@ -441,10 +444,10 @@ $(function ($) {
   $.throttle = throttle;
   $.debounce = debounce;
 
-  appHeight();
+  appHeight('DOM');
   initHero();
   initMapSlider();
-  //initIsotop();
+  initIsotop();
   initAutocomplete();
 
   $('.js-collapse-btn').on('click', function () {

@@ -192,6 +192,10 @@
       letter-spacing: -0.02em
       font: 700 21px / 1 $fontInter
 
+    &:not(.__expanded) .article-details__list
+      li:nth-child(n + 5)
+        display none
+
   &-collapse
     padding 24px 0 6px
 
