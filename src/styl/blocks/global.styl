@@ -279,6 +279,10 @@ body
     display flex
     align-items flex-end
     justify-content space-between
+    flex-wrap: wrap
+
+    > span
+      padding-right: 10px
 
     &__hero
       .__page-aside &
@@ -288,18 +292,22 @@ body
           line-height 32px
 
     &__link
-      margin-bottom 5px
-      font-size 16px
-      line-height 21px
+      font: 500 14px/21px $fontInter
+      letter-spacing: -0.02em
+      margin-bottom 2px
       color #000
+      display flex
+      align-items center
 
       +above($tab)
-        margin-bottom 10px
+        margin-bottom 6px
 
-      svg
-        width 10px
-        height 10px
-        margin-left 10px
+      .btn-icon
+        fill $red
+        transform rotate(180deg)
+        width 16px
+        height 16px
+        margin-left 6px
 
       &:hover
         color $red

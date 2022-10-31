@@ -380,7 +380,7 @@ function checkWindowScroll() {
 }
 
 const debounceResize = debounce(5, false, () => {
-  fitIsotopHeight();
+  //fitIsotopHeight();
 
   if ($sly) {
     $sly.sly('reload');

@@ -14,7 +14,7 @@
     min-height 32px
     cursor pointer
     transition background .3s
-    margin-bottom: -1px
+    margin-bottom -1px
 
   .autocomplete-item.autocomplete-selected &
     background #e8e8e8
@@ -25,12 +25,179 @@
     grid-gap 20px
 
     &.__grid
+      margin-bottom 40px
+      display block
+
+      .card-description
+        margin-top 4px
+
+      .card-footer
+        padding-top 4px
+
+      +below($tab - 1px)
+        &:last-child
+          margin-bottom 0
+
+      +above($tab)
+        display grid
+        gap 0
+        grid-template-columns repeat(12, 1fr)
+        margin-right -20px
+        margin-bottom 6px
+
+      +desktop()
+        margin-bottom 24px
+        margin-right -30px
+
+      +between($wide, $wide + $menu_extra * 2 - 1px)
+        .__page-aside &
+          margin-right -20px
+          margin-bottom 6px
+
+      li
+        +below($tab - 1px)
+          height auto !important
+          width 100%
+
+          &:not(.grid-sizer) + li
+            border-top 1px solid #E8E8E8
+            margin-top 16px
+            padding-top 16px
+
+          .card-info
+            padding-top 12px
+
+          &:not(.__w-2)
+            .card
+              position relative
+
+              &.__text
+                .card-title
+                  font bold 16px / 21px $fontPTSerif
+
+                .card-footer
+                  padding-bottom 0
+
+                .card-info
+                  padding-top 0
+                  border 0
+
+              &:not(.__text)
+                padding-right 145px
+                min-height 110px
+
+                .card-info
+                  padding-top 0
+
+                //.card-views
+                //  position absolute
+                //  bottom 0
+                //  left 0
+
+                .card-preview
+                  position absolute
+                  top 0
+                  right 0
+                  width 133px
+                  height 110px
+
+                  img
+                    img_center()
+                    width auto
+
+        .card-preview
+          height 124px
+
+        &.__w-2
+          .card-preview
+            height 148px
+
+          .card-title
+            font-size 21px
+            line-height 24px
+
+        &.__w-3
+          //width 50%
+          grid-column span 4
+
+        //+below($tab - 1px)
+        //  .card-preview
+        //    height 120px
+
+        +above($tab)
+          //float left
+          //overflow hidden
+          //position absolute
+          //width 25%
+          padding-bottom 22px
+          padding-right 20px
+          grid-column span 6
+
+          &::before
+            //content ''
+            display block
+            padding-bottom calc(60% + 110px + 40px)
+
+          //.card
+          //  position absolute
+          //  top 0
+          //  left 0
+          //  right 20px
+          //  bottom 20px
+          //  overflow hidden
+
+          //.card-preview
+          //  height 48%
+
+          &.__w-2
+            //width 50%
+            grid-column span 6
+
+
+
+          &.__w-3
+            //width 50%
+            grid-column span 4
+
+        &.__h-2
+          +above($tab)
+            &::before
+              padding-bottom calc(100% + 20px)
+
+        //.card-preview
+        //  height 63%
+
+        +desktop()
+          html:not(.__page-aside) &
+            padding-bottom 28px
+            padding-right 30px
+
+            &::before
+              padding-bottom calc(60% + 65px + 40px)
+
+            //.card
+            //  right 30px
+            //  bottom 30px
+
+            //.card-preview
+            //  height 59%
+
+            &.__no-img .card
+              top 15px
+
+            &.__w-2 .card-title
+              font-size 24px
+              line-height 32px
+
+            &.__h-2
+              &::before
+                padding-bottom calc(100% + 30px)
+
+    &.__hero
       clearfix()
-      transition opacity .3s
       display block
       margin-bottom 40px
       grid-column-gap 0
-      opacity 0
 
       &.__loaded
         opacity 1
@@ -279,8 +446,8 @@
           +between($wide, $wide + $menu_extra - 1px)
 
             .card-title
-              font-size: 24px
-              line-height: 28px
+              font-size 24px
+              line-height 28px
 
           +below($wide - 1px)
 
@@ -422,7 +589,7 @@
       grid-gap 30px
 
     +between($wide, $wide + $menu_extra * 2 - 1px)
-      &.__hero.__grid
+      &.__hero
         .__page-aside &
           //margin-top -20px
           margin-bottom 16px
@@ -562,11 +729,8 @@
     transition color .3s
     font bold 16px / 21px $fontPTSerif
 
-    .__no-img &
-      font 400 14px / 21px $fontInter
-
     .autocomplete-item &
-      font: 600 14px / 18px $fontInter
+      font 600 14px / 18px $fontInter
 
       +above($tab)
         padding-left 32px
@@ -583,11 +747,11 @@
 
     .autocomplete-item &
       display block
-      margin-top: 5px
-      font-weight: 400
-      font-size: 13px
-      line-height: 18px
-      opacity: .65
+      margin-top 5px
+      font-weight 400
+      font-size 13px
+      line-height 18px
+      opacity .65
 
       +above($tab)
         padding-left 32px
