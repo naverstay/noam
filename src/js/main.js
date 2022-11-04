@@ -26,6 +26,7 @@ import 'jquery.easing';
 
 let $sly;
 let resizeTimer;
+let goTopTimer;
 let prevScrollPos = 0;
 let watchCardHeight = false;
 let isotopInstances = [];
@@ -375,8 +376,13 @@ function getScrollTop() {
 }
 
 function checkWindowScroll() {
-  prevScrollPos = getScrollTop();
-  document.body.classList.toggle('__scroll', prevScrollPos > 0);
+  clearTimeout(goTopTimer);
+  const newScrollTop = getScrollTop();
+  document.body.classList.toggle('__scroll', newScrollTop > 0);
+  document.body.classList.toggle('__scroll-hide', newScrollTop > 100);
+  document.body.classList.toggle('__scroll-up', newScrollTop === 0 ? false : prevScrollPos > newScrollTop);
+
+  prevScrollPos = newScrollTop;
 }
 
 const debounceResize = debounce(5, false, () => {
@@ -440,7 +446,7 @@ window.onscroll = function (e) {
     }
 
   } else {
-    checkWindowScroll();
+    checkWindowScroll(e);
   }
 };
 

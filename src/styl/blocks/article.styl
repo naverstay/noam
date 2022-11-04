@@ -117,15 +117,46 @@
             fill $red
 
   &-controls
-    padding 5px 0 26px
+    padding 5px 0 32px
+
+    +above($wide)
+      padding-bottom 12px
 
     +below($tab - 1px)
-      margin: 0 -12px
+      margin 0 -12px
+
+    &.__tags
+      padding: 0
+      margin: 0 0 10px
+      display grid
+      grid-template-columns auto 1fr
+      align-items center
+      font 500  13px / 16px $fontInter
+      gap 8px
+      color $gray
+
+      dd
+        margin-left 0
+
+        a
+          transition color .3s
+          display inline-block
+          margin-bottom 4px
+          color #000
+          text-decoration underline
+
+          &:hover
+            color: $red
+            text-decoration none
 
     &.__info
       display flex
       justify-content flex-end
       align-items center
+      padding-top: 40px
+
+      +above($tab)
+        padding-top: 20px
 
     &__icon
       width 15px
@@ -145,52 +176,52 @@
         color $red
 
   &-details
-    padding-top: 14px
+    padding-top 14px
 
     .btn-aside
-      margin-bottom: 0
+      margin-bottom 0
 
       +above($wide)
-        margin-bottom: 10px
+        margin-bottom 10px
 
     +above($tab)
-      padding-top: 14px
+      padding-top 14px
 
     &__list
       li
-        position: relative
-        margin-bottom: 6px
+        position relative
+        margin-bottom 6px
 
         + li
           &::before
-            content: ''
-            position: absolute
-            left: 0
-            right: 0
-            top: 5px
-            height: 1px
-            background: rgba(232, 232, 232, .5)
+            content ''
+            position absolute
+            left 0
+            right 0
+            top 5px
+            height 1px
+            background rgba(232, 232, 232, .5)
 
       .card-title
-        font: 600 14px / 18px $fontInter
+        font 600 14px / 18px $fontInter
 
       .card-description
-        margin-top: 5px
+        margin-top 5px
         display block
-        font-size: 13px
-        line-height: 20px
+        font-size 13px
+        line-height 20px
 
       .card-info
-        padding-top: 10px
-        padding-bottom: 7px
+        padding-top 10px
+        padding-bottom 7px
 
         +below($tab - 1px)
-          padding-bottom: 12px
+          padding-bottom 12px
 
     &__title
-      margin-bottom: 10px
-      letter-spacing: -0.02em
-      font: 700 21px / 1 $fontInter
+      margin-bottom 10px
+      letter-spacing -0.02em
+      font 700 21px / 1 $fontInter
 
     &:not(.__expanded) .article-details__list
       li:nth-child(n + 5)
@@ -203,49 +234,49 @@
       padding 6px 0
 
     &__footer
-      padding: 18px 0 20px
+      padding 18px 0 20px
       display flex
       justify-content flex-end
 
       +below($tab - 1px)
-        margin: 0 -12px
+        margin 0 -12px
 
       +above($tab)
         justify-content flex-start
 
     &__list
-      padding: 0
-      margin: 0
+      padding 0
+      margin 0
 
       li
-        position: relative
-        color: #000
-        font-weight: 400
-        letter-spacing: -0.02em
-        font-size: 14px
-        line-height: 22px
-        padding-left: 10px
-        padding-bottom: 4px
+        position relative
+        color #000
+        font-weight 400
+        letter-spacing -0.02em
+        font-size 14px
+        line-height 22px
+        padding-left 10px
+        padding-bottom 4px
 
         &::before
-          content: ''
-          position: absolute
-          top: 12px
-          left: -4px
-          width: 4px
-          height: 4px
-          border-radius: 100%
-          background: #000
+          content ''
+          position absolute
+          top 12px
+          left -4px
+          width 4px
+          height 4px
+          border-radius 100%
+          background #000
 
         +above($tab)
-          font-size: 16px
-          line-height: 26px
-          padding-left: 24px
+          font-size 16px
+          line-height 26px
+          padding-left 24px
 
           &::before
-            left: 10px
-            width: 6px
-            height: 6px
+            left 10px
+            width 6px
+            height 6px
 
     &:not(.__expanded) .article-collapse__list
       li:nth-child(n + 4)
@@ -260,14 +291,14 @@
     &__link
       display flex
       font-weight 500
-      font-size: 14px
-      line-height: 17px
+      font-size 14px
+      line-height 17px
       color #000
 
       .btn-icon
-        height: 20px
-        width: 20px
-        margin-left: 7px
+        height 20px
+        width 20px
+        margin-left 7px
         transition transform .3s
 
         .__expanded.article-collapse &

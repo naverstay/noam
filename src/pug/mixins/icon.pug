@@ -176,3 +176,23 @@ mixin user(map)
 
       li.mob-only: span.header-menu__icon.js-toggle-mobile-map
         +icon('view_agenda').btn-icon
+
+
+mixin article_controls(extend)
+  .article-controls.__info
+    if (extend)
+      .article-buttons
+        ul.article-buttons__list
+          each soc in ['vk', 'fb', 'tw', 'ok']
+            li: a.social-link(href='#')
+              +icon(soc)
+
+    +icon('info').article-controls__icon
+    a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
+
+  if (extend)
+    dl.article-controls.__tags
+      dt Автор:
+      dd #[a(href='#') Максим Лесовой]
+      dt Теги:
+      dd #[a(href='#') Хоккей], #[a(href='#') НХЛ], #[a(href='#') Вашингтон Кэпиталз], #[a(href='#') Александр Овечкин], #[a(href='#') Статистика], #[a(href='#') Детройт Ред Уингз]

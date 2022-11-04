@@ -1,0 +1,52 @@
+.site-map
+
+  &__categories
+    display flex
+    flex-flow row wrap
+    padding 18px 16px
+    row-gap 20px
+    column-gap 40px
+    background #FFF
+    border 1px solid #EBEBEB
+    margin-bottom: 14px
+
+    +above($tab)
+      margin-bottom: 22px
+
+    +above($wide)
+      margin-bottom: 50px
+
+    li
+      a
+        font 400 14px / 21px $fontInter
+        text-decoration underline
+        color #000
+
+        &:hover
+          color $red
+          text-decoration none
+
+  &__links
+    display grid
+    grid-template-columns 1fr
+    row-gap 32px
+    column-gap 10px
+    margin-bottom: 32px
+
+    +above($tab)
+      grid-template-columns 1fr 1fr
+
+    +above($wide)
+      margin-bottom: 40px
+      grid-template-columns 1fr 1fr 1fr 1fr
+
+    li
+      a
+        font 400 14px / 17px $fontInter
+        text-decoration underline
+        color #000
+
+        &:hover
+          color $red
+          text-decoration none
+

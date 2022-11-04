@@ -34,15 +34,7 @@ block content
               span Продолжить чтение в источнике
               +icon('arrow_ne').btn-icon
 
-          .article-controls.__info
-            .article-buttons
-              ul.article-buttons__list
-                each soc in ['vk', 'fb', 'tw', 'ok']
-                  li: a.social-link(href='#')
-                    +icon(soc)
-
-            +icon('info').article-controls__icon
-            a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
+          +article_controls(true)
 
     .section.__white.__title.__article
       .section-title

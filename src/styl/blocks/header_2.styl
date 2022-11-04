@@ -1,6 +1,6 @@
 .header
   will-change transform
-  transition background .3s
+  transition background .3s, transform .3s
   position sticky
   top 0
   left 0
@@ -18,6 +18,12 @@
   +below($tab - 1px)
     padding-top 0 !important
     position fixed
+
+    .__scroll-hide &
+      transform: translateY(-100%)
+
+    .__scroll-up &
+      transform: translateY(0)
 
     .__map-aside &
       .user-menu
@@ -373,14 +379,13 @@
 
     &__clear
       position absolute
-      right 8px
-      top 50%
+      right 0
+      top: 0
+      bottom: 0
       display flex
       align-items center
       justify-content center
-      width 36px
-      height 36px
-      margin-top -18px
+      width 52px
       color #fff
       cursor pointer
       transition color .3s

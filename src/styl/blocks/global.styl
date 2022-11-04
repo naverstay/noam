@@ -152,7 +152,8 @@ body
   position relative
   flex 1 0 auto
   transition padding-right .3s
-
+  display flex
+  flex-flow column nowrap
   //overflow hidden
 
   +below($tab - 1px)
@@ -166,7 +167,11 @@ body
   position relative
   padding 0 20px
   margin 0 auto
+  width 100%
   max-width $content_max_width
+
+  &:only-child
+    flex 1 0 auto
 
   &::after,
   &::before
@@ -279,21 +284,24 @@ body
     display flex
     align-items flex-end
     justify-content space-between
-    flex-wrap: wrap
+    flex-wrap wrap
+
+    &.text-center
+      justify-content: center
 
     > span
-      padding-right: 10px
+      padding-right 10px
 
     &__hero
       .__page-aside &
         +below($tab)
-          margin-top: -5px
+          margin-top -5px
           font-size 24px
           line-height 32px
 
     &__link
-      font: 500 14px/21px $fontInter
-      letter-spacing: -0.02em
+      font 500 14px/21px $fontInter
+      letter-spacing -0.02em
       margin-bottom 2px
       color #000
       display flex
@@ -389,3 +397,6 @@ body
 .wide-only
   +below($wide - 1px)
     display none !important
+
+.text-center
+  text-align center
