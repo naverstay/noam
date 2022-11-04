@@ -117,29 +117,7 @@ block content
 
       +text_news()
 
-  .section.__black.__content
-    .section-title.__partner Партнерская секция
-
-    .partners-holder
-      .partners-main
-        +card('Антиковидная галерея с главной мотоциклетной выставки мира EICMA', '', '', 'partners/partner_big.jpg', '', '', '', true)
-
-      .partner-group.__group-1
-        +card('Почему BMW M3 оказалась круче M4? Тест на треке!', '', '08.12.21 01:56', 'partners/partner_1.jpg', '', '', '', true)
-        +card('«Китайцы» перешли в наступление: 15 популярных кроссоверов России', '', '08.12.21 01:56', 'partners/partner_2.jpg', '', '', '', true)
-
-      .partner-group.__group-2
-        +card('Volkswagen показал новый Amarok', '', '08.12.21 01:56', 'partners/partner_3.jpg', '', '', '', true)
-        +card('Продажи новых китайских автомобилей в России бьют рекорды', '', '08.12.21 01:56', 'partners/partner_4.jpg', '', '', '', true)
-
-      .partners-text
-        ul.card-holder
-          +loop_while(1)
-            li.__no-img
-              +card('В кроссоверах Ford начали использовать выловленный из океана пластик', '', '08.12.21 10:35', '', '', '', '', true)
-
-            li.__no-img
-              +card('Volvo готовит для России две новинки в 2022 году', '', '08.12.21 10:35', '', '', '', '', true)
+  +partners_section()
 
   .section.__white.__content
     .section-title Шоу-бизнес

@@ -9,45 +9,4 @@ block content
   +aside()
 
   .section-holder
-    .section.__white
-      .article
-        h1 В Англии сообщили об аресте всемирно известного футболиста АПЛ по подозрению в изнасиловании
-
-        .card-info
-          span.card-tag Политика
-          span.card-logo
-            +img('logo/lenta.png')
-            span.card-portal lenta.ru
-          span.card-date 09.12.21 11:56
-          span.card-views
-            +icon('eye')
-            span 12564
-        .card-content
-          .article-image.__fit
-            +img('article/article_2.jpg')
-
-          p Футболист одного из клубов Английской премьер-лиги (АПЛ) был арестован в северной части Лондона по подозрению в изнасиловании. Об этом сообщает The Telegraph.
-          p Источник умалчивает фамилию игрока, но отмечает, что речь идет о всемирно известном футболисте, который должен выступить на чемпионате мира — 2022 в Катаре.
-          p Также сообщается, что спортсмен проживает в Северном Лондоне. Ему от 26 до 29 лет. Другие подробности не сообщаются.
-
-          .article-controls
-            a.btn.btn-black.__s-45.btn-auth(href='#')
-              span Продолжить чтение в источнике
-              +icon('arrow_ne').btn-icon
-
-          +article_controls(true)
-
-    .section.__white.__content.__article
-      .section-title
-        span Читайте также
-
-      ul.card-holder.__grid.js-grid
-        +loop_while(2)
-          li.grid-item
-            +card('«Челси» и «Зенит» сыграли вничью в заключительном матче Лиги чемпионов', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '', '', '12564')
-          li.grid-item
-            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '', '', '12564')
-          li.grid-item
-            +card('«Барселона» впервые за 16 лет не сыграет в плей-офф ЛЧ', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '', '', '12564')
-          li.grid-item
-            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '', '', '12564')
+    +card_article_section()

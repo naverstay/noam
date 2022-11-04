@@ -79,6 +79,15 @@ body
   font 14px $fontInter
   background $menu_bg_clr
 
+  .__error_page &
+    background: #f8f6f3
+
+    .page
+      padding-top: 30vh
+
+      .content
+        padding-top: 0
+
   &.open_menu
     +below($tab - 1px)
       overflow hidden
@@ -250,13 +259,34 @@ body
 
   &.__white
     //background #E5E5E5
-    background #F8F6F3
+    background #f8f6f3
 
   &.__aside-space
     +desktop()
       margin-right 392px
 
   &.__article
+    + .__article
+      padding-top: 0 !important
+
+      .article
+        &::before
+          content: ''
+          position: absolute
+          bottom: 100%
+          margin-bottom: 30px
+          height: 12px
+          width: 100vw
+          left: 50%
+          transform translateX(-50%)
+          background: #EBE9E7
+
+          +above($tab)
+            margin-bottom: 44px
+
+        h1
+          margin-top: 0
+
     +desktop()
       max-width 1208px
 

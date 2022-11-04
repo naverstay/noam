@@ -1,0 +1,30 @@
+extends ./includes/layout_blank
+
+block variables
+  - page_title = 'Error page';
+  - html_class = '';
+  - popular_tags = false;
+
+block content
+  .section-holder
+    .section.__white
+      .section-title.text-center
+        span Ошибка 404
+
+      .recommended-holder
+        p.text-center Запрашевамая вами страница не найдена, но у нас много других интересных новостей:
+
+        ul.card-holder.__grid
+          //-li.grid-sizer
+          li.grid-item.__w-2.__h-2
+            +card('Киркоров перестал скрывать мать своих детей', 'lenta', '08.12.21 10:35', 'news/show_biz_2.jpg', '', '', '12564')
+          li.grid-item.__w-2.__h-2
+            +card('Будущий канцлер Германии высказался о войсках у границ Украины', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '', '', '12564')
+          li.grid-item.__w-3
+            +card('"Это уже агония". Украину ждет новый раскол', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '', '', '12564')
+          li.grid-item.__w-3
+            +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '', '', '12564')
+          li.grid-item.__w-3
+            +card('Назван главный просчет США на Украине', 'lenta', '08.12.21 10:35', 'news/show_biz_1.jpg', '', '', '12564')
+
+          +text_news()

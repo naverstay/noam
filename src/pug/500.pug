@@ -1,0 +1,15 @@
+extends ./includes/layout_blank
+
+block variables
+  - page_title = 'Error page';
+  - html_class = '';
+  - popular_tags = false;
+
+block content
+  .section-holder
+    .section.__white
+      .section-title.text-center
+        span Ошибка 500
+
+      .recommended-holder
+        p.text-center Что-то пошло не так, но мы уже работаем над решением проблемы.

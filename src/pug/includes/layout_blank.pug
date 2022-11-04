@@ -1,0 +1,18 @@
+include ../includes/data
+include ../includes/require
+include head
+include ../mixins/img
+include ../mixins/icon
+
+block variables
+
+doctype html
+html(lang='' class='__error_page')
+  +head()
+
+  body
+    .page
+      .content
+        block content
+
+
