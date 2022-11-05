@@ -115,9 +115,14 @@ f_nav()
       padding-top 20px
 
   &-info
+    display flex
+
+    +below($tab - 1px)
+      flex-flow column-reverse nowrap
+
     +above($tab)
+      flex-flow row wrap
       padding-top 5px
-      display flex
       gap 10px
       justify-content space-between
 
