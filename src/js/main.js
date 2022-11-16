@@ -44,6 +44,15 @@ const isotopOptions = {
   //}
 };
 
+const isJsonString = (str) => {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+
 const isMobile = function () {
   return getComputedStyle(document.body, ':before').getPropertyValue('content') === '\"mobile\"';
 }
@@ -152,6 +161,80 @@ const initSelect = () => {
       templateResult: formatBrandResult,
       templateSelection: formatBrandSelection
     });
+  });
+};
+
+const initInputAutocomplete = () => {
+  $('.js-input-autocomplete').each((index, input) => {
+    let result = input.parentElement;
+    let icon = result.querySelector('.js-input-icon');
+    let autocomplete = input.dataset.autocomplete;
+    let source = [];
+
+    if (!autocomplete) {
+      return;
+    }
+
+    if (isJsonString(autocomplete)) {
+      let data = JSON.parse(autocomplete);
+
+      if (data.length) {
+        for (let i = 0; i < data.length; i++) {
+          source.push(data[i]);
+        }
+      }
+    }
+
+    console.log('initInputAutocomplete', autocomplete, isJsonString(autocomplete), source);
+
+    $(input).autocomplete({
+      lookup: source,
+      minChars: 1,
+      appendTo: result,
+      preserveInput: true,
+      showNoSuggestionNotice: true,
+      noSuggestionNotice: `
+                <span class="select2-results__option-value">
+                 <span class="select2-results__option-icon"></span>
+                  <span class="select2-results-name">Ничего не найдено</span>
+              </span>`,
+      onSelect: function (suggestion) {
+        input.value = suggestion.value;
+
+        if (icon) {
+          icon.innerHTML = `<img src="${suggestion.data.icon}" alt="${suggestion.data.label}">`;
+        }
+      },
+      onSearchStart: function (params) {
+        console.log('onSearchStart', params);
+      },
+      onSearchComplete: function (query, suggestions) {
+        console.log('onSearchComplete', query, suggestions);
+      },
+      onHide: function (container) {
+
+      },
+      beforeRender: function (container, suggestions) {
+        if (suggestions.length) {
+          container.empty();
+
+          suggestions.forEach((item, index) => {
+            const itemElement = document.createElement("div");
+            itemElement.className = 'select2-results__option select2-results__option--selectable autocomplete-suggestion';
+            itemElement.dataset.index = index;
+            itemElement.innerHTML = `<span class="select2-results__option-value">
+                    <span class="select2-results__option-icon"><img src="${item.data.icon}" alt="${item.data.label}"></span>
+                    <span class="select2-results-name">${item.data.label}</span>
+                  </span>`;
+
+            container.append(itemElement);
+          });
+        }
+
+        return container.attr('style', '');
+      }
+    });
+
   });
 };
 
@@ -517,4 +600,5 @@ $(function ($) {
   }
 
   initSelect();
+  initInputAutocomplete();
 });

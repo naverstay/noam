@@ -13,28 +13,28 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
-const src = path.resolve(__dirname, 'src/');
-const dist = path.resolve(__dirname, 'dist/');
-const minimap = path.resolve(src, 'Leaflet-MiniMap-master/dist/Control.MiniMap.min.js');
-const distMinimap = path.resolve(__dirname, 'dist/js/minimap.js');
-const markercluster = path.resolve(src, 'Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js');
-const distMarkercluster = path.resolve(__dirname, 'dist/js/markercluster.js');
-const img = path.resolve(src, 'img/');
-const distImg = path.resolve(__dirname, 'dist/img');
+const srcPath = path.resolve(__dirname, 'src/');
+const distPath = path.resolve(__dirname, 'dist/');
+const minimapPath = path.resolve(srcPath, 'Leaflet-MiniMap-master/dist/Control.MiniMap.min.js');
+const distMinimapPath = path.resolve(__dirname, 'dist/js/minimap.js');
+const markerClusterPath = path.resolve(srcPath, 'Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js');
+const distMarkerClusterPath = path.resolve(__dirname, 'dist/js/markercluster.js');
+const imgPath = path.resolve(srcPath, 'img/');
+const distImgPath = path.resolve(__dirname, 'dist/img');
 
-const ico = path.resolve(src, 'ico/');
-const favicon = path.resolve(src, 'favicon/');
-const staticPath = path.resolve(src, 'static/');
+const icoPath = path.resolve(srcPath, 'ico/');
+const favicon = path.resolve(srcPath, 'favicon/');
+const staticPath = path.resolve(srcPath, 'static/');
 
-const pug = path.resolve(src, 'pug/');
-const pugGlobals = path.resolve(pug, 'data/global.json');
+const pugPath = path.resolve(srcPath, 'pug/');
+const pugGlobals = path.resolve(pugPath, 'data/global.json');
 
 module.exports = env => ({
-  context: src,
+  context: srcPath,
   devtool: 'inline-source-map',
   resolve: {
     alias: {
-      '@': src
+      '@': srcPath
     }
   },
   entry: {
@@ -47,7 +47,7 @@ module.exports = env => ({
   },
   output: {
     filename: './js/[name].js',
-    path: dist
+    path: distPath
   },
   module: {
     rules: [
@@ -88,7 +88,7 @@ module.exports = env => ({
       },
       {
         test: /\.(gif|png|jpe?g|svg|woff|eot|ttf|woff2)$/,
-        exclude: ico,
+        exclude: icoPath,
         use: [{
           loader: 'url-loader',
           options: {
@@ -104,7 +104,7 @@ module.exports = env => ({
       //},
       {
         test: /\.svg$/,
-        include: ico,
+        include: icoPath,
         use: [
           {
             loader: 'svg-sprite-loader',
@@ -124,13 +124,13 @@ module.exports = env => ({
       },
       {
         test: /\.pug$/,
-        include: pug,
+        include: pugPath,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[path][name].html',
-              context: pug
+              context: pugPath
             }
           },
           'extract-loader',
@@ -146,7 +146,7 @@ module.exports = env => ({
               pretty: true,
               exports: false,
               doctype: 'html',
-              basedir: pug,
+              basedir: pugPath,
               data: {
                 data: () => JSON.parse(fs.readFileSync(pugGlobals, 'utf8'))
               },
@@ -181,22 +181,22 @@ module.exports = env => ({
       jQuery: 'jquery',
       'window.jQuery': 'jquery'
     }),
-    new CleanWebpackPlugin(dist),
+    new CleanWebpackPlugin(distPath),
     new CopyWebpackPlugin([{
       from: staticPath,
-      to: dist
+      to: distPath
     }, {
       from: favicon,
-      to: dist
+      to: distPath
     }, {
-      from: img,
-      to: distImg
+      from: imgPath,
+      to: distImgPath
     }, {
-      from: minimap,
-      to: distMinimap
+      from: minimapPath,
+      to: distMinimapPath
     }, {
-      from: markercluster,
-      to: distMarkercluster
+      from: markerClusterPath,
+      to: distMarkerClusterPath
     }
     ]),
     new SpriteLoaderPlugin({
@@ -212,7 +212,7 @@ module.exports = env => ({
         port: 3008,
         ghostMode: false,
         server: {
-          baseDir: [dist]
+          baseDir: [distPath]
         }
       }, {
         injectCss: true

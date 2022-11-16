@@ -2,6 +2,21 @@
   width 100%
   padding 12px 20px
 
+  &-icon
+    position: absolute
+    top: 50%
+    left: 20px
+    margin-top: -8px
+    width: 16px
+    height: 16px
+
+    img
+      display: block
+      max-width: 100%
+
+    + .input
+      padding-left: 50px
+
   &.__offset-8
     margin-top: 8px
     margin-bottom: -4px
@@ -184,6 +199,23 @@ textarea.input
     margin-top 8px
     position relative
 
+    .autocomplete-no-suggestion
+      padding: 11px 20px;
+      background: #efefef;
+      border-radius: 0;
+
+    .autocomplete-suggestions
+      position: absolute
+      top: 100%
+      right: 0
+      left: 0
+      z-index: 2
+
+      .select2-results__option
+        &.autocomplete-selected
+          font-weight: 700
+          background-color: #5897fb
+          color: #fff
 
 .check
   position relative

@@ -116,12 +116,13 @@
       .form-cell.__mb-34
         label.form-label(for='location_region') Ваш регион:
         .form-input.select.select-white.__s-40
-          select#location_region.js-select-icon(name="brand" data-placeholder='Выберите регион' tabindex="1")
-            option(value="")
-            option(value="m1" data-icon="img/flag/ru.png") Россия
-            option(value="m2" data-icon="img/flag/bl.png") Беларусь
-            option(value="m3" data-icon="img/flag/ua.png") Украина
-            option(value="m4" data-icon="img/flag/kz.png") Казахстан
+          span.input-icon.js-input-icon
+          input#location_region.js-input-autocomplete.input.input-white.__s-40(name="location" data-placeholder='Выберите регион' tabindex="1" data-autocomplete= '[{"value":"Россия","data":{"label":"Россия","icon":"img/flag/ru.png"}},{"value":"Беларусь","data":{"label":"Беларусь","icon":"img/flag/bl.png"}},{"value":"Украина","data":{"label":"Украина","icon":"img/flag/ua.png"}},{"value":"Казахстан","data":{"label":"Казахстан","icon":"img/flag/kz.png"}}]')
+            //-option(value="")
+            //-option(value="m1" data-icon="img/flag/ru.png") Россия
+            //-option(value="m2" data-icon="img/flag/bl.png") Беларусь
+            //-option(value="m3" data-icon="img/flag/ua.png") Украина
+            //-option(value="m4" data-icon="img/flag/kz.png") Казахстан
 
       .form-cell
         +check('Определять местоположение автоматически', true)
