@@ -279,8 +279,9 @@
       +below($tab - 1px)
         max-height calc(var(--app-height) - var(--header-mob-height) - 30px)
 
-    .__open-popup &
-      right var(--app-scroll-size)
+    .__open-popup.__page-aside &
+      +above($wide)
+        right var(--app-scroll-size)
 
     +above($wide_1600)
       display block

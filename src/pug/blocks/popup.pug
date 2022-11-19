@@ -13,7 +13,7 @@ mixin auth_popup(error)
       .form-cell
         label.form-label(for=(formId + '_email-input')) Email:
         .form-input
-          input.input.input-white.__s-40(id= (formId + '_email-input') placeholder='Введите Email' class=(formId ? '__error' : ''))
+          input.input.input-white.__s-40(id= (formId + '_email-input') placeholder='Введите Email' class=(error ? '__error' : ''))
           - if (error)
             .form-input__error Введите Email адрес
 
@@ -21,10 +21,10 @@ mixin auth_popup(error)
         label.form-label(for=(formId + '_password-input')) Пароль:
         a.popup-link.js-popup(data-popup='#modal_restore' href='#') Забыли пароль?
         .form-input
-          a.js-toggle-type.form-password__eye(data-toggle=(formId + '_password'))
+          a.js-toggle-type.form-password__eye(data-toggle=('#' + formId + '_password-input'))
             +icon('eye').btn-icon.__open
             +icon('eye_hide').btn-icon.__hide
-          input.input.input-white.__s-40(id=(formId + '_password-input') placeholder='Введите пароль' type='password' class=(formId ? '__error' : ''))
+          input.input.input-white.__s-40(id=(formId + '_password-input') placeholder='Введите пароль' type='password' class=(error ? '__error' : ''))
           - if (error)
             .form-input__error Введите пароль
 
