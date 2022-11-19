@@ -185,8 +185,6 @@ const initInputAutocomplete = () => {
       }
     }
 
-    console.log('initInputAutocomplete', autocomplete, isJsonString(autocomplete), source);
-
     $(input).autocomplete({
       lookup: source,
       minChars: 1,
@@ -518,9 +516,9 @@ $(window).on('load', function () {
 });
 
 window.onscroll = function (e) {
-  if ($('html').hasClass('open_autocomplete')) {
+  if (document.documentElement.classList.contains('open_autocomplete') || document.body.classList.contains('open_menu')) {
     try {
-      window.pageYOffset = document.documentElement.scrollTop = document.body.scrollTop = prevScrollPos;
+       document.documentElement.scrollTop = prevScrollPos;
     } catch (e) {
       console.log('onscroll', e);
     } finally {

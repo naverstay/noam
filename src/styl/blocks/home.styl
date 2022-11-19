@@ -60,18 +60,21 @@
           width 100%
 
           &:not(.grid-sizer) + li
-            border-top 1px solid #E8E8E8
-            margin-top 16px
-            padding-top 16px
+            padding-top 18px
 
-            &.__no-img .card-info
-              border-top 0
-              padding-top 0
+            &.__no-img
+              border-top 1px solid #E8E8E8
+              margin-top 16px
+              padding-top: 16px
+
+              .card-info
+                border-top 0
+                padding-top 0
 
           .card-info
             padding-top 12px
 
-          &:not(.__w-2)
+          &.__no-img
             .card
               position relative
 
