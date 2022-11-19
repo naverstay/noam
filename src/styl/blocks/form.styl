@@ -1,6 +1,7 @@
 .input
   width 100%
   padding 12px 20px
+  transition color .3s, background-color .3s, border-color .3s
 
   &-icon
     position: absolute
@@ -40,6 +41,9 @@
   &-white
     background #FFF
     border 1px solid #E8E8E8
+
+    &.__error
+      border-color: $red
 
 textarea.input
   custom_scroll(rgba(0, 0, 0, .25))
@@ -129,6 +133,33 @@ textarea.input
 
 .form
 
+  &-icon
+    position: absolute
+    top: 20px
+    left: 20px
+    width: 14px;
+    height: 14px;
+    background: $red
+    fill: #fff
+    border-radius: 100%
+    display: flex
+    align-items center
+    justify-content center
+
+    svg
+      width: 16px
+      height: 16px
+
+  &-error
+    position: relative
+    padding: 19px 20px 19px 44px
+    background: #FEEDED
+    border: 1px solid $red
+    font-size: 14px
+    line-height: 17px
+    color: $red
+    margin-bottom: 32px
+
   &-password__eye
     cursor pointer
     position absolute
@@ -198,6 +229,10 @@ textarea.input
     clear both
     margin-top 8px
     position relative
+
+    &__error
+      padding-top: 10px
+      color: $red
 
     .autocomplete-no-suggestion
       padding: 11px 20px;

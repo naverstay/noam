@@ -1,21 +1,32 @@
-.hide
-  #modal_auth.popup
+mixin auth_popup(error)
+  - let formId = 'auth' + (error ? '_' + error : '');
+
+  .popup(id='modal_' + formId)
     .popup-title Авторизация
 
     form(action='#')
+      - if (error)
+        .form-error
+          +icon('close').form-icon
+          span Неверный Email или пароль
+
       .form-cell
-        label.form-label(for='auth_email') Email:
+        label.form-label(for=(formId + '_email-input')) Email:
         .form-input
-          input#auth_email.input.input-white.__s-40(placeholder='Введите Email')
+          input.input.input-white.__s-40(id= (formId + '_email-input') placeholder='Введите Email' class=(formId ? '__error' : ''))
+          - if (error)
+            .form-input__error Введите Email адрес
 
       .form-cell.__mb-34
-        label.form-label(for='auth_password') Пароль:
+        label.form-label(for=(formId + '_password-input')) Пароль:
         a.popup-link.js-popup(data-popup='#modal_restore' href='#') Забыли пароль?
         .form-input
-          a.js-toggle-type.form-password__eye(data-toggle='#auth_password')
+          a.js-toggle-type.form-password__eye(data-toggle=(formId + '_password'))
             +icon('eye').btn-icon.__open
             +icon('eye_hide').btn-icon.__hide
-          input#auth_password.input.input-white.__s-40(placeholder='Введите пароль' type='password')
+          input.input.input-white.__s-40(id=(formId + '_password-input') placeholder='Введите пароль' type='password' class=(formId ? '__error' : ''))
+          - if (error)
+            .form-input__error Введите пароль
 
       .form-cell
         button.btn.btn-red.__s-40.btn-auth Войти
@@ -28,6 +39,10 @@
     .popup-footer
       span Нет аккаунта?&nbsp;
       a.popup-link.js-popup(data-popup='#modal_reg' href='#') Зарегистрироваться
+
+.hide
+  +auth_popup()
+  +auth_popup('error')
 
   #modal_reg.popup
     .popup-title Регистрация
