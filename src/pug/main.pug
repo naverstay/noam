@@ -2,6 +2,7 @@ extends ./includes/layout
 
 block variables
   - page_title = 'home';
+  - aside_class = '';
   - footer_class = '';
 
 block content
@@ -222,12 +223,4 @@ block content
       li.grid-item.__w-3
         +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/pop.jpg', '', '', '12564')
 
-    .pagination
-      a.btn.btn-page.__s-40.btn-white.__disable(href='#')
-        +icon('arrow_l').btn-icon
-      a.btn.btn-page.__s-40.btn-white.__active(href='#') 1
-      a.btn.btn-page.__s-40.btn-white(href='#') 2
-      a.btn.btn-page.__s-40.btn-white(href='#') 3
-      a.btn.btn-page.__s-40.btn-white(href='#') 4
-      a.btn.btn-page.__s-40.btn-white(href='#')
-        +icon('arrow_r').btn-icon
+    +pagination()

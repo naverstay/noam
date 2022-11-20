@@ -115,6 +115,51 @@
             img_center()
             width auto
 
+        &.__w-1
+          + li
+            border-top 1px solid #E8E8E8
+            padding-top 18px
+
+          .card
+            position: relative
+
+            .card-footer
+              padding-bottom: 0
+
+            +above($tab)
+              padding-left: 300px
+              min-height: 164px
+
+              .card-info
+                padding-top: 0
+
+                +above($wide)
+                  padding-top: 5px
+
+              .card-preview
+                position: absolute
+                top: 0
+                left: 0
+                width: 280px
+
+            +above($wide)
+              padding-left: 392px
+
+              .card-preview
+                width: 362px
+
+          .card-preview
+            height 164px
+
+          .card-title
+            +above($tab)
+              font-size 18px
+              line-height 24px
+
+            +above($wide)
+              font-size 21px
+              line-height 26px
+
         &.__w-2
           .card-preview
             height 148px
@@ -156,11 +201,14 @@
           //.card-preview
           //  height 48%
 
+          &.__w-1
+            //width 50%
+            grid-column span 12
+            padding-bottom: 18px
+
           &.__w-2
             //width 50%
             grid-column span 6
-
-
 
           &.__w-3
             //width 50%

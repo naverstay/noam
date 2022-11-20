@@ -1,0 +1,14 @@
+extends ./includes/layout
+
+block variables
+  - page_title = 'category';
+  - aside_class = '';
+  - html_class = '__page-aside __no-currency';
+
+block content
+  +aside()
+
+  .section-holder
+    .section.__white
+      .category
+        +category('Новости спорта')

@@ -22,7 +22,7 @@ f_nav()
   background $menu_bg_clr
   color #fff
   text-align center
-  padding 0 0 40px
+  padding 0 0 32px
 
   .section
     padding 0 30px
@@ -161,6 +161,9 @@ f_nav()
 
       &:hover svg
         fill $red
+
+  +below($wide - 1px)
+    padding-bottom: 40px
 
   +below($dt - 1px)
     .logo

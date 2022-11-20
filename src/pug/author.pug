@@ -1,0 +1,30 @@
+extends ./includes/layout
+
+block variables
+  - page_title = 'author';
+  - html_class = '';
+
+block content
+  .section-holder
+    .section.__white
+      .category.__author
+        .author-block
+          .author-photo
+            +img('author/author_1.png')
+          .author-data
+            .author-data__name Максим Лесовой
+            .author-data__info Пишет про спорт с 2013 года, на «Чемпионате» работает с 2019-го. Любимые виды спорта: футбол, фехтование. Учился в школе олимпийского резерва в секции фехтования, также занимался борьбой и боксом. Имеет первый взрослый разряд по фехтованию (шпага).
+            .author-data__links
+              a.author-data__link(href='#')
+                span Блог автора
+                +icon('launch').btn-icon
+              a.author-data__link(href='#')
+                span LinkedIn
+                +icon('launch').btn-icon
+              a.author-data__link(href='#')
+                span Twitter
+                +icon('launch').btn-icon
+
+
+
+        +category('Материалы автора')

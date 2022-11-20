@@ -1,0 +1,103 @@
+.category
+  padding: 32px 0 40px
+
+  +above($wide)
+    padding-bottom: 65px
+
+  &-title
+    padding: 0 0 16px
+    font: 700 21px/28px $fontPTSerif
+    color: #000
+
+    +above($tab)
+      font-size: 24px
+      line-height: 32px
+      padding-bottom: 24px
+
+    +above($wide)
+      font-size: 36px
+      line-height: 48px
+
+  .card-holder.__grid
+    margin-bottom: 6px
+
+    +below($tab - 1px)
+      margin-bottom: 30px
+
+  &.__author
+    +above($wide)
+      display: grid
+      grid-template-columns 363px 1fr
+      gap 30px
+
+.author
+  &-photo
+    margin: 0 auto 16px
+    width: 164px
+    height: 164px
+    overflow: hidden
+    border: 2px solid #EBEBEB
+    border-radius: 100px
+
+    img
+      display: block
+      width: 100%
+
+  &-data
+
+    &__links
+      display: flex
+      flex-flow: column nowrap
+
+    &__link
+      margin-top: 13px
+      display: inline-flex
+      align-items center
+      gap: 8px
+      color: #B2B2B2
+      font-weight: 500
+      font-size: 12px
+      line-height: 15px
+
+      span
+        transition color .3s
+        padding-bottom: 1px
+        color: rgba(0, 0, 0, .85)
+
+      svg
+        width: 16px
+        height: 16px
+
+      &:hover
+        span
+          color: $red
+
+    &__info
+      font-weight: 400
+      font-size: 13px
+      line-height: 21px
+      color: rgba(0, 0, 0, .65)
+
+    &__name
+      text-align center
+      font 700 24px/32px $fontPTSerif
+      margin-bottom: 12px
+      color: #000
+
+  &-block
+    margin-bottom: 32px
+    padding: 34px 30px
+    background: #FFFFFF
+    border: 1px solid #E8E8E8
+
+    +above($tab)
+      display: grid
+      grid-template-columns 164px 1fr
+      gap 32px
+      margin-bottom: 48px
+
+    +above($wide)
+      display: block
+      margin-bottom: auto
+
+
