@@ -565,6 +565,11 @@ $(function ($) {
     return false;
   });
 
+  $('.js-nav-dropdown').on('click', function () {
+    $(this).parent().toggleClass('__opened');
+    return false;
+  });
+
   $('.js-toggle-type').on('click', function () {
     let btn = $(this)
     let target = $(btn.attr('data-toggle'));

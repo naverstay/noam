@@ -28,7 +28,7 @@ mixin nav(footer)
       each item, index in listHeader
         li(class= index ? '' : 'active')
           if (index === listHeader.length - 1)
-            span.nav-link(href='#')
+            span.nav-link.js-nav-dropdown(href='#')
               span= item
               +icon('arrow_d').btn-icon
             ul.nav-dropdown

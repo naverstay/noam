@@ -377,13 +377,23 @@ body
   > li
     position relative
 
-    &:hover
-      > .nav-link .btn-icon
-        color #fff
-        transform rotate(180deg)
+    +below($tab - 1px)
+      &.__opened
+        > .nav-link .btn-icon
+          color #fff
+          transform rotate(180deg)
 
-      .nav-dropdown
-        display block
+        .nav-dropdown
+          display block
+
+    +above($tab)
+      &:hover
+        > .nav-link .btn-icon
+          color #fff
+          transform rotate(180deg)
+
+        .nav-dropdown
+          display block
 
   &-dropdown
     display none
