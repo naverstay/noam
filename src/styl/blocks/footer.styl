@@ -49,10 +49,10 @@ f_nav()
 
     +between($wide, $wide + $menu_extra * 2 - 1px)
       .__page-aside &
-        margin: 0 -12px
+        margin 0 -12px
 
         li
-          padding: 0 12px
+          padding 0 12px
 
   &-nav
     position relative
@@ -94,7 +94,7 @@ f_nav()
     text-align left
     padding 33px 0 6px
     color #fff
-    font 700 21px/28px $fontPTSerif
+    font 700 21px / 28px $fontPTSerif
 
   &-socials
     padding-top 30px
@@ -130,7 +130,7 @@ f_nav()
       padding-top 0
 
   &-copyright
-    color rgba(255,255,255, .5)
+    color rgba(255, 255, 255, .5)
     font-size 14px
     line-height 20px
     padding-top 20px
@@ -143,27 +143,27 @@ f_nav()
 
   &-socials
     .social-list
-      text-align center
+    text-align center
 
-      li
-        padding 0 9px 8px
-        display inline-block
+    li
+      padding 0 9px 8px
+      display inline-block
 
-    .social-link
-      cursor pointer
-      display block
+  .social-link
+    cursor pointer
+    display block
 
-      svg
-        width 16px
-        height 16px
-        fill #fff
-        transition fill .3s
+    svg
+      width 16px
+      height 16px
+      fill #fff
+      transition fill .3s
 
-      &:hover svg
-        fill $red
+    &:hover svg
+      fill $red
 
   +below($wide - 1px)
-    padding-bottom: 40px
+    padding-bottom 40px
 
   +below($dt - 1px)
     .logo
@@ -204,3 +204,13 @@ f_nav()
 
       .footer-nav::before
         margin-left calc(var(--home-aside-width) / -2)
+
+.promo
+  display flex
+  align-items center
+  justify-content center
+  background #EBEBEB
+  font 700 24px / 32px $fontPTSerif
+  color #000
+  height calc(100% - 59px)
+  margin-top 59px

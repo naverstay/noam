@@ -147,9 +147,10 @@ mixin currency()
 
 mixin aside(no_content)
   if (no_content)
-    .hero-aside
-      .hero-aside__head
-        .hero-aside__caption aside content
+    .hero-aside(class= (aside_class))
+      .promo
+        span Реклама
+
   else
     .hero-aside(class= (aside_class))
       .hero-aside__head

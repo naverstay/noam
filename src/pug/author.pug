@@ -2,9 +2,12 @@ extends ./includes/layout
 
 block variables
   - page_title = 'author';
-  - html_class = '';
+  - aside_class = 'wide-only';
+  - html_class = '__page-aside __no-currency __aside-white';
 
 block content
+  +aside(true)
+
   .section-holder
     .section.__white
       .category.__author
@@ -24,7 +27,5 @@ block content
               a.author-data__link(href='#')
                 span Twitter
                 +icon('launch').btn-icon
-
-
 
         +category('Материалы автора')
