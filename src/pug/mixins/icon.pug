@@ -203,11 +203,11 @@ mixin user(map)
 
     li(class= user_cls): span.header-menu__icon.js-popup(data-popup='#modal_auth')
       +icon('user').btn-icon
-      +icon('arrow_r').mob-only.btn-icon.__arrow
       if (header_auth)
         span.header-menu__name= header_auth
         +icon('exit').btn-icon
       else
+        +icon('arrow_r').mob-only.btn-icon.__arrow
         span Войти
 
     //-if (map === 'inner')
