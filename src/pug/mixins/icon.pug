@@ -12,14 +12,31 @@ mixin icon(name)
     use(xlink:href=`/assets/sprite/icon.svg#icon_${name}`)
 
 mixin nav(footer)
-  - let list = ['Главное', 'Коронавирус', 'Политика', 'Спорт', 'Наука', 'Бизнес', 'Технологии'];
-  ul.nav(class= map_2 ? 'mob-only' : '')
-    each item, index in list
-      li(class= index ? '' : 'active'): a.nav-link(href='#')= item
-    if (footer)
+  - let listHeader = ['Главное', 'Коронавирус', 'Политика', 'Спорт', 'Наука', 'Бизнес', 'Ещё'];
+  - let listFooter = ['Главное', 'Коронавирус', 'Политика', 'Спорт', 'Наука', 'Бизнес', 'Технологии'];
+
+  if (footer)
+    ul.nav(class= map_2 ? 'mob-only' : '')
+      each item, index in listFooter
+        li(class= index ? '' : 'active'): a.nav-link(href='#')= item
+
       li: a.nav-link(href='#')
         +icon('whatshot').btn-icon.icon-red
         span Новости&nbsp;на&nbsp;карте
+  else
+    ul.nav(class= map_2 ? 'mob-only' : '')
+      each item, index in listHeader
+        li(class= index ? '' : 'active')
+          if (index === listHeader.length - 1)
+            span.nav-link(href='#')
+              span= item
+              +icon('arrow_d').btn-icon
+            ul.nav-dropdown
+              li: a.nav-link(href='#') Красота
+              li: a.nav-link(href='#') Авто и мото
+              li: a.nav-link(href='#') Шоу-бизнес
+          else
+            a.nav-link(href='#')= item
 
 mixin category(title)
   .category-wrapper
@@ -187,7 +204,11 @@ mixin user(map)
     li(class= user_cls): span.header-menu__icon.js-popup(data-popup='#modal_auth')
       +icon('user').btn-icon
       +icon('arrow_r').mob-only.btn-icon.__arrow
-      span Войти
+      if (header_auth)
+        span.header-menu__name= header_auth
+        +icon('exit').btn-icon
+      else
+        span Войти
 
     //-if (map === 'inner')
       li.exwide-hide.mob-hide: a.header-menu__icon.btn.btn-red.btn-map(href='livemap.html')

@@ -80,13 +80,13 @@ body
   background $menu_bg_clr
 
   .__error_page &
-    background: #f8f6f3
+    background #f8f6f3
 
     .page
-      padding-top: 30vh
+      padding-top 30vh
 
       .content
-        padding-top: 0
+        padding-top 0
 
   &.open_menu
     +below($tab - 1px)
@@ -267,25 +267,25 @@ body
 
   &.__article
     + .__article
-      padding-top: 0 !important
+      padding-top 0 !important
 
       .article
         &::before
-          content: ''
-          position: absolute
-          bottom: 100%
-          margin-bottom: 30px
-          height: 12px
-          width: 100vw
-          left: 50%
+          content ''
+          position absolute
+          bottom 100%
+          margin-bottom 30px
+          height 12px
+          width 100vw
+          left 50%
           transform translateX(-50%)
-          background: #EBE9E7
+          background #EBE9E7
 
           +above($tab)
-            margin-bottom: 44px
+            margin-bottom 44px
 
         h1
-          margin-top: 0
+          margin-top 0
 
     +desktop()
       max-width 1208px
@@ -317,7 +317,7 @@ body
     flex-wrap wrap
 
     &.text-center
-      justify-content: center
+      justify-content center
 
     > span
       padding-right 10px
@@ -374,14 +374,65 @@ body
   display flex
   justify-content center
 
+  > li
+    position relative
+
+    &:hover
+      > .nav-link .btn-icon
+        color #fff
+        transform rotate(180deg)
+
+      .nav-dropdown
+        display block
+
+  &-dropdown
+    display none
+
+    li
+      border-top 1px solid #444
+
+    +below($tab - 1px)
+      li
+        .nav-link
+          padding-left 16px !important
+
+    +above($tab)
+      min-width 200px
+      padding-top: 4px
+      top 100%
+      right -30px
+      position absolute
+      white-space nowrap
+
+      li
+        background #323232
+
+        .nav-link
+          padding 16px 16px 14px !important
+
+        &:first-child
+          border-top 0
+
   .nav-link
+    cursor pointer
     color #fff
     padding 10px 0
     position relative
     display flex
 
-    &:hover
-      color $red
+    .btn-icon
+      transition transform .3s, color .3s
+      color $gray
+      width 16px
+      height 16px
+      margin-left 8px
+
+      +below($tab - 1px)
+        margin-right: -18px
+        margin-left: auto
+
+  a.nav-link:hover
+    color $red
 
   +below($mob_menu - 1px)
     flex-flow column
