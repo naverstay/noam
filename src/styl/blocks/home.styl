@@ -65,7 +65,7 @@
             &.__no-img
               border-top 1px solid #E8E8E8
               margin-top 16px
-              padding-top: 16px
+              padding-top 16px
 
               .card-info
                 border-top 0
@@ -121,32 +121,32 @@
             padding-top 18px
 
           .card
-            position: relative
+            position relative
 
             .card-footer
-              padding-bottom: 0
+              padding-bottom 0
 
             +above($tab)
-              padding-left: 300px
-              min-height: 164px
+              padding-left 300px
+              min-height 164px
 
               .card-info
-                padding-top: 0
+                padding-top 0
 
                 +above($wide)
-                  padding-top: 5px
+                  padding-top 5px
 
               .card-preview
-                position: absolute
-                top: 0
-                left: 0
-                width: 280px
+                position absolute
+                top 0
+                left 0
+                width 280px
 
             +above($wide)
-              padding-left: 392px
+              padding-left 392px
 
               .card-preview
-                width: 362px
+                width 362px
 
           .card-preview
             height 164px
@@ -204,7 +204,7 @@
           &.__w-1
             //width 50%
             grid-column span 12
-            padding-bottom: 18px
+            padding-bottom 18px
 
           &.__w-2
             //width 50%
@@ -743,6 +743,7 @@
     display flex
     align-items center
     pointer-events all
+    text-decoration none
 
     &.__link
       color $gray
@@ -775,10 +776,17 @@
       font-weight 500
       font-size 12px
       line-height 15px
-      padding-left 8px
 
     img
       display block
+      width 16px
+      height 16px
+
+      + span
+        padding-left 8px
+
+  &-href
+    color inherit
 
   &-title
     transition color .3s
@@ -913,11 +921,15 @@ a.card-logo
   color #000
   transition color .3s
 
-  span
-    text-decoration underline
-
   &:hover
     color $red
 
     span
+      text-decoration underline
+
+  .hero-aside__article &
+    text-decoration underline
+
+    &:hover,
+    &:hover span
       text-decoration none
