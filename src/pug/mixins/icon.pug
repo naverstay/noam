@@ -66,34 +66,6 @@ mixin logo()
     a.logo(href='/') NOAM.RU
 
 mixin card(title, portal, date, img, cls, description, views, partner)
-  a.card(href='card.html' class= (img ? '' : ' __text ') + (cls || ''))
-    if (img)
-      .card-preview
-        +img(img)
-    if (portal || views || (partner && date))
-      .card-info
-        if (portal)
-          span.card-logo
-            +img('logo/' + portal + '.png')
-            span.card-portal= portal + '.ru'
-        if (views)
-          span.card-views
-            +icon('eye')
-            span= views
-        if (partner && date)
-          span.card-date= date
-
-    .card-title= title
-
-    if (description)
-      .card-description= description
-
-    if (date && !partner)
-      .card-footer
-        .card-tag Политика
-        .card-date= date
-
-mixin card_aside(title, portal, date, img, cls, description, views, partner)
   .card(class= (img ? '' : ' __text ') + (cls || ''))
     if (img)
       .card-preview
@@ -208,13 +180,13 @@ mixin aside(no_content)
       ul.hero-aside__list#js-autocomplete-source
         +loop_while(8)
           li
-            +card_aside('Легендарный инвестор предупредил мир о финансовой катастрофе', 'tass', '', '', '', 'ХХ съезд Коммунистической партии Китая, вероятно, ознаменуется решением о третьем сроке Си Цзиньпина.', '12564')
+            +card('Легендарный инвестор предупредил мир о финансовой катастрофе', 'tass', '', '', '', 'ХХ съезд Коммунистической партии Китая, вероятно, ознаменуется решением о третьем сроке Си Цзиньпина.', '12564')
           li
-            +card_aside('В разных частях зала: почему Иван Ургант с отцом сидели отдельно друг от друга на похоронах Нины Ургант', 'zr', '', '', '', '', '12564')
+            +card('В разных частях зала: почему Иван Ургант с отцом сидели отдельно друг от друга на похоронах Нины Ургант', 'zr', '', '', '', '', '12564')
           li
-            +card_aside('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', '', '', '', 'ХХ съезд Коммунистической партии Китая, вероятно, ознаменуется решением о третьем сроке Си Цзиньпина.', '12564')
+            +card('Звезда Instagram убила свою мать и вырезала ее еще бьющееся сердце', 'lenta', '', '', '', 'ХХ съезд Коммунистической партии Китая, вероятно, ознаменуется решением о третьем сроке Си Цзиньпина.', '12564')
           li
-            +card_aside('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', '', '', '', '', '12564')
+            +card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', '', '', '', '', '12564')
 
       .hero-aside__footer.wide-hide
         a.btn.btn-gray-light.btn-aside.__s-45(href='#')
