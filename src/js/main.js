@@ -518,7 +518,7 @@ $(window).on('load', function () {
 window.onscroll = function (e) {
   if (document.documentElement.classList.contains('open_autocomplete') || document.body.classList.contains('open_menu')) {
     try {
-       document.documentElement.scrollTop = prevScrollPos;
+      document.documentElement.scrollTop = prevScrollPos;
     } catch (e) {
       console.log('onscroll', e);
     } finally {
@@ -556,7 +556,15 @@ $(function ($) {
   initAutocomplete();
 
   $('.js-collapse-btn').on('click', function () {
-    $(this).closest('.js-collapse-block').toggleClass('__expanded');
+    let btn = $(this);
+    let action = btn.attr('data-action');
+
+    if (action) {
+      btn.closest('.js-collapse-block')[action]('__expanded');
+    } else {
+      btn.closest('.js-collapse-block').toggleClass('__expanded');
+    }
+
     return false;
   });
 

@@ -170,7 +170,7 @@ mixin aside(no_content)
         span Реклама
 
   else
-    .hero-aside(class= (aside_class))
+    .hero-aside.js-collapse-block(class= (aside_class))
       .hero-aside__head
         .hero-aside__caption Новости часа
         a.btn.btn-gray-light.btn-aside.__s-45(href='#')
@@ -189,7 +189,7 @@ mixin aside(no_content)
             +card('Лапорта о вылете «Барсы» из ЛЧ: «Мы все должны грести в одном направлении и менять сложную спортивную и финансовую ситуацию в клубе»', 'sports', '', '', '', '', '12564')
 
       .hero-aside__footer.wide-hide
-        a.btn.btn-gray-light.btn-aside.__s-45(href='#')
+        a.btn.btn-gray-light.btn-aside.__s-45.js-collapse-btn(data-action='addClass' href='#')
           +icon('arrow_d').btn-icon
           span.fw-600 Показать больше
 
