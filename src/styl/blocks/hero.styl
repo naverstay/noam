@@ -269,6 +269,12 @@
         padding 32px 22px 100px
         max-height calc(var(--app-height) - var(--header-search-height) - var(--header-mob-mapbtn-height) - var(--header-mob-height) - 30px)
 
+        &.__no-foot
+          padding-bottom 32px
+
+          &::before
+            display none
+
         &.__expanded
           max-height none
 
