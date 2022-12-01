@@ -456,6 +456,16 @@ function getScrollTop() {
   return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 }
 
+function watchMobileResolution() {
+  const breakpoint = window.matchMedia('(min-width:768px)');
+
+  breakpoint.addEventListener("change", (e) => {
+    if (!e.matches) {
+      $('.hero-aside.js-collapse-block').scrollTop(0)
+    }
+  });
+}
+
 function checkWindowScroll() {
   clearTimeout(goTopTimer);
   const newScrollTop = getScrollTop();
@@ -533,7 +543,6 @@ window.onscroll = function (e) {
 
 window.addEventListener("resize", () => {
   debounceFitHeight();
-
 });
 
 if (isSupported()) {
@@ -553,6 +562,7 @@ $(function ($) {
   initHero();
   initMapSlider();
   initIsotop();
+  watchMobileResolution();
   initAutocomplete();
 
   $('.js-collapse-btn').on('click', function () {
