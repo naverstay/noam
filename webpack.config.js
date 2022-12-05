@@ -23,6 +23,8 @@ const imgPath = path.resolve(srcPath, 'img/');
 const distImgPath = path.resolve(__dirname, 'dist/img');
 
 const icoPath = path.resolve(srcPath, 'ico/');
+const fontPath = path.resolve(srcPath, 'fonts/');
+const distFontPath = path.resolve(__dirname, 'dist/fonts');
 const favicon = path.resolve(srcPath, 'favicon/');
 const staticPath = path.resolve(srcPath, 'static/');
 
@@ -191,6 +193,9 @@ module.exports = env => ({
     }, {
       from: imgPath,
       to: distImgPath
+    }, {
+      from: fontPath,
+      to: distFontPath
     }, {
       from: minimapPath,
       to: distMinimapPath
