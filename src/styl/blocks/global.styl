@@ -1,21 +1,3 @@
-+above($tab)
-  :root {
-    --map-aside-left 24px
-    --map-aside-width 377px
-  }
-
-+above($wide)
-  :root {
-    //--map-aside-right 22px
-    --header-search-height 40px
-    --map-aside-width $map_aside_width
-  }
-
-+above($content_max_width + $home_aside_width_1600)
-  :root {
-    --home-aside-width $home_aside_width_1600
-  }
-
 *
   box-sizing border-box
 
@@ -426,8 +408,17 @@ body
     flex-flow column
     padding-bottom 20px
 
+.fw-500
+  font-weight 500
+
 .fw-600
   font-weight 600
+
+.fw-700
+  font-weight 700
+
+.fw-800
+  font-weight 800
 
 .clr-gray
   color $gray
@@ -469,3 +460,6 @@ body
 
 .text-center
   text-align center
+
+.hide
+  display none

@@ -51,6 +51,11 @@ mixin category(title)
     +pagination()
 
 mixin pagination()
+  .pagination-more
+    a.btn.btn-gray-light.btn-more.__s-45(href='#')
+      span.fw-500 Загрузить больше
+      +icon('arrow_s').btn-icon
+
   .pagination
     a.btn.btn-page.__s-40.btn-white.__disable(href='#')
       +icon('arrow_l').btn-icon
@@ -222,6 +227,12 @@ mixin user(map)
 
       li.mob-only: span.header-menu__icon.js-toggle-mobile-map
         +icon('view_agenda').btn-icon
+
+mixin show_more_mob()
+  .wide-hide
+    a.btn.btn-gray-light.btn-more.__s-45(href='#')
+      span.fw-500 Показать больше
+      +icon('arrow_ne').btn-icon
 
 mixin partners_section()
   .section.__black.__content

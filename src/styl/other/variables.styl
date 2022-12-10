@@ -28,7 +28,6 @@ $fontInter = Inter, sans-serif
 $fontPTSerif = 'PT Serif', serif
 
 :root {
-  --app-font-path '/dev/src/fonts'
   --app-height 100vh
   --app-scroll-size 4px
   --app-page-overlay-offset 100px
@@ -49,3 +48,20 @@ $fontPTSerif = 'PT Serif', serif
   --sab env(safe-area-inset-bottom)
   --sal env(safe-area-inset-left)
 }
+
++above($tab)
+  :root {
+    --map-aside-left 24px
+    --map-aside-width 377px
+  }
+
++above($wide)
+  :root {
+    --header-search-height 40px
+    --map-aside-width $map_aside_width
+  }
+
++above($content_max_width + $home_aside_width_1600)
+  :root {
+    --home-aside-width $home_aside_width_1600
+  }

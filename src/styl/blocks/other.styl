@@ -1,16 +1,21 @@
 .pagination
   display flex
   align-items center
-  justify-content: center
+  justify-content center
+
+  &-more
+    text-align center
+
+    .btn-more
+      max-width 374px
+      padding 0 30px
+      margin 0 auto 15px
 
   .btn
-    margin: 2px
+    margin 2px
 
   +above($tab)
-    padding: 5px 0 25px
+    padding 5px 0 25px
 
   +desktop()
-    padding-bottom: 15px
-
-.hide
-  display none
+    padding-bottom 15px
