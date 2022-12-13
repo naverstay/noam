@@ -53,6 +53,9 @@ textarea.input
   select
     opacity 0
 
+    &.__error + .select2-container .select2-selection
+      border-color $red
+
   .select2-results__option-icon,
   .select2-selection__value-icon
     padding-right 15px
@@ -130,9 +133,6 @@ textarea.input
     border-radius 0
     background #fff
     border 1px solid #E8E8E8
-
-  &.__error .select2-selection
-    border-color $red
 
 .form
 
