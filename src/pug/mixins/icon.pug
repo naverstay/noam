@@ -286,13 +286,8 @@ mixin card_article_section()
             span Продолжить чтение в источнике
             +icon('arrow_ne').btn-icon
 
-        +article_controls(true)
-
-        dl.article-controls.__tags
-          dt Автор:
-          dd #[a(href='#') Максим Лесовой]
-          dt Теги:
-          dd #[a(href='#') Хоккей], #[a(href='#') НХЛ], #[a(href='#') Вашингтон Кэпиталз], #[a(href='#') Александр Овечкин], #[a(href='#') Статистика], #[a(href='#') Детройт Ред Уингз]
+        +article_soc()
+        +article_controls()
 
   .section.__white.__content.__article
     .section-title
@@ -309,15 +304,21 @@ mixin card_article_section()
         li.grid-item
           +card('В Хакасии утвердили закон о доплате к пенсии', 'lenta', '08.12.21 10:35', 'news/sport.jpg', '', '', '12564')
 
-mixin article_controls(extend)
+mixin article_soc()
   .article-controls.__info
-    if (extend)
-      .article-buttons
-        ul.article-buttons__list
-          each soc in ['vk', 'fb', 'tw', 'ok']
-            li: a.social-link(href='#')
-              +icon(soc)
+    .article-buttons
+      ul.article-buttons__list
+        each soc in ['vk', 'fb', 'tw', 'ok']
+          li: a.social-link(href='#')
+            +icon(soc)
 
+mixin article_controls()
+  .article-controls.__info
     +icon('info').article-controls__icon
     a.article-controls__link.js-popup(data-popup='#modal_complain' href='#') Пожаловаться на материал
 
+  dl.article-controls.__tags
+    dt Автор:
+    dd #[a(href='#') Максим Лесовой]
+    dt Теги:
+    dd #[a(href='#') Хоккей], #[a(href='#') НХЛ], #[a(href='#') Вашингтон Кэпиталз], #[a(href='#') Александр Овечкин], #[a(href='#') Статистика], #[a(href='#') Детройт Ред Уингз]
