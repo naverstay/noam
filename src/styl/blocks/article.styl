@@ -128,6 +128,10 @@
     &__more
       cursor pointer
       padding 0 3px
+      transition color 0.3s
+
+      &:hover
+        color: $red
 
       &:not(.__opened)
         ~ *
@@ -163,10 +167,6 @@
       display flex
       justify-content flex-end
       align-items center
-      padding-top: 40px
-
-      +above($tab)
-        padding-top: 20px
 
     &__icon
       width 15px
@@ -238,7 +238,7 @@
         display none
 
   &-collapse
-    padding 24px 0 6px
+    padding 0 0 6px
 
     +above($tab)
       padding 6px 0
