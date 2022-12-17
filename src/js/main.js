@@ -616,6 +616,11 @@ $(function ($) {
     return false;
   });
 
+  $('.js-more-tags').on('click', function () {
+    $(this).toggleClass('__opened');
+    return false;
+  });
+
   $('.js-toggle-type').on('click', function () {
     let btn = $(this)
     let target = $(btn.attr('data-toggle'));

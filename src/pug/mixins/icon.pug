@@ -96,7 +96,7 @@ mixin card(title, portal, date, img, cls, description, views, partner)
 
     if (date && !partner)
       .card-footer
-        .card-tag Политика
+        .card-tag(title='Политика') Политика
         .card-date= date
 
 mixin map_card(title, portal, tags, img, cls, description, icon_cls, icon)
@@ -265,7 +265,7 @@ mixin card_article_section()
       h1 В Англии сообщили об аресте всемирно известного футболиста АПЛ по подозрению в изнасиловании
 
       .card-info
-        span.card-tag Политика
+        span.card-tag(title='Политика') Политика
         span.card-logo
           +img('logo/lenta.png')
           span.card-portal lenta.ru
@@ -321,4 +321,4 @@ mixin article_controls()
     dt Автор:
     dd #[a(href='#') Максим Лесовой]
     dt Теги:
-    dd #[a(href='#') Хоккей], #[a(href='#') НХЛ], #[a(href='#') Вашингтон Кэпиталз], #[a(href='#') Александр Овечкин], #[a(href='#') Статистика], #[a(href='#') Детройт Ред Уингз]
+    dd #[a(href='#') Хоккей], #[a(href='#') НХЛ], #[a(href='#') Вашингтон Кэпиталз], #[a(href='#') Александр Овечкин], #[a(href='#') Статистика], #[a(href='#') Детройт Ред Уингз], #[a(href='#') Еще тэг]#[span.article-controls__more.js-more-tags ...]#[span ,] #[a(href='#') Скрытый тэг 1]#[span ,] #[a(href='#') Скрытый тэг ]

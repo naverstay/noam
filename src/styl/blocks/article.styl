@@ -125,12 +125,22 @@
     +below($tab - 1px)
       margin 0 -12px
 
+    &__more
+      cursor pointer
+      padding 0 3px
+
+      &:not(.__opened)
+        ~ *
+          display none !important
+
+      &.__opened
+        display none
+
     &.__tags
       padding: 0
       margin: 0 0 32px
       display grid
       grid-template-columns auto 1fr
-      align-items center
       font 500  13px / 16px $fontInter
       gap 8px
       color $gray
