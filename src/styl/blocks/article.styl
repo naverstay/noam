@@ -117,10 +117,13 @@
             fill $red
 
   &-controls
-    padding 5px 0 32px
+    padding 5px 0 28px
 
     +above($wide)
       padding-bottom 12px
+
+    +below($wide - 1px)
+      padding-top 0
 
     +below($tab - 1px)
       margin 0 -12px
