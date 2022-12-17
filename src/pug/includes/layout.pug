@@ -20,7 +20,7 @@ include ../mixins/icon
 block variables
 
 doctype html
-html(lang='' class= html_class + (html_class === '__map-aside' ? ' __scroll' : '') + (map_2 ? ' __list-aside-open __mode-map-2' : ''))
+html(lang='' class= html_class + (html_class === '__map-aside' ? ' __scroll' : '') + (map_2 ? ' __list-aside-open __mode-map-2' : '') + (header_auth ? ' __no-map-btn' : ''))
   +head(map_card_page || map_1 || map_2)
 
   body

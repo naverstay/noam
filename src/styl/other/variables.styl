@@ -42,6 +42,7 @@ $fontPTSerif = 'PT Serif', serif
   --map-article-offset 48px
   --map-aside-left 20px
   --map-aside-right 20px
+  --map-button-offset 0
   --menu-currency-height 0px
   --sat env(safe-area-inset-top)
   --sar env(safe-area-inset-right)
@@ -53,6 +54,9 @@ $fontPTSerif = 'PT Serif', serif
   :root {
     --map-aside-left 24px
     --map-aside-width 377px
+  }
+  .__no-map-btn:root {
+    --map-button-offset 10px
   }
 
 +above($wide)

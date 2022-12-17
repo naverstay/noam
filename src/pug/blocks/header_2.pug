@@ -49,7 +49,7 @@ else if (map_2)
     .header-overlay.js-burger
 
 else
-  if (html_class.indexOf('__page-aside') > -1)
+  if (html_class.indexOf('__page-aside') > -1 && !header_auth)
     .header-map__toggle-mob
       a.btn.btn-map.__s-33.btn-red(href='livemap.html')
         +icon('whatshot').btn-icon
@@ -69,11 +69,12 @@ else
             +currency()
           +user(((html_class.indexOf('__page-aside') > -1) && html_class !== '__map-aside' ? '' : 'inner'))
 
-        .header-map__toggle-all
-          .header-map__toggle
-            a.btn.btn-map.__s-33.btn-red(href='livemap.html')
-              +icon('whatshot').btn-icon
-              span() Новости на карте
+        if (!header_auth)
+          .header-map__toggle-all
+            .header-map__toggle
+              a.btn.btn-map.__s-33.btn-red(href='livemap.html')
+                +icon('whatshot').btn-icon
+                span() Новости на карте
 
       .burger.js-burger
         span

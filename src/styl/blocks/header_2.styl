@@ -8,7 +8,7 @@
   z-index 1001
   background $menu_bg_clr
 
-  .__page-aside &
+  .__page-aside:not(.__no-map-btn) &
     +below($wide + $menu_extra * 2 - 1px)
       padding-top 32px
 
@@ -540,6 +540,9 @@
     +above($wide + $menu_extra * 2)
       margin 0 200px 0 0
 
+      .__no-map-btn &
+        margin: 0
+
       .header-inner.__map-2 &
         margin 0 -20px 0 0
 
@@ -888,6 +891,9 @@
       .nav-link
         font-size 13px
 
+      .__no-map-btn &
+        margin-right calc(-1 * var(--map-button-offset))
+
     +above($wide)
       transition margin-right .3s
       //margin-right 150px
@@ -904,6 +910,9 @@
 
     +above($wide + $menu_extra)
       padding 0 10px
+
+      .__no-map-btn &
+        padding-right: 0
 
       .__scroll &
 

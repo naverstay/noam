@@ -370,7 +370,7 @@ body
       min-width 200px
       padding-top: 4px
       top 100%
-      right -30px
+      right calc(2 * var(--map-button-offset) - 30px)
       position absolute
       white-space nowrap
 
@@ -407,6 +407,9 @@ body
   +below($mob_menu - 1px)
     flex-flow column
     padding-bottom 20px
+
+    .__no-map-btn &
+      padding-bottom: 0
 
 .fw-500
   font-weight 500
@@ -463,7 +466,6 @@ body
 
 .hide
   display none
-
 
 .scroll-size
   custom_scroll(red)
