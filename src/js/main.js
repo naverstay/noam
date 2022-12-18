@@ -318,7 +318,6 @@ const initAutocomplete = () => {
         $('html').addClass('open_autocomplete');
       },
       onHide: function (container) {
-        console.log('onHide', container);
         $('html').removeClass('open_autocomplete');
         $(input).autocomplete('clear');
       },
