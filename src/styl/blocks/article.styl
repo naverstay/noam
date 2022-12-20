@@ -237,7 +237,7 @@
       font 700 21px / 1 $fontInter
 
     &:not(.__expanded) .article-details__list
-      li:nth-child(n + 5)
+      li.__collapsed
         display none
 
   &-collapse
@@ -292,7 +292,7 @@
             height 6px
 
     &:not(.__expanded) .article-collapse__list
-      li:nth-child(n + 4)
+      li.__collapsed
         display none
 
     &__icon
