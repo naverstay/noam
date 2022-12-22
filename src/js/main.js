@@ -1,75 +1,12 @@
-import 'babel-polyfill';
 import 'magnific-popup';
 
-import {subscribe, isSupported} from 'on-screen-keyboard-detector';
-
 import './jquery.autocomplete.min';
-import {debounce, throttle} from 'throttle-debounce';
+import 'select2';
 import Sly from 'sly-scrolling/dist/sly.min';
 import 'jquery.easing';
-
-(function () {
-  let src = '//cdn.jsdelivr.net/npm/eruda';
-  if (!/eruda=1/.test(window.location.search) && localStorage.getItem('active-eruda') != 'true') return;
-  document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-  document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
-})();
-
-//let Isotope = require('isotope-layout');
-//let jQueryBridget = require('jquery-bridget');
-//require('isotope-packery');
-//require('isotope-fit-columns');
-//require('isotope-cells-by-row');
-
-//jQueryBridget('isotope', Isotope, $);
+import {debounce} from "throttle-debounce";
 
 let $sly;
-let resizeTimer;
-let goTopTimer;
-let prevScrollPos = 0;
-let watchCardHeight = false;
-let isotopInstances = [];
-const isotopOptions = {
-  layoutMode: 'packery',
-  //layoutMode: 'fitColumns',
-  //layoutMode: 'cellsByRow',
-  //percentPosition: true,
-  stagger: 0,
-  transitionDuration: 100,
-  itemSelector: '.grid-item'
-  //packery: {
-  //  columnWidth: '.grid-sizer',
-  //  rowHeight: '.grid-sizer'
-  //}
-};
-
-function getScrollbarWidth() {
-  // Creating invisible container
-  const outer = document.createElement('div');
-  outer.className = 'scroll-size';
-  outer.style.visibility = 'hidden';
-  outer.style.overflow = 'scroll'; // forcing scrollbar to appear
-  outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
-  document.body.appendChild(outer);
-
-  // Creating inner element and placing it in the container
-  const inner = document.createElement('div');
-  outer.appendChild(inner);
-
-  // Calculating difference between container's full width and the child width
-  const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
-
-  // Removing temporary elements from the DOM
-  outer.parentNode.removeChild(outer);
-
-  return scrollbarWidth;
-}
-
-const getBrowserScrollbarSize = () => {
-  document.documentElement.style.setProperty("--app-scroll-size", `${getScrollbarWidth()}px`);
-}
-
-getBrowserScrollbarSize();
 
 const isJsonString = (str) => {
   try {
@@ -80,63 +17,58 @@ const isJsonString = (str) => {
   return true;
 }
 
-const isMobile = function () {
-  return getComputedStyle(document.body, ':before').getPropertyValue('content') === '\"mobile\"';
-}
+const formatBrandResult = state => {
+  if (!state.id) {
+    return state.text;
+  }
 
-const applyGroupHeight = (group, height) => {
-  group.forEach((item) => item.css('height', height + 'px'));
-}
+  const icon = state.hasOwnProperty('element') ? state.element.getAttribute('data-icon') : '';
 
-const fitIsotopHeight = () => {
-  $('.js-grid .grid-item').css('height', '');
+  if (!icon) {
+    return state.text;
+  }
 
-  $('.js-grid').each((i, grid) => {
-    let sizer = $(grid).find('.grid-sizer');
-    //let sizeW = Math.ceil(sizer[0].getBoundingClientRect().height);
-    let maxColHeight = 0;
-    let prevTop = 0;
-    let rowGroup = [];
+  return $(`<span class="select2-results__option-value">
+      <span class="select2-results__option-icon"><img src="${icon}" alt=""></span>
+      <span class="select2-results-name">${state.text}</span>
+    </span>`
+  );
+};
 
-    if (watchCardHeight) {
-      const items = $(grid).find('.grid-item');
+const formatBrandSelection = state => {
+  let chevronSvg = '<span class="select2-selection__chevron"><svg class="btn-icon"><use xlink:href="/assets/sprite/icon.svg#icon_arrow_d"></use></svg></span>';
 
-      items.each((i, elem) => {
-        let item = $(elem);
+  if (!state.id) {
+    return $(`<span>${state.text}</span>` + chevronSvg);
+  }
 
-        if (item.hasClass('__h-2')) {
-          // todo skip
-        } else {
-          let h = Math.ceil(item[0].getBoundingClientRect().height)
-          let top = Math.ceil(item[0].getBoundingClientRect().top)
+  const icon = state.hasOwnProperty('element') ? state.element.getAttribute('data-icon') : '';
 
-          if (prevTop === 0) {
-            prevTop = top
-          }
+  if (!icon) {
+    return $(`<span>${state.text}</span>` + chevronSvg);
+  }
 
-          maxColHeight = Math.max(maxColHeight, h);
+  return $(`<span class="select2-selection__value">
+        <span class="select2-selection__value-icon"><img src="${icon}" alt=""></span>
+        <span>${state.text}</span>
+      </span>` + chevronSvg
+  );
+};
 
-          if (top === prevTop) {
-            rowGroup.push(item);
-          } else {
-            applyGroupHeight(rowGroup, maxColHeight);
-            maxColHeight = h;
-            prevTop = top;
-            rowGroup = [item];
-          }
+const initSelect = () => {
+  $('.js-select-icon').each((index, select) => {
+    let selectSearch = $(select);
 
-          //if (i === items.length - 1) {
-          //  applyGroupHeight(rowGroup, maxColHeight);
-          //}
-        }
-
-        //item.css('height', (item.hasClass('__h-2') ? sizeW * 2 : item.hasClass('__no-img') ? 150 : sizeW) + 'px')
-      });
-    }
-
-    $(grid).addClass('__loaded');
+    selectSearch.select2({
+      width: '100%',
+      minimumResultsForSearch: 10,
+      //tags: selectSearch.hasClass('select_tags'),
+      dropdownParent: selectSearch.parent(),
+      templateResult: formatBrandResult,
+      templateSelection: formatBrandSelection
+    });
   });
-}
+};
 
 const initInputAutocomplete = () => {
   $('.js-input-autocomplete').each((index, input) => {
@@ -209,12 +141,6 @@ const initInputAutocomplete = () => {
     });
 
   });
-};
-
-const appHeight = (r) => {
-  const doc = document.documentElement;
-  const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
-  doc.style.setProperty("--app-height", `${Math.max(200, window.innerHeight - sab)}px`);
 };
 
 const initAutocomplete = () => {
@@ -386,71 +312,6 @@ const initMapSlider = () => {
   }
 }
 
-const initIsotop = () => {
-  const breakpoint = window.matchMedia('(min-width:768px)');
-
-  const breakpointChecker = function (mobile) {
-    watchCardHeight = !mobile;
-    return false;
-  };
-
-  //const enableGrid = function () {
-  //  if (isotopInstances.length) {
-  //    isotopInstances.forEach((iso, i) => {
-  //      iso.isotope(isotopOptions);
-  //    });
-  //  } else {
-  //    $('.js-grid').each((i, elem) => {
-  //      let iso = $(elem).isotope(isotopOptions);
-  //      isotopInstances.push(iso);
-  //    });
-  //  }
-  //};
-  //
-  //const breakpointChecker = function (mobile) {
-  //  if (mobile) {
-  //    if (isotopInstances.length) {
-  //      isotopInstances.forEach((iso, i) => {
-  //        iso.isotope('destroy');
-  //      });
-  //    }
-  //    return false;
-  //  } else {
-  //    return enableGrid();
-  //  }
-  //};
-
-  breakpoint.addEventListener("change", (e) => {
-    breakpointChecker(!e.matches);
-  });
-
-  breakpointChecker(isMobile());
-}
-
-function getScrollTop() {
-  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-}
-
-function watchMobileResolution() {
-  const breakpoint = window.matchMedia('(min-width:768px)');
-
-  breakpoint.addEventListener("change", (e) => {
-    if (!e.matches) {
-      $('.hero-aside.js-collapse-block').scrollTop(0)
-    }
-  });
-}
-
-function checkWindowScroll() {
-  clearTimeout(goTopTimer);
-  const newScrollTop = getScrollTop();
-  document.body.classList.toggle('__scroll', newScrollTop > 0);
-  document.body.classList.toggle('__scroll-hide', newScrollTop > 100);
-  document.body.classList.toggle('__scroll-up', newScrollTop === 0 ? false : prevScrollPos > newScrollTop);
-
-  prevScrollPos = newScrollTop;
-}
-
 const debounceResize = debounce(5, false, () => {
   //fitIsotopHeight();
 
@@ -459,8 +320,8 @@ const debounceResize = debounce(5, false, () => {
   }
 });
 
-const debounceFitHeight = debounce(5, false, () => {
-  appHeight("resize");
+$(window).on('load', function () {
+  debounceResize();
 });
 
 function openPopup(target) {
@@ -494,50 +355,9 @@ function openPopup(target) {
   }
 }
 
-checkWindowScroll();
-
-$(window).on('load', function () {
-  debounceResize();
-});
-
-window.onscroll = function (e) {
-  if (document.documentElement.classList.contains('open_autocomplete') || document.body.classList.contains('open_menu')) {
-    try {
-      document.documentElement.scrollTop = prevScrollPos;
-    } catch (e) {
-      console.log('onscroll', e);
-    } finally {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
-  } else {
-    checkWindowScroll(e);
-  }
-};
-
-window.addEventListener("resize", () => {
-  debounceFitHeight();
-});
-
-if (isSupported()) {
-  const unsubscribe = subscribe(visibility => {
-    appHeight('subscribe');
-  });
-
-  // After calling unsubscribe() the callback will no longer be invoked.
-  //unsubscribe();
-}
-
 $(function ($) {
-  $.throttle = throttle;
-  $.debounce = debounce;
-
-  appHeight('DOM');
   initHero();
   initMapSlider();
-  initIsotop();
-  watchMobileResolution();
   initAutocomplete();
 
   $('.js-collapse-btn').on('click', function () {
@@ -600,5 +420,6 @@ $(function ($) {
     }
   }
 
+  initSelect();
   initInputAutocomplete();
 });

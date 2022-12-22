@@ -40,7 +40,7 @@ mixin nav(footer)
 
 mixin category(title)
   .category-wrapper
-    .category-title= title
+    h1.category-title= title
     ul.card-holder.__grid
       +loop_while(3)
         li.grid-item.__category.__w-1

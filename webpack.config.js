@@ -44,7 +44,7 @@ module.exports = (env, options) => {
     },
     entry: {
       app: './js/main.js',
-      select: './js/select.js',
+      global: './js/global.js',
       map: './js/map.js',
       fonts: './styl/fonts.styl',
       styles: './styl/main.styl',
