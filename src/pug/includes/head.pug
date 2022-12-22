@@ -22,6 +22,7 @@ mixin head(map)
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    link(rel='stylesheet' href=`css/fonts.css?stamp=${stamp}`)
     link(rel='stylesheet' href=`css/styles.css?stamp=${stamp}`)
     if (map)
       link(rel='stylesheet' href=`css/map_styles.css?stamp=${stamp}`)

@@ -31,197 +31,203 @@ const staticPath = path.resolve(srcPath, 'static/');
 const pugPath = path.resolve(srcPath, 'pug/');
 const pugGlobals = path.resolve(pugPath, 'data/global.json');
 
-module.exports = env => ({
-  context: srcPath,
-  devtool: 'inline-source-map',
-  resolve: {
-    alias: {
-      '@': srcPath
-    }
-  },
-  entry: {
-    app: './js/main.js',
-    map: './js/map.js',
-    styles: './styl/main.styl',
-    map_styles: './styl/map.styl',
-    assets: './assets.js',
-    leaflet: './leaflet/leaflet.js'
-  },
-  output: {
-    filename: './js/[name].js',
-    path: distPath
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.styl$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../'
-            }
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              plugins: [autoprefixer]
-            }
-          },
-          {
-            loader: 'stylus-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(gif|png|jpe?g|svg|woff|eot|ttf|woff2)$/,
-        exclude: icoPath,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 8192,
-            name: '[path][name].[ext]'
-          }
-        }]
-      },
-      //{
-      //  test: /\.svg$/,
-      //  include: ico,
-      //  use: ['svg-sprite-loader', 'svgo-loader']
-      //},
-      {
-        test: /\.svg$/,
-        include: icoPath,
-        use: [
-          {
-            loader: 'svg-sprite-loader',
-            options: {
-              extract: true,
-              symbolId: filePath => 'icon_' + path.basename(filePath).slice(0, -4),
-              spriteFilename: 'assets/sprite/icon.svg'
-            }
-          },
-          {
-            loader: 'svg-transform-loader'
-          },
-          {
-            loader: 'svgo-loader'
-          }
-        ]
-      },
-      {
-        test: /\.pug$/,
-        include: pugPath,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].html',
-              context: pugPath
-            }
-          },
-          'extract-loader',
-          {
-            loader: 'html-loader',
-            options: {
-              attrs: ['']
-            }
-          },
-          {
-            loader: 'pug-html-loader',
-            options: {
-              pretty: true,
-              exports: false,
-              doctype: 'html',
-              basedir: pugPath,
-              data: {
-                data: () => JSON.parse(fs.readFileSync(pugGlobals, 'utf8'))
-              },
-              filters: {
-                // filter for include json data as empty string
-                'json-watch': () => ''
+const MINIFICATION = false;
+
+module.exports = (env, options) => {
+  return {
+    context: srcPath,
+    devtool: 'inline-source-map',
+    resolve: {
+      alias: {
+        '@': srcPath
+      }
+    },
+    entry: {
+      app: './js/main.js',
+      select: './js/select.js',
+      map: './js/map.js',
+      fonts: './styl/fonts.styl',
+      styles: './styl/main.styl',
+      map_styles: './styl/map.styl',
+      assets: './assets.js',
+      leaflet: './leaflet/leaflet.js'
+    },
+    output: {
+      filename: './js/[name].js',
+      path: distPath
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader'
+        },
+        {
+          test: /\.styl$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '../'
+              }
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                plugins: [autoprefixer]
+              }
+            },
+            {
+              loader: 'stylus-loader',
+              options: {
+                sourceMap: true
               }
             }
-          }
-        ]
-      }
-    ]
-  },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
-  },
-  plugins: [
-    new FixStyleOnlyEntriesPlugin({
-      extensions: ['styl', 'css']
-    }),
-    new MiniCssExtractPlugin({
-      filename: './css/[name].css'
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
-    }),
-    new CleanWebpackPlugin(distPath),
-    new CopyWebpackPlugin([{
-      from: staticPath,
-      to: distPath
-    }, {
-      from: favicon,
-      to: distPath
-    }, {
-      from: imgPath,
-      to: distImgPath
-    }, {
-      from: fontPath,
-      to: distFontPath
-    }, {
-      from: minimapPath,
-      to: distMinimapPath
-    }, {
-      from: markerClusterPath,
-      to: distMarkerClusterPath
-    }
-    ]),
-    new SpriteLoaderPlugin({
-      plainSprite: true,
-      spriteAttrs: {
-        style: 'width:0; height:0; visibility:hidden;'
-      }
-    }),
-    new IfPlugin(
-      env === 'server',
-      new BrowserSyncPlugin({
-        host: 'localhost',
-        port: 3008,
-        ghostMode: false,
-        server: {
-          baseDir: [distPath]
+          ]
+        },
+        {
+          test: /\.(gif|png|jpe?g|svg|woff|eot|ttf|woff2)$/,
+          exclude: icoPath,
+          use: [{
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: '[path][name].[ext]'
+            }
+          }]
+        },
+        //{
+        //  test: /\.svg$/,
+        //  include: ico,
+        //  use: ['svg-sprite-loader', 'svgo-loader']
+        //},
+        {
+          test: /\.svg$/,
+          include: icoPath,
+          use: [
+            {
+              loader: 'svg-sprite-loader',
+              options: {
+                extract: true,
+                symbolId: filePath => 'icon_' + path.basename(filePath).slice(0, -4),
+                spriteFilename: 'assets/sprite/icon.svg'
+              }
+            },
+            {
+              loader: 'svg-transform-loader'
+            },
+            {
+              loader: 'svgo-loader'
+            }
+          ]
+        },
+        {
+          test: /\.pug$/,
+          include: pugPath,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].html',
+                context: pugPath
+              }
+            },
+            'extract-loader',
+            {
+              loader: 'html-loader',
+              options: {
+                attrs: ['']
+              }
+            },
+            {
+              loader: 'pug-html-loader',
+              options: {
+                pretty: true,
+                exports: false,
+                doctype: 'html',
+                basedir: pugPath,
+                data: {
+                  data: () => JSON.parse(fs.readFileSync(pugGlobals, 'utf8'))
+                },
+                filters: {
+                  // filter for include json data as empty string
+                  'json-watch': () => ''
+                }
+              }
+            }
+          ]
         }
+      ]
+    },
+    optimization: {
+      minimizer: MINIFICATION ? [
+        new UglifyJsPlugin({
+          cache: true,
+          parallel: true
+        }),
+        new OptimizeCSSAssetsPlugin({})
+      ] : []
+    },
+    plugins: [
+      new FixStyleOnlyEntriesPlugin({
+        extensions: ['styl', 'css']
+      }),
+      new MiniCssExtractPlugin({
+        filename: './css/[name].css'
+      }),
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery'
+      }),
+      new CleanWebpackPlugin(distPath),
+      new CopyWebpackPlugin([{
+        from: staticPath,
+        to: distPath
       }, {
-        injectCss: true
-      })
-    )
-  ]
-});
+        from: favicon,
+        to: distPath
+      }, {
+        from: imgPath,
+        to: distImgPath
+      }, {
+        from: fontPath,
+        to: distFontPath
+      }, {
+        from: minimapPath,
+        to: distMinimapPath
+      }, {
+        from: markerClusterPath,
+        to: distMarkerClusterPath
+      }
+      ]),
+      new SpriteLoaderPlugin({
+        plainSprite: true,
+        spriteAttrs: {
+          style: 'width:0; height:0; visibility:hidden;'
+        }
+      }),
+      new IfPlugin(
+        env === 'server',
+        new BrowserSyncPlugin({
+          host: 'localhost',
+          port: 3008,
+          ghostMode: false,
+          server: {
+            baseDir: [distPath]
+          }
+        }, {
+          injectCss: true
+        })
+      )
+    ]
+  }
+};
