@@ -57,7 +57,7 @@ function getScrollTop() {
 }
 
 function watchMobileResolution() {
-  const breakpoint = window.matchMedia('(min-width:768px)');
+  const breakpoint = window.matchMedia('(min-width:1200px)');
 
   breakpoint.addEventListener("change", (e) => {
     if (!e.matches) {
