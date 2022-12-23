@@ -368,9 +368,9 @@ body
 
     +above($tab)
       min-width 200px
-      padding-top: 4px
+      padding-top 4px
       top 100%
-      right calc(2 * var(--map-button-offset) - 30px)
+      right calc(2 * var(--map-button-offset) - 20px)
       position absolute
       white-space nowrap
 
@@ -382,6 +382,15 @@ body
 
         &:first-child
           border-top 0
+
+    +above($wide)
+      right calc(2 * var(--map-button-offset) - 30px)
+
+    +above($wide + $menu_extra * 2)
+      right 0
+
+      .__no-map-btn &
+        right calc(2 * var(--map-button-offset) - 40px)
 
   .nav-link
     cursor pointer
@@ -398,8 +407,8 @@ body
       margin-left 8px
 
       +below($tab - 1px)
-        margin-right: -18px
-        margin-left: auto
+        margin-right -18px
+        margin-left auto
 
   a.nav-link:hover
     color $red
@@ -409,7 +418,7 @@ body
     padding-bottom 20px
 
     .__no-map-btn &
-      padding-bottom: 0
+      padding-bottom 0
 
 .fw-500
   font-weight 500
