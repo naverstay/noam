@@ -250,6 +250,10 @@
     .__aside-white &
       z-index 1000
 
+    +below($wide - 1px)
+      .__aside-wide-only &
+        display none !important
+
     .__page-aside &
       +between($wide, $wide + $menu_extra * 2 - 1px)
         padding-right 20px

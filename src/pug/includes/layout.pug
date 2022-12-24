@@ -12,7 +12,7 @@ include ../mixins/icon
 - let popular_tags = true
 - let page_title = ''
 - let html_class = '__page-aside'
-- let aside_class = 'wide-only'
+- let aside_class = ' __aside-wide-only'
 - let header_class = ''
 - let footer_class = '__short'
 - let header_auth = ''
@@ -20,7 +20,7 @@ include ../mixins/icon
 block variables
 
 doctype html
-html(lang='' class= html_class + (html_class === '__map-aside' ? ' __scroll' : '') + (map_2 ? ' __list-aside-open __mode-map-2' : '') + (header_auth ? ' __no-map-btn' : ''))
+html(lang='' class= html_class + (html_class === '__map-aside' ? ' __scroll' : '') + (map_2 ? ' __list-aside-open __mode-map-2' : '') + (header_auth ? ' __no-map-btn' : '') + aside_class)
   +head(map_card_page || map_1 || map_2)
 
   body

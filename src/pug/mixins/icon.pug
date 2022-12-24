@@ -170,12 +170,12 @@ mixin currency()
 
 mixin aside(no_content)
   if (no_content)
-    .hero-aside(class= (aside_class))
+    .hero-aside
       .promo
         span Реклама
 
   else
-    .hero-aside.js-collapse-block(class= (aside_class))
+    .hero-aside.js-collapse-block()
       .hero-aside__head
         .hero-aside__caption Новости часа
         a.btn.btn-gray-light.btn-aside.__s-45(href='#')
