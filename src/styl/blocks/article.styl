@@ -128,13 +128,58 @@
     +below($tab - 1px)
       margin 0 -12px
 
+    &__dropdown
+      position absolute
+      display none
+      top 100%
+      left 0
+      z-index 1
+      padding-top 5px
+
+      span
+        display block
+        background #F5F5F5
+        border 1px solid #E8E8E8
+        padding 7px 16px
+
+        + span
+          border-top 0
+
+      &-holder
+        position relative
+        display inline-flex
+        align-items center
+        color #000
+        padding-right 6px
+
+        .btn-icon
+          transition color .3s, transform .3s
+          width 16px
+          height 16px
+          margin 0 4px
+          color $gray
+
+        &:hover
+          .article-controls__dropdown
+            display block
+
+          .btn-icon
+            color #000
+            transform rotate(180deg)
+
     &__more
       cursor pointer
-      padding 0 3px
+      padding-left 8px
       transition color 0.3s
+      display inline-flex
+      align-items center
+
+      .btn-icon
+        width 16px
+        height 16px
 
       &:hover
-        color: $red
+        color $red
 
       &:not(.__opened)
         ~ *
@@ -144,11 +189,11 @@
         display none
 
     &.__tags
-      padding: 0
-      margin: 0 0 32px
+      padding 0
+      margin 0 0 32px
       display grid
       grid-template-columns auto 1fr
-      font 500  13px / 16px $fontInter
+      font 500 13px / 16px $fontInter
       gap 8px
       color $gray
 
@@ -163,7 +208,7 @@
           text-decoration underline
 
           &:hover
-            color: $red
+            color $red
             text-decoration none
 
     &.__info

@@ -320,4 +320,13 @@ mixin article_controls()
     dt Автор:
     dd #[a(href='#') Максим Лесовой]
     dt Теги:
-    dd #[a(href='#') Хоккей], #[a(href='#') НХЛ], #[a(href='#') Вашингтон Кэпиталз], #[a(href='#') Александр Овечкин], #[a(href='#') Статистика], #[a(href='#') Детройт Ред Уингз], #[a(href='#') Еще тэг]#[span.article-controls__more.js-more-tags ...]#[span ,] #[a(href='#') Скрытый тэг 1]#[span ,] #[a(href='#') Скрытый тэг ]
+    dd
+      span.article-controls__dropdown-holder
+        span Лондон
+        | <svg class="btn-icon"><use xlink:href="/assets/sprite/icon.svg#icon_arrow_d"></use></svg>
+        span.article-controls__dropdown
+          span Лондон
+          span Англия
+          span Великобритания
+          span Европа
+      | #[a(href='#') Хоккей], #[a(href='#') НХЛ], #[a(href='#') Вашингтон Кэпиталз], #[a(href='#') Александр Овечкин], #[a(href='#') Статистика], #[a(href='#') Детройт Ред Уингз]#[span.article-controls__more.js-more-tags <span>Еще</span><svg class="btn-icon"><use xlink:href="/assets/sprite/icon.svg#icon_arrow_r"></use></svg>]#[span ,] #[a(href='#') Скрытый тэг 1]#[span ,] #[a(href='#') Скрытый тэг 2]
