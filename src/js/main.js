@@ -193,7 +193,7 @@ const initAutocomplete = () => {
       },
       onHide: function (container) {
         $('html').removeClass('open_autocomplete');
-        $(input).autocomplete('clear');
+        input.value = '';
       },
       beforeRender: function (container, suggestions) {
         if (suggestions.length) {
