@@ -179,6 +179,7 @@ const initAutocomplete = () => {
       appendTo: $result,
       preserveInput: true,
       showNoSuggestionNotice: true,
+      triggerSelectOnValidInput: false,
       noSuggestionNotice: 'Ничего не найдено',
       onSelect: function (suggestion) {
         console.log('onSelect', suggestion);
