@@ -178,7 +178,7 @@ const initAutocomplete = () => {
       minChars: 3,
       appendTo: $result,
       preserveInput: true,
-      showNoSuggestionNotice: true,
+      showNoSuggestionNotice: false,
       noSuggestionNotice: 'Ничего не найдено',
       onSelect: function (suggestion) {
         console.log('onSelect', suggestion);
