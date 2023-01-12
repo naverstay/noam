@@ -148,7 +148,7 @@ mixin search(map)
         input#js-autocomplete.input.input-transp.__s-100p(placeholder='Поиск')
         .header-search__clear.js-search-clear
           +icon('close').btn-icon
-      button.btn.btn-search(type='submit')
+      button.btn.btn-search(type='submit' aria-label='Поиск')
         +icon('search').btn-icon
 
 mixin currency()

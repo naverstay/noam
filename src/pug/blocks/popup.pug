@@ -29,10 +29,10 @@ mixin auth_popup(error)
             .form-input__error Введите пароль
 
       .form-cell
-        button.btn.btn-red.__s-40.btn-auth Войти
+        button.btn.btn-red.__s-40.btn-auth(aria-label='Войти') Войти
 
       .form-cell
-        button.btn.btn-white.__s-40.btn-auth.js-popup(data-popup='#modal_new_password')
+        span.btn.btn-white.__s-40.btn-auth.js-popup(data-popup='#modal_new_password' aria-label='Войти через Google')
           +icon('google').btn-icon
           span Войти через Google
 
@@ -70,7 +70,7 @@ mixin auth_popup(error)
           input#reg_password_confirm.input.input-white.__s-40(placeholder='Введите пароль' type='password')
 
       .form-cell
-        button.btn.btn-red.__s-40.btn-auth Зарегистрироваться
+        button.btn.btn-red.__s-40.btn-auth(aria-label='Зарегистрироваться' type='submit') Зарегистрироваться
 
     .popup-footer
       span Уже есть аккаунт?&nbsp;
@@ -97,7 +97,7 @@ mixin auth_popup(error)
           input#new_password_confirm.input.input-white.__s-40(placeholder='Введите пароль' type='password')
 
       .form-cell
-        button.btn.btn-red.__s-40.btn-auth Обновить
+        button.btn.btn-red.__s-40.btn-auth(aria-label='Обновить' type='submit') Обновить
 
   #modal_info.popup
     .popup-title Письмо отправлено
@@ -106,7 +106,7 @@ mixin auth_popup(error)
       p На указанный вами адрес электронной почты было отправлено письмо с ссылкой на восстановление пароля.
 
       .form-cell
-        button.btn.btn-white.__s-40.btn-auth.js-popup-close Закрыть
+        span.btn.btn-white.__s-40.btn-auth.js-popup-close(aria-label='Закрыть') Закрыть
 
   #modal_restore.popup
     .popup-title Забыли пароль?
@@ -118,7 +118,7 @@ mixin auth_popup(error)
           input#restore_email.input.input-white.__s-40(placeholder='Введите Email, указанный при регистрации')
 
       .form-cell
-        button.btn.btn-red.__s-40.btn-auth.js-popup(data-popup='#modal_info') Восстановить
+        button.btn.btn-red.__s-40.btn-auth.js-popup(data-popup='#modal_info' aria-label='Восстановить') Восстановить
 
     .popup-footer
       span Вспомнили пароль?&nbsp;
@@ -162,8 +162,8 @@ mixin auth_popup(error)
           textarea#complain_text.input.input-white.__s-90(placeholder='Если необходимо, добавьте комментарий')
 
       .form-cell
-        button.btn.btn-red.__s-40.btn-auth.__offset-8 Отправить жалобу
+        button.btn.btn-red.__s-40.btn-auth.__offset-8(aria-label='Отправить жалобу') Отправить жалобу
 
       .form-cell
-        button.btn.btn-white.__s-40.btn-auth.js-popup-close
+        span.btn.btn-white.__s-40.btn-auth.js-popup-close(aria-label='Отменить')
           span Отменить

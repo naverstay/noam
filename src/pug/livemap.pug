@@ -18,7 +18,7 @@ block content
     .map-holder__aside
       .hero-aside.js-map-aside.hero-aside__article
         .hero-aside__head
-          a.hero-aside__back.js-close-article(href='#')
+          .hero-aside__back.js-close-article
             +icon('back').btn-icon.mob-hide
             +icon('close').btn-icon.mob-only
             span.mob-hide Назад
@@ -33,7 +33,7 @@ block content
               span 20 часов назад
               span Заявления
             a.card-logo(href='#')
-              +img(src='upload/logo/tass.png')
+              +img(alt='alt' src='upload/logo/tass.png')
               span.card-portal tass.ru
 
           .card-content
