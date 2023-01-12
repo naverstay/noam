@@ -145,8 +145,9 @@ const initInputAutocomplete = () => {
 
 const initAutocomplete = () => {
   let autocompleteInstance;
-  let input = document.getElementById("js-autocomplete");
-  let result = document.getElementById("js-autocomplete-result");
+  const $input = $("#js-autocomplete");
+  const $result = $("#js-autocomplete-result");
+  const $html = $('html');
 
   let source = [];
 
@@ -155,7 +156,7 @@ const initAutocomplete = () => {
   });
 
   $('.js-search-clear').on('click', function () {
-    input.value = '';
+    $input.value = '';
     return false;
   });
 
@@ -171,17 +172,19 @@ const initAutocomplete = () => {
     }
   });
 
-  if (input) {
-    autocompleteInstance = $(input).autocomplete({
+  if ($input.length) {
+    autocompleteInstance = $input.autocomplete({
       lookup: countries,
       minChars: 3,
-      appendTo: result,
+      appendTo: $result,
       preserveInput: true,
       showNoSuggestionNotice: true,
       noSuggestionNotice: 'Ничего не найдено',
       onSelect: function (suggestion) {
         console.log('onSelect', suggestion);
         console.log('You selected: ' + suggestion.value);
+        $input.val('');
+        $result.find('.autocomplete-suggestions').empty();
       },
       onSearchStart: function (params) {
         console.log('onSearchStart', params);
@@ -189,15 +192,14 @@ const initAutocomplete = () => {
       onSearchComplete: function (query, suggestions) {
         console.log('onSearchComplete', query, suggestions);
 
-        $('html').addClass('open_autocomplete');
+        $html.addClass('open_autocomplete');
       },
       onHide: function (container) {
-        $('html').removeClass('open_autocomplete');
-        input.value = '';
-        $(container).html('');
+        $html.removeClass('open_autocomplete');
       },
       beforeRender: function (container, suggestions) {
         if (suggestions.length) {
+          const text = $input.val();
           container.empty();
 
           suggestions.forEach((item, index) => {
@@ -212,7 +214,7 @@ const initAutocomplete = () => {
                       </span>
                       <span class="card-views">${item.data.time}</span>
                     </div>
-                    <div class="card-title"><span class="clr-red">${input.value}</span> ${item.value}</div>
+                    <div class="card-title"><span class="clr-red">${text}</span> ${item.value}</div>
                     <div class="card-description">description ${item.data.description}</div>
                   </div>`;
 
