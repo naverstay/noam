@@ -194,6 +194,7 @@ const initAutocomplete = () => {
       onHide: function (container) {
         $('html').removeClass('open_autocomplete');
         input.value = '';
+        $(container).html('');
       },
       beforeRender: function (container, suggestions) {
         if (suggestions.length) {
