@@ -10,32 +10,7 @@ block content
 
   .section.__black.__content
     .section-title.section-title__hero.hero-wide-hide Популярные материалы
-    ul.card-holder.__hero
-      li.grid-item.__main.__w-2
-        .card
-          .card-preview
-            img(alt='alt' src='upload/news/latatest.jpg')
-          .card-info
-            span.card-logo
-              img(alt='alt' src='upload/logo/zr.png')
-              span.card-portal zr.ru
-            span.card-views
-              +icon('eye')
-              span 12 564
-          a.card-title(href='card.html') Макрон призвал Путина прекратить военную операцию в Украине
-          .card-description Елисейский дворец анонсировал еще один разговор президента Франции Макрона с российским лидером «в ближайшие дни», а также сообщил о дальнейших контактах с Киевом и МАГАТЭ, чтобы было достигнуто соглашение по безопасности ЗАЭС.
-
-          .card-footer
-            a.btn.btn-white.btn-hero.__s-40(href='card.html')
-              span Читать далее
-              +icon('arrow_ne').btn-icon
-
-      li.grid-item
-        +card('«Потеряли близкого человека». Как британцы прощаются с Елизаветой Второй', 'lenta', '', 'news/latatest.jpg', '', 'Как в Великобритании прощаются с королевой, которая правила страной 70 лет. Репортаж РБК о происходящем у королевских резиденций в Лондоне и Виндзоре.', '32 408')
-      li.grid-item
-        +card('Экономисты предсказали «тягучую» инфляцию в России', 'lenta', '', 'news/kancler.jpg', '', 'Такой прогноз дали аналитики ЦМАКПа, указав на немонетарную природу инфляции, против которой неэффективны монетарные инструменты.', '12 420')
-      li.grid-item
-        +card('«Реал» впервые за 13 лет начал чемпионат Испании с пяти побед подряд', 'lenta', '', 'news/raskol.jpg', '', 'Мадридский клуб в пятом туре разгромил «Мальорку» со счетом 4:1. «Реал» проигрывал к концу первого тайма, но в итоге одержал волевую победу.', '8 120')
+    +hero_news()
 
   .section.__white.__content
     .section-title

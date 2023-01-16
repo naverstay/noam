@@ -412,9 +412,14 @@
       .card-title
         font-family $fontInter
 
+        .__black &
+          color #fff
+
       .card-description
         display block
-        color $gray !important
+
+        .__black &
+          color $gray
 
       li.__main
         width 100%
@@ -452,7 +457,6 @@
 
         .card-title
           display inline-block
-          color #fff
           font-weight 700
           font-size 24px
           line-height 29px
@@ -478,7 +482,6 @@
           font-weight 300
           font-size 14px
           line-height 21px
-          color $gray
           grid-area text
 
         .card-preview
@@ -919,7 +922,7 @@
     .card-title
       color $red !important
 
-  .section.__black &
+  .__black &
 
     .card-info
       border-top-color #454545
