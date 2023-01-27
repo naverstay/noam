@@ -40,8 +40,6 @@ const getBrowserScrollbarSize = () => {
   document.documentElement.style.setProperty("--app-scroll-size", `${getScrollbarWidth()}px`);
 }
 
-getBrowserScrollbarSize();
-
 const isMobile = function () {
   return getComputedStyle(document.body, ':before').getPropertyValue('content') === '\"mobile\"';
 }
@@ -114,7 +112,7 @@ if (isSupported()) {
 $(function ($) {
   $.throttle = throttle;
   $.debounce = debounce;
-
+  getBrowserScrollbarSize();
   appHeight('DOM');
   watchMobileResolution();
 });

@@ -5,18 +5,10 @@
   opacity 0
   pointer-events none
 
-a.card
-  cursor pointer
-
-  &-title
-    cursor pointer
-
-  &-logo
-    cursor pointer
-
 .card
   display block
   color #000
+  cursor pointer
 
   .autocomplete-item &
     position relative
@@ -941,23 +933,30 @@ a.card
     &:hover
       color #bbb
 
-a.card-logo
-  color #000
-  transition color .3s
+a.card
+  cursor default
 
-  .__hero &
-    &:not(:hover)
-      color #fff
+  &-title
+    cursor pointer
 
-  &:hover
-    color $red
+  &-logo
+    cursor pointer
+    color #000
+    transition color .3s
 
-    span
+    .__hero &
+      &:not(:hover)
+        color #fff
+
+    &:hover
+      color $red
+
+      span
+        text-decoration underline
+
+    .hero-aside__article &
       text-decoration underline
 
-  .hero-aside__article &
-    text-decoration underline
-
-    &:hover,
-    &:hover span
-      text-decoration none
+      &:hover,
+      &:hover span
+        text-decoration none
