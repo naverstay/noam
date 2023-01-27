@@ -8,13 +8,13 @@
     column-gap 40px
     background #FFF
     border 1px solid #EBEBEB
-    margin-bottom: 14px
+    margin-bottom 14px
 
     +above($tab)
-      margin-bottom: 22px
+      margin-bottom 22px
 
     +above($wide)
-      margin-bottom: 50px
+      margin-bottom 50px
 
     li
       a
@@ -26,18 +26,23 @@
           color $red
           text-decoration none
 
+        &.__active
+          cursor default
+          color $red
+          text-decoration none
+
   &__links
     display grid
     grid-template-columns 1fr
     row-gap 32px
     column-gap 10px
-    margin-bottom: 32px
+    margin-bottom 32px
 
     +above($tab)
       grid-template-columns 1fr 1fr
 
     +above($wide)
-      margin-bottom: 40px
+      margin-bottom 40px
       grid-template-columns 1fr 1fr 1fr 1fr
 
     li
@@ -51,13 +56,13 @@
           text-decoration none
 
 .recommended-holder
-  max-width: 1450px
-  margin: 0 auto 50px
+  max-width 1450px
+  margin 0 auto 50px
 
   > p
     font 400 14px / 21px $fontInter
-    color: #000
-    margin: 0 0 30px
+    color #000
+    margin 0 0 30px
 
     +above($wide)
-      margin-bottom: 48px
+      margin-bottom 48px

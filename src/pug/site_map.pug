@@ -7,14 +7,13 @@ block variables
 
 block content
   .section.__white.__content
-    .section-title.text-center
-      span Карта сайта
+    h1.section-title.text-center Карта сайта
 
     ul.site-map__categories
       - let n = 0;
       while n < 8
         - n++
-        li: a(href='#')= 'Категория #' + n
+        li: a(href='#' class= (n > 1 ? '' : '__active'))= 'Категория #' + n
 
     ul.site-map__links
       +loop_while(56)
