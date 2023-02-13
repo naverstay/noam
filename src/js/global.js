@@ -1,7 +1,6 @@
 import 'babel-polyfill';
 
 import {subscribe, isSupported} from 'on-screen-keyboard-detector';
-import {debounce, throttle} from 'throttle-debounce';
 import 'jquery.easing';
 
 (function () {
@@ -45,9 +44,8 @@ const isMobile = function () {
 }
 
 const appHeight = (r) => {
-  const doc = document.documentElement;
   const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
-  doc.style.setProperty("--app-height", `${Math.max(200, window.innerHeight - sab)}px`);
+  document.documentElement.style.setProperty("--app-height", `${Math.max(200, window.innerHeight - sab)}px`);
 };
 
 function getScrollTop() {
@@ -74,10 +72,6 @@ function checkWindowScroll() {
   prevScrollPos = newScrollTop;
 }
 
-const debounceFitHeight = debounce(5, false, () => {
-  appHeight("resize");
-});
-
 checkWindowScroll();
 
 window.onscroll = function (e) {
@@ -97,7 +91,7 @@ window.onscroll = function (e) {
 };
 
 window.addEventListener("resize", () => {
-  debounceFitHeight();
+  appHeight("resize");
 });
 
 if (isSupported()) {
@@ -110,8 +104,6 @@ if (isSupported()) {
 }
 
 $(function ($) {
-  $.throttle = throttle;
-  $.debounce = debounce;
   getBrowserScrollbarSize();
   appHeight('DOM');
   watchMobileResolution();
