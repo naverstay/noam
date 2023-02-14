@@ -268,7 +268,15 @@
     .section > &
       margin-bottom 24px
 
-      +above($mob_menu)
+      +between($tab - 1px, $wide - 1px)
+        margin-left -30px
+        margin-right -30px
+
+      +below($tab - 1px)
+        margin-left -20px
+        margin-right -20px
+
+      +above($tab)
         margin-bottom 32px
 
     .__aside-white &
@@ -290,11 +298,11 @@
         right unset
         position relative
         display block
-        width 100%
-        transform none !important
+        width auto
         height auto
         overflow hidden
-        padding 32px 22px 100px
+        padding 32px 20px 100px
+        transform none !important
         max-height calc(var(--app-height) - var(--header-search-height) - var(--header-mob-mapbtn-height) - var(--header-mob-height) - 30px)
 
         &.__no-foot
@@ -315,6 +323,10 @@
           background inherit
           z-index 1
           height 100px
+
+      +between($tab - 1px, $wide - 1px)
+        padding-left: 30px
+        padding-right: 30px
 
       +below($tab - 1px)
         max-height calc(var(--app-height) - var(--header-mob-height) - 30px)
@@ -457,6 +469,10 @@
       right 20px
       left 20px
       z-index 1
+
+      +between($tab - 1px, $wide - 1px)
+        right 30px
+        left 30px
 
     &__head
       background inherit
