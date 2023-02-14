@@ -32,9 +32,10 @@ mixin nav(footer)
               span= item
               +icon('arrow_d').btn-icon
             ul.nav-dropdown
-              li: a.nav-link(href='#') Красота
-              li: a.nav-link(href='#') Авто и мото
-              li: a.nav-link(href='#') Шоу-бизнес
+              +loop_while(5)
+                li: a.nav-link(href='#') Красота
+                li: a.nav-link(href='#') Авто и мото
+                li: a.nav-link(href='#') Шоу-бизнес
           else
             a.nav-link(href='#')= item
 
