@@ -6,7 +6,6 @@ block variables
   - html_class = '__page-aside __no-currency';
 
 block content
-  +aside()
 
   .section-holder
     .section.__white.__content
@@ -15,6 +14,8 @@ block content
 
       .hero-wrapper.__black
         +hero_news()
+
+      +aside()
 
       ul.card-holder.__grid
         //-li.grid-sizer
@@ -30,4 +31,3 @@ block content
           +card('Назван главный просчет США на Украине', 'lenta', '08.12.21 10:35', 'news/demen.jpg', '', '«Все соперники у нас были уровня Лиги чемпионов. Хорошие команды, к матчам с которыми было непросто готовиться. Все по-разному играют.»', '12564')
 
         +text_news()
-

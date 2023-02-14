@@ -54,12 +54,12 @@
 
       +desktop()
         margin-bottom 24px
-        margin-right -30px
+        //margin-right -30px
 
-      +between($wide, $wide + $menu_extra * 2 - 1px)
-        .__page-aside &
-          margin-right -20px
-          margin-bottom 6px
+      //+between($wide, $wide + $menu_extra * 2 - 1px)
+      //  .__page-aside &
+      //    margin-right -20px
+      //    margin-bottom 6px
 
       li
         +below($tab - 1px)
@@ -124,8 +124,19 @@
 
         &.__w-1
           + li
-            border-top 1px solid #E8E8E8
-            padding-top 18px
+            padding-top 19px
+            position relative
+
+            &::after
+              content ''
+              position absolute
+              top 0
+              left 0
+              right: 0
+              border-top 1px solid #E8E8E8
+
+              +above($tab)
+                right: 20px
 
           .card
             position relative
@@ -269,17 +280,17 @@
           margin-bottom 0
 
       +above($tab)
-        margin-right -20px
+        //margin-right -20px
         margin-bottom 6px
 
       +desktop()
         margin-bottom 24px
-        margin-right -30px
+        //margin-right -30px
 
-      +between($wide, $wide + $menu_extra * 2 - 1px)
-        .__page-aside &
-          margin-right -20px
-          margin-bottom 6px
+      //+between($wide, $wide + $menu_extra * 2 - 1px)
+      //  .__page-aside &
+      //    margin-right -20px
+      //    margin-bottom 6px
 
       li
         +below($tab - 1px)
