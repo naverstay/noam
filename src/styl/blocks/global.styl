@@ -166,10 +166,11 @@ body
     padding-bottom 32px
 
     &.__bottom-0
-      padding-bottom 0 !important
+      +below($wide)
+        padding-bottom 0 !important
 
-      .hero-aside
-        margin-bottom 0 !important
+        .hero-aside
+          margin-bottom 0 !important
 
     +above($tab)
       padding-top 48px
@@ -393,9 +394,9 @@ a.nav-link
       right calc(2 * var(--map-button-offset) - 24px)
       position absolute
       white-space nowrap
-      max-height Min(460px, 60vh)
-      overflow-y auto
-      custom_scroll(rgba(0, 0, 0, 1))
+      //max-height Min(460px, 60vh)
+      //overflow-y auto
+      //custom_scroll(rgba(0, 0, 0, 1))
 
       li
         background #323232

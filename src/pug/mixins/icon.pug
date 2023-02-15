@@ -51,13 +51,14 @@ mixin category(title)
 
     +pagination()
 
-mixin pagination()
-  .pagination-more
-    a.btn.btn-gray-light.btn-more.__s-45(href='#')
-      span.fw-500 Загрузить больше
-      +icon('arrow_s').btn-icon
+mixin pagination(cls)
+  - if (!cls)
+    .pagination-more
+      a.btn.btn-gray-light.btn-more.__s-45(href='#')
+        span.fw-500 Загрузить больше
+        +icon('arrow_s').btn-icon
 
-  .pagination
+  .pagination(class= (cls || ''))
     a.btn.btn-page.__s-40.btn-white.__disable(href='#')
       +icon('arrow_l').btn-icon
     a.btn.btn-page.__s-40.btn-white.__active(href='#') 1

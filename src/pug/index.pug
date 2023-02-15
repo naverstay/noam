@@ -1,33 +1,33 @@
 extends ./includes/layout
 
 block content
-  | <style>ul.list a {color: #fff;}</style>
+  | <style>ul.list {padding: 15px 0;} ul.list a {color: #fff;} ul.list li {padding: 5px 0;}</style>
 
   +aside(true)
 
   .section
-    ul.list(style="padding: 15px 0;")
-      li(style="padding: 5px;"): a(href="password_recovery.html") password_recovery
-      li(style="padding: 5px;"): a(href="livemap.html") livemap
-      li(style="padding: 5px;"): a(href="main.html") main
-      li(style="padding: 5px;"): a(href="main_login.html") main_login
-      li(style="padding: 5px;"): a(href="main.html#modal_auth") main#modal_auth
-      li(style="padding: 5px;"): a(href="main.html#modal_auth_error") main#modal_auth_error
-      li(style="padding: 5px;"): a(href="main.html#modal_reg") main#modal_reg
-      li(style="padding: 5px;"): a(href="main.html#modal_new_password") main#modal_new_password
-      li(style="padding: 5px;"): a(href="main.html#modal_info") main#modal_info
-      li(style="padding: 5px;"): a(href="main.html#modal_restore") main#modal_restore
-      li(style="padding: 5px;"): a(href="main.html#modal_location") main#modal_location
-      li(style="padding: 5px;"): a(href="main.html#modal_complain") main#modal_complain
-      li(style="padding: 5px;"): a(href="card.html") card
-      li(style="padding: 5px;"): a(href="card_wide.html") card_wide
-      li(style="padding: 5px;"): a(href="card_map.html") card_map
-      li(style="padding: 5px;"): a(href="card_extended.html") card_extended
-      li(style="padding: 5px;"): a(href="author.html") author
-      li(style="padding: 5px;"): a(href="category.html") category
-      li(style="padding: 5px;"): a(href="category_page_2.html") category_page_2
-      li(style="padding: 5px;"): a(href="category_hero.html") category_hero
-      li(style="padding: 5px;"): a(href="feedback.html") feedback
-      li(style="padding: 5px;"): a(href="site_map.html") site_map
-      li(style="padding: 5px;"): a(href="404.html") 404
-      li(style="padding: 5px;"): a(href="500.html") 500
+    ul.list
+      li: a(href="password_recovery.html") password_recovery
+      li: a(href="livemap.html") livemap
+      li: a(href="main.html") main
+      li: a(href="main_login.html") main_login
+      li: a(href="main.html#modal_auth") main#modal_auth
+      li: a(href="main.html#modal_auth_error") main#modal_auth_error
+      li: a(href="main.html#modal_reg") main#modal_reg
+      li: a(href="main.html#modal_new_password") main#modal_new_password
+      li: a(href="main.html#modal_info") main#modal_info
+      li: a(href="main.html#modal_restore") main#modal_restore
+      li: a(href="main.html#modal_location") main#modal_location
+      li: a(href="main.html#modal_complain") main#modal_complain
+      li: a(href="card.html") card
+      li: a(href="card_wide.html") card_wide
+      li: a(href="card_map.html") card_map
+      li: a(href="card_extended.html") card_extended
+      li: a(href="author.html") author
+      li: a(href="category.html") category
+      li: a(href="category_page_2.html") category_page_2
+      li: a(href="category_hero.html") category_hero
+      li: a(href="feedback.html") feedback
+      li: a(href="site_map.html") site_map
+      li: a(href="404.html") 404
+      li: a(href="500.html") 500
