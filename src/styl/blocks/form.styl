@@ -248,8 +248,8 @@ textarea.input
       left 0
       z-index 2
       overflow-y auto
-      max-height Min(400px, 60vh)
-      custom_scroll(rgba(0, 0, 0, .25))
+      max-height Min(400px, 57vh) !important
+      custom_scroll(rgba(0, 0, 0, .75))
 
       .select2-results__option
         &.autocomplete-selected
@@ -261,6 +261,7 @@ textarea.input
         +below($tab - 1px)
           top auto
           bottom 100%
+          //margin-bottom 2px
 
 .check
   position relative
