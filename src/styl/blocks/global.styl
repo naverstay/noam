@@ -333,12 +333,23 @@ body
         line-height 37px
         margin-bottom 16px
 
+a.nav-link
+  cursor pointer
+
 .nav
   display flex
   justify-content center
 
   > li
     position relative
+
+    &::after
+      content ''
+      position absolute
+      top 100%
+      right 0
+      left 0
+      height 4px
 
     +below($tab - 1px)
       &.__opened
@@ -371,13 +382,14 @@ body
 
     +above($tab)
       min-width 200px
-      padding-top 4px
+      margin-top 4px
       top 100%
-      right calc(2 * var(--map-button-offset) - 20px)
+      right calc(2 * var(--map-button-offset) - 24px)
       position absolute
       white-space nowrap
       max-height Min(460px, 60vh)
       overflow-y auto
+      custom_scroll(rgba(0, 0, 0, .25))
 
       li
         background #323232
@@ -389,7 +401,10 @@ body
           border-top 0
 
     +above($wide)
-      right calc(2 * var(--map-button-offset) - 22px)
+      right calc(2 * var(--map-button-offset) - 24px + var(--app-scroll-size))
+
+    +above($wide + $menu_extra)
+      right calc(2 * var(--map-button-offset) - 30px - var(--app-scroll-size))
 
     +above($wide + $menu_extra * 2)
       right 0
@@ -398,7 +413,6 @@ body
         right calc(2 * var(--map-button-offset) - 40px)
 
   .nav-link
-    cursor pointer
     color #fff
     padding 10px 0
     position relative
