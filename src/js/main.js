@@ -73,7 +73,7 @@ const initSelect = () => {
 const initInputAutocomplete = () => {
   $('.js-input-autocomplete').each((index, input) => {
     let result = input.parentElement;
-    let icon = result.querySelector('.js-input-icon');
+    let inputIcon = result.querySelector('.js-input-icon');
     let autocomplete = input.dataset.autocomplete;
     let source = [];
 
@@ -97,17 +97,13 @@ const initInputAutocomplete = () => {
       appendTo: result,
       preserveInput: true,
       showNoSuggestionNotice: true,
-      noSuggestionNotice: `
-                <span class="select2-results__option-value">
-                 <span class="select2-results__option-icon"></span>
-                  <span class="select2-results-name">Ничего не найдено</span>
-              </span>`,
+      noSuggestionNotice: `<span class="select2-results__option-value"><span class="select2-results-name">Ничего не найдено</span></span>`,
       onSelect: function (suggestion) {
         console.log('onSelect', suggestion);
         input.value = suggestion.value;
 
-        if (icon) {
-          icon.innerHTML = `<img src="${suggestion.data.icon}" alt="${suggestion.data.label}">`;
+        if (inputIcon) {
+          inputIcon.innerHTML = `<img src="${suggestion.data.icon}" alt="${suggestion.data.label}">`;
         }
       },
       onSearchStart: function (params) {
@@ -127,10 +123,7 @@ const initInputAutocomplete = () => {
             const itemElement = document.createElement("div");
             itemElement.className = 'select2-results__option select2-results__option--selectable autocomplete-suggestion';
             itemElement.dataset.index = index;
-            itemElement.innerHTML = `<span class="select2-results__option-value">
-                    <span class="select2-results__option-icon"><img src="${item.data.icon}" alt="${item.data.label}"></span>
-                    <span class="select2-results-name">${item.data.label}</span>
-                  </span>`;
+            itemElement.innerHTML = `<span class="select2-results__option-value"><span class="select2-results-name">${item.data.label}</span></span>`;
 
             container.append(itemElement);
           });
