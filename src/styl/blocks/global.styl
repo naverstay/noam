@@ -387,7 +387,9 @@ body
           border-top 0
 
     +above($wide)
-      right calc(2 * var(--map-button-offset) - 30px)
+      right calc(2 * var(--map-button-offset) - 22px)
+      max-height Min(460px, 60vh)
+      overflow-y auto
 
     +above($wide + $menu_extra * 2)
       right 0

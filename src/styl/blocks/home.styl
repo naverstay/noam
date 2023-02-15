@@ -132,11 +132,11 @@
               position absolute
               top 0
               left 0
-              right: 0
+              right 0
               border-top 1px solid #E8E8E8
 
               +above($tab)
-                right: 20px
+                right 20px
 
           .card
             position relative
@@ -293,12 +293,14 @@
       //    margin-bottom 6px
 
       li
+        position relative
+
         +below($tab - 1px)
           height auto !important
           width 100%
 
           &:not(.grid-sizer) + li
-            border-top 1px solid #E8E8E8
+            //border-top 1px solid #E8E8E8
             margin-top 16px
             padding-top 16px
 
@@ -419,6 +421,9 @@
 
     &.__hero
       margin-bottom -36px
+
+      +above($tab)
+        margin-right -20px
 
       .card-title
         font-family $fontInter
@@ -566,7 +571,7 @@
                 letter-spacing -0.02em
 
       li:not(.__main)
-        border-top-color #323232 !important
+        //border-top-color #323232 !important
 
         .card
           position relative
@@ -588,12 +593,23 @@
           width 33.3333%
 
         .__page-aside &
+
+          &::after
+            content ''
+            position absolute
+            top 0
+            right 0
+            left 0
+            border-top 1px solid #323232
+
+            +above($tab)
+              right 20px
+
           +below($wide + $menu_extra * 2 - 1px)
             margin-top 16px
-            padding-top 16px
+            padding-top 18px
             padding-bottom 8px
             width 100%
-            border-top 1px solid #e8e8e8
 
             .card
               padding 0 0 0 298px !important

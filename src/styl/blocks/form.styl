@@ -4,23 +4,23 @@
   transition color .3s, background-color .3s, border-color .3s
 
   &-icon
-    position: absolute
-    top: 50%
-    left: 20px
-    margin-top: -8px
-    width: 16px
-    height: 16px
+    position absolute
+    top 50%
+    left 20px
+    margin-top -8px
+    width 16px
+    height 16px
 
     img
-      display: block
-      max-width: 100%
+      display block
+      max-width 100%
 
     + .input
-      padding-left: 50px
+      padding-left 50px
 
   &.__offset-8
-    margin-top: 8px
-    margin-bottom: -4px
+    margin-top 8px
+    margin-bottom -4px
 
   &.__s-40
     height 40px
@@ -43,7 +43,7 @@
     border 1px solid #E8E8E8
 
     &.__error
-      border-color: $red
+      border-color $red
 
 textarea.input
   custom_scroll(rgba(0, 0, 0, .25))
@@ -71,7 +71,7 @@ textarea.input
   .select2-results__option
     padding 11px 20px
     background #EFEFEF
-    border-radius: 0
+    border-radius 0
 
     + .select2-results__option
       border-top 1px solid #E8E8E8
@@ -137,48 +137,48 @@ textarea.input
 .form
 
   &-icon
-    position: absolute
-    top: 20px
-    left: 20px
-    width: 14px;
-    height: 14px;
-    background: $red
-    fill: #fff
-    border-radius: 100%
-    display: flex
+    position absolute
+    top 20px
+    left 20px
+    width 14px;
+    height 14px;
+    background $red
+    fill #fff
+    border-radius 100%
+    display flex
     align-items center
     justify-content center
 
     svg
-      width: 16px
-      height: 16px
+      width 16px
+      height 16px
 
   &-error
-    position: relative
-    padding: 19px 20px 19px 44px
-    background: #FEEDED
-    border: 1px solid $red
-    font-size: 14px
-    line-height: 17px
-    color: $red
-    margin-bottom: 32px
+    position relative
+    padding 19px 20px 19px 44px
+    background #FEEDED
+    border 1px solid $red
+    font-size 14px
+    line-height 17px
+    color $red
+    margin-bottom 32px
 
   &-password__eye
     cursor pointer
     position absolute
-    top: 11px
+    top 11px
     right 20px
-    height: 20px
-    width: 20px
+    height 20px
+    width 20px
     color #BBBBBB
 
     &::before
-      content: ''
-      position: absolute
-      top: -10px
-      bottom: -10px
-      left: -10px
-      right: -10px
+      content ''
+      position absolute
+      top -10px
+      bottom -10px
+      left -10px
+      right -10px
 
     .btn-icon
       width 20px
@@ -233,26 +233,33 @@ textarea.input
     position relative
 
     &__error
-      padding-top: 10px
-      color: $red
+      padding-top 10px
+      color $red
 
     .autocomplete-no-suggestion
-      padding: 11px 20px;
-      background: #efefef;
-      border-radius: 0;
+      padding 11px 20px;
+      background #efefef;
+      border-radius 0;
 
     .autocomplete-suggestions
-      position: absolute
-      top: 100%
-      right: 0
-      left: 0
-      z-index: 2
+      position absolute
+      top 100%
+      right 0
+      left 0
+      z-index 2
+      overflow-y auto
+      max-height Min(400px, 60vh)
 
       .select2-results__option
         &.autocomplete-selected
-          font-weight: 700
-          background-color: #5897fb
-          color: #fff
+          font-weight 700
+          background-color #5897fb
+          color #fff
+
+      .popup &
+        +below($tab - 1px)
+          top auto
+          bottom 100%
 
 .check
   position relative

@@ -1,18 +1,18 @@
 .mfp-container
-  overflow-y: auto
+  overflow-y auto
   overscroll-behavior none
 
   &::before
     display none
 
 .mfp-content
-  min-height: 100%
+  min-height 100%
   display flex
   align-items center
 
   +below($tab - 1px)
-    align-items: flex-end
-    //padding: 2vh 0 min(160px, 2vh)
+    align-items flex-end
+    //padding 2vh 0 min(160px, 2vh)
 
 .popup
   padding 36px 26px
@@ -57,6 +57,7 @@
     font-size 34px
     top 35px
     right 20px
+    z-index 1
 
   +above($tab)
     padding 36px 30px
@@ -76,7 +77,7 @@
         line-height 28px
 
   &.wide
-    max-width: 618px
+    max-width 618px
 
 .mfp-bg
   background #000
