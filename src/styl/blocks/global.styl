@@ -17,6 +17,15 @@ a
   text-decoration none
   transition color .3s
 
+textarea,
+input
+  &:focus
+    position relative
+    z-index 1
+    outline 0 !important
+    user-select none !important
+    box-shadow 0 0 0 var(--app-outline-size) #9BCFFD !important
+
 html
   overflow-x clip
   margin-right 0 !important

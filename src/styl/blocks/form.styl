@@ -243,6 +243,7 @@ textarea.input
 
     .autocomplete-suggestions
       position absolute
+      margin-top var(--app-outline-size)
       top 100%
       right 0
       left 0
@@ -261,7 +262,7 @@ textarea.input
         +below($tab - 1px)
           top auto
           bottom 100%
-          //margin-bottom 2px
+          margin 0 0 var(--app-outline-size)
 
 .check
   position relative
