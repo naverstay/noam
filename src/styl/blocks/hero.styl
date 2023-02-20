@@ -263,7 +263,7 @@
     background #fff
     z-index 1003
     padding 36px 28px
-    transition transform .3s
+    transition transform .3s, height .3s, max-height .3s
     width var(--home-aside-width)
     display none
     overflow-x hidden
@@ -310,7 +310,7 @@
         height auto
         overflow hidden
         padding 32px 20px 100px
-        transform none !important
+        transform max-height .3s !important
         max-height calc(var(--app-height) - var(--header-search-height) - var(--header-mob-mapbtn-height) - var(--header-mob-height) - 30px)
 
         &.__no-foot

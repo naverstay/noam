@@ -376,7 +376,7 @@
     pointer-events none
     background rgba(0, 0, 0, .75)
     opacity 0
-    transition opacity .3s
+    transition opacity .3s, height .3s
 
     +above($tab)
       display none
@@ -423,6 +423,7 @@
       background #FFF
       overflow-y auto
       overscroll-behavior none
+      transition max-height .3s
       max-height calc(var(--app-height) - var(--header-search-height))
       custom_scroll(rgba(0, 0, 0, .25))
 
@@ -602,7 +603,7 @@
 
     +below($mob_menu - 1px)
       hidden_scroll()
-      transition transform .3s, opacity .15s .1s
+      transition transform .3s, opacity .15s .1s, max-height .3s
       position fixed
       z-index 1
       right var(--app-scroll-size)
