@@ -392,6 +392,7 @@
       width 100%
 
     &__clear
+      z-index 1
       position absolute
       right 0
       top 0
@@ -476,7 +477,6 @@
 
     &__input
       position relative
-      padding-left 15px
       height 100%
 
       input
@@ -486,6 +486,7 @@
         outline 0 !important
         border 0 !important
         padding-right 48px
+        padding-left 35px
 
         +below($tab - 1px)
           font-size 13px
@@ -704,11 +705,13 @@
         grid-area search
         margin 0 -20px
         border-bottom 1px solid $menu_bdr_clr
-        padding-left 10px
         position sticky
         z-index 2
         background $menu_bg_clr
         bottom var(--header-search-height)
+
+        .header-search__input input
+          padding-left 45px
 
         .btn
           left 10px
