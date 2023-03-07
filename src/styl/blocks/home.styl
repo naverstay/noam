@@ -123,6 +123,8 @@
             width auto
 
         &.__w-1
+          padding-bottom 18px
+
           + li
             padding-top 19px
             position relative
@@ -145,8 +147,9 @@
               padding-bottom 0
 
             +above($tab)
-              padding-left 300px
-              min-height 164px
+              &:not(.__text-only)
+                padding-left 300px
+                min-height 164px
 
               .card-info
                 padding-top 0
@@ -161,7 +164,8 @@
                 width 280px
 
             +above($wide)
-              padding-left 392px
+              &:not(.__text-only)
+                padding-left 392px
 
               .card-preview
                 width 362px
@@ -222,7 +226,6 @@
           &.__w-1
             //width 50%
             grid-column span 12
-            padding-bottom 18px
 
           &.__w-2
             //width 50%
