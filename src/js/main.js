@@ -3,8 +3,8 @@ import 'magnific-popup';
 import './jquery.autocomplete.min';
 import 'select2';
 import Sly from 'sly-scrolling/dist/sly.min';
-import 'jquery.easing';
 import {debounce} from "throttle-debounce";
+import 'jquery.easing';
 
 let $sly;
 
