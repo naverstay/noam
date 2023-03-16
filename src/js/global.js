@@ -47,7 +47,7 @@ const isMobile = function () {
 const appHeight = (r) => {
   const doc = document.documentElement;
   const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
-  doc.style.setProperty("--app-height", `${Math.max(200, window.innerHeight - sab)}px`);
+  doc.style.setProperty("--app-height", `${Math.max(200, Math.floor(window.innerHeight - 1 - sab))}px`);
 };
 
 function getScrollTop() {

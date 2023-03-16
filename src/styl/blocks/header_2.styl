@@ -491,6 +491,49 @@
         +below($tab - 1px)
           font-size 13px
 
+  &-notification
+    z-index 2
+    position absolute
+    top 0
+    right 60px
+    height 100%
+
+    +above($tab)
+      height var(--header-search-height)
+      right calc(var(--header-tab-mapbtn-width) - 30px)
+
+      .__map-aside &
+        right -30px
+
+      .__page-aside &
+        right -26px
+
+    +above($wide)
+      top -1px
+      right -10px
+
+      .__map-aside &
+        right -34px
+
+      .__page-aside &
+        right -30px
+
+      .__map-aside &
+        margin-right 4px
+
+    +above($wide + $menu_extra * 2)
+      right 0
+
+      .__map-aside &,
+      .__page-aside &
+        right -30px
+
+      .__map-aside &
+        margin-right 0
+
+    +above($wide + 640px)
+      right 0 !important
+
   &-menu
     &__name
       white-space nowrap
@@ -572,6 +615,19 @@
           left 0
           right -10px
 
+      .__notification &
+        padding-right 56px
+
+      +above($wide)
+        right -30px
+
+      .__notification &
+        padding-right var(--header-notification-btn-width)
+
+      +above($wide + 640px)
+        .__notification &
+          padding-right 86px !important
+
       .__short &
         justify-content flex-end
 
@@ -589,8 +645,25 @@
         left -7px
         height var(--header-search-height)
 
+        .__notification &
+          padding-right var(--header-notification-btn-width)
+
+          .__page-aside &
+            padding-right var(--header-notification-btn-width)
+
       +above($wide)
         right -30px
+
+        .__notification &
+          padding-right calc(var(--header-notification-btn-width) + 26px)
+
+      +above($wide + $menu_extra * 2)
+        .__notification &
+          padding-right calc(var(--header-notification-btn-width) + 32px)
+
+      +above($wide + 640px)
+        .__notification &
+          padding-right 86px !important
 
       .__short &
         justify-content flex-end
@@ -1006,7 +1079,7 @@
   right 20px
   z-index 3
   min-width 30px
-  margin-right 2px
+  margin-right 8px
   margin-left -8px
   width 30px
   transform scale(1.75)
@@ -1014,10 +1087,11 @@
   &::before
     content ''
     position absolute
-    top -10px
-    bottom -10px
-    right 0
-    left 0
+    width 36px
+    height 36px
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
 
   span
     pointer-events none

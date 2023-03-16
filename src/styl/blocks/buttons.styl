@@ -42,6 +42,17 @@
       width 24px
       height 24px
 
+  &-notification
+    position relative
+    height 100%
+    display flex
+    align-items center
+    width var(--header-notification-btn-width)
+
+    .btn-icon
+      width 20px
+      height 20px
+
   &-map
     position relative
     padding 6px 12px
@@ -182,6 +193,23 @@
     &.__active,
     &:hover
       background #000
+      color #fff
+
+  &-white__red
+    background #fff
+    color #000
+    box-shadow 0 4px 3px rgba(0, 0, 0, 0.02)
+
+    &.__disable
+      pointer-events none
+      color rgba(0, 0, 0, .25)
+
+    &.__active
+      cursor default
+
+    &.__active,
+    &:hover
+      background #ba0505
       color #fff
 
   &-red
