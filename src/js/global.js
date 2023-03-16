@@ -76,6 +76,7 @@ function checkWindowScroll() {
 
 const debounceFitHeight = debounce(5, false, () => {
   appHeight("resize");
+  getBrowserScrollbarSize();
 });
 
 checkWindowScroll();
