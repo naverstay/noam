@@ -6,13 +6,20 @@ import 'jquery.easing';
 
 (function () {
   let src = '//cdn.jsdelivr.net/npm/eruda';
-  if (!/eruda=1/.test(window.location.search) && localStorage.getItem('active-eruda') != 'true') return;
-  document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-  document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+  if (!(!/eruda=1/.test(window.location.search) && localStorage.getItem('active-eruda') != 'true')) {
+    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+    document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+  }
 })();
 
 let goTopTimer;
 let prevScrollPos = 0;
+
+function isTouchDevice() {
+  return (('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) ||
+    (navigator.msMaxTouchPoints > 0));
+}
 
 function getScrollbarWidth() {
   // Creating invisible container
@@ -37,7 +44,7 @@ function getScrollbarWidth() {
 }
 
 const getBrowserScrollbarSize = () => {
-  document.documentElement.style.setProperty("--app-scroll-size", `${getScrollbarWidth()}px`);
+  document.documentElement.style.setProperty("--app-scroll-size", `${isTouchDevice() ? 0 : getScrollbarWidth()}px`);
 }
 
 const isMobile = function () {
