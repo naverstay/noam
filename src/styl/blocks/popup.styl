@@ -48,6 +48,18 @@
     color #666
     padding-top 32px
 
+  &-image
+    overflow hidden
+    margin -36px -30px 36px
+
+    img
+      display block
+      max-width unset
+
+    ~ .mfp-close
+      +above($tab)
+        margin-top 280px
+
   &-title
     text-align center
     margin 0 32px 32px
@@ -82,7 +94,7 @@
         line-height 28px
 
   &.wide
-    max-width 618px
+    max-width 600px
 
 .mfp-bg
   background #000
