@@ -41,7 +41,7 @@ else if (map_2)
           +search()
           +user(((html_class.indexOf('__page-aside') > -1) && html_class !== '__map-aside' ? '' : 'inner'))
 
-      .header-notification: a.btn.btn-red.btn-notification
+      .header-notification: a.btn.btn-red.btn-notification.js-popup(data-popup='#modal_notification' href='#')
         +icon('bell').btn-icon
 
       .burger.js-burger
@@ -79,7 +79,7 @@ else
                 +icon('whatshot').btn-icon
                 span() Новости на карте
 
-      .header-notification: a.btn.btn-red.btn-notification
+      .header-notification: a.btn.btn-red.btn-notification.js-popup(data-popup='#modal_notification' href='#')
         +icon('bell').btn-icon
 
       .burger.js-burger
