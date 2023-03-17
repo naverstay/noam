@@ -13,17 +13,17 @@ custom_scroll($track)
   scrollbar-width thin
 
   &::-webkit-scrollbar
-    height var(--app-scroll-size)
-    width var(--app-scroll-size)
+    height var(--app-scroll-size, 4px)
+    width var(--app-scroll-size, 4px)
 
   &::-webkit-scrollbar-track
-    height var(--app-scroll-size)
-    width var(--app-scroll-size)
+    height var(--app-scroll-size, 4px)
+    width var(--app-scroll-size, 4px)
     background-color $track
 
   &::-webkit-scrollbar-thumb
     background-color rgba(255, 255, 255, .65)
-    border-radius calc(var(--app-scroll-size) / 2)
+    border-radius calc(var(--app-scroll-size, 4px) / 2)
 
 hidden_scroll()
   scrollbar-width none

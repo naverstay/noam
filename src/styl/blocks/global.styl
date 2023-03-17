@@ -146,7 +146,7 @@ body
 
   +above($wide_1600)
     .__page-aside &
-      padding-right calc(var(--home-aside-width) + var(--app-scroll-size))
+      padding-right calc(var(--home-aside-width) + var(--app-scroll-size, 4px))
 
 .section
   position relative
@@ -421,10 +421,10 @@ a.nav-link
           border-top 0
 
     +above($wide)
-      right calc(2 * var(--map-button-offset) - 24px + var(--app-scroll-size))
+      right calc(2 * var(--map-button-offset) - 24px + var(--app-scroll-size, 4px))
 
     +above($wide + $menu_extra)
-      right calc(2 * var(--map-button-offset) - 30px - var(--app-scroll-size))
+      right calc(2 * var(--map-button-offset) - 30px - var(--app-scroll-size, 4px))
 
     +above($wide + $menu_extra * 2)
       right 0

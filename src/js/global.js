@@ -44,7 +44,7 @@ function getScrollbarWidth() {
 }
 
 const getBrowserScrollbarSize = () => {
-  document.documentElement.style.setProperty("--app-scroll-size", `${isTouchDevice() ? 0 : getScrollbarWidth()}px`);
+  document.documentElement.style.setProperty("--app-scroll-size", `${Math.max(4, getScrollbarWidth())}px`);
 }
 
 const isMobile = function () {
@@ -55,6 +55,14 @@ const appHeight = (r) => {
   const doc = document.documentElement;
   const sab = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab")) || 0;
   doc.style.setProperty("--app-height", `${Math.max(200, Math.floor(window.innerHeight - 1 - sab))}px`);
+
+  document.documentElement.classList.remove('__touch');
+
+  getBrowserScrollbarSize();
+
+  document.documentElement.classList.toggle('__touch', isTouchDevice());
+
+  console.log('appHeight', r);
 };
 
 function getScrollTop() {
@@ -83,7 +91,6 @@ function checkWindowScroll() {
 
 const debounceFitHeight = debounce(5, false, () => {
   appHeight("resize");
-  getBrowserScrollbarSize();
 });
 
 checkWindowScroll();
@@ -118,7 +125,6 @@ if (isSupported()) {
 }
 
 $(function ($) {
-  getBrowserScrollbarSize();
   appHeight('DOM');
   watchMobileResolution();
 });
