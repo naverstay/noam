@@ -495,7 +495,7 @@
     z-index 2
     position absolute
     top 0
-    right 60px
+    right calc(var(--app-scroll-size) + 52px)
     height 100%
 
     +above($tab)
@@ -506,7 +506,7 @@
         right -30px
 
       .__page-aside &
-        right -26px
+        right calc(var(--app-scroll-size) - 30px)
 
     +above($wide)
       right -10px
@@ -614,8 +614,8 @@
           left 0
           right -10px
 
-      .__notification &
-        padding-right 56px
+      //.__notification &
+      //  padding-right 56px
 
       +above($wide)
         right -30px
@@ -625,7 +625,7 @@
 
       +above($wide + 640px)
         .__notification &
-          padding-right 86px !important
+          padding-right 84px !important
 
       .__short &
         justify-content flex-end
@@ -637,18 +637,18 @@
       +above($tab)
         align-items stretch
         justify-content space-between
-        flex-fow row nowrap
+        flex-flow row nowrap
         position absolute
         top 0
-        right -26px
         left -7px
+        right calc(var(--app-scroll-size) - 34px)
         height var(--header-search-height)
 
         .__notification &
           padding-right var(--header-notification-btn-width)
 
-          .__page-aside &
-            padding-right var(--header-notification-btn-width)
+          //.__page-aside &
+          //  padding-right calc(var(--app-scroll-size) + var(--header-notification-btn-width))
 
       +above($wide)
         right -30px
@@ -656,13 +656,16 @@
         .__notification &
           padding-right calc(var(--header-notification-btn-width) + 26px)
 
+          .__page-aside &
+            padding-right var(--header-notification-btn-width)
+
       +above($wide + $menu_extra * 2)
         .__notification &
           padding-right calc(var(--header-notification-btn-width) + 32px)
 
       +above($wide + 640px)
         .__notification &
-          padding-right 86px !important
+          padding-right 84px !important
 
       .__short &
         justify-content flex-end
@@ -1078,16 +1081,16 @@
   right 20px
   z-index 3
   min-width 30px
-  margin-right 8px
-  margin-left -8px
+  margin-left calc(-1 * var(--app-scroll-size))
+  margin-right var(--app-scroll-size)
   width 30px
   transform scale(1.75)
 
   &::before
     content ''
     position absolute
-    width 36px
-    height 36px
+    width 40px
+    height 40px
     top 50%
     left 50%
     transform translate(-50%, -50%)
