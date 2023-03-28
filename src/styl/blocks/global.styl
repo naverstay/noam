@@ -1,6 +1,5 @@
 *
   box-sizing border-box
-  custom_scroll(rgba(0, 0, 0, .25))
 
   &::before,
   &::after
@@ -30,6 +29,7 @@ input
 html
   overflow-x clip
   margin-right 0 !important
+  custom_scroll(rgba(0, 0, 0, .25))
 
   &:not(.__map-aside)
     overflow-y scroll
@@ -53,6 +53,10 @@ body
   position relative
   font 14px $fontInter
   background $menu_bg_clr
+  custom_scroll(rgba(0, 0, 0, .25))
+
+  *
+    custom_scroll($gray, #000)
 
   .__page-error &
     background #f8f6f3
